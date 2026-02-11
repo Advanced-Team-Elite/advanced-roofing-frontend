@@ -1,0 +1,86 @@
+.headerContainer {
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.topBar {
+    background-color: #f7d000;
+    color: #00589e;
+    padding: 25px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.mainNav {
+    background-color: #00589e;
+    padding: 45px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logoContainer img {
+    height: 120px;
+    width: auto;
+}
+
+/* Desktop Menu */
+.desktopMenu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.navLink {
+    color: #f7d000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+    transition: color 0.3s;
+}
+
+.navLink:hover {
+    color: #f7d000;
+}
+
+.quoteBtn {
+    background-color: black;
+    color: white;
+    padding: 12px 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Tablet / Mobile Logic */
+.menuToggle {
+    display: none;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    .logoContainer img {
+        height: 95px;
+        width: auto;
+    }
+
+    .desktopMenu, .topBar {
+        display: none;
+    }
+    .menuToggle {
+        display: block;
+    }
+    .mainNav {
+        padding: 30px 20px;
+    }
+}

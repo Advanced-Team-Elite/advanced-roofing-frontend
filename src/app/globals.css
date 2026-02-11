@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Configuración para Tailwind v4 */
+@theme {
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui;
+  --font-prompt: var(--font-prompt), sans-serif;
+}
+
+/* Estilos base usando la sintaxis moderna */
+@layer base {
+  body {
+    font-family: var(--font-open-sans), sans-serif;
+    color: #333;
+    line-height: 1.6;
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-prompt), sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}

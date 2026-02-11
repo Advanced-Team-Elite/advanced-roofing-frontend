@@ -1,0 +1,137 @@
+.section {
+    padding: 80px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    font-size: 4.2rem;
+    color: #00589E;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.carouselWrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    /* El ancho debe ser 100% * número de reviews / items visibles */
+    width: calc(100% * 4 / 3);
+}
+
+.cardContainer {
+    width: 100%;
+    padding: 10px;
+}
+
+.reviewCard {
+    background-color: #00589E; /* Azul profundo del mockup */
+    color: #fff;
+    padding: 40px 30px;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars {
+    color: #ffcc00;
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+}
+
+.cardTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.cardText {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.author {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.controlsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.arrowBtn {
+    background: none;
+    border: none;
+    color: #00ccff;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+    color: black;
+}
+
+.viewAllBtn {
+    background-color: #00ccff;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+    .track {
+        width: calc(100% * 4 / 2);
+    }
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 768px) {
+    .track {
+        width: calc(100% * 4 / 1);
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .controlsRow {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .reviewCard {
+        min-height: 300px;
+        text-align: center;
+    }
+}

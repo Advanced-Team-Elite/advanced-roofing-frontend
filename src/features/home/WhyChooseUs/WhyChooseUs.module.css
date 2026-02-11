@@ -1,0 +1,167 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.bgContainer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bgImage {
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.contentContainer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1900px; /* Ajuste para que se vea como el mockup */
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.imageCol {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    max-width: 850px;
+}
+
+.textCol {
+    color: #ffffff;
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 50px;
+    text-transform: uppercase; /* Si quieres seguir el estilo agresivo del mockup */
+}
+
+.benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+}
+
+.benefitItem {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconCircle {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    background-color: #00ccff; /* El cyan del mockup */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+}
+
+.benefitTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .imageCol {
+        order: 2;
+        display: none;
+        justify-content: center;
+    }
+
+    .textCol {
+        order: 1;
+        text-align: center;
+    }
+
+    .benefitItem {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (Estilo Mockup: Icono arriba del texto) --- */
+@media (max-width: 768px) {
+    /* Forzamos una sola columna en el contenedor principal */
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* Ocultamos la imagen lateral según tu diseño previo */
+    .imageCol {
+        display: none;
+    }
+
+    /* Centramos el encabezado */
+    .textCol {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    /* Grid de beneficios: 1 sola columna vertical */
+    .benefitsGrid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* CADA ITEM: Icono arriba, texto abajo */
+    .benefitItem {
+        flex-direction: column; /* Alineación vertical */
+        align-items: center;    /* Centrado horizontal */
+        text-align: center;
+        gap: 10px;
+    }
+
+    .iconCircle {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 5px;
+    }
+
+    .benefitTitle {
+        font-size: 1rem;
+        max-width: 250px; /* Para que el texto no se estire demasiado */
+        margin: 0 auto;
+    }
+}

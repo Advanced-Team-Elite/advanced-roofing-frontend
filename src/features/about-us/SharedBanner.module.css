@@ -1,0 +1,55 @@
+.bannerBackground {
+    width: 100%;
+    height: 53vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* La clave: Superposición mediante margen negativo */
+.cityWrapper {
+    width: 90%;
+    max-width: 850px;
+    margin: -120px auto 0; /* Sube la imagen 120px sobre el banner */
+    position: relative;
+    z-index: 10;
+}
+
+.cityImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ajustes para tablet y mobile basados en tus capturas */
+@media (max-width: 768px) {
+    .bannerBackground {
+        height: 250px;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .cityWrapper {
+        margin-top: -80px; /* Superposición menor en móviles */
+        width: 95%;
+    }
+}

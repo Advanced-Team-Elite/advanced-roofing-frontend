@@ -1,0 +1,163 @@
+/* Accesibilidad */
+.accessibilityBtn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #00589e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 8999;
+    border: 3px solid white;
+}
+
+/* Botón TOP */
+.topBtn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #00ccff;
+    color: white;
+    padding: 14px 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    z-index: 8999;
+    transition: transform 0.3s ease;
+}
+
+.topVisible {
+    transform: translateX(0);
+}
+
+.topHidden {
+    transform: translateX(100%);
+}
+.contactContainer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 8999;
+}
+
+.chatWrapper {
+    width: 375px; /* Ancho fijo para burbuja y botones */
+    display: flex;
+    flex-direction: column;
+}
+
+.chatBubble {
+    background: white;
+    padding: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 12px; /* Redondeado general */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin: 0 10px 15px 10px; /* Un poco de margen de los bordes */
+    position: relative;
+    border-bottom: 3px solid #3b82f6;
+    color: #333;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+/* El piquito azul de la burbuja */
+.bubbleTriangle {
+    position: absolute;
+    bottom: -10px;
+    right: 40px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #3b82f6;
+}
+
+.actionGrid {
+    display: flex;
+    background-color: #4c8bf5; /* Azul exacto del mockup */
+    border-radius: 12px 12px 0 0; /* Redondeado superior */
+    overflow: hidden;
+    width: 100%;
+}
+
+.actionItem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+}
+
+.actionItem:last-child {
+    border-right: none;
+}
+
+.actionItem span {
+    margin-top: 2px;
+}
+
+.actionItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .contactContainer {
+        width: 100%;
+    }
+
+    .chatWrapper {
+        width: 100%;
+    }
+
+    .chatBubble {
+        width: calc(100% - 20px); /* Margen pequeño a los lados */
+        margin: 0 auto 10px auto;
+        border-radius: 12px;
+    }
+
+    .actionGrid {
+        width: 100%;
+        border-radius: 0; /* En móvil suelen ser rectos contra el borde */
+    }
+
+    .actionItem {
+        padding: 10px 0; /* Un poco más compactos en móvil */
+    }
+
+    /* SUBIMOS EL BOTÓN DE ACCESIBILIDAD */
+    .accessibilityBtn {
+        bottom: 160px; /* Suficiente para no chocar con la barra azul */
+        left: 15px;
+        transition: bottom 0.3s ease;
+    }
+
+    .bubbleTriangle {
+        right: 50%;
+        transform: translateX(50%);
+    }
+}

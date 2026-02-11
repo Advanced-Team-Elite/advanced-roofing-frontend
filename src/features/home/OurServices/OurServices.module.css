@@ -1,0 +1,97 @@
+.section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.mainTitle {
+    font-size: 3rem;
+    color: #0056b3; /* Azul oscuro del título */
+    font-weight: 800;
+    margin-bottom: 50px;
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas en desktop */
+    gap: 35px;
+    margin-bottom: 40px;
+}
+
+.serviceCard {
+    position: relative;
+    height: 155px; /* Ajusta la altura según necesites */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0 30px;
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .image {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 90, 179, 0.5); /* Tinte azul */
+    z-index: 1;
+}
+
+.serviceTitle {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.buttonWrapper {
+    margin-top: 20px;
+}
+
+.viewAllBtn {
+    background-color: #00ccff; /* Cyan brillante */
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.viewAllBtn:hover {
+    background-color: #0099cc;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .mainTitle {
+        font-size: 2.2rem;
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr; /* 1 sola columna en mobile */
+        gap: 20px;
+    }
+
+    .serviceCard {
+        height: 180px; /* Un poco más compactos en móvil */
+    }
+}

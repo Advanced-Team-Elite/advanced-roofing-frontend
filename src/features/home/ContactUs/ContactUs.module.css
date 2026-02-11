@@ -1,0 +1,136 @@
+.section {
+    background-color: white; /* El azul de fondo solicitado */
+    padding: 80px 0;
+    width: 100%;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* LA CAJA BLANCA (Desktop) */
+.formCard {
+    background-color: #00589E; /* Fondo blanco para el contenido */
+    padding: 60px;
+    border-radius: 8px;
+    color: #333; /* Texto oscuro sobre fondo blanco */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* INPUTS CON FONDO BLANCO Y BORDE */
+.input {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input:focus {
+    outline: 2px solid #00589E;
+}
+
+.captchaCode {
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.captchaField p{
+    color: white;
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    color: white;
+    margin: 30px 0;
+    line-height: 1.4;
+}
+
+.disclaimer a {
+    color: #f7d000;
+    text-decoration: underline;
+}
+
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.submitBtn {
+    background-color: #00CCFF;
+    color: #fff;
+    border: none;
+    padding: 15px 60px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 40px 0;
+    }
+
+    .formCard {
+        padding: 40px 20px;
+        border-radius: 0; /* Quita el redondeo para que parezca full width */
+        margin: 0 -20px; /* Expande la caja blanca a los bordes */
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr; /* Una columna en mobile */
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .submitBtn {
+        width: 100%;
+    }
+}

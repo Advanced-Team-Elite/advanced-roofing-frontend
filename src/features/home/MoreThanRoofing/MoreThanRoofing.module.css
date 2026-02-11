@@ -1,0 +1,112 @@
+.section {
+    padding: 60px 0;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.roofLine {
+    width: 80px;
+    height: 15px;
+    border-top: 2px solid #333;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    transform: skewY(-20deg); /* Simula el ángulo del logo superior */
+    margin-bottom: 20px;
+}
+
+.flairSvg {
+    width: 120px;  /* Ajusta el ancho según veas necesario */
+    height: auto;
+    color: #000000; /* Aquí defines el color NEGRO */
+    display: block;
+    margin-bottom: -10px;
+}
+
+.mainTitle {
+    font-size: 4rem;
+    color: #0056b3;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.subTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Grid de 2 columnas para los puntos clave */
+.pointsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+    margin-bottom: 30px;
+}
+
+.pointItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.dash {
+    color: #00ccff; /* Color cyan para los guiones */
+    font-weight: bold;
+}
+
+.footerText {
+    margin-bottom: 50px;
+}
+
+.readyTitle {
+    font-size: 1.8rem;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.ctaBox {
+    background-color: #0056b3; /* Fondo azul oscuro del mockup */
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 30px;
+}
+
+.ctaBox strong {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .mainTitle {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .pointsGrid {
+        grid-template-columns: 1fr; /* Una sola columna en mobile */
+    }
+
+    .ctaBox {
+        font-size: 1.1rem;
+        padding: 20px;
+    }
+
+    .roofLine {
+        margin: 0 auto 20px auto; /* Centrado en móvil si prefieres */
+    }
+}
