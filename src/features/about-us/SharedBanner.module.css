@@ -10,6 +10,7 @@
 }
 
 .overlay {
+    background-color: rgba(0, 57, 92, 0.2); /* Tono azul oscuro sutil */
     width: 100%;
     height: 100%;
     display: flex;
@@ -19,10 +20,11 @@
 
 .title {
     color: white;
-    font-size: 3.5rem;
+    font-size: 4.2rem;
     font-weight: 800;
     text-align: center;
     padding: 0 20px;
+    margin-bottom: 100px;
 }
 
 /* La clave: Superposición mediante margen negativo */

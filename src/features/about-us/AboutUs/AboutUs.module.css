@@ -1,0 +1,94 @@
+.aboutSection {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.contentWrapper {
+    display: block; /* Importante para que el float funcione */
+}
+
+/* Contenedor flotante para rodear con texto */
+.imageFloatContainer {
+    float: right;
+    width: 45%; /* Ajusta según el diseño desktop */
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.imageBorderBox {
+    border: 3px solid #ffcc00; /* Borde amarillo del mockup */
+    padding: 0;
+}
+
+.aboutImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.subTitle {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.paragraph {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.highlight {
+    color: #804dcc;
+}
+
+.sectionHeading {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 700;
+    margin: 30px 0 15px;
+}
+
+.footerContact {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.1rem;
+    clear: both; /* Asegura que el footer no intente flotar */
+    padding-top: 40px;
+}
+
+.contactLink {
+    color: #a366ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Ajuste para Mobile (image_d4286e.png) */
+@media (max-width: 768px) {
+    .imageFloatContainer {
+        float: none; /* Quitamos el float en mobile */
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+}
