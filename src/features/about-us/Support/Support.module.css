@@ -1,0 +1,108 @@
+.supportSection {
+    padding: 40px 0 80px;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+.iconWrapper {
+    display: flex;
+    justify-content: flex-start; /* Alineado a la izquierda con el título */
+    margin-bottom: -40px;
+    color: #333;
+}
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #0056b3; /* Azul corporativo fuerte */
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.secondaryTitle {
+    font-size: 2.2rem;
+    color: #0056b3;
+    font-weight: lighter;
+    margin: 40px 0 20px;
+}
+
+.introText, .paragraph {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.listHeading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000;
+    margin: 30px 0 20px;
+}
+
+/* Grid de servicios en dos columnas */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+    margin-bottom: 20px;
+}
+
+.serviceList, .recognitionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.serviceList li, .recognitionList li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* Guión celeste personalizado del mockup */
+.serviceList li::before, .recognitionList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 15px;
+    height: 3px;
+    background-color: #00c3f8;
+}
+
+.linkHighlight {
+    color: #00c3f8;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.linkHighlight:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para Mobile */
+@media (max-width: 768px) {
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .secondaryTitle {
+        font-size: 1.8rem;
+    }
+
+    .iconWrapper {
+        margin-bottom: 5px;
+    }
+}

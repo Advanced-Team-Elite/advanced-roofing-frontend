@@ -45,7 +45,7 @@ export const Header = () => {
                 {/* Desktop Links */}
                 <ul className={styles.desktopMenu}>
                     <li><Link href="/" className={styles.navLink}>Home</Link></li>
-                    <li><Link href="/about" className={styles.navLink}>About Us</Link></li>
+                    <li><Link href="/about-us" className={styles.navLink}>About Us</Link></li>
                     <li><Link href="/roofing" className={styles.navLink}>Roofing</Link></li>
                     <li><Link href="/commercial" className={styles.navLink}>Commercial Roofing</Link></li>
                     <li><Link href="/insurance" className={styles.navLink}>Roofing Insurance Claims</Link></li>
@@ -79,10 +79,9 @@ export const Header = () => {
                         </div>
                         <ul className="flex flex-col gap-5 font-bold">
                             <li><Link href="/">Home</Link></li>
-                            <li><Link href="/about">About Us</Link></li>
+                            <li><Link href="/about-us">About Us</Link></li>
                             <li><Link href="/roofing">Roofing</Link></li>
                             <li><Link href="/commercial">Commercial Roofing</Link></li>
-                            {/* ... Agrega el resto de links aquí */}
                         </ul>
                         <div className="mt-10 flex flex-col gap-4">
                             <button className="bg-[#00aeef] py-3 font-bold">Contact Us</button>

@@ -1,0 +1,198 @@
+.contactSection {
+    padding: 60px 0;
+    background: transparent; /* Fondo transparente como solicitaste */
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainGrid {
+    display: grid;
+    align-items: center;
+    align-content: center;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    justify-content: space-around;
+}
+
+/* Estilos de la Columna Izquierda */
+.infoColumn {
+    background: #f2f2f2;
+    height: fit-content;
+}
+
+.mapContainer iframe {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    min-height: 260px;
+}
+
+.areasBox{
+    margin: 60px 60px;
+}
+
+.areasTitle {
+    font-size: 1.4rem;
+    color: #00589e;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.areasLink {
+    display: block;
+    text-align: center;
+    color: #00589e;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.scrollList {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+.areaItem {
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    gap: 10px;
+}
+
+.dash { color: #00c3f8; font-weight: bold; }
+.served { color: #00c3f8; cursor: pointer; }
+.notServed { color: #000; }
+
+.disclaimerLink{
+    color: #00c3f8;
+    text-decoration: underline;
+}
+
+/* Estilos del Formulario */
+.formColumn {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.formColumnContainer{
+    background: #f2f2f2;
+    padding: 60px 60px;
+    width: 87%;
+    box-sizing: border-box;
+}
+
+.formTitle {
+    font-size: 4.5rem;
+    color: #0056b3;
+    font-weight: bolder;
+    margin-bottom: 15px;
+}
+
+.formSubtitle{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.field label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.field input, .field select, .field textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.submitBtn {
+    background-color: #00c3f8;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+
+    .contactSection {
+        padding: 60px 0;
+    }
+    .mainGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .formTitle {
+        font-size: 2.5rem;
+    }
+
+    .contactSection {
+        padding: 40px 0;
+    }
+
+    .mainGrid {
+        grid-template-columns: 1fr;
+        gap: 30px; /* Reducimos el gap para que no empuje contenido */
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0; /* Los campos se apilan sin gap extra */
+    }
+
+    /* Forzamos que la columna ocupe todo el ancho sin alineaciones a la derecha */
+    .formColumn {
+        width: 100%;
+        justify-content: center;
+        display: block; /* En mobile es mejor que fluya normal */
+    }
+
+    .formColumnContainer {
+        padding: 40px 20px; /* Reducimos padding interno para ganar espacio */
+        width: 100%;       /* Ocupa el 100% del padre */
+        max-width: 100%;   /* Evita desbordamientos */
+        box-sizing: border-box; /* Crucial para que el padding no rompa el 100% */
+    }
+
+    .formTitle {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        br {
+            display: none; /* Quitamos el salto de línea en mobile para que el título no sea eterno */
+        }
+    }
+
+    /* Aseguramos que los inputs no tengan anchos fijos heredados */
+    .field input, .field select, .field textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

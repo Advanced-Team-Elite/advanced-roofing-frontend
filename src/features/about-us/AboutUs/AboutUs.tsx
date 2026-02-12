@@ -1,11 +1,15 @@
 "use client";
 import React from 'react';
 import styles from './AboutUs.module.css';
+import {FlairIcon} from "@/shared/Icons/Icons";
 
 const AboutUs = () => {
     return (
         <section className={styles.aboutSection}>
             <div className={styles.container}>
+                <div className={styles.iconWrapper}>
+                    <FlairIcon size={160} />
+                </div>
                 <h2 className={styles.mainTitle}>About Us</h2>
 
                 <div className={styles.contentWrapper}>

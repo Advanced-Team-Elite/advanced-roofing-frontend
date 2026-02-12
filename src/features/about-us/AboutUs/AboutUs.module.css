@@ -8,7 +8,12 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-
+.iconWrapper {
+    display: flex;
+    justify-content: flex-start; /* Alineado a la izquierda con el título */
+    margin-bottom: -40px;
+    color: #333;
+}
 .mainTitle {
     font-size: 3.5rem;
     font-weight: 800;
@@ -90,5 +95,8 @@
 
     .mainTitle {
         font-size: 2.5rem;
+    }
+    .iconWrapper {
+        margin-bottom: 5px;
     }
 }

@@ -1,0 +1,96 @@
+.whyChooseSection {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 80px 0;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mainTitle {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 60px;
+    line-height: 1;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.featureItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconBox {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Espacio consistente para los iconos */
+}
+
+.featureTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    min-height: 3.2rem; /* Alinea los textos si los títulos tienen distintos largos */
+}
+
+.featureDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Responsive para Mobile */
+@media (max-width: 992px) {
+    .featuresGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mainTitle {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .featureTitle {
+        min-height: auto;
+    }
+}
