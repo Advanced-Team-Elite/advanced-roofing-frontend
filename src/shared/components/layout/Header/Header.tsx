@@ -13,10 +13,10 @@ export const Header = () => {
             <div className={styles.topBar}>
                 <span>Serving the Des Plaines Community</span>
                 <div className="flex items-center gap-6">
-                    <Link href="/areas">Areas We Serve</Link>
-                    <Link href="/financing">Financing</Link>
-                    <Link href="/blog">Blog</Link>
-                    <Link href="/reviews">Reviews</Link>
+                    <Link href="/areas" className={styles.topBarNavLink}>Areas We Serve</Link>
+                    <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
+                    <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
+                    <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
                     <span className="text-black text-lg ml-4">847-262-9774</span>
                 </div>
             </div>
@@ -45,8 +45,37 @@ export const Header = () => {
                 {/* Desktop Links */}
                 <ul className={styles.desktopMenu}>
                     <li><Link href="/" className={styles.navLink}>Home</Link></li>
-                    <li><Link href="/about-us" className={styles.navLink}>About Us</Link></li>
-                    <li><Link href="/roofing" className={styles.navLink}>Roofing</Link></li>
+                    {/* Item con Dropdown */}
+                    <li className={styles.hasDropdown}>
+                        <Link href="/about-us" className={styles.navLink}>About Us</Link>
+                        <ul className={styles.dropdownMenu}>
+                            <li>
+                                <Link href="/about-us/owens-corning">Owens Corning Preferred Contractor</Link>
+                            </li>
+                            <li>
+                                <Link href="/about-us/gaf-masterelite">GAF Masterelite Preferred Contractor</Link>
+                            </li>
+                            <li>
+                                <Link href="/about-us/insurance-claims">Insurance Claims</Link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li className={styles.hasDropdown}>
+                        <Link href="/roofing" className={styles.navLink}>Roofing</Link>
+                        <ul className={styles.dropdownMenu}>
+                            <li><Link href="/roofing/emergency-repairs">Emergency Roof Repairs</Link></li>
+                            <li><Link href="/roofing/flat-roof-repair">Flat Roof Repair</Link></li>
+                            <li><Link href="/roofing/installation-replacement">Roof Installation & Replacement</Link></li>
+                            <li><Link href="/roofing/inspections">Roof Inspections</Link></li>
+                            <li><Link href="/roofing/gutters">Gutters</Link></li>
+                            <li><Link href="/roofing/siding">Siding</Link></li>
+                            <li><Link href="/roofing/skylight-repair">Skylight Repair</Link></li>
+                            <li><Link href="/roofing/skylight-installation">Skylight Installation</Link></li>
+                            <li><Link href="/roofing/storm-damage">Storm Damage Repair</Link></li>
+                            <li><Link href="/roofing/tile-roof-repair">Tile Roof Repair</Link></li>
+                            <li><Link href="/roofing/types">Roof Types</Link></li>
+                        </ul>
+                    </li>
                     <li><Link href="/commercial" className={styles.navLink}>Commercial Roofing</Link></li>
                     <li><Link href="/insurance" className={styles.navLink}>Roofing Insurance Claims</Link></li>
                     <li><Link href="/contact" className={styles.navLink}>Contact Us</Link></li>
@@ -54,7 +83,7 @@ export const Header = () => {
                         <button className={styles.quoteBtn}>Request a Quote</button>
                     </li>
                     <li>
-                        <Link href="/search" className="text-[#f7d000]">
+                        <Link href="/search" className={styles.searchIcon}>
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                             </svg>
