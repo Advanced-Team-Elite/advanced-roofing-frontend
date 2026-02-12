@@ -5,7 +5,7 @@
 }
 .iconWrapper {
     display: flex;
-    justify-content: flex-start; /* Alineado a la izquierda con el título */
+    justify-content: flex-start;
     margin-bottom: -40px;
     color: #333;
 }
@@ -18,7 +18,7 @@
 .mainTitle {
     font-size: 4.5rem;
     font-weight: 800;
-    color: #0056b3; /* Azul corporativo fuerte */
+    color: #0056b3;
     line-height: 1.1;
     margin-bottom: 30px;
 }
@@ -89,7 +89,7 @@
 }
 
 /* Ajustes para Mobile */
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
     .mainTitle {
         font-size: 2.5rem;
     }

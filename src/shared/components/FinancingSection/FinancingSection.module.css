@@ -1,0 +1,38 @@
+
+/* Financing */
+.financingSection {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.financingTitle {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.financingDescription {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.btnLearnMore {
+    display: inline-block;
+    background-color: #00ccff;
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .financingTitle {
+        font-size: 36px;
+    }
+}

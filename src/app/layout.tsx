@@ -4,6 +4,8 @@ import { Open_Sans, Prompt } from "next/font/google"; // Importamos las fuentes
 import { Header } from "@/shared/components/layout/Header/Header";
 import { Footer } from "@/shared/components/layout/footer/Footer";
 import {FloatingActions} from "@/shared/components/floating/FloatingActions";
+import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
+import ContactToday from "@/shared/components/ContactToday/ContactToday";
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",
@@ -29,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <FloatingActions />
-        <Footer />
+        <Footer upperSection={<ContactToday/>}/>
         </body>
         </html>
     );

@@ -6,14 +6,14 @@
 
 .fullWidthContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Mantenemos dos columnas fijas */
-    align-items: start; /* IMPORTANTE: Alinea al inicio para que la imagen no se estire hacia abajo */
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
     width: 100%;
 }
 
 /* --- COLUMNA DE TEXTO --- */
 .textContent {
-    padding: 80px 8% 80px 12%; /* Mucho aire a la izquierda, menos a la derecha para acercarse a la imagen */
+    padding: 80px 8% 80px 12%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +69,6 @@
 }
 
 /* --- LÓGICA DE EXPANSIÓN --- */
-/* El contenido expandible debe tener un comportamiento que no altere el layout horizontal */
 .expandableContent {
     max-height: 0;
     overflow: hidden;
@@ -78,7 +77,7 @@
 }
 
 .expanded {
-    max-height: 1000px; /* Un valor lo suficientemente alto */
+    max-height: 1000px;
     opacity: 1;
     margin-top: 20px;
 }
@@ -108,12 +107,12 @@
 /* --- COLUMNA DE IMAGEN (FULL RIGHT) --- */
 .imageColumn {
     position: relative;
-    height: 100%; /* Ocupa el alto del contenedor */
-    overflow: hidden; /* Evita que la imagen "crezca" visualmente hacia los lados */
+    height: 100%;
+    overflow: hidden;
 }
 
 .imageWrapper {
-    position: sticky; /* Hace que la imagen se quede quieta mientras el texto crece */
+    position: sticky;
     top: 0;
     width: 100%;
     height: 100%;
@@ -122,14 +121,14 @@
 .mainImage {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Mantiene la proporción sin deformarse ni empujar */
+    object-fit: cover;
     display: block;
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .fullWidthContainer {
-        grid-template-columns: 1fr; /* Apilado en vertical */
+        grid-template-columns: 1fr;
     }
 
     .textContent {

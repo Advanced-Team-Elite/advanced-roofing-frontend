@@ -12,21 +12,21 @@
 
 .mainTitle {
     font-size: 3rem;
-    color: #0056b3; /* Azul oscuro del título */
+    color: #0056b3;
     font-weight: 800;
     margin-bottom: 50px;
 }
 
 .servicesGrid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas en desktop */
+    grid-template-columns: repeat(5, 1fr);
     gap: 35px;
     margin-bottom: 40px;
 }
 
 .serviceCard {
     position: relative;
-    height: 155px; /* Ajusta la altura según necesites */
+    height: 155px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 90, 179, 0.5); /* Tinte azul */
+    background: rgba(0, 90, 179, 0.5);
     z-index: 1;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .viewAllBtn {
-    background-color: #00ccff; /* Cyan brillante */
+    background-color: #00ccff;
     color: #fff;
     border: none;
     padding: 15px 40px;
@@ -87,11 +87,11 @@
     }
 
     .servicesGrid {
-        grid-template-columns: 1fr; /* 1 sola columna en mobile */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .serviceCard {
-        height: 180px; /* Un poco más compactos en móvil */
+        height: 180px;
     }
 }

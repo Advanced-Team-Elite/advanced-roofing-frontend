@@ -10,7 +10,7 @@
 }
 
 .overlay {
-    background-color: rgba(0, 57, 92, 0.2); /* Tono azul oscuro sutil */
+    background-color: rgba(0, 57, 92, 0.2);
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,11 +27,11 @@
     margin-bottom: 100px;
 }
 
-/* La clave: Superposición mediante margen negativo */
+
 .cityWrapper {
     width: 90%;
     max-width: 850px;
-    margin: -120px auto 0; /* Sube la imagen 120px sobre el banner */
+    margin: -120px auto 0;
     position: relative;
     z-index: 10;
 }
@@ -42,7 +42,7 @@
     display: block;
 }
 
-/* Ajustes para tablet y mobile basados en tus capturas */
+
 @media (max-width: 768px) {
     .bannerBackground {
         height: 250px;
@@ -51,7 +51,7 @@
         font-size: 2rem;
     }
     .cityWrapper {
-        margin-top: -80px; /* Superposición menor en móviles */
+        margin-top: -80px;
         width: 95%;
     }
 }

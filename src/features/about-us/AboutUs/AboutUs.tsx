@@ -15,13 +15,11 @@ const AboutUs = () => {
                 <div className={styles.contentWrapper}>
                     {/* Contenedor de la imagen con float */}
                     <div className={styles.imageFloatContainer}>
-                        <div className={styles.imageBorderBox}>
-                            <img
-                                src="/assets/images/features/about-us/content-v6.png"
-                                alt="Advanced Roofing Team Truck"
-                                className={styles.aboutImage}
-                            />
-                        </div>
+                        <img
+                            src="/assets/images/features/about-us/content-v6.png"
+                            alt="Advanced Roofing Team Truck"
+                            className={styles.aboutImage}
+                        />
                     </div>
 
                     {/* El texto fluirá alrededor del contenedor anterior */}

@@ -34,7 +34,7 @@
 }
 
 .iconWrapper {
-    margin-bottom: -40px; /* Ajuste para que el FlairIcon interactúe con el título */
+    margin-bottom: -40px;
     color: #333;
 }
 
@@ -55,7 +55,7 @@
 
 /* Caja azul de contacto */
 .ctaBox {
-    background-color: #004a99; /* Azul oscuro profundo */
+    background-color: #004a99;
     padding: 30px;
     margin-top: 40px;
     text-align: center;
@@ -69,7 +69,7 @@
 }
 
 .phoneLink, .contactLink {
-    color: #ffcc00; /* Color destacado para el contacto */
+    color: #ffcc00;
     text-decoration: none;
     font-weight: 700;
 }
@@ -78,10 +78,10 @@
     text-decoration: underline;
 }
 /* Responsive para Mobile */
-@media (max-width: 992px) {
+@media (max-width: 1280px) {
 
     .iconWrapper {
-        margin-bottom: -40px; /* Ajuste para que el FlairIcon interactúe con el título */
+        margin-bottom: -40px;
         color: #333;
         width: 100%;
     }
@@ -92,7 +92,7 @@
 
     .imageColumn {
         width: 100%;
-        order: 2; /* Imagen abajo en mobile según estructura lógica */
+        order: 2;
     }
 
     .textColumn {

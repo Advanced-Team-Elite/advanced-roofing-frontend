@@ -57,16 +57,16 @@
 .mapColumn {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el mapa si la columna es más ancha */
+    align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
 .mapWrapper {
-    width: 90%;  /* Forzamos el ancho para que coincida con el alto */
-    height: 60%; /* Altura solicitada */
+    width: 90%;
+    height: 60%;
     overflow: hidden;
-    border-radius: 4px; /* Opcional: para que combine con el diseño de tarjetas */
+    border-radius: 4px;
 }
 
 .map {

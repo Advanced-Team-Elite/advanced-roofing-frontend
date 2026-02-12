@@ -27,7 +27,7 @@
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1900px; /* Ajuste para que se vea como el mockup */
+    max-width: 1900px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -59,7 +59,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 50px;
-    text-transform: uppercase; /* Si quieres seguir el estilo agresivo del mockup */
+    text-transform: uppercase;
 }
 
 .benefitsGrid {
@@ -78,7 +78,7 @@
     flex-shrink: 0;
     width: 70px;
     height: 70px;
-    background-color: #00ccff; /* El cyan del mockup */
+    background-color: #00ccff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -118,18 +118,15 @@
 
 /* --- RESPONSIVE MOBILE (Estilo Mockup: Icono arriba del texto) --- */
 @media (max-width: 768px) {
-    /* Forzamos una sola columna en el contenedor principal */
     .grid {
         grid-template-columns: 1fr !important;
         gap: 20px;
     }
 
-    /* Ocultamos la imagen lateral según tu diseño previo */
     .imageCol {
         display: none;
     }
 
-    /* Centramos el encabezado */
     .textCol {
         text-align: center;
     }
@@ -139,16 +136,14 @@
         margin-bottom: 40px;
     }
 
-    /* Grid de beneficios: 1 sola columna vertical */
     .benefitsGrid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    /* CADA ITEM: Icono arriba, texto abajo */
     .benefitItem {
-        flex-direction: column; /* Alineación vertical */
-        align-items: center;    /* Centrado horizontal */
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 10px;
     }
@@ -161,7 +156,7 @@
 
     .benefitTitle {
         font-size: 1rem;
-        max-width: 250px; /* Para que el texto no se estire demasiado */
+        max-width: 250px;
         margin: 0 auto;
     }
 }

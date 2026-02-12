@@ -1,5 +1,5 @@
 .section {
-    background-color: white; /* El azul de fondo solicitado */
+    background-color: white;
     padding: 80px 0;
     width: 100%;
 }
@@ -12,10 +12,10 @@
 
 /* LA CAJA BLANCA (Desktop) */
 .formCard {
-    background-color: #00589E; /* Fondo blanco para el contenido */
+    background-color: #00589E;
     padding: 60px;
     border-radius: 8px;
-    color: #333; /* Texto oscuro sobre fondo blanco */
+    color: #333;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -57,7 +57,7 @@
     width: 100%;
     padding: 12px;
     background-color: #ffffff;
-    border: 1px solid #ccc; /* Borde gris claro */
+    border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
     color: #333;
@@ -116,14 +116,14 @@
 
     .formCard {
         padding: 40px 20px;
-        border-radius: 0; /* Quita el redondeo para que parezca full width */
-        margin: 0 -20px; /* Expande la caja blanca a los bordes */
+        border-radius: 0;
+        margin: 0 -20px;
     }
 }
 
 @media (max-width: 768px) {
     .row {
-        grid-template-columns: 1fr; /* Una columna en mobile */
+        grid-template-columns: 1fr;
     }
 
     .title {

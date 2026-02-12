@@ -1,3 +1,5 @@
+"use client";
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Footer.module.css';
@@ -9,7 +11,11 @@ import {
     GoogleBusinessIcon
 } from "@/shared/Icons/Icons";
 
-export const Footer = () => {
+interface FooterProps {
+    upperSection?: ReactNode;
+}
+
+export const Footer = ({ upperSection }: FooterProps) => {
     const currentYear = new Date().getFullYear();
 
     return (
@@ -18,24 +24,12 @@ export const Footer = () => {
             <div className={styles.footerMainBg}>
                 <div className={styles.footerContentWrapper}>
 
-                    {/* 1. FINANCING */}
-                    <section className={styles.financingSection}>
-                        <h2 className={styles.financingTitle}>
-                            Financing Solutions For You
-                        </h2>
-
-                        <p className={styles.financingDescription}>
-                            Get the roof you need without the financial stress—our roofing company
-                            offers flexible financing options to fit your budget. Whether it's a
-                            repair or full replacement, we make it easier to protect your home with
-                            affordable monthly payments. Fast approval and simple terms make getting
-                            started hassle-free.
-                        </p>
-
-                        <Link href="/financing" className={styles.btnLearnMore}>
-                            Learn More
-                        </Link>
-                    </section>
+                    {/* Renderiza upperSection solo si existe */}
+                    {upperSection && (
+                        <div className={styles.dynamicUpperContainer}>
+                            {upperSection}
+                        </div>
+                    )}
 
                     {/* 2. GRID */}
                     <div className={styles.footerGrid}>

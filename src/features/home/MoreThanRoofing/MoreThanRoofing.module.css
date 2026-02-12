@@ -17,14 +17,14 @@
     border-top: 2px solid #333;
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;
-    transform: skewY(-20deg); /* Simula el ángulo del logo superior */
+    transform: skewY(-20deg);
     margin-bottom: 20px;
 }
 
 .flairSvg {
-    width: 120px;  /* Ajusta el ancho según veas necesario */
+    width: 120px;
     height: auto;
-    color: #000000; /* Aquí defines el color NEGRO */
+    color: #000000;
     display: block;
     margin-bottom: -10px;
 }
@@ -47,7 +47,6 @@
     margin-bottom: 20px;
 }
 
-/* Grid de 2 columnas para los puntos clave */
 .pointsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -62,7 +61,7 @@
 }
 
 .dash {
-    color: #00ccff; /* Color cyan para los guiones */
+    color: #00ccff;
     font-weight: bold;
 }
 
@@ -77,7 +76,7 @@
 }
 
 .ctaBox {
-    background-color: #0056b3; /* Fondo azul oscuro del mockup */
+    background-color: #0056b3;
     color: #fff;
     padding: 30px;
     text-align: center;
@@ -98,7 +97,7 @@
     }
 
     .pointsGrid {
-        grid-template-columns: 1fr; /* Una sola columna en mobile */
+        grid-template-columns: 1fr;
     }
 
     .ctaBox {
@@ -107,6 +106,6 @@
     }
 
     .roofLine {
-        margin: 0 auto 20px auto; /* Centrado en móvil si prefieres */
+        margin: 0 auto 20px auto;
     }
 }
