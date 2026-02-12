@@ -24,7 +24,6 @@ const AboutContainer = () => {
                     <Support />
                     <WhyChoose />
                     <SupportRoofDamage />
-                    <ContactToday />
 
                 </div>
             </section>

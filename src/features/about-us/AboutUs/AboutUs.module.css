@@ -86,6 +86,10 @@
 
 /* Ajuste para Mobile */
 @media (max-width: 1280px) {
+    .aboutSection {
+        padding: 60px 100px;
+    }
+
     .imageFloatContainer {
         float: none;
         width: 100%;
@@ -98,5 +102,11 @@
     }
     .iconWrapper {
         margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .aboutSection {
+        padding: 60px 20px;
     }
 }

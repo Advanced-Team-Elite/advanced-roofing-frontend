@@ -31,8 +31,11 @@
     min-height: 300px;
 }
 
-.areasBox{
-    margin: 110px 110px;
+.areasBox {
+    /* Quitamos el margen lateral fijo que rompe el mobile */
+    margin: 60px auto;
+    max-width: 80%; /* Controlamos el ancho con un % para que sea fluido */
+    text-align: center;
 }
 
 .areasTitle {
@@ -157,11 +160,23 @@
 /* Mobile */
 @media (max-width: 1280px) {
 
-    .contactSection {
-        padding: 60px 0;
+    .container {
+        padding: 0 10px; /* Reducimos padding lateral del contenedor principal */
     }
+
     .mainGrid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        display: block; /* Forzamos bloque para evitar conflictos de alineación grid */
+    }
+
+    .infoColumn {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contactSection {
+        padding: 60px 0;
     }
 
     .row {
@@ -176,9 +191,9 @@
         padding: 40px 0;
     }
 
-    .mainGrid {
-        grid-template-columns: 1fr;
-        gap: 30px; /* Reducimos el gap para que no empuje contenido */
+    .areasBox {
+        margin: 60px 60px;
+        max-width: none;
     }
 
     .row {
@@ -186,26 +201,35 @@
         gap: 0; /* Los campos se apilan sin gap extra */
     }
 
-    /* Forzamos que la columna ocupe todo el ancho sin alineaciones a la derecha */
     .formColumn {
+        display: block; /* Eliminamos el flex que justifica a la derecha */
         width: 100%;
-        justify-content: center;
-        display: block; /* En mobile es mejor que fluya normal */
     }
 
     .formColumnContainer {
-        padding: 40px 20px; /* Reducimos padding interno para ganar espacio */
-        width: 100%;       /* Ocupa el 100% del padre */
-        max-width: 100%;   /* Evita desbordamientos */
-        box-sizing: border-box; /* Crucial para que el padding no rompa el 100% */
+        width: 100% !important; /* Forzamos el 100% */
+        padding: 40px 30px;     /* Padding más pequeño para pantallas pequeñas */
+        margin: 0;
+        box-sizing: border-box;
     }
 
     .formTitle {
         font-size: 2.5rem;
-        line-height: 1.2;
-        br {
-            display: none; /* Quitamos el salto de línea en mobile para que el título no sea eterno */
-        }
+        line-height: 1;
+        font-weight: bold;
+        word-break: break-word;
+        margin-bottom: 30px;
+    }
+
+    .formSubtitle{
+        font-size: 1rem;
+    }
+
+    /* Forzamos a que el scroll de áreas no rompa el ancho */
+    .scrollList {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 50px;
     }
 
     /* Aseguramos que los inputs no tengan anchos fijos heredados */

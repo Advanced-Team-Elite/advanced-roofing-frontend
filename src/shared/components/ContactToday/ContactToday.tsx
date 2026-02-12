@@ -12,17 +12,6 @@ const ContactToday = () => {
         { name: "Beach Park", served: true },
         { name: "Berwyn", served: false },
         { name: "Addison", served: false },
-        { name: "Arlington Heights", served: true },
-        { name: "Barrington", served: true },
-        { name: "Bartlett", served: true },
-        { name: "Beach Park", served: true },
-        { name: "Berwyn", served: false },
-        { name: "Addison", served: false },
-        { name: "Arlington Heights", served: true },
-        { name: "Barrington", served: true },
-        { name: "Bartlett", served: true },
-        { name: "Beach Park", served: true },
-        { name: "Berwyn", served: false },
         // ... (puedes mapear la lista completa aquí)
     ];
 
@@ -58,6 +47,7 @@ const ContactToday = () => {
                                     </div>
                                 ))}
                             </div>
+                            <br></br>
                         </div>
                     </div>
 

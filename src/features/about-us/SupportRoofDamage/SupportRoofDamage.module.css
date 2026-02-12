@@ -80,6 +80,10 @@
 /* Responsive para Mobile */
 @media (max-width: 1280px) {
 
+    .sectionWrapper {
+        padding: 80px 100px;
+    }
+
     .iconWrapper {
         margin-bottom: -40px;
         color: #333;
@@ -102,5 +106,11 @@
 
     .title {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .sectionWrapper {
+        padding: 80px 20px;
     }
 }
