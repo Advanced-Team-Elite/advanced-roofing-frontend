@@ -32,9 +32,8 @@
 }
 
 .areasBox {
-    /* Quitamos el margen lateral fijo que rompe el mobile */
-    margin: 60px auto;
-    max-width: 80%; /* Controlamos el ancho con un % para que sea fluido */
+    margin: 90px 100px;
+    max-width: 80%;
     text-align: center;
 }
 

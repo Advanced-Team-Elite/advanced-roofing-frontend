@@ -50,13 +50,13 @@ export const Header = () => {
                         <Link href="/about-us" className={styles.navLink}>About Us</Link>
                         <ul className={styles.dropdownMenu}>
                             <li>
-                                <Link href="/about-us/owens-corning">Owens Corning Preferred Contractor</Link>
+                                <Link href="/about-us/owens-corning-preferred-contractor" >Owens Corning Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="/about-us/gaf-masterelite">GAF Masterelite Preferred Contractor</Link>
+                                <Link href="/about-us/gaf-masterelite-preferred-contractor">GAF Masterelite Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="/about-us/insurance-claims">Insurance Claims</Link>
+                                <Link href="/about-us/roofing-insurance-claims">Insurance Claims</Link>
                             </li>
                         </ul>
                     </li>

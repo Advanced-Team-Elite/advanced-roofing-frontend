@@ -14,7 +14,7 @@ const SharedBanner = ({ title, isCityVisible = true }: SharedBannerProps) => {
                 style={{ backgroundImage: `url('/assets/images/features/about-us/banner-v1.jpg')` }}
             >
                 <div className={styles.overlay}>
-                    <h1 className={styles.title}>{title}</h1>
+                    <h1 className={`${styles.title} ${!isCityVisible ? styles.noCityMargin : ''}`}>{title}</h1>
                 </div>
             </section>
 

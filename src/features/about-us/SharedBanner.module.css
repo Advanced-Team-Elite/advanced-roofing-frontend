@@ -27,6 +27,10 @@
     margin-bottom: 100px;
 }
 
+.noCityMargin {
+    margin-bottom: 0 !important;
+}
+
 
 .cityWrapper {
     width: 90%;
