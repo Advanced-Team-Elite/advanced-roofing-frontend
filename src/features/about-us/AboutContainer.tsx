@@ -1,6 +1,6 @@
 "use client";
-import SharedBanner from "./SharedBanner";
-import styles from './SharedBanner.module.css';
+import SharedBanner from "../../shared/components/SharedBanner/SharedBanner";
+import styles from '../../shared/components/SharedBanner/SharedBanner.module.css';
 import AboutUs from "@/features/about-us/AboutUs/AboutUs";
 import Support from "@/features/about-us/Support/Support";
 import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";

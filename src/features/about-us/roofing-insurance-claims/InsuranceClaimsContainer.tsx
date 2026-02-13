@@ -1,15 +1,15 @@
 "use client";
 import React from 'react';
-import SharedBanner from "@/features/about-us/SharedBanner";
+import SharedBanner from "@/shared/components/SharedBanner/SharedBanner";
 import WorkWithInsurance from "@/features/about-us/roofing-insurance-claims/WorkWithInsurance/WorkWithInsurance";
 import AboutOurServices from "@/shared/components/AboutOurServices/AboutOurServices";
 import AwardWinningBusiness
-    from "@/features/about-us/roofing-insurance-claims/AwardWinningBusiness/AwardWinningBusiness";
+    from "@/shared/components/AwardWinningBusiness/AwardWinningBusiness";
 import {
     EnsuringCompensation
 } from "@/features/about-us/roofing-insurance-claims/EnsuringCompensation/EnsuringCompensation";
 import RoofingHappyCustomers
-    from "@/features/about-us/roofing-insurance-claims/RoofingHappyCustomers/RoofingHappyCustomers";
+    from "@/shared/components/RoofingHappyCustomers/RoofingHappyCustomers";
 
 const InsuranceClaimsContainer = () => {
     return (
@@ -17,6 +17,8 @@ const InsuranceClaimsContainer = () => {
             <SharedBanner
                 title="Roofing Insurance Claims"
                 isCityVisible={false}
+                isIconVisible={true}
+                backgroundImage={"/assets/images/features/roofing/banner-v3.jpg"}
             />
             <WorkWithInsurance/>
             <AboutOurServices/>

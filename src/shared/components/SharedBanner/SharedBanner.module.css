@@ -9,6 +9,18 @@
     align-items: center;
 }
 
+.titleWrapper{
+    margin: -5% auto 0;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-bottom: -70px;
+    width: 100%;
+}
+
 .overlay {
     background-color: rgba(0, 57, 92, 0.2);
     width: 100%;
@@ -24,7 +36,7 @@
     font-weight: 800;
     text-align: center;
     padding: 0 20px;
-    margin-bottom: 100px;
+    margin: 5% auto 100px auto;
 }
 
 .noCityMargin {

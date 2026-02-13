@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import SharedBanner from "@/features/about-us/SharedBanner";
+import SharedBanner from "@/shared/components/SharedBanner/SharedBanner";
 import {GafPreferred} from "@/features/about-us/gaf-masterelite-preferred-contractor/GafPreferred/GafPreferred";
 import WarrantyProgram from "@/features/about-us/gaf-masterelite-preferred-contractor/WarrantyProgram/WarrantyProgram";
 import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";
