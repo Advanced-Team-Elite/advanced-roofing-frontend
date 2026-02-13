@@ -33,9 +33,9 @@
 
 
 .cityWrapper {
-    width: 90%;
+    width: 45%;
     max-width: 850px;
-    margin: -120px auto 0;
+    margin: -5% auto 0;
     position: relative;
     z-index: 10;
 }
@@ -55,7 +55,7 @@
         font-size: 2rem;
     }
     .cityWrapper {
-        margin-top: -80px;
-        width: 95%;
+        margin-top: -10%;
+        width: 45%;
     }
 }

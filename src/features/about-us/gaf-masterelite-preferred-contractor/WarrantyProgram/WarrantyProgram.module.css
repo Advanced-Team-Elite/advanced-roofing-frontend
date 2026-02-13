@@ -1,0 +1,90 @@
+.benefitsSection {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    color: #0056b3;
+    font-size: 3.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.iconWrapper {
+    margin-top: -100px;
+    margin-bottom: -40px;
+    color: #333;
+}
+
+.subTitle {
+    color: #0056b3;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 40px 0 15px 0;
+    letter-spacing: 0.5px;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333333;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.ctaBox {
+    background-color: #00589e;
+    padding: 50px 60px;
+    margin-top: 50px;
+    border-radius: 0;
+}
+
+.ctaText {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+}
+
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 1280px) {
+    .benefitsSection {
+        padding: 40px 100px;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+    }
+
+    .subTitle {
+        font-size: 1.3rem;
+    }
+
+    .ctaBox {
+        padding: 40px 25px;
+        margin-top: 30px;
+    }
+
+    .ctaText {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .benefitsSection {
+        padding: 40px 20px;
+    }
+}

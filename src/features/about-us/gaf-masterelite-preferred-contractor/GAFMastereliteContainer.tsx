@@ -1,6 +1,9 @@
 "use client";
 import React from 'react';
 import SharedBanner from "@/features/about-us/SharedBanner";
+import {GafPreferred} from "@/features/about-us/gaf-masterelite-preferred-contractor/GafPreferred/GafPreferred";
+import WarrantyProgram from "@/features/about-us/gaf-masterelite-preferred-contractor/WarrantyProgram/WarrantyProgram";
+import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";
 
 const GAFMastereliteContainer = () => {
     return (
@@ -9,7 +12,9 @@ const GAFMastereliteContainer = () => {
                 title="GAF Master Elite Roofing Contractor"
                 isCityVisible={true}
             />
-            {/* Contenido específico de GAF aquí */}
+            <GafPreferred/>
+            <WarrantyProgram/>
+            <WhyChoose/>
         </main>
     );
 };
