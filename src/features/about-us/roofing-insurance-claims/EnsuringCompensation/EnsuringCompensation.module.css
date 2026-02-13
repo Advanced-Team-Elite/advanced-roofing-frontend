@@ -1,0 +1,156 @@
+.aboutSection {
+    padding: 80px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.fullWidthContainer {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 0 20px;
+}
+
+.textContent {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconWrapper {
+    margin-bottom: -45px;
+    margin-top: -70px;
+}
+
+.title {
+    color: #0056b3;
+    font-size: 4.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-transform: none;
+}
+
+.subtitle {
+    color: #00589e;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.expandableContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease;
+    opacity: 0;
+}
+
+.expanded {
+    max-height: 1500px;
+    opacity: 1;
+}
+
+.readMoreWrapper {
+    margin-top: 20px;
+    border-top: 1px solid #ffcc00;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.readMoreBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.readMoreBtn:hover {
+    color: #0056b3;
+}
+
+.arrow {
+    color: #00c3f8;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.imageColumn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.imageWrapper {
+    width: 100%;
+    position: relative;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 1280px) {
+    .aboutSection {
+        padding: 40px 100px;
+    }
+
+    .fullWidthContainer {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .textContent {
+        order: 1;
+    }
+
+    .imageColumn {
+        order: 2;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .iconWrapper {
+        margin-bottom: -35px;
+    }
+}
+
+@media (max-width: 600px) {
+    .aboutSection {
+        padding: 40px 20px;
+    }
+}

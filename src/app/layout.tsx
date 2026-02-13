@@ -6,6 +6,7 @@ import { Footer } from "@/shared/components/layout/footer/Footer";
 import {FloatingActions} from "@/shared/components/floating/FloatingActions";
 import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 import ContactToday from "@/shared/components/ContactToday/ContactToday";
+import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <FloatingActions />
-        <Footer upperSection={<ContactToday/>}/>
+        <Footer upperSection={<ContactUsByClaim/>}/>
         </body>
         </html>
     );

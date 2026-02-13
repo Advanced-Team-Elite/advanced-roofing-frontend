@@ -1,0 +1,184 @@
+.servicesSection {
+    width: 100%;
+    background-color: #fff;
+    padding: 60px 0 0 0; /* Ajustado al mockup */
+}
+
+.header {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    font-size: 3.5rem;
+    color: #0056b3;
+    font-weight: 800;
+}
+
+.viewAllBtn {
+    background-color: #00c3f8;
+    color: #fff;
+    padding: 12px 25px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: background 0.3s ease;
+}
+
+.viewAllBtnMobileContainer{
+    display: none;
+    justify-content: center;
+    width: 100%;
+}
+
+/* --- GRID SYSTEM --- */
+.servicesGrid {
+    display: flex;
+    width: 100%;
+}
+
+.serviceCard {
+    position: relative;
+    flex: 1;
+    height: 450px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+}
+
+/* --- IMAGEN Y HOVER EFFECTS --- */
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.serviceImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 88, 158, 0.4), rgba(0, 41, 74, 0.7));
+    transition: opacity 0.3s ease;
+}
+
+.serviceCard:hover .imageWrapper {
+    transform: scale(1.1); /* Transformación de size solicitado */
+}
+
+/* --- CONTENIDO DE LA CARD --- */
+.cardContent {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.serviceTitle {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.arrowCircle {
+    width: 45px;
+    height: 45px;
+    background-color: #00c3f8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.arrowIcon {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Transformación de la flecha al hacer hover */
+.serviceCard:hover .arrowIcon {
+    transform: rotate(45deg); /* Cambia de diagonal a horizontal derecha */
+}
+
+/* --- TABLET (Breakpoint 1280px - 4x4 o Grid flexible) --- */
+@media (max-width: 1380px) {
+    .header .viewAllBtn{
+        display: none;
+    }
+
+    .viewAllBtn {
+        margin: 0 auto;
+    }
+
+    .viewAllBtnMobileContainer{
+        margin: 20px 0 10px 0;
+        display: flex;
+    }
+
+    .header {
+        width: 100%;
+        padding: 0;
+    }
+
+    .mainTitle {
+        text-align: center;
+        width: 100%;
+    }
+
+    .servicesSection {
+        padding: 60px 100px; /* Ajustado al mockup */
+    }
+
+    .servicesGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2x2 para acomodar las 4 cards */
+    }
+
+    .serviceCard {
+        height: 400px;
+    }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 1268px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .servicesSection {
+        padding: 60px 35px; /* Ajustado al mockup */
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr; /* Una sola columna en mobile */
+    }
+
+    .serviceCard {
+        height: 350px;
+    }
+}

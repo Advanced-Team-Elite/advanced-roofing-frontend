@@ -116,8 +116,6 @@ export default function HomeContainer() {
             <HappyCustomers />
             <ContactUs />
 
-
-
         </main>
     );
 }
