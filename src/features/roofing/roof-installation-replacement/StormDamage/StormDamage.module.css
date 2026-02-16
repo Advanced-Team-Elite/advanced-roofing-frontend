@@ -1,0 +1,138 @@
+.stormSection {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineado a la izquierda en desktop según mockup */
+    margin-bottom: 30px;
+}
+
+.iconWrapper {
+    margin-bottom: -40px;
+    display: flex;
+}
+
+.mainTitle {
+    color: #00589e; /* Azul marca del mockup */
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    max-width: 85%;
+    margin: 0;
+}
+
+/* --- TEXTO --- */
+.content {
+    margin-bottom: 40px;
+}
+
+.paragraph {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #060606;
+    margin-bottom: 25px;
+    max-width: 1250px;
+}
+
+.subTitle {
+    color: #00589e; /* Azul secundario del mockup */
+    font-size: 2.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin: 40px 0 20px 0;
+}
+
+/* --- BANNER AZUL --- */
+.blueBanner {
+    background-color: #00589e;
+    padding: 60px 40px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.blueBanner p {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.whiteText {
+    color: #ffffff;
+}
+
+.yellowLink {
+    color: #ffcc00;
+    transition: opacity 0.2s;
+}
+
+/* --- RESPONSIVE TABLET --- */
+@media (max-width: 1280px) {
+    .stormSection {
+        padding: 0 100px 60px 100px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .subTitle {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (image_974463.png) --- */
+@media (max-width: 768px) {
+
+    .stormSection {
+        padding: 0 20px 60px 20px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .header {
+        align-items: center; /* Centrado en mobile */
+        text-align: left;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .paragraph {
+        font-size: 1.05rem;
+    }
+
+    .blueBanner {
+        padding: 30px 20px;
+    }
+
+    .blueBanner p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    .iconWrapper {
+        margin-top: -80px;
+        margin-bottom: -50px;
+        width: 100% !important;
+    }
+
+    .iconWrapper svg {
+        width: 100px !important;
+    }
+}

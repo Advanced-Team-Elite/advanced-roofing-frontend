@@ -100,6 +100,17 @@
 
 /* --- TABLET (768px a 1024px) --- */
 @media (max-width: 1280px) {
+    .featuresList {
+        flex: 2;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        gap: 60px;
+        justify-content: space-between;
+        height: 100%;
+        padding: 20px 0;
+    }
+
     .container {
         flex-direction: column; /* Apila Testimonio arriba y Lista abajo */
         align-items: center;
@@ -123,8 +134,8 @@
     }
 
     .featureItem {
-        flex-direction: row; /* MANTIENE ICONO AL LADO DEL TEXTO */
-        text-align: left; /* Texto alineado a la izquierda junto al icono */
+        flex-direction: row;
+        text-align: left;
     }
 }
 
