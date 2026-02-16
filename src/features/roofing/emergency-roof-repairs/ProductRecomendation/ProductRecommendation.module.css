@@ -30,7 +30,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 10px;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 .author {
@@ -51,15 +51,19 @@
 }
 
 .featuresList {
-    flex: 1.5;
-    display: flex;
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px 0;
 }
 
 .featureItem {
     display: flex;
-    flex-direction: row; /* Icono al lado del texto por defecto */
+    flex-direction: row;
     align-items: flex-start;
     gap: 25px;
     color: white;
