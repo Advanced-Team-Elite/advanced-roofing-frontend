@@ -46,7 +46,7 @@
     line-height: 1.4;
     margin-bottom: 20px;
     font-weight: 400;
-    width: 90%;
+    width: 100%;
 }
 
 .questionBlock h4 {
@@ -75,7 +75,6 @@
 
 .inlineLink:hover {
     color: #060606;
-    text-decoration: none;
 }
 
 /* BANNER NEGRO */
