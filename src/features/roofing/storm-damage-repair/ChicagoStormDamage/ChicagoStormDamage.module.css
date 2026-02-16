@@ -1,0 +1,208 @@
+.mainSection {
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+    flex-direction: column-reverse;
+}
+
+/* --- TEXT COLUMN --- */
+.textColumn {
+    padding: 0 100px;
+    flex: 1;
+}
+
+.iconWrapper {
+    margin-bottom: -40px;
+    margin-top: -40px;
+    color: #333;
+}
+
+.mainTitle {
+    color: #00589e;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.subTitle {
+    color: #00589e;
+    font-size: 1.7rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.textBold{
+    font-weight: bold;
+}
+
+.textContent p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #060606;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 20px;
+}
+
+.textContent strong {
+    font-size: 1.1rem;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #00c3f8;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.textContent strong:hover {
+    color: #060606;
+}
+
+.textContent .inlineLink{
+    color: #00c3f8;
+}
+
+.textContent .inlineLink:hover{
+    color: #060606;
+}
+
+.innerCta {
+    background-color: #00589e; /* Usando el azul del mockup para el banner interno */
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 40px 30px;
+    color: white;
+    margin: 30px 0;
+}
+
+.innerCta p {
+    margin: 0;
+    color: white;
+    text-align: center;
+}
+
+.innerCta strong {
+    margin: 0;
+    color: #ffcc00;
+    font-weight: 700;
+    text-align: center;
+}
+
+.innerCta strong:hover {
+    color: #ffcc00;
+}
+
+.blueLink {
+    color: #ffcc00;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.sectionHeading {
+    color: #00589e;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    margin: 40px 0 20px;
+}
+
+.benefitsList {
+    list-style: none;
+    padding: 0;
+}
+
+.benefitsList li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #060606;
+}
+
+.benefitsList li strong{
+    color: #060606;
+    font-weight: bold;
+}
+
+.benefitsList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8; /* El guion celeste del mockup */
+}
+
+/* --- FORM COLUMN --- */
+.formColumn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- DESKTOP (1024px +) --- */
+@media (min-width: 1280px) {
+    .mainSection {
+        padding: 60px 0 60px 0;
+    }
+
+    .container {
+        max-width: 1500px;
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+        flex-direction: row-reverse;
+    }
+    .textColumn {
+        flex: 1.4;
+        padding: 0 20px;
+    }
+
+    .formColumn {
+        flex: 1;
+        position: sticky;
+        top: 40px;
+    }
+}
+
+/* --- MOBILE (768px) --- */
+@media (max-width: 768px) {
+
+    .benefitsList li strong{
+        font-size: 0.95rem;
+    }
+
+    .benefitsList li {
+        font-size: 0.95rem;
+    }
+
+    .textContent p {
+        font-size: 0.95rem;
+    }
+
+    .mainSection {
+        padding: 60px 0 0 0;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+        text-align: left;
+    }
+
+    .innerCta {
+        padding: 20px;
+    }
+
+    .textColumn {
+        padding: 0 20px;
+    }
+}

@@ -71,7 +71,7 @@ export const Header = () => {
                             <li><Link href="/roofing/siding">Siding</Link></li>
                             <li><Link href="/roofing/skylight-repair">Skylight Repair</Link></li>
                             <li><Link href="/roofing/skylight-installation">Skylight Installation</Link></li>
-                            <li><Link href="/roofing/storm-damage">Storm Damage Repair</Link></li>
+                            <li><Link href="/roofing/storm-damage-repair">Storm Damage Repair</Link></li>
                             <li><Link href="/roofing/tile-roof-repair">Tile Roof Repair</Link></li>
                             <li><Link href="/roofing/types">Roof Types</Link></li>
                         </ul>
