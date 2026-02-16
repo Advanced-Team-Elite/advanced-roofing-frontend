@@ -1,0 +1,184 @@
+.faqSection {
+    max-width: 1500px;
+    margin: 60px auto;
+    padding: 0;
+    font-family: sans-serif; /* Ajustar a la fuente de tu proyecto */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: -40px;
+    color: #060606;
+}
+
+.mainTitle {
+    color: #00589e;
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr; /* Basado en mockup desktop */
+    gap: 60px 80px;
+    align-items: start;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.questionBlock h3 {
+    color: #00589e; /* Azul claro de los títulos del mockup */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.questionBlock h4 {
+    color: #00589e;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 400;
+    width: 90%;
+}
+
+.questionBlock p {
+    color: #060606;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.inlineLink {
+    color: #00c3f8;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.inlineLink:hover {
+    color: #060606;
+    text-decoration: none;
+}
+
+/* BANNER NEGRO */
+.blackBanner {
+    background-color: #000;
+    padding: 35px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.blackBanner p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.yellowText {
+    color: #ffcc00;
+}
+
+.yellowLink {
+    color: #ffcc00;
+}
+
+/* BOTÓN FINAL */
+.footerBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.contactBtn {
+    background-color: #00c3f8;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+/* --- RESPONSIVE TABLET & MOBILE --- */
+@media (max-width: 1280px) {
+    .faqSection {
+        padding: 0 100px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Una sola columna como el mockup mobile */
+        gap: 40px;
+    }
+
+    .mainTitle {
+        font-size: 2.4rem;
+    }
+
+    .questionBlock h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .questionBlock h3 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+        width: 95%;
+    }
+
+    .questionBlock p {
+        font-size: 0.95rem;
+    }
+
+    .iconWrapper svg {
+        width: 80px !important; /* Ajusta este valor al tamaño que desees */
+        margin-bottom: 30px;
+        height: auto !important;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .faqSection {
+        margin: 0 auto;
+        padding: 0 20px 50px 20px;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+    }
+
+    .blackBanner {
+        padding: 25px 25px;
+    }
+
+    .blackBanner p{
+        font-size: 1rem;
+    }
+}

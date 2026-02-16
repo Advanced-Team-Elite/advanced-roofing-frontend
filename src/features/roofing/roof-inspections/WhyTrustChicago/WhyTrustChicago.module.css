@@ -1,5 +1,5 @@
 .aboutSection {
-    padding: 0;
+    padding: 0 0 80px 0;
     width: 100%;
     background: #ffffff;
 }
@@ -25,11 +25,24 @@
     margin-bottom: 1.5rem;
 }
 
+.boldText{
+    font-weight: bold;
+    color: #060606;
+}
+
 .paragraph {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
+}
+
+.paragraph a {
+    color: #00c3f8;
+}
+
+.paragraph a:hover {
+    color: #060606;
 }
 
 /* LISTA */
@@ -57,6 +70,8 @@
     background: #00ccff;
 }
 
+
+/* --- LÓGICA DE EXPANSIÓN --- */
 .expandableContent {
     max-height: 0;
     overflow: hidden;
@@ -69,7 +84,6 @@
     opacity: 1;
     margin-top: 20px;
 }
-
 
 .expandableContent {
     max-height: 0;
@@ -96,9 +110,11 @@
 }
 
 .arrowUp {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* La flecha gira suavemente */
 }
 
+
+/* CTA */
 .ctaBanner {
     background-color: #004a8c;
     color: #fff;
@@ -107,7 +123,7 @@
 }
 
 .ctaBanner p{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bolder;
     text-align: center;
 }
@@ -120,6 +136,7 @@
     font-weight: 700;
 }
 
+/* READ MORE */
 .readMoreWrapper {
     border-top: 1px solid #ffcc00;
     padding-top: 20px;
@@ -147,6 +164,7 @@
     transform: rotate(180deg);
 }
 
+/* IMAGE SIDE */
 .imageColumn {
     display: flex;
     justify-content: center;
@@ -162,26 +180,37 @@
 /* RESPONSIVE */
 @media (max-width: 1280px) {
     .aboutSection{
-        padding: 0px 100px;
+        padding: 0 100px;
     }
 
     .fullWidthContainer {
         grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
         gap: 40px;
+    }
+
+    .textContent {
+        padding: 60px 5%;
+    }
+
+    .imageWrapper {
+        max-width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (768px) --- */
+@media (max-width: 768px) {
+    .paragraph {
+        font-size: 0.9rem;
+        line-height: 1.7;
     }
 
     .textContent {
         padding: 60px 5% 0 5%;
     }
 
-    .imageWrapper {
-        max-width: 100%;
-        aspect-ratio: 1;
-    }
-}
-
-/* --- RESPONSIVE MOBILE (768px) --- */
-@media (max-width: 768px) {
     .aboutSection {
         padding: 0 20px;
     }

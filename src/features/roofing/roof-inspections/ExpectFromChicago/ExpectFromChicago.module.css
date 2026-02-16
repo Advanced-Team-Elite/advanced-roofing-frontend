@@ -28,11 +28,23 @@
 .paragraph {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
 }
 
-/* LISTA */
+.columnTitle {
+    font-size: 2rem;
+    color: #005aab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    margin-bottom: 1.5rem;
+}
+
+.boldParagraph {
+    font-weight: bold;
+    color: #060606
+}
+
 .processList {
     list-style: none;
     padding: 0;
@@ -55,6 +67,14 @@
     width: 12px;
     height: 3px;
     background: #00ccff;
+}
+
+.inlineLink{
+    color: #00c3f8;
+}
+
+.inlineLink:hover{
+    color: #060606;
 }
 
 .expandableContent {
