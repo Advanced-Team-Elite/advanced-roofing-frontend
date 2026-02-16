@@ -5,6 +5,8 @@ import styles from '../../../shared/components/SharedBanner/SharedBanner.module.
 import OwensPreferred from "@/features/about-us/owens-corning-preferred-contractor/OwensPreferred/OwensPreferred";
 import KeyBenefits from "@/features/about-us/owens-corning-preferred-contractor/KeyBenefits/KeyBenefits";
 import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import ContactToday from "@/shared/components/ContactToday/ContactToday";
 
 const OwensPreferredContainer = () => {
     return (
@@ -23,6 +25,8 @@ const OwensPreferredContainer = () => {
                     <WhyChoose/>
                 </div>
             </section>
+
+            <Footer upperSection={<ContactToday/>}/>
         </div>
     );
 };

@@ -10,6 +10,8 @@ import {
 } from "@/features/about-us/roofing-insurance-claims/EnsuringCompensation/EnsuringCompensation";
 import RoofingHappyCustomers
     from "@/shared/components/RoofingHappyCustomers/RoofingHappyCustomers";
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
 
 const InsuranceClaimsContainer = () => {
     return (
@@ -25,6 +27,8 @@ const InsuranceClaimsContainer = () => {
             <AwardWinningBusiness/>
             <EnsuringCompensation/>
             <RoofingHappyCustomers/>
+
+            <Footer upperSection={<ContactUsByClaim/>}/>
         </main>
     );
 };

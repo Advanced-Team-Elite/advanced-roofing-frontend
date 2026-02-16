@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import styles from "@/shared/components/layout/footer/Footer.module.css";
+import styles from "./FinancingSection.module.css";
 
 const FinancingSection = () => {
     return (

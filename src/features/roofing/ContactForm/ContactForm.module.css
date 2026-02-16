@@ -1,0 +1,166 @@
+.formContainer {
+    background-color: #00589e; /* Azul fuerte del mockup */
+    padding: 40px 30px;
+    color: #ffffff;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-family: inherit;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.phoneLink {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Inputs Blancos como el Mockup */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1rem;
+    outline: none;
+}
+
+.captchaContainer input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1rem;
+    outline: none;
+}
+
+.field textarea {
+    resize: none;
+}
+
+/* Estilo específico para el dropdown */
+.selectWrapper {
+    position: relative;
+}
+
+.selectWrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00c3f8; /* Flecha celeste */
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+.selectWrapper select {
+    appearance: none;
+}
+
+/* Captcha Section */
+.captchaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.captchaCode {
+    color: white;
+    font-weight: 700;
+    width: fit-content;
+    letter-spacing: 2px;
+    border-radius: 2px;
+}
+
+.captchaContainer label {
+    font-size: 0.8rem;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    margin: 15px 0;
+}
+
+.policyLink {
+    color: #f7d000;
+    text-decoration: underline;
+}
+
+/* Botón Celeste del Mockup */
+.submitBtn {
+    background-color: #00c3f8;
+    width: 45%;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: none;
+    transition: background 0.2s ease;
+}
+
+.submitBtn:hover {
+    background-color: #0099c4;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .formContainer {
+        max-width: 100%;
+        padding: 40px 100px !important;
+    }
+    .title {
+        font-size: 3rem;
+    }
+    .description{
+        text-align: center;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 40px 25px !important;
+    }
+    .title {
+        font-size: 2rem;
+    }
+}

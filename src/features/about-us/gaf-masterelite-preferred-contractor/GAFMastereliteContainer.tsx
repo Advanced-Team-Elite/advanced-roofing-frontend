@@ -4,6 +4,8 @@ import SharedBanner from "@/shared/components/SharedBanner/SharedBanner";
 import {GafPreferred} from "@/features/about-us/gaf-masterelite-preferred-contractor/GafPreferred/GafPreferred";
 import WarrantyProgram from "@/features/about-us/gaf-masterelite-preferred-contractor/WarrantyProgram/WarrantyProgram";
 import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import ContactToday from "@/shared/components/ContactToday/ContactToday";
 
 const GAFMastereliteContainer = () => {
     return (
@@ -15,6 +17,8 @@ const GAFMastereliteContainer = () => {
             <GafPreferred/>
             <WarrantyProgram/>
             <WhyChoose/>
+
+            <Footer upperSection={<ContactToday/>}/>
         </main>
     );
 };

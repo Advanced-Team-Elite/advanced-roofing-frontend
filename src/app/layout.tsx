@@ -32,7 +32,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <FloatingActions />
-        <Footer upperSection={<ContactUsByClaim/>}/>
         </body>
         </html>
     );

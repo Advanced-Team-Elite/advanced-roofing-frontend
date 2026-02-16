@@ -1,10 +1,10 @@
 // app/contact-us/page.tsx
-import ReviewsPage from "@/features/reviews/ReviewsPage";
+import ReviewsPageContainer from "@/features/reviews/ReviewsPageContainer";
 
 export default function Page() {
     return (
         <main>
-            <ReviewsPage />
+            <ReviewsPageContainer />
         </main>
     );
 }

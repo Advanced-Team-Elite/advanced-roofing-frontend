@@ -5,6 +5,11 @@ import ServingHome from "@/features/roofing/ServingHome/ServingHome";
 import AboutOurServices from "@/shared/components/AboutOurServices/AboutOurServices";
 import AwardWinningBusiness from "@/shared/components/AwardWinningBusiness/AwardWinningBusiness";
 import RoofingHappyCustomers from "@/shared/components/RoofingHappyCustomers/RoofingHappyCustomers";
+import ComercialSolutions from "@/features/roofing/ComercialSolutions/ComercialSolutions";
+import RoofingProjects from "@/features/roofing/RoofingProjects/RoofingProjects";
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
+import ContactUsByEstimating from "@/shared/components/ContactUsByEstimating/ContactUsByEstimating";
 
 const RoofingContainer = () => {
     return (
@@ -24,11 +29,15 @@ const RoofingContainer = () => {
                     <ServingHome/>
                     <AboutOurServices/>
                     <AwardWinningBusiness/>
-
+                    <RoofingProjects/>
                     <RoofingHappyCustomers/>
+                    <ComercialSolutions/>
 
                 </div>
             </section>
+
+
+            <Footer upperSection={<ContactUsByEstimating/>}/>
         </div>
     );
 };

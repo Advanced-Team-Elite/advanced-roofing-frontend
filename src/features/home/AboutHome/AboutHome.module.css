@@ -11,7 +11,6 @@
     width: 100%;
 }
 
-/* --- COLUMNA DE TEXTO --- */
 .textContent {
     padding: 80px 8% 80px 12%;
     display: flex;
@@ -46,7 +45,6 @@
 .highlight { color: #00ccff; font-weight: 600; }
 .linkText { color: #00ccff; text-decoration: underline; font-weight: 600; }
 
-/* --- CONTINUE READING CON LÍNEA --- */
 .readMoreWrapper {
     border-top: 1px solid #e0e0e0;
     padding-top: 20px;
@@ -89,7 +87,6 @@
 }
 .arrowUp { transform: rotate(180deg); }
 
-/* --- CTA BANNER --- */
 .ctaBanner {
     background-color: #004a8c;
     color: #fff;
@@ -100,11 +97,9 @@
 
 .yellowLink {
     color: #ffcc00;
-    text-decoration: underline;
     font-weight: 700;
 }
 
-/* --- COLUMNA DE IMAGEN (FULL RIGHT) --- */
 .imageColumn {
     position: relative;
     height: 100%;

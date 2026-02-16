@@ -1,0 +1,140 @@
+.comercialSection {
+    padding: 100px 0;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding: 0 20px;
+}
+
+.imageColumn {
+    flex: 1;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.textContent {
+    flex: 1.2;
+}
+
+.iconWrapper {
+    margin-bottom: -45px;
+}
+
+.title {
+    color: #0056b3;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.paragraph {
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.listHeader {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #060606;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    display: block;
+}
+
+.listHeader a {
+    color: #00c3f8;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.listHeader a:hover {
+    color: #060606;
+}
+
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.benefitList li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Línea azul horizontal en lugar de puntos */
+.benefitList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8;
+}
+
+/* --- RESPONSIVE TABLET (1280px) --- */
+@media (max-width: 1280px) {
+    .container {
+        gap: 40px;
+    }
+
+    .comercialSection {
+        padding: 100px 100px;
+    }
+
+    .title {
+        font-size: 3.2rem;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (768px) --- */
+@media (max-width: 768px) {
+    .comercialSection {
+        padding: 60px 20px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .imageColumn {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .textContent {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        margin-left: 0;
+        margin-bottom: -35px;
+    }
+}

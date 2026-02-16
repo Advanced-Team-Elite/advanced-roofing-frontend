@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './AboutHome.module.css';
+import Link from "next/link";
 
 export const AboutHome = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -30,8 +31,11 @@ export const AboutHome = () => {
 
                     <div className={styles.ctaBanner}>
                         <p>
-                            Call <strong>(847) 262-9774</strong> today or <span className={styles.yellowLink}>contact us online</span> to
-                            schedule your free estimate with our experienced Chicago roofing team.
+                            Call <strong>(847) 262-9774</strong> today or{' '}
+                            <Link href="/contact-us" className={styles.yellowLink}>
+                                contact us online
+                            </Link>{' '}
+                            to schedule your free estimate with our experienced Chicago roofing team.
                         </p>
                     </div>
 

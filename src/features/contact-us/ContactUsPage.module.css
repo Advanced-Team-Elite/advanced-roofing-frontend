@@ -4,11 +4,11 @@
 }
 
 .container {
-    max-width: 1750px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
+    max-width: 1500px !important;
 }
 
 /* ---------------- LEFT COLUMN ---------------- */

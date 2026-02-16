@@ -5,6 +5,8 @@ import AboutUs from "@/features/about-us/AboutUs/AboutUs";
 import Support from "@/features/about-us/Support/Support";
 import WhyChoose from "@/features/about-us/WhyChoose/WhyChoose";
 import SupportRoofDamage from "@/features/about-us/SupportRoofDamage/SupportRoofDamage";
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import ContactToday from "@/shared/components/ContactToday/ContactToday";
 
 const AboutContainer = () => {
     return (
@@ -26,6 +28,7 @@ const AboutContainer = () => {
 
                 </div>
             </section>
+            <Footer upperSection={<ContactToday/>}/>
         </div>
     );
 };

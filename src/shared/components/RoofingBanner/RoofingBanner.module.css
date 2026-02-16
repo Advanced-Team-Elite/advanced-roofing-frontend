@@ -1,0 +1,32 @@
+.bannerContainer {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: auto;
+    clip-path: inset(0 0 10% 0);
+    display: block;
+}
+
+.bannerImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- TABLET (1280px) --- */
+@media (max-width: 1280px) {
+    .imageWrapper {
+        clip-path: inset(0 0 3% 0);
+    }
+}
+
+/* --- MOBILE (768px) --- */
+@media (max-width: 768px) {
+    .imageWrapper {
+        clip-path: inset(0 0 2% 0);
+    }
+}

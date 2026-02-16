@@ -1,0 +1,151 @@
+.wrapper {
+    width: 100%;
+    background-image: url('/assets/images/features/roofing/bg-4.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: row; /* Desktop */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 100px;
+}
+
+.testimonialSection {
+    flex: 1;
+    color: white;
+}
+
+.quote {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+.author {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.reviewsBtn {
+    background-color: #00c3f8;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.featuresList {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.featureItem {
+    display: flex;
+    flex-direction: row; /* Icono al lado del texto por defecto */
+    align-items: flex-start;
+    gap: 25px;
+    color: white;
+}
+
+.iconCircle {
+    width: 65px;
+    height: 65px;
+    background-color: #00589e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.iconCircle svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+}
+
+.featureText h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.featureText p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- TABLET (768px a 1024px) --- */
+@media (max-width: 1280px) {
+    .container {
+        flex-direction: column; /* Apila Testimonio arriba y Lista abajo */
+        align-items: center;
+        gap: 80px;
+    }
+
+    .quote {
+        font-size: 2rem;
+        margin: 0 auto;
+        max-width: 97%;
+        line-height: 1.4;
+    }
+
+    .testimonialSection {
+        text-align: center;
+    }
+
+    .featuresList {
+        width: 100%;
+        max-width: 800px; /* Evita que la lista se estire demasiado en tablet */
+    }
+
+    .featureItem {
+        flex-direction: row; /* MANTIENE ICONO AL LADO DEL TEXTO */
+        text-align: left; /* Texto alineado a la izquierda junto al icono */
+    }
+}
+
+/* --- MOBILE (Hasta 767px) --- */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+        gap: 50px;
+    }
+
+    .quote {
+        font-size: 1.7rem;
+    }
+
+    .featureItem {
+        flex-direction: column; /* ICONO ARRIBA DEL TEXTO SOLO EN MOBILE */
+        align-items: center;
+        text-align: center;
+    }
+
+    .featureText h3 {
+        font-size: 1.3rem;
+    }
+}

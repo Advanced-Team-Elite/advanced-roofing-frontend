@@ -108,7 +108,6 @@
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) !important;
 }
 
-/* Forzamos que el path sea 100% opaco */
 .controlBtn svg path {
     fill: #FFFFFF !important;
     opacity: 1 !important;
@@ -116,10 +115,9 @@
 
 /* --- RESPONSIVE LOGIC --- */
 
-/* Escritorio (Video On, Overlay Off) */
 @media (min-width: 1024px) {
     .heroOverlay {
-        background: rgba(80, 188, 255, 0.35); /* azul claro y suave */
+        background: rgba(80, 188, 255, 0.35);
     }
     .heroContent {
         padding: 0;
@@ -127,7 +125,6 @@
     }
 }
 
-/* Tablet y Celular (Video Off, Overlay Azul On, Controles Off) */
 @media (max-width: 1023px) {
     .heroContent {
         margin: 0 120px;
@@ -150,11 +147,11 @@
     }
 
     .videoBg {
-        display: none; /* Quitamos el video para ahorrar datos y batería */
+        display: none;
     }
 
     .videoControls {
-        display: none; /* Desaparecen los botones de play/comentario */
+        display: none;
     }
 
     .heroOverlay {
@@ -222,7 +219,7 @@
 .awardsTitle {
     /* Usará Prompt gracias a tu globals.css */
     color: #005aab; /* Azul institucional */
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: 4rem;
     margin-bottom: 50px;
     font-weight: 700;
 }
@@ -249,11 +246,18 @@
 /* --- RESPONSIVE --- */
 
 /* Tablet / Mobile */
-@media (max-width: 1024px) {
+@media (max-width: 1224px) {
+    .awardsSection {
+        padding: 60px 100px;
+    }
+
     .awardsGrid {
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablet */
         gap: 30px;
+    }
+    .awardsTitle {
+        font-size: 2.5rem;
     }
 }
 
@@ -264,6 +268,6 @@
     }
 
     .awardsSection {
-        padding: 40px 15px;
+        padding: 40px 20px;
     }
 }

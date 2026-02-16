@@ -1,8 +1,8 @@
-
-/* Financing */
 .financingSection {
     text-align: center;
-    margin-bottom: 80px;
+    margin: 0 auto 80px auto;
+    padding: 0 0;
+    max-width: 1500px;
 }
 
 .financingTitle {
@@ -12,7 +12,6 @@
 }
 
 .financingDescription {
-    max-width: 900px;
     margin: 0 auto 30px;
     line-height: 1.5;
     font-size: 16px;
@@ -34,5 +33,22 @@
 @media (max-width: 1024px) {
     .financingTitle {
         font-size: 36px;
+    }
+
+    /* Financing */
+    .financingSection {
+        padding: 0 100px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 978px) {
+    .financingTitle {
+        font-size: 36px;
+    }
+
+    /* Financing */
+    .financingSection {
+        padding: 0 20px;
     }
 }

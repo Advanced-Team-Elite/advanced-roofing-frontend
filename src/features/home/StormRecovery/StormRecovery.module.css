@@ -2,7 +2,7 @@
     width: 100%;
     background-color: #ffffff;
     overflow: hidden;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .container {
@@ -49,6 +49,10 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
+    .recoverySection {
+        margin-bottom: 0;
+    }
+
     .container {
         grid-template-columns: 1fr;
     }

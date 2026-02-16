@@ -14,6 +14,8 @@ import MoreThanRoofing from "@/features/home/MoreThanRoofing/MoreThanRoofing";
 import HappyCustomers from "@/features/home/HappyCustomers/HappyCustomers";
 import ContactUs from "@/features/home/ContactUs/ContactUs";
 import Link from 'next/link';
+import {Footer} from "@/shared/components/layout/footer/Footer";
+import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 
 export default function HomeContainer() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -86,12 +88,9 @@ export default function HomeContainer() {
                 </div>
             )}
 
-
             <OurServices />
-
             <AboutHome />
             <StormRecovery />
-
             <section className={styles.awardsSection}>
                 <div className={styles.container}>
                     <h2 className={styles.awardsTitle}>Award-Winning Business</h2>
@@ -110,11 +109,11 @@ export default function HomeContainer() {
                     </div>
                 </div>
             </section>
-
             <WhyChooseUs />
             <MoreThanRoofing />
             <HappyCustomers />
             <ContactUs />
+            <Footer upperSection={<FinancingSection/>}/>
 
         </main>
     );
