@@ -1,11 +1,10 @@
-import {CommercialRoofingContainer} from "@/features/commercial-roofing/CommercialRoofingContainer";
-
+import AreasWeServeContainer from "@/features/areas-we-serve/AreasWeServeContainer";
 
 export const metadata = {
-    title: 'Commercial Roofing Chicago, IL | Advanced Roofing Team',
-    description: 'Dependable commercial roofing services in Chicago. Specialists in roof installation, replacement, and storm damage recovery for businesses.',
+    title: 'Areas We Service | Advanced Roofing Team Construction',
+    description: 'Providing expert residential and commercial roofing services throughout Chicago and the Greater Chicagoland Area since 2004.',
 };
 
-export default function CommercialRoofingPage() {
-    return <CommercialRoofingContainer />;
+export default function ServiceAreasPage() {
+    return <AreasWeServeContainer />;
 }

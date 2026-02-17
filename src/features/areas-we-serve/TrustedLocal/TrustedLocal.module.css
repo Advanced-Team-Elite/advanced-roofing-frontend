@@ -1,0 +1,133 @@
+.sectionWrapper {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flexLayout {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.imageColumn {
+    display: flex;
+    flex: 1;
+    margin: auto 0;
+}
+
+
+.mainImage {
+    width: 100%;
+    margin-top: 40px;
+    height: auto;
+    display: block;
+}
+
+.textColumn {
+    flex: 1.2;
+}
+
+.iconWrapper {
+    margin-bottom: -40px;
+    color: #333;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #00589e;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+.subtitle{
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    color: #00589e;
+    line-height: 1.5;
+    margin-bottom: 30px;
+
+}
+
+.paragraph {
+    font-size: 1.1rem;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Caja azul de contacto */
+.ctaBox {
+    background-color: #00589e;
+    padding: 40px 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.ctaText {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: bolder;
+}
+
+.phoneLink {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.contactLink {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.contactLink:hover, .phoneLink:hover {
+    text-decoration: none;
+}
+/* Responsive para Mobile */
+@media (max-width: 1280px) {
+
+    .sectionWrapper {
+        padding: 80px 100px;
+    }
+
+    .iconWrapper {
+        margin-bottom: -40px;
+        color: #333;
+        width: 100%;
+    }
+
+    .flexLayout {
+        flex-direction: column;
+    }
+
+    .imageColumn {
+        width: 100%;
+        order: 2;
+    }
+
+    .textColumn {
+        order: 1;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .sectionWrapper {
+        padding: 80px 20px;
+    }
+}

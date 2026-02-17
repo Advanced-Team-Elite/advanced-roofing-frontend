@@ -1,0 +1,236 @@
+.supportSection {
+    padding: 40px 0 80px;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+.iconWrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: -40px;
+    color: #333;
+}
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mainTitle {
+    font-size: 4.3rem;
+    font-weight: 800;
+    color: #0056b3;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.secondaryTitle {
+    font-size: 2rem;
+    color: #0056b3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    margin: 0px 0 20px;
+}
+
+.introText, .paragraph {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #060606;
+    margin-bottom: 25px;
+}
+
+
+.expandableContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease;
+    opacity: 0;
+}
+
+.expanded {
+    max-height: none;
+    opacity: 1;
+}
+
+.readMoreWrapper {
+    margin-top: 20px;
+    border-top: 1px solid #ffcc00;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.readMoreBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.readMoreBtn:hover {
+    color: #0056b3;
+}
+
+.arrow {
+    color: #00c3f8;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.listHeading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #060606;
+    margin: 30px 0 20px;
+}
+
+.citiesGridList {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    /* Escritorio: 5 columnas */
+    column-count: 5;
+    column-gap: 30px;
+}
+
+.citiesGridList li {
+    margin-bottom: 12px;
+    break-inside: avoid;
+}
+
+.cityItem {
+    margin-bottom: 12px;
+    break-inside: avoid;
+    display: flex;
+    align-items: center;
+    color: #060606;
+    font-size: 1.1rem;
+}
+
+/* El rectángulo a la izquierda */
+.cityItem::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 4px;
+    background-color: #00c3f8;
+    margin-right: 12px;
+    border-radius: 1px;
+}
+
+.linkHighlightBlue {
+    color: #00c3f8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.linkHighlightBlue:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Grid de servicios en dos columnas */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+    margin-bottom: 20px;
+}
+
+.serviceList, .recognitionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.serviceList li, .recognitionList li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: #060606;
+    line-height: 1.4;
+}
+
+/* Guión celeste personalizado del mockup */
+.serviceList li::before, .recognitionList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 15px;
+    height: 3px;
+    background-color: #00c3f8;
+}
+
+.linkHighlight {
+    color: #00c3f8;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.linkHighlight:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para Mobile */
+@media (max-width: 1280px) {
+    .supportSection {
+        padding: 40px 100px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .citiesGridList {
+        column-count: 3;
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .secondaryTitle {
+        font-size: 1.8rem;
+    }
+
+    .iconWrapper {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .iconWrapper svg{
+        width: 90px;
+        margin: -45px 0 -55px 0;
+    }
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .citiesGridList {
+        column-count: 1;
+    }
+
+    .supportSection {
+        padding: 40px 20px;
+    }
+}
+

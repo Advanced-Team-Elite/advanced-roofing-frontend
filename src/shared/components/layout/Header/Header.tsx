@@ -13,7 +13,7 @@ export const Header = () => {
             <div className={styles.topBar}>
                 <span>Serving the Des Plaines Community</span>
                 <div className="flex items-center gap-6">
-                    <Link href="/areas" className={styles.topBarNavLink}>Areas We Serve</Link>
+                    <Link href="/areas-we-serve" className={styles.topBarNavLink}>Areas We Serve</Link>
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
