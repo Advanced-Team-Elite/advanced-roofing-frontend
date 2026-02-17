@@ -81,10 +81,11 @@
 @media (max-width: 1280px) {
 
     .sectionWrapper {
-        padding: 80px 100px;
+        padding: 80px 100px 80px 100px;
     }
 
     .iconWrapper {
+        margin-top: -40px;
         margin-bottom: -40px;
         color: #333;
         width: 100%;
@@ -111,6 +112,6 @@
 
 @media (max-width: 600px) {
     .sectionWrapper {
-        padding: 80px 20px;
+        padding: 20px 20px;
     }
 }
