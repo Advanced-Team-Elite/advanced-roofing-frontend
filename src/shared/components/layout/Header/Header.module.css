@@ -144,7 +144,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     .logoContainer img {
         height: 95px;
         width: auto;
@@ -157,6 +157,14 @@
         display: block;
     }
     .mainNav {
-        padding: 30px 20px;
+        padding: 45px 100px;
     }
+
+}
+
+@media (max-width: 768px) {
+    .mainNav {
+        padding: 45px 20px;
+    }
+
 }

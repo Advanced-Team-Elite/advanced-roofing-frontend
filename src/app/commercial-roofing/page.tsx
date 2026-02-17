@@ -1,4 +1,5 @@
-import AreasWeServeContainer from "@/features/areas-we-serve/AreasWeServeContainer";
+import {AreasWeServeContainer} from "@/features/areas-we-serve/AreasWeServeContainer";
+
 
 export const metadata = {
     title: 'Areas We Service | Advanced Roofing Team Construction',
