@@ -1,10 +1,10 @@
 "use client";
 import React from 'react';
-import styles from './ContactUsByClaim.module.css';
+import styles from './ContactUsForWeather.module.css';
 import Link from "next/link";
 import {FlairIcon} from "@/shared/Icons/Icons";
 
-const ContactToday = () => {
+export const ContactUsForWeather = () => {
 
     return (
         <section className={styles.contactSection}>
@@ -90,25 +90,29 @@ const ContactToday = () => {
                                 <FlairIcon size={160} />
                             </div>
 
-                            <h2 className={styles.title}>ACCURATE <br/>ASSESMENT<br/> OF DAMAGES</h2>
+                            <h2 className={styles.title}>Commercial Roof Systems Built for Chicago’s Weather</h2>
 
                             <p className={styles.paragraph}>
-                                The first step in the insurance claim process is to assess the damage to your home.
-                                After a hailstorm or high winds, it’s important to inspect your roof, siding, windows,
-                                and other exterior features for any signs of damage. At Advanced Roofing Team, our team
-                                of experts can conduct a thorough inspection of your property to identify and document
-                                any damage caused by hail or wind.
+                                In Chicago, commercial roofs face year-round weather challenges, from freezing winters to summer hailstorms. That’s why Advanced Roofing Team Construction installs roofing systems selected for long-term performance in the metro area’s climate.
                             </p>
-
-                            <h3 className={styles.subtitle}>FILING A CLAIM WAS NEVER EASIER</h3>
+                            <p className={styles.paragraph}>
+                                We help businesses select materials that resist wind uplift, ponding water, and other common risks associated with flat or low-slope roofs. Our team is here to recommend options that meet building requirements, energy efficiency standards, and durability goals.
+                            </p>
 
                             <p className={styles.paragraph}>
-                                Once the damage has been assessed, the next step is to file a claim with your insurance company.
-                                This involves contacting your insurance provider and providing them with the necessary information
-                                and documentation to support your claim. Our team at Advanced Roofing Team can assist you with this
-                                process, including preparing and submitting the required documentation, such as reports, photographs,
-                                and estimates for the necessary repairs.
+                                Local conditions, such as lake-effect snow, freeze–thaw cycles, and strong winds off Lake Michigan, can significantly shorten the lifespan of a poorly chosen roofing system. When we evaluate options with you, we discuss how different assemblies handle these stresses, what kind of maintenance they will require, and how they may affect your building’s heating and cooling costs. This allows you to plan not only for installation but also for the total cost of ownership over the roof's lifetime.
                             </p>
+
+                            <div className={styles.ctaBanner}>
+                                <p className={styles.ctaText}>
+                                    Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> or{' '}
+                                    <Link href="/contact" className={styles.blueLink}>
+                                        contact us online
+                                    </Link>{' '}
+                                    today to schedule your free consultation and discuss roofing solutions tailored for your property.
+                                </p>
+                            </div>
+
 
                             <div className={styles.rowBtn}>
                                 <button type="submit" className={styles.contactUsBtn}>Contact Us</button>
@@ -124,5 +128,3 @@ const ContactToday = () => {
         </section>
     );
 };
-
-export default ContactToday;
