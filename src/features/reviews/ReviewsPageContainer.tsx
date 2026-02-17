@@ -29,10 +29,8 @@ const ReviewsPageContainer = () => {
     };
 
     const handlePageChange = (newPage: number) => {
-        // 1. Cambiamos el estado primero
         setCurrentPage(newPage);
 
-        // 2. Esperamos un breve instante (100ms es suficiente) a que el DOM procese el cambio
         setTimeout(() => {
             const headerElement = document.getElementById('reviews-header');
             if (headerElement) {
@@ -93,7 +91,6 @@ const ReviewsPageContainer = () => {
                     </button>
                 </div>
 
-                {/* El Nuevo Dialog */}
                 <ReviewDialog
                     review={selectedReview}
                     isOpen={isDialogOpen}

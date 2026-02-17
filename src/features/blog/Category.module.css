@@ -1,0 +1,95 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #00c3f8;
+}
+
+.breadcrumb a {
+    color: #00c3f8;
+    text-decoration: none;
+}
+
+.breadcrumb .slash {
+    color: #ccc;
+}
+
+.breadcrumb .active {
+    color: #666;
+}
+
+.separator {
+    height: 1px;
+    background: #eee;
+    margin: 15px 0 40px 0;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 32px;
+    color: #333;
+    font-weight: 700;
+}
+
+.blogGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* Más espacio entre filas para respirar */
+}
+
+/* Reutilizamos el estilo de las cards de fondo negro */
+.card {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.cardInfo {
+    padding: 30px 25px;
+    color: #fff;
+    flex-grow: 1;
+}
+
+.cardTitle {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.cardDate {
+    font-size: 0.85rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mobile: Una sola columna */
+@media (max-width: 850px) {
+    .blogGrid {
+        grid-template-columns: 1fr;
+    }
+    .title {
+        font-size: 24px;
+    }
+}
