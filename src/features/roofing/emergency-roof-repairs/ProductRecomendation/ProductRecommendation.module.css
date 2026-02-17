@@ -23,6 +23,8 @@
 .testimonialSection {
     flex: 1;
     color: white;
+    min-height: 100%;
+    margin: auto 0;
 }
 
 .quote {
@@ -30,7 +32,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 10px;
-    max-width: 90%;
+    max-width: 100%;
 }
 
 .author {
@@ -46,7 +48,6 @@
     padding: 15px 45px;
     font-size: 1.1rem;
     font-weight: 700;
-    border-radius: 4px;
     cursor: pointer;
 }
 

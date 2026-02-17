@@ -1,23 +1,43 @@
 "use client";
 import React from 'react';
+import { useEffect, useState } from "react";
 import styles from './ProductRecommendation.module.css';
+import { getRandomReview, Review} from "@/shared/utils/getReviews";
 import {
     HammerIcon,
     HouseIcon,
     InspectionIcon,
     ProfessionalIcon
 } from '@/shared/Icons/Icons';
+import Link from "next/link";
 
 const ProductRecommendation = () => {
+    const [review, setReview] = useState<Review | null>(null);
+
+    useEffect(() => {
+        // Asignamos la review aleatoria solo en el cliente
+        setReview(getRandomReview());
+    }, []);
+
     return (
         <section className={styles.wrapper}>
             <div className={styles.container}>
 
                 {/* Lado Izquierdo: Testimonio */}
                 <div className={styles.testimonialSection}>
-                    <h2 className={styles.quote}>"They came out quickly for an emergency roof repair, and did a great job."</h2>
-                    <p className={styles.author}>Darrell T.</p>
-                    <button className={styles.reviewsBtn}>All Reviews</button>
+                    {review ? (
+                        <>
+                            <h2 className={styles.quote}>"{review.title}"</h2>
+                            <p className={styles.author}>{review.author}</p>
+                        </>
+                    ) : (
+                        // Placeholder para evitar saltos visuales mientras carga
+                        <div className={styles.loader} />
+                    )}
+
+                    <Link href="/reviews/" className={styles.reviewsBtn}>
+                        All Reviews
+                    </Link>
                 </div>
 
                 {/* Lado Derecho: Características (UNA SOLA COLUMNA) */}
