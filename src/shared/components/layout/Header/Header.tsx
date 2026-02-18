@@ -84,7 +84,7 @@ export const Header = () => {
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>
                     <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Roofing Insurance Claims</Link></li>
-                    <li><Link href="/contact" className={styles.navLink}>Contact Us</Link></li>
+                    <li><Link href="/contact-us" className={styles.navLink}>Contact Us</Link></li>
                     <li>
                         <button className={styles.quoteBtn}>Request a Quote</button>
                     </li>

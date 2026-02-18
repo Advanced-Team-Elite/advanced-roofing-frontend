@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './ContactUs.module.css';
+import { useRouter } from 'next/navigation';
 
 const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -47,6 +48,7 @@ const ContactUs = () => {
 
     const [errors, setErrors] = useState<FormErrors>({});
     const [captchaCode, setCaptchaCode] = useState('');
+    const router = useRouter();
 
     useEffect(() => {
         setCaptchaCode(generateCaptcha());
@@ -136,6 +138,8 @@ const ContactUs = () => {
         });
         setErrors({});
         refreshCaptcha();
+
+        router.push('/contact-us/thank-you');
     };
 
     return (
