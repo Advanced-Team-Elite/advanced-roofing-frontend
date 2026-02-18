@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -18,16 +18,16 @@
 }
 
 .breadcrumb .slash {
-    color: #ccc;
+    color: #060606;
 }
 
 .breadcrumb .active {
-    color: #666;
+    color: #060606;
 }
 
 .separator {
     height: 1px;
-    background: #eee;
+    background: #858585;
     margin: 15px 0 40px 0;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .title {
-    font-size: 32px;
-    color: #333;
+    font-size: 4rem;
+    color: #005aab;
     font-weight: 700;
 }
 

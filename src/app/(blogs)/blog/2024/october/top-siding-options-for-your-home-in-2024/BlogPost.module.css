@@ -1,0 +1,32 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+
+.mainTitle {
+    color: #0056b3; /* El azul de tu diseño */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subTitle {
+    color: #0056b3;
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.featuredImage {
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.bodyImage {
+    margin: 40px 0;
+    text-align: center;
+}

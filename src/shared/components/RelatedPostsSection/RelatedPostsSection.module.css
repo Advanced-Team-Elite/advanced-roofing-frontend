@@ -1,0 +1,36 @@
+.relatedSection {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #ffffff;
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.relatedTitle {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: #0056b3;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .relatedGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.relatedGrid :global(.blog-card-container) {
+    height: 100%;
+}

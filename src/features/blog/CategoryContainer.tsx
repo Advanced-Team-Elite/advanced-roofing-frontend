@@ -39,20 +39,22 @@ const CategoryContainer = ({ category }: CategoryContainerProps) => {
             {/* Grid sin límite de filas */}
             <div className={styles.blogGrid}>
                 {ALL_POSTS.map((post, index) => (
-                    <article key={index} className={styles.card}>
-                        <div className={styles.imageContainer}>
-                            <Image
-                                src={post.image}
-                                alt={post.title}
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                        <div className={styles.cardInfo}>
-                            <h3 className={styles.cardTitle}>{post.title}</h3>
-                            <p className={styles.cardDate}>{post.date}</p>
-                        </div>
-                    </article>
+                    <Link href={post.fullPath} key={index} className={styles.cardLink}>
+                        <article className={styles.card}>
+                            <div className={styles.imageContainer}>
+                                <Image
+                                    src={post.image}
+                                    alt={post.title}
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </div>
+                            <div className={styles.cardInfo}>
+                                <h3 className={styles.cardTitle}>{post.title}</h3>
+                                <p className={styles.cardDate}>{post.date}</p>
+                            </div>
+                        </article>
+                    </Link>
                 ))}
             </div>
         </div>

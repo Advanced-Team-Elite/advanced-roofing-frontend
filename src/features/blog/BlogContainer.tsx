@@ -31,7 +31,9 @@ const BlogContainer = () => {
             {/* Grid 2x2 */}
             <div className={styles.blogGrid}>
                 {BLOG_POSTS.map((post, index) => (
-                    <BlogCard key={index} {...post} />
+                    <Link href={post.fullPath} key={index} className={styles.cardLink}>
+                        <BlogCard {...post} />
+                    </Link>
                 ))}
             </div>
         </main>
