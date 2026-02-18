@@ -7,7 +7,7 @@ import {ArrowIcon} from "@/shared/Icons/Icons";
 const services = [
     { title: "Commercial Roofing", img: "/assets/images/features/about-us/1.jpg", href: "/commercial-roofing" },
     { title: "Insurance Claims", img: "/assets/images/features/about-us/2.jpg", href: "/roofing-insurance-claims" },
-    { title: "Shingle Roofing", img: "/assets/images/features/about-us/3.jpg", href: "/roofing/shingle-roofing" },
+    { title: "Shingle Roofing", img: "/assets/images/features/about-us/3.jpg", href: "/roof-types/shingle-roofing/" },
     { title: "Roofing Services", img: "/assets/images/features/about-us/4.jpg", href: "/roofing" },
 ];
 
@@ -16,7 +16,7 @@ const AboutOurServices = () => {
         <section className={styles.servicesSection}>
             <div className={styles.header}>
                 <h2 className={styles.mainTitle}>Our Services</h2>
-                <Link href="/services" className={styles.viewAllBtn}>
+                <Link href="/our-services" className={styles.viewAllBtn}>
                     View All Services
                 </Link>
             </div>
@@ -45,7 +45,7 @@ const AboutOurServices = () => {
             <br/>
 
             <div className={styles.viewAllBtnMobileContainer}>
-                <Link href="/services" className={styles.viewAllBtn}>
+                <Link href="/our-services" className={styles.viewAllBtn}>
                     View All Services
                 </Link>
             </div>
