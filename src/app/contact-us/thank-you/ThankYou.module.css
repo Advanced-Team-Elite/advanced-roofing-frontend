@@ -1,0 +1,97 @@
+.mainWrapper {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: stretch;
+}
+
+.contentSection {
+    display: flex;
+    width: 100%;
+    flex-direction: column; /* Móvil por defecto */
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.textContent {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.title {
+    font-size: 4rem;
+    color: #0056b3;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 1.1rem;
+    color: #060606;
+    max-width: 450px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.backButton {
+    background-color: #00c4f0; /* El celeste del botón */
+    color: white;
+    padding: 12px 35px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.backButton:hover {
+    background-color: #0099bc;
+}
+
+.imageContainer {
+    display: none; /* Oculto en móvil como en tu imagen */
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+.houseImage {
+    object-fit: cover;
+}
+
+/* Desktop: Lado a lado */
+@media (min-width: 1280px) {
+
+    .contentSection {
+        flex-direction: row;
+        align-items: stretch;
+        min-height: calc(100vh - 100px); /* Ajusta según tu header */
+        text-align: left;
+        padding: 0;
+    }
+
+    .textContent {
+        align-items: flex-start;
+        flex: 1;
+        padding: 0 5% 0 10%;
+        text-align: left;
+    }
+
+    .imageContainer {
+        display: block;
+        flex: 1;
+        height: auto;
+    }
+
+}
+
+/* Desktop: Lado a lado */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+}
+

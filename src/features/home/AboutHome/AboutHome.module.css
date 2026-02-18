@@ -42,7 +42,8 @@
     line-height: 1.7;
 }
 
-.highlight { color: #00ccff; font-weight: 600; }
+.highlight { color: #00ccff; font-weight: normal; }
+.highlight:hover { color: #060606; }
 .linkText { color: #00ccff; text-decoration: underline; font-weight: 600; }
 
 .readMoreWrapper {

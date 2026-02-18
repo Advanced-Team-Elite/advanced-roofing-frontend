@@ -19,9 +19,15 @@ export const AboutHome = () => {
 
                     <p className={styles.paragraph}>
                         When it comes to protecting your property, your roof plays one of the most important roles.
-                        At <span className={styles.highlight}>Advanced Roofing Team Construction</span>, we help homeowners
-                        and businesses across Chicago with professional <span className={styles.linkText}>roof installations
-                        and full replacements</span> designed to handle our region's unpredictable weather.
+                        At{' '}
+                        <Link href="/" className={styles.highlight}>
+                            Advanced Roofing Team Construction
+                        </Link>
+                        , we help homeowners and businesses across Chicago with professional{' '}
+                        <Link href="/services/roofing/roof-installation-replacement" className={styles.highlight}>
+                            roof installations and full replacements
+                        </Link>{' '}
+                        designed to handle our region's unpredictable weather.
                     </p>
 
                     <p className={styles.paragraph}>

@@ -20,7 +20,7 @@
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
     color: white;
     text-align: center;
@@ -52,6 +52,10 @@
     color: white;
 }
 
+.error {
+    color: white;
+}
+
 /* INPUTS CON FONDO BLANCO Y BORDE */
 .input {
     width: 100%;
@@ -72,6 +76,12 @@
     font-size: 1.2rem;
     letter-spacing: 3px;
     color: white;
+}
+
+.captchaRefresh{
+    margin: 0 10px;
+    color: white;
+    cursor: pointer;
 }
 
 .captchaField p{
