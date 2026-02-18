@@ -1,4 +1,5 @@
 // src/shared/components/floating/FloatingActions.tsx
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -26,10 +27,23 @@ const AccessibilityIcon = ({ size = 28 }: IconProps) => (
     </svg>
 );
 
-
 export const FloatingActions = () => {
     const [showTop, setShowTop] = useState(false);
+    const [showBubble, setShowBubble] = useState(false);       // <-- nuevo
+    const [mounted, setMounted] = useState(false);              // <-- nuevo
     const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        // Animación de entrada: los botones suben al montar
+        const mountTimer = setTimeout(() => setMounted(true), 50);
+        // Burbuja aparece 1 segundo después
+        const bubbleTimer = setTimeout(() => setShowBubble(true), 1000);
+
+        return () => {
+            clearTimeout(mountTimer);
+            clearTimeout(bubbleTimer);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,15 +80,16 @@ export const FloatingActions = () => {
             </button>
 
             {/* Contact widget */}
-            <div className={styles.contactContainer}>
+            <div className={`${styles.contactContainer} ${mounted ? styles.contactVisible : styles.contactHidden}`}>
                 <div className={styles.chatWrapper}>
-                    <div className={styles.chatBubble}>
-                        <button className={styles.closeBtn}>×</button>
-                        <strong>Welcome to Advanced Roofing Team Construction</strong>
-                        <p>I&apos;m here if you have any questions or need help!</p>
-                        {/* El pequeño triángulo indicador */}
-                        <div className={styles.bubbleTriangle}></div>
-                    </div>
+                    {showBubble && (
+                        <div className={styles.chatBubble}>
+                            <button className={styles.closeBtn} onClick={() => setShowBubble(false)}>×</button>
+                            <strong>Welcome to Advanced Roofing Team Construction</strong>
+                            <p>I&apos;m here if you have any questions or need help!</p>
+                            <div className={styles.bubbleTriangle}></div>
+                        </div>
+                    )}
 
                     <div className={styles.actionGrid}>
                         <button className={styles.actionItem}>

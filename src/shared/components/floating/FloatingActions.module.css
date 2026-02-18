@@ -38,6 +38,7 @@
 .topHidden {
     transform: translateX(100%);
 }
+
 .contactContainer {
     position: fixed;
     right: 0;
@@ -46,7 +47,7 @@
 }
 
 .chatWrapper {
-    width: 375px; /* Ancho fijo para burbuja y botones */
+    width: 375px;
     display: flex;
     flex-direction: column;
 }
@@ -56,9 +57,9 @@
     padding: 18px;
     font-size: 14px;
     line-height: 1.4;
-    border-radius: 12px; /* Redondeado general */
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    margin: 0 10px 15px 10px; /* Un poco de margen de los bordes */
+    margin: 0 10px 15px 10px;
     position: relative;
     border-bottom: 3px solid #3b82f6;
     color: #333;
@@ -89,8 +90,8 @@
 
 .actionGrid {
     display: flex;
-    background-color: #4c8bf5; /* Azul exacto del mockup */
-    border-radius: 12px 12px 0 0; /* Redondeado superior */
+    background-color: #4c8bf5;
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
     width: 100%;
 }
@@ -135,23 +136,22 @@
     }
 
     .chatBubble {
-        width: calc(100% - 20px); /* Margen pequeño a los lados */
+        width: calc(100% - 20px);
         margin: 0 auto 10px auto;
         border-radius: 12px;
     }
 
     .actionGrid {
         width: 100%;
-        border-radius: 0; /* En móvil suelen ser rectos contra el borde */
+        border-radius: 0;
     }
 
     .actionItem {
-        padding: 10px 0; /* Un poco más compactos en móvil */
+        padding: 10px 0;
     }
 
-    /* SUBIMOS EL BOTÓN DE ACCESIBILIDAD */
     .accessibilityBtn {
-        bottom: 160px; /* Suficiente para no chocar con la barra azul */
+        bottom: 160px;
         left: 15px;
         transition: bottom 0.3s ease;
     }
@@ -160,4 +160,15 @@
         right: 50%;
         transform: translateX(50%);
     }
+}
+
+/* --- ANIMACIÓN DE ENTRADA --- */
+.contactHidden {
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.contactVisible {
+    transform: translateY(0);
+    transition: transform 0.5s ease;
 }
