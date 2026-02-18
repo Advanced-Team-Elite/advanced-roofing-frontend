@@ -43,7 +43,7 @@
     position: fixed;
     right: 0;
     bottom: 0;
-    z-index: 8999;
+    z-index: 0;
 }
 
 .chatWrapper {
@@ -160,6 +160,11 @@
         right: 50%;
         transform: translateX(50%);
     }
+}
+
+/* --- DETRÁS DEL DRAWER --- */
+.behindDrawer {
+    z-index: 40 !important;
 }
 
 /* --- ANIMACIÓN DE ENTRADA --- */
