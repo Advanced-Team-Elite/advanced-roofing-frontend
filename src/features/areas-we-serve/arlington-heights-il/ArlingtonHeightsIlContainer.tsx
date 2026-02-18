@@ -9,6 +9,8 @@ import {Footer} from "@/shared/components/layout/footer/Footer";
 import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
+import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
+import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
 
 export default function ArlingtonHeightsIlContainer() {
     return (
@@ -19,8 +21,10 @@ export default function ArlingtonHeightsIlContainer() {
             <WhyChooseUs />
             <OurServices />
             <HappyCustomers />
-            <AboutHome />
-            <StormRecovery />
+
+            <RoofingServicesSection title="BARRINGTON ROOFING SERVICES" imageSrc="/assets/images/features/about-us/content-v6.png" />
+            <HandleRoofingProjectSection city={"Arlington "}/>
+
             <ContactUs />
             <Footer upperSection={<FinancingSection/>}/>
 

@@ -172,6 +172,12 @@
         text-align: left;
     }
 
+    .para
+
+    .benefitsList li {
+        font-size: 0.9rem;
+    }
+
     .innerCta {
         padding: 20px;
     }

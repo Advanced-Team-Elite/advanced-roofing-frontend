@@ -9,6 +9,8 @@ import {Footer} from "@/shared/components/layout/footer/Footer";
 import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
+import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
+import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
 
 export default function LakeForestIlContainer() {
     return (
@@ -16,8 +18,8 @@ export default function LakeForestIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <AboutHome />
-            <StormRecovery />
+            <RoofingServicesSection title="LAKE FOREST ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <HandleRoofingProjectSection city={"Lake Forest "}/>
 
             <WhyChooseUs />
             <OurServices />
