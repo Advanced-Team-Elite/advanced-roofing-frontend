@@ -1,0 +1,272 @@
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* Imagen de fondo para Mobile/Tablet por defecto */
+.heroSection {
+    background-image: url('/assets/images/features/home/hero-tablet-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.videoBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Overlay azul para tablet/mobile */
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 88, 158, 0.8); /* #00589e con transparencia */
+    z-index: 2;
+    display: block;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.flairSvg {
+    width: 118px;
+    margin-top: -140px;
+    margin-bottom: -25px;
+}
+
+
+
+.heroTitle {
+    font-size: 6vw;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.heroSubtitle {
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.contactBtn {
+    background-color: #00ccff;
+    color: white;
+    padding: 15px 30px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Controles de Video Desktop */
+.videoControls {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    display: flex;
+    gap: 25px;
+    z-index: 999;
+    isolation: isolate;
+}
+
+.controlBtn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Home.module.css */
+
+.controlBtn svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    opacity: 1 !important;
+    /* Forzamos que ignore cualquier filtro del padre */
+    mix-blend-mode: normal !important;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) !important;
+}
+
+.controlBtn svg path {
+    fill: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+/* --- RESPONSIVE LOGIC --- */
+
+@media (min-width: 1024px) {
+    .heroOverlay {
+        background: rgba(80, 188, 255, 0.35);
+    }
+    .heroContent {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 1023px) {
+    .heroContent {
+        margin: 0 120px;
+    }
+
+    .heroSection {
+        height: 60vh;
+    }
+
+    .flairSvg {
+        width: 118px;
+        margin-top: -100px;
+    }
+
+    .heroTitle {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+    }
+
+    .videoBg {
+        display: none;
+    }
+
+    .videoControls {
+        display: none;
+    }
+
+    .heroOverlay {
+        background-color: #00579e;
+        opacity: 0.65;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroContent {
+        margin: 0 30px;
+    }
+
+    .heroSubtitle {
+        font-size: 5vw;
+    }
+
+    .heroSection {
+        height: 60vh;
+    }
+
+    .flairSvg {
+        width: 118px;
+        margin-top: -100px;
+    }
+
+    .heroTitle {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+        line-height: 1;
+    }
+}
+
+/* Estilos básicos para el diálogo */
+.dialogOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.dialogContent {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.awardsSection {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.awardsTitle {
+    /* Usará Prompt gracias a tu globals.css */
+    color: #005aab; /* Azul institucional */
+    font-size: 4rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.awardsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Espaciado entre logos */
+}
+
+.awardItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.awardItem:hover {
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablet / Mobile */
+@media (max-width: 1224px) {
+    .awardsSection {
+        padding: 60px 100px;
+    }
+
+    .awardsGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablet */
+        gap: 30px;
+    }
+    .awardsTitle {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .awardsGrid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil como el mockup */
+        gap: 20px;
+    }
+
+    .awardsSection {
+        padding: 40px 20px;
+    }
+}
