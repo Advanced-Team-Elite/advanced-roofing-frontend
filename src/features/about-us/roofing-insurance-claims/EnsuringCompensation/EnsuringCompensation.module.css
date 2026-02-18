@@ -37,14 +37,14 @@
     color: #00589e;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
-    font-weight: 400;
+    font-weight: normal;
     letter-spacing: 0.5px;
     margin-bottom: 25px;
     text-transform: uppercase;
 }
 
 .paragraph {
-    color: #333;
+    color: #060606;
     font-size: 1rem;
     line-height: 1.7;
     margin-bottom: 20px;
