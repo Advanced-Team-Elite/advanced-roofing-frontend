@@ -18,7 +18,7 @@ const FinancingSection = () => {
                 started hassle-free.
             </p>
 
-            <Link href="/financing" className={styles.btnLearnMore}>
+            <Link href="/contact-us" className={styles.btnLearnMore}>
                 Learn More
             </Link>
         </section>

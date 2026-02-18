@@ -218,3 +218,41 @@
         font-weight: bold;
     }
 }
+
+/* ---------------- CAPTCHA ---------------- */
+
+.captchaRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.captchaCode {
+    user-select: none;
+    color: #060606;
+}
+
+.captchaRefresh {
+    background: none;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #060606;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.captchaRefresh:hover {
+    background: #e8e8e8;
+}
+
+.error {
+    color: #cc0000;
+    font-size: 13px;
+    margin-top: 4px;
+}
