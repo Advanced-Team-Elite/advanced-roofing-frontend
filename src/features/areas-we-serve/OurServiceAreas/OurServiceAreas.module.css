@@ -137,8 +137,8 @@
 }
 
 .linkHighlightBlue:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+    text-decoration: none;
+    color: #060606;
 }
 
 /* Grid de servicios en dos columnas */

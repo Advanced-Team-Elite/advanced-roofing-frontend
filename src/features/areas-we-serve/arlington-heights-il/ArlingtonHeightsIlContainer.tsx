@@ -3,7 +3,6 @@ import {AboutHome} from "@/features/home/AboutHome/AboutHome";
 import {StormRecovery} from "@/features/home/StormRecovery/StormRecovery";
 import WhyChooseUs from "@/features/home/WhyChooseUs/WhyChooseUs";
 import OurServices from "@/features/home/OurServices/OurServices";
-import MoreThanRoofing from "@/features/home/MoreThanRoofing/MoreThanRoofing";
 import HappyCustomers from "@/features/home/HappyCustomers/HappyCustomers";
 import ContactUs from "@/features/home/ContactUs/ContactUs";
 import {Footer} from "@/shared/components/layout/footer/Footer";

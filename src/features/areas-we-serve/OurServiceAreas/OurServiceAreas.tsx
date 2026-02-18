@@ -28,7 +28,7 @@ export const OurServiceAreas = () => {
         { name: "Oak Brook", path: "/oak-brook-il/" },
         { name: "Palatine", path: "/palatine-il/" },
         { name: "Rolling Meadows", path: "/rolling-meadows-il/" },
-        { name: "Romeoville", path: "/romeoville-il/" },
+        { name: "Romeoville", path: "/areas-we-serve/" },
         { name: "Schaumburg", path: "/schaumburg-il/" },
         { name: "Skokie", path: "/skokie-il/" },
         { name: "St. Charles", path: "/st-charles-il/" },
