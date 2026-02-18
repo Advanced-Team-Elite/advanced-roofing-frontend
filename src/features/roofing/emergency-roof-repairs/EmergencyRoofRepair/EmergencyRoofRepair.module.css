@@ -44,6 +44,7 @@
     line-height: 1.6;
     color: #060606;
     font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
     margin-bottom: 20px;
 }
 
@@ -65,7 +66,7 @@
     background-color: #00589e; /* Usando el azul del mockup para el banner interno */
     font-weight: bold;
     font-size: 1rem;
-    padding: 40px 30px;
+    padding: 40px 40px;
     color: white;
     margin: 30px 0;
 }
@@ -74,6 +75,7 @@
     margin: 0;
     color: white;
     text-align: center;
+    font-weight: bold;
 }
 
 .innerCta strong {
@@ -112,6 +114,7 @@
     margin-bottom: 20px;
     font-size: 1.1rem;
     line-height: 1.5;
+    color: #060606;
 }
 
 .benefitsList li strong{

@@ -3,6 +3,7 @@ import React from 'react';
 import ContactForm from "@/features/roofing/ContactForm/ContactForm";
 import styles from './FlatRoofRepair.module.css';
 import {FlairIcon} from "@/shared/Icons/Icons";
+import Link from "next/link";
 
 const FlatRoofRepair = () => {
     return (
@@ -25,7 +26,18 @@ const FlatRoofRepair = () => {
 
                     <div className={styles.textContent}>
                         <p>
-                            When heavy storms or high winds damage your flat roof, you need a repair team that not only completes the work efficiently but also supports you at every stage. At <strong>Advanced Roofing Team Construction</strong>, we help homeowners and property managers throughout Chicago protect their properties and simplify what can feel like an overwhelming process. Our team works directly with you and your insurance provider, streamlining your experience and setting clear expectations from your very first call about flat roof repair in Chicago.
+                            When heavy storms or high winds damage your flat roof, you need a repair team that
+                            not only completes the work efficiently but also supports you at every stage. At{' '}
+                            <Link href="/" className={styles.linkText}>
+                                <strong>Advanced Roofing Team Construction</strong>
+                            </Link>
+                            , we help homeowners and property managers throughout Chicago protect their
+                            properties and simplify what can feel like an overwhelming process. Our team
+                            works directly with you and your insurance provider, streamlining your
+                            experience and setting clear expectations from your very first call about{' '}
+                            <Link href="/services/roofing/flat-roof-repair" className={styles.linkText}>
+                                flat roof repair in Chicago
+                            </Link>.
                         </p>
 
                         <p>
@@ -35,7 +47,16 @@ const FlatRoofRepair = () => {
                         {/* Banner de contacto interno (Gris) */}
                         <div className={styles.innerCta}>
                             <p>
-                                Don't let ponding water or cracks compromise your commercial building; call our flat roof specialists for a rapid inspection and guaranteed repair solution. Contact us at <strong>(847) 262-9774</strong> or <span className={styles.blueLink}>fill out our online form</span>
+                                Don't let ponding water or cracks compromise your commercial building;
+                                call our flat roof specialists for a rapid inspection and guaranteed repair solution.
+                                Contact us at{' '}
+                                <Link href="tel:8472629774" className={styles.linkText}>
+                                    <strong>(847) 262-9774</strong>
+                                </Link>{' '}
+                                or{' '}
+                                <Link href="/contact-us" className={styles.blueLink}>
+                                    fill out our online form
+                                </Link>
                             </p>
                         </div>
 

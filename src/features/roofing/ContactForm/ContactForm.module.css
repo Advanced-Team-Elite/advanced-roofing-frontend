@@ -141,6 +141,38 @@
     background-color: #0099c4;
 }
 
+.captchaRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.captchaRefresh {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.captchaRefresh:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.error {
+    color: #ffd700;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
 /* Responsive */
 @media (max-width: 1280px) {
     .formContainer {

@@ -3,6 +3,7 @@ import React from 'react';
 import ContactForm from "@/features/roofing/ContactForm/ContactForm";
 import styles from './EmergencyRoofRepair.module.css';
 import {FlairIcon} from "@/shared/Icons/Icons";
+import Link from "next/link";
 
 const EmergencyRoofRepair = () => {
     return (
@@ -25,7 +26,19 @@ const EmergencyRoofRepair = () => {
 
                     <div className={styles.textContent}>
                         <p>
-                            When severe weather damages your <strong>roof</strong>, you need help fast. At <strong>Advanced Roofing Team Construction</strong>, we handle every step of emergency roof repair in Chicago so you can feel secure. Our dedicated team responds day or night, providing immediate support when hail, high winds, or sudden leaks impact your property. We help protect your home and handle insurance communications, giving you peace of mind through each phase of the process.
+                            When severe weather damages your{' '}
+                            <Link href="/services/roofing" className={styles.linkText}>
+                                <strong>roof</strong>
+                            </Link>
+                            , you need help fast. At{' '}
+                            <Link href="/" className={styles.linkText}>
+                                <strong>Advanced Roofing Team Construction</strong>
+                            </Link>
+                            , we handle every step of emergency roof repair in Chicago so you can feel secure.
+                            Our dedicated team responds day or night, providing immediate support when hail,
+                            high winds, or sudden leaks impact your property. We help protect your home
+                            and handle insurance communications, giving you peace of mind through each
+                            phase of the process.
                         </p>
 
                         <p>
@@ -35,14 +48,26 @@ const EmergencyRoofRepair = () => {
                         {/* Banner de contacto interno (Gris) */}
                         <div className={styles.innerCta}>
                             <p>
-                                Has a storm compromised your roof and exposed your home? Contact us at <strong>(847) 262-9774</strong> or <span className={styles.blueLink}>fill out our online form</span> for 24/7 emergency repair and stabilization.
+                                Has a storm compromised your roof and exposed your home? Contact us at{' '}
+                                <Link href="tel:8472629774" className={styles.linkText}>
+                                    <strong>(847) 262-9774</strong>
+                                </Link>{' '}
+                                or{' '}
+                                <Link href="/contact-us" className={styles.blueLink}>
+                                    fill out our online form
+                                </Link>{' '}
+                                for 24/7 emergency repair and stabilization.
                             </p>
                         </div>
 
                         <h3 className={styles.sectionHeading}>Key Benefits of Professional Emergency Roof Repair</h3>
 
                         <p>
-                            In a city with unpredictable and severe weather like Chicago, a sudden roof leak or storm breach is a serious threat to your home or <strong>business</strong>. When you face an emergency, every minute counts to prevent extensive interior damage, structural compromise, and the expensive nightmare of mold growth. Hiring a professional service immediately is the single most effective way to secure your property and ensure a quick, correct, and lasting solution to your roofing crisis.
+                            In a city with unpredictable and severe weather like Chicago, a sudden roof leak or storm breach is a serious threat to your home or
+                            {' '}<Link href="/commercial-roofing" className={styles.linkText}>
+                                <strong>business</strong>
+                            </Link>{' '}
+                            . When you face an emergency, every minute counts to prevent extensive interior damage, structural compromise, and the expensive nightmare of mold growth. Hiring a professional service immediately is the single most effective way to secure your property and ensure a quick, correct, and lasting solution to your roofing crisis.
                         </p>
 
                         <ul className={styles.benefitsList}>
