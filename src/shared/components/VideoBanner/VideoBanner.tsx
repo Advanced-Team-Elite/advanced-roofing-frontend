@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './VideoBanner.module.css';
 import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
 import Link from 'next/link';
@@ -10,11 +10,25 @@ interface VideoBannerProps {
 
 export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const togglePlay = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (isPlaying) {
+            video.pause();
+        } else {
+            video.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
 
     return (
         <>
             <section className={styles.heroSection}>
                 <video
+                    ref={videoRef}
                     autoPlay
                     muted
                     loop
@@ -47,8 +61,10 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                 </div>
 
                 <div className={styles.videoControls}>
-                    <button className={styles.controlBtn} aria-label="Play/Pause">
-                        <span className="material-icons"><PlayIcon /></span>
+                    <button className={styles.controlBtn} aria-label="Play/Pause" onClick={togglePlay}>
+                        <span className="material-icons">
+                            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                        </span>
                     </button>
                     <button
                         className={styles.controlBtn}
@@ -62,12 +78,20 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
 
             {isDialogOpen && (
                 <div className={styles.dialogOverlay} onClick={() => setIsDialogOpen(false)}>
-                    <div className={styles.dialogContent} onClick={(e) => e.stopPropagation()}>
-                        <h2>Commercial roof installation process</h2>
-                        <button onClick={() => setIsDialogOpen(false)}>Close</button>
+                    <div className={styles.dialogWrapper} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.dialogCloseBtn} onClick={() => setIsDialogOpen(false)}>✕</button>
+                        <div className={styles.dialogContent}>
+                            <h2>Commercial roof installation process</h2>
+                        </div>
                     </div>
                 </div>
             )}
         </>
     );
 }
+
+const PauseIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+);
