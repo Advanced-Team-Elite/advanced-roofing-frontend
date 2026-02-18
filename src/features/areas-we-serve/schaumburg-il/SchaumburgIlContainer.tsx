@@ -11,6 +11,8 @@ import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
 import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
+import RoofInSchaumburg from "@/features/areas-we-serve/schaumburg-il/RoofInSchaumburg/RoofInSchaumburg";
+import {ServingSchaumburg} from "@/features/areas-we-serve/schaumburg-il/ServingSchaumburg/ServingSchaumburg";
 
 export default function SchaumburgIlContainer() {
     return (
@@ -18,8 +20,8 @@ export default function SchaumburgIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="SCHAUMBURG ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
-            <HandleRoofingProjectSection city={"Schaumburg "}/>
+            <RoofInSchaumburg />
+            <ServingSchaumburg/>
 
             <WhyChooseUs />
             <OurServices />

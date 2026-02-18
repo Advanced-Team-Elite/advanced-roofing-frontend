@@ -11,6 +11,8 @@ import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
 import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
+import RoofingInHoffman from "@/features/areas-we-serve/hoofman-estates-il/RoofingInHoffman/RoofingInHoffman";
+import {ServingHoffman} from "@/features/areas-we-serve/hoofman-estates-il/ServingHoffman/ServingHoffman";
 
 export default function HoffmanEstatesIlContainer() {
     return (
@@ -18,8 +20,8 @@ export default function HoffmanEstatesIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="HOFFMAN ESTATES ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
-            <HandleRoofingProjectSection city={"Hoffman Estates "}/>
+            <RoofingInHoffman/>
+            <ServingHoffman/>
 
             <WhyChooseUs />
             <OurServices />

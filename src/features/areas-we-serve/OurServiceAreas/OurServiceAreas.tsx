@@ -16,7 +16,7 @@ export const OurServiceAreas = () => {
         { name: "Downers Grove", path: "/downers-grove-il/" },
         { name: "Elmhurst", path: "/elmhurst-il/" },
         { name: "Evanston", path: "/evanston-il/" },
-        { name: "Hoffman Estates", path: "/hoffman-estates-il/" },
+        { name: "Hoffman Estates", path: "/hoofman-estates-il/" },
         { name: "Lake Forest", path: "/lake-forest-il/" },
         { name: "Lake Zurich", path: "/lake-zurich-il/" },
         { name: "Lemont", path: "/lemont-il/" },

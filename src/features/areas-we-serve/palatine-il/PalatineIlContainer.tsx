@@ -11,6 +11,7 @@ import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
 import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
+import RoofingInPalatine from "@/features/areas-we-serve/palatine-il/RoofingInPalatine/RoofingInPalatine";
 
 export default function PalatineIlContainer() {
     return (
@@ -18,7 +19,7 @@ export default function PalatineIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="PALATINE ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingInPalatine />
             <HandleRoofingProjectSection city={"Palatine "}/>
 
             <WhyChooseUs />

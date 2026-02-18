@@ -79,7 +79,7 @@ export const Header = () => {
                             <li><Link href="/roofing/skylight-installation">Skylight Installation</Link></li>
                             <li><Link href="/roofing/storm-damage-repair">Storm Damage Repair</Link></li>
                             <li><Link href="/roofing/tile-roof-repair">Tile Roof Repair</Link></li>
-                            <li><Link href="/roofing/types">Roof Types</Link></li>
+                            <li><Link href="/roof-types">Roof Types</Link></li>
                         </ul>
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>

@@ -1,0 +1,201 @@
+.projectsSection {
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 0 20px;
+}
+
+.imageColumn {
+    flex: 1;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.textContent {
+    flex: 1.2;
+}
+
+.iconWrapper {
+    margin-bottom: -45px;
+}
+
+.title {
+    color: #0056b3;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.paragraph {
+    color: #060606;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.inlineLink {
+    color: #00c3f8;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.listHeader {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    margin-bottom: 25px;
+}
+
+/* --- LISTA CLICABLE CON LÍNEAS AZULES --- */
+.clickableList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 35px;
+}
+
+.clickableList li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    color: #060606;
+
+}
+
+.clickableList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8;
+}
+
+.clickableList a {
+    text-decoration: none;
+    color: #00c3f8;
+    font-size: 1.15rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.clickableList a:hover {
+    color: #060606;
+}
+
+
+.readMoreWrapper {
+    border-top: 1px solid #f7d000;
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.readMoreBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+/* --- LÓGICA DE EXPANSIÓN --- */
+.expandableContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.expanded {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    color: #00ccff;
+    font-size: 1rem;
+}
+.arrowUp { transform: rotate(180deg); }
+
+.ctaBanner {
+    background-color: #004a8c;
+    color: #fff;
+    padding: 30px;
+    border-radius: 2px;
+    font-size: 1.2rem;
+}
+
+.yellowLink {
+    color: #ffcc00;
+    font-weight: 700;
+}
+
+.footerText {
+    color: #060606;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* --- RESPONSIVE TABLET (1280px) --- */
+@media (max-width: 1280px) {
+    .container {
+        gap: 40px;
+    }
+    .title {
+        font-size: 3.2rem;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (768px) --- */
+@media (max-width: 768px) {
+    .projectsSection {
+        padding: 60px 0;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .imageColumn {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 2.6rem;
+        text-align: center;
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        margin-left: 0;
+        margin-bottom: -35px;
+    }
+
+    .footerText {
+        text-align: left;
+    }
+}

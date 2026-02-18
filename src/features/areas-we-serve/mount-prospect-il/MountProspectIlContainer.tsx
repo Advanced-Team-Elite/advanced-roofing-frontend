@@ -11,6 +11,8 @@ import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
 import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
+import RoofingInMount from "@/features/areas-we-serve/mount-prospect-il/RoofingInMount/RoofingInMount";
+import {RoofingHelp} from "@/features/areas-we-serve/mount-prospect-il/RoofingHelp/RoofingHelp";
 
 export default function MountProspectIlContainer() {
     return (
@@ -18,8 +20,8 @@ export default function MountProspectIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="MOUNT PROSPECT ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
-            <HandleRoofingProjectSection city={"Mount Prospect "}/>
+            <RoofingInMount/>
+            <RoofingHelp/>
 
             <WhyChooseUs />
             <OurServices />
