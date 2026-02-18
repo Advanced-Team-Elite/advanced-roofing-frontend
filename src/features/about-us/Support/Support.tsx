@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './Support.module.css';
 import {FlairIcon} from "@/shared/Icons/Icons";
+import Link from "next/link";
 
 const Support = () => {
     return (
@@ -25,7 +26,12 @@ const Support = () => {
                         <li>Emergency response for storm-related damage</li>
                     </ul>
                     <ul className={styles.serviceList}>
-                        <li><span className={styles.linkHighlight}>Insurance claims assistance</span> when severe weather impacts your roof</li>
+                        <li>
+                            <Link href="/roofing-insurance-claims/" className={styles.linkHighlight}>
+                                Insurance claims assistance
+                            </Link>{" "}
+                            when severe weather impacts your roof
+                        </li>
                         <li>Free estimates to help you plan ahead</li>
                         <li>Insured service with warranty coverage</li>
                     </ul>
@@ -34,8 +40,16 @@ const Support = () => {
                 <h3 className={styles.listHeading}>Our commitment to quality is reflected through respected industry recognitions:</h3>
 
                 <ul className={styles.recognitionList}>
-                    <li><span className={styles.linkHighlight}>Owens Corning Preferred Contractor</span></li>
-                    <li><span className={styles.linkHighlight}>GAF Master Elite Roofing Contractor</span></li>
+                    <li>
+                        <Link href="/about-us/owens-corning-preferred-contractor/" className={styles.linkHighlight}>
+                            Owens Corning Preferred Contractor
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about-us/gaf-masterelite-preferred-contractor/" className={styles.linkHighlight}>
+                            GAF Master Elite Roofing Contractor
+                        </Link>
+                    </li>
                 </ul>
 
                 <p className={styles.paragraph}>

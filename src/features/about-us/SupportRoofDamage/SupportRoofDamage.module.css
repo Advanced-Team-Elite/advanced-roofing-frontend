@@ -66,6 +66,7 @@
     font-size: 1.1rem;
     margin: 0;
     line-height: 1.5;
+    font-weight: bold;
 }
 
 .phoneLink, .contactLink {
@@ -75,7 +76,7 @@
 }
 
 .contactLink:hover, .phoneLink:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 /* Responsive para Mobile */
 @media (max-width: 1280px) {

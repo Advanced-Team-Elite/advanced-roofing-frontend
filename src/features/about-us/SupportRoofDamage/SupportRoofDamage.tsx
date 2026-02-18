@@ -42,7 +42,7 @@ const SupportRoofDamage = () => {
                         {/* Bloque CTA Azul */}
                         <div className={styles.ctaBox}>
                             <p className={styles.ctaText}>
-                                Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> or <a href="/contact" className={styles.contactLink}>contact us online</a> to schedule a service and request your free estimate today.
+                                Call <a href="tel:8472629774">(847) 262-9774</a> or <a href="/contact" className={styles.contactLink}>contact us online</a> to schedule a service and request your free estimate today.
                             </p>
                         </div>
                     </div>

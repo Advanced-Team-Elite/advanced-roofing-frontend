@@ -53,7 +53,7 @@ const AboutUs = () => {
                 </div>
 
                 <p className={styles.footerContact}>
-                    Call <strong>(847) 262-9774</strong> or <a href="/contact" className={styles.contactLink}>contact us online</a> today for a free estimate and discover how we help property owners across Chicago.
+                    Call <strong>(847) 262-9774</strong> or <a href="/contact-us" className={styles.contactLink}>contact us online</a> today for a free estimate and discover how we help property owners across Chicago.
                 </p>
             </div>
         </section>

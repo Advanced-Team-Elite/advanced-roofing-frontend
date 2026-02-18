@@ -26,14 +26,15 @@
 .secondaryTitle {
     font-size: 2.2rem;
     color: #0056b3;
-    font-weight: lighter;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
     margin: 40px 0 20px;
 }
 
 .introText, .paragraph {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #444;
+    color: #060606;
     margin-bottom: 25px;
 }
 
@@ -63,7 +64,7 @@
     padding-left: 30px;
     margin-bottom: 15px;
     font-size: 1.05rem;
-    color: #444;
+    color: #060606;
     line-height: 1.4;
 }
 
@@ -85,7 +86,8 @@
 }
 
 .linkHighlight:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #060606;
 }
 
 /* Ajustes para Mobile */
