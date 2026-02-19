@@ -45,7 +45,7 @@ export const WhySkylightInstallation = () => {
                         </li>
                         <li>
                             <strong>Full-service support:</strong> From{' '}
-                            <Link href="/emergency-roof-repairs/" className={styles.inlineLink}>
+                            <Link href="/roofing/skylight-repair/" className={styles.inlineLink}>
                                 emergency repairs
                             </Link>{' '}
                             to final installation, we manage every phase, ensuring a smooth and

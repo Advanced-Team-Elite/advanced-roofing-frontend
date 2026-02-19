@@ -20,7 +20,7 @@ export const ThoroughStorm = () => {
 
                     <p className={styles.paragraph}>
                         Storm recovery brings enough challenges; navigating inspections and insurance shouldn’t make it harder. At Advanced Roofing Team Construction, we manage both the technical side of the inspection, and the details needed to support your
-                        {' '} <Link href="/roofing/" className={styles.inlineLink}>
+                        {' '} <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
                             insurance claim.
                         </Link>{' '}
                     </p>

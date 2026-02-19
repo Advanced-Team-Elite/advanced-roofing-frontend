@@ -74,7 +74,9 @@ export const FrequentlyQuestionsSkylightInstallation = () => {
             </div>
 
             <div className={styles.footerBtn}>
-                <button className={styles.contactBtn}>Contact Us</button>
+                <Link href="/contact-us" className={styles.contactLink}>
+                    <button className={styles.contactBtn}>Contact Us</button>
+                </Link>
             </div>
         </section>
     );

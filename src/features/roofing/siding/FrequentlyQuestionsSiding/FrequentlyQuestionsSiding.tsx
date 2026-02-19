@@ -89,7 +89,7 @@ export const FrequentlyQuestionsSiding = () => {
                                 Chicago area
                             </Link>{' '}
                             face repeated freeze-thaw cycles, strong winds, and driving rain, which can cause lesser materials to crack, buckle, or lose their finish prematurely. When we recommend products, we look at how they have performed on similar homes in the region and how they meet local building requirements. We also help you weigh factors like color retention, manufacturer warranties, and ongoing maintenance so you can choose a siding solution that fits your budget and holds up over time in our climate. We also offer
-                            <Link href="/financing/" className={styles.inlineLink}>
+                            {' '}<Link href="/financing/" className={styles.inlineLink}>
                                 flexible financing solutions
                             </Link>{' '}to ensure you get the perfect siding solution for your home.
                         </p>
@@ -130,7 +130,9 @@ export const FrequentlyQuestionsSiding = () => {
             </div>
 
             <div className={styles.footerBtn}>
-                <button className={styles.contactBtn}>Contact Us</button>
+                <Link href="/contact-us" className={styles.contactLink}>
+                    <button className={styles.contactBtn}>Contact Us</button>
+                </Link>
             </div>
         </section>
     );
