@@ -7,7 +7,7 @@
 .topBar {
     background-color: #f7d000;
     color: #00589e;
-    padding: 20px 70px;
+    padding: 15px 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,8 +17,17 @@
 
 .topBar span{
     font-size: 1.1rem;
-    font-weight: lighter;
-    margin-left: 13px;
+    font-weight: bold;
+}
+
+.topBar a:hover {
+    color: #060606 !important;
+}
+
+.telf{
+    color: #060606;
+    font-weight: bolder;
+    font-size: 1.5rem !important;
 }
 
 .topBarNavLink{
@@ -29,7 +38,7 @@
 
 .mainNav {
     background-color: #00589e;
-    padding: 45px 70px;
+    padding: 45px 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -267,6 +276,10 @@
     padding: 12px;
     font-weight: bold;
     text-decoration: none;
+}
+
+.phoneToggle {
+    display: none;
 }
 
 @media (max-width: 1280px) {

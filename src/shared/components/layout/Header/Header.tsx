@@ -23,7 +23,7 @@ export const Header = () => {
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
-                    <span className="text-black text-lg ml-4">847-262-9774</span>
+                    <span className={styles.telf} >847-262-9774</span>
                 </div>
             </div>
 
@@ -39,13 +39,17 @@ export const Header = () => {
                 </button>
 
                 <div className={styles.logoContainer}>
-                    <Image
-                        src="/assets/brand/logo-light.png"
-                        alt="Advanced Roofing Logo"
-                        width={250}
-                        height={80}
-                        priority
-                    />
+
+                    <Link href="/">
+                        <Image
+                            src="/assets/brand/logo-light.png"
+                            alt="Advanced Roofing Logo"
+                            width={250}
+                            height={80}
+                            priority
+                        />
+                    </Link>
+
                 </div>
 
                 {/* Desktop Links */}

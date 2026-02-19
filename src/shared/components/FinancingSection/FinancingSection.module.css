@@ -28,6 +28,12 @@
 }
 
 
+.btnLearnMore:hover {
+    background-color: white;
+    color: #060606;
+}
+
+
 /* Responsive */
 @media (max-width: 1024px) {
     .financingTitle {
