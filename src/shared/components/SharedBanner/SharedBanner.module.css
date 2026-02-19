@@ -71,6 +71,14 @@
     }
     .title {
         font-size: 2rem;
+        color: white;
+        text-align: center;
+        margin: 0;
+        width: auto;
+    }
+    .titleWrapper{
+        margin: -5% auto 0;
+        height: fit-content;
     }
     .cityWrapper {
         margin-top: -10%;
@@ -79,5 +87,9 @@
 
     .iconWrapper svg{
         width: 90px;
+    }
+    .hidden{
+        display: none;
+        height: 0;
     }
 }

@@ -115,4 +115,16 @@
     .sectionWrapper {
         padding: 20px 20px;
     }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .ctaText {
+        font-size: 0.95rem;
+    }
+
+    .flexLayout {
+        gap: 0px;
+    }
 }
