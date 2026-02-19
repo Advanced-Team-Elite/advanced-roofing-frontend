@@ -38,7 +38,7 @@
 .paragraph {
     margin-bottom: 1.5rem;
     font-size: 1.15rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
 }
 
@@ -122,9 +122,17 @@
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
+    .aboutSection {
+        padding: 0 100px;
+    }
+
     .fullWidthContainer {
         grid-template-columns: 1fr;
+    }
+
+    .textContent {
+        padding: 10px 0;
     }
 
     .textContent {
@@ -133,9 +141,27 @@
     }
 
     .imageColumn {
-        height: 500px;
         order: 1;
     }
 
     .title { font-size: 2.2rem; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .aboutSection {
+        padding: 0 20px;
+    }
 }
