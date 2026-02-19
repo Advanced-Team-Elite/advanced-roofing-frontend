@@ -125,7 +125,7 @@
 
 /* Botón Celeste del Mockup */
 .submitBtn {
-    background-color: #00c3f8;
+    background-color: #10c8f8;
     width: 45%;
     color: #ffffff;
     border: none;
@@ -194,5 +194,11 @@
     }
     .title {
         font-size: 2rem;
+    }
+    .disclaimer {
+        text-align: center;
+    }
+    .submitBtn {
+        margin: 0 auto;
     }
 }
