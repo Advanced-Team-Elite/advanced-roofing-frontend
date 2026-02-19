@@ -28,7 +28,7 @@ const FlatRoofRepair = () => {
                         <p>
                             When heavy storms or high winds damage your flat roof, you need a repair team that
                             not only completes the work efficiently but also supports you at every stage. At{' '}
-                            <Link href="/" className={styles.linkText}>
+                            <Link href="/about-us" className={styles.linkText}>
                                 <strong>Advanced Roofing Team Construction</strong>
                             </Link>
                             , we help homeowners and property managers throughout Chicago protect their
@@ -63,7 +63,11 @@ const FlatRoofRepair = () => {
                         <h3 className={styles.sectionHeading}>Critical Signs Your Flat Roof Needs Repair in Chicago</h3>
 
                         <p>
-                            Flat roofs on homes and <strong>commercial buildings</strong>. in Chicago face unique challenges from the city's intense temperature swings, heavy snow loads, and persistent rain. Because these roofs rely on precise drainage, even minor flaws can quickly turn into major leaks and structural damage, often going unnoticed until water stains appear inside. Recognizing the following key indicators early is vital for preserving your roof's lifespan and avoiding costly interior damage.
+                            Flat roofs on homes and{" "}
+                            <Link href="/commercial-roofing/" className={styles.linkText}>
+                                <strong>commercial buildings</strong>
+                            </Link>.{" "}
+                            . in Chicago face unique challenges from the city's intense temperature swings, heavy snow loads, and persistent rain. Because these roofs rely on precise drainage, even minor flaws can quickly turn into major leaks and structural damage, often going unnoticed until water stains appear inside. Recognizing the following key indicators early is vital for preserving your roof's lifespan and avoiding costly interior damage.
                         </p>
 
                         <ul className={styles.benefitsList}>

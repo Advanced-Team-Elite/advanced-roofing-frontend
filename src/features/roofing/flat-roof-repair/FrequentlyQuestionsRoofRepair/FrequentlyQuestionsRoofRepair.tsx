@@ -40,7 +40,7 @@ const FrequentlyQuestions = () => {
                             extensive cracking, multiple leaks, or pervasive blistering across the surface. Replacement is
                             also the better choice if the roof is reaching the end of its projected lifespan, typically
                             15 to 25 years, or if the underlying insulation is saturated with water. A{' '}
-                            <Link href="/free-inspection" className={styles.inlineLink}>
+                            <Link href="/roofing/roof-inspections/" className={styles.inlineLink}>
                                 professional inspection
                             </Link>{' '}
                             and core sample will determine the extent of the damage to guide this crucial decision.
@@ -69,7 +69,7 @@ const FrequentlyQuestions = () => {
                         <p>
                             Do not postpone taking care of your flat roof or sorting out your insurance claim questions. Reach out to
                             {' '}
-                            <Link href="/free-inspection" className={styles.inlineLink}>
+                            <Link href="/about-us" className={styles.inlineLink}>
                                 Advanced Roofing Team Construction
                             </Link>{' '}
                             to connect with a Chicago roofing team that keeps your best interests at the center of every decision. You receive straightforward guidance, reliable communication, and a clear plan designed for your situation. Contact us now to restore your peace of mind and protect your property with confidence.
