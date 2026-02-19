@@ -26,7 +26,11 @@ export const GutterServices = () => {
 
                     <div className={styles.textContent}>
                         <p>
-                            A dependable gutter system plays a key role in protecting your property from water damage. At <strong>Advanced Roofing Team Construction</strong>, we install durable gutters designed to keep rainwater flowing away from your roof, siding, and foundation. Whether you’re building new or upgrading an older system, we provide straightforward gutter installation and replacement services across Chicago and nearby communities.
+                            A dependable gutter system plays a key role in protecting your property from water damage. At
+                            {" "}<Link href="/about-us" className={styles.linkText}>
+                                <strong>Advanced Roofing Team Construction</strong>
+                            </Link>
+                            , we install durable gutters designed to keep rainwater flowing away from your roof, siding, and foundation. Whether you’re building new or upgrading an older system, we provide straightforward gutter installation and replacement services across Chicago and nearby communities.
                         </p>
 
                         <h2 className={styles.subTitle}>Our Seamless Gutter Installation </h2>
