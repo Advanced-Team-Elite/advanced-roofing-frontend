@@ -1,4 +1,4 @@
-import {AreasWeServeContainer} from "@/features/areas-we-serve/AreasWeServeContainer";
+import {CommercialRoofingContainer} from "@/features/commercial-roofing/CommercialRoofingContainer";
 
 
 export const metadata = {
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function ServiceAreasPage() {
-    return <AreasWeServeContainer />;
+    return <CommercialRoofingContainer />;
 }

@@ -39,7 +39,7 @@
 .paragraph {
     margin-bottom: 1.5rem;
     font-size: 1.15rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
 }
 
@@ -55,6 +55,7 @@
     margin-bottom: 20px;
     font-size: 1.1rem;
     line-height: 1.5;
+    color: #060606;
 }
 
 .benefitsList li strong{
@@ -194,11 +195,11 @@
     }
 
     .paragraph{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {

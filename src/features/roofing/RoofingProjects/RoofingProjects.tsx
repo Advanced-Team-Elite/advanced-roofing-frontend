@@ -52,7 +52,7 @@ const RoofingProjects = () => {
                         </li>
                     </ul>
 
-                    <p className={styles.footerText}>
+                    <p className={styles.paragraph}>
                         Our team keeps the process clear and organized, delivering roofing systems
                         designed to perform through the changing seasons.
                     </p>

@@ -170,6 +170,18 @@
         padding: 60px 0 0 0;
     }
 
+    .textContent p {
+        font-size: 0.95rem;
+    }
+
+    .benefitsList li {
+        font-size: 0.95rem;
+    }
+
+    .benefitsList li strong{
+        font-size: 0.95rem;
+    }
+
     .mainTitle {
         font-size: 2.2rem;
         text-align: left;

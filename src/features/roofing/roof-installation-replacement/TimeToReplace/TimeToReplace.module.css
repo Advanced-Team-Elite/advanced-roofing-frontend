@@ -203,7 +203,7 @@
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
     .paragraph {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.7;
     }
 

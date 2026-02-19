@@ -195,6 +195,10 @@
         margin-bottom: 30px;
     }
 
+    .benefitsList li {
+        font-size: 0.95rem;
+    }
+
     .faqSection {
         margin: 0 auto;
         padding: 0 20px 50px 20px;

@@ -176,7 +176,7 @@ export const Header = () => {
                                     <li><Link href="/roofing/skylight-installation" onClick={closeDrawer}>Skylight Installation</Link></li>
                                     <li><Link href="/roofing/storm-damage-repair" onClick={closeDrawer}>Storm Damage Repair</Link></li>
                                     <li><Link href="/roofing/tile-roof-repair" onClick={closeDrawer}>Tile Roof Repair</Link></li>
-                                    <li><Link href="/roofing/types" onClick={closeDrawer}>Roof Types</Link></li>
+                                    <li><Link href="/roof-types" onClick={closeDrawer}>Roof Types</Link></li>
                                 </ul>
                             </div>
 

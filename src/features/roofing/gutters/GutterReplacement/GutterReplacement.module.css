@@ -206,4 +206,10 @@
     .aboutSection {
         padding: 0 20px;
     }
+    .paragraph {
+        font-size: 0.95rem;
+    }
+    .processList li {
+        font-size: 0.95rem;
+    }
 }
