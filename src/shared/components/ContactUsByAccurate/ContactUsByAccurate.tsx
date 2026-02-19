@@ -275,7 +275,10 @@ export const ContactUsByAccurate = () => {
                             </p>
 
                             <div className={styles.rowBtn}>
-                                <button type="submit" className={styles.contactUsBtn}>Contact Us</button>
+                                <Link href="/contact-us" className={styles.contactLink}>
+                                    <button type="submit" className={styles.contactUsBtn}>Contact Us</button>
+                                </Link>
+
                             </div>
                         </div>
                     </div>
