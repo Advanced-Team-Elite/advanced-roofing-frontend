@@ -215,3 +215,10 @@ a:hover {
         text-align: center;
     }
 }
+
+@media (max-width: 768px) {
+    .footerLogo{
+        width: 200px;
+    }
+}
+
