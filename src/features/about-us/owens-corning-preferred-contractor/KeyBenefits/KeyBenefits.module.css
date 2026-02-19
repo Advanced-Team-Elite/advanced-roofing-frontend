@@ -21,7 +21,7 @@
 .iconWrapper {
     margin-top: -100px;
     margin-bottom: -40px;
-    color: #333;
+    color: #060606;
 }
 
 .subTitle {
@@ -37,7 +37,7 @@
 .description {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #333333;
+    color: #060606;
     margin-bottom: 20px;
     font-weight: 400;
 }
@@ -84,7 +84,18 @@
 }
 
 @media (max-width: 600px) {
+    .iconWrapper {
+        margin: -100px 0 -40px 0;
+    }
+
     .benefitsSection {
         padding: 40px 20px;
+    }
+    .description {
+        font-size: 0.95rem;
+    }
+    .ctaText {
+        font-size: 0.95rem;
+        text-align: center;
     }
 }

@@ -83,4 +83,11 @@
     .aboutSection {
         padding: 80px 20px;
     }
+    .iconWrapper {
+        margin: -100px 0 -40px 0;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
 }
