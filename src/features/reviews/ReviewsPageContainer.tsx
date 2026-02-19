@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import styles from './ReviewsPage.module.css';
 import {Review, reviewsData} from './constants';
 import ReviewCard from './ReviewCard';
@@ -10,18 +10,39 @@ import ReviewModal from "@/features/reviews/ReviewModal";
 import {Footer} from "@/shared/components/layout/footer/Footer";
 
 const ReviewsPageContainer = () => {
+    const [apiReviews, setApiReviews] = useState<Review[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    // Lógica de paginación
+    const allReviews = [...reviewsData, ...apiReviews];
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentReviews = reviewsData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(reviewsData.length / itemsPerPage);
+
+    const currentReviews = allReviews.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(allReviews.length / itemsPerPage);
+
 
     const [selectedReview, setSelectedReview] = useState<Review | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch("/api/reviews");
+                if (!res.ok) throw new Error("Failed to fetch reviews");
+
+                const data = await res.json();
+
+                setApiReviews(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchReviews();
+    }, []);
 
     const handleOpenReview = (review: Review) => {
         setSelectedReview(review);
@@ -67,7 +88,7 @@ const ReviewsPageContainer = () => {
                         <ReviewCard
                             key={review.id}
                             review={review}
-                            onReadMore={handleOpenReview} // Pasamos la función aquí
+                            onReadMore={handleOpenReview}
                         />
                     ))}
                 </div>

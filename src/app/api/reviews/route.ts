@@ -34,9 +34,11 @@ export async function POST(req: Request) {
                 title: body.title,
                 review: body.review,
                 email: body.email,
-                approved: true, // APROBACION FORZADA
+                rating: body.rating,
+                approved: true,
             },
         });
+
 
         return NextResponse.json(newReview, { status: 201 });
     } catch (error) {

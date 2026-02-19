@@ -27,6 +27,8 @@ model Review {
   title     String
   review    String   @db.Text
   email     String
+  rating    Int
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
