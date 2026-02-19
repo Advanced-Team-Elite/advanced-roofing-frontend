@@ -9,7 +9,7 @@ export default function ClimateChangeBlogPage() {
         <div>
             <article className={styles.container}>
 
-                {/* BREADCRUMB */}
+                {/* BREADCRUMB - ancho completo */}
                 <nav className={styles.breadcrumb}>
                     <Link href="/" className={styles.breadcrumbLink}>
                         <span className={styles.homeIcon}>⌂</span>
@@ -26,7 +26,7 @@ export default function ClimateChangeBlogPage() {
 
                 <hr className={styles.breadcrumbDivider} />
 
-                {/* TÍTULO + META */}
+                {/* TÍTULO + META - ancho completo */}
                 <header className={styles.header}>
                     <h1 className={styles.mainTitle}>
                         The Impact of Climate Change on Hail Damage Insurance Policies
@@ -38,7 +38,7 @@ export default function ClimateChangeBlogPage() {
                     </div>
                 </header>
 
-                {/* 2 COLUMNAS */}
+                {/* 2 COLUMNAS: imagen izq | texto derecha */}
                 <div className={styles.twoCol}>
 
                     <div className={styles.imageCol}>
