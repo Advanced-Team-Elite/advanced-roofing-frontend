@@ -29,7 +29,7 @@ export const RoofingMaterials = () => {
                     <ul className={styles.processList}>
                         <li>
                             <strong>
-                                <Link href="/shingle-roofing/" className={styles.inlineLink}>
+                                <Link href="/roof-types/shingle-roofing/" className={styles.inlineLink}>
                                     Asphalt shingles.
                                 </Link>
                             </strong>{' '}

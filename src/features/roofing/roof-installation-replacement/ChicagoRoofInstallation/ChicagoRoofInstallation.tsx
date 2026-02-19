@@ -35,7 +35,7 @@ const ChicagoRoofInstallation = () => {
 
                         <p >
                             Whether your roof is showing signs of age or you've experienced{' '}
-                            <Link href="/storm-damage-repair/" className={styles.inlineLink}>
+                            <Link href="/roofing/storm-damage-repair/" className={styles.inlineLink}>
                                 storm damage
                             </Link>{' '}
                             that requires a full replacement, we guide you through the process and materials designed for long-term performance.

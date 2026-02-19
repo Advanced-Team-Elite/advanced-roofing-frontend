@@ -48,7 +48,7 @@ const RoofingProjects = () => {
                             <Link href="/siding">Siding</Link>
                         </li>
                         <li>
-                            <Link href="/storm-damage">Storm damage solutions</Link>
+                            <Link href="/roofing/storm-damage-repair/">Storm damage solutions</Link>
                         </li>
                     </ul>
 
