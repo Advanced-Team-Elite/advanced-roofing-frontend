@@ -27,11 +27,11 @@ const EmergencyRoofRepair = () => {
                     <div className={styles.textContent}>
                         <p>
                             When severe weather damages your{' '}
-                            <Link href="/services/roofing" className={styles.linkText}>
+                            <Link href="/roofing" className={styles.linkText}>
                                 <strong>roof</strong>
                             </Link>
                             , you need help fast. At{' '}
-                            <Link href="/" className={styles.linkText}>
+                            <Link href="/about-us" className={styles.linkText}>
                                 <strong>Advanced Roofing Team Construction</strong>
                             </Link>
                             , we handle every step of emergency roof repair in Chicago so you can feel secure.
