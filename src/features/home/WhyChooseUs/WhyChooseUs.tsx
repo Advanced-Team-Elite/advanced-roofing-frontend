@@ -3,6 +3,7 @@ import { HammerIcon, HouseIcon, InspectionIcon, ProfessionalIcon} from "@/shared
 import styles from './WhyChooseUs.module.css';
 
 const WhyChooseUs = () => {
+
     const benefits = [
         {
             icon: <HammerIcon size={35} />,
