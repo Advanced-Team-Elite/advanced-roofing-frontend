@@ -108,14 +108,13 @@ const ContactUs = () => {
         return newErrors;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const validationErrors = validate();
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-            // If captcha failed, regenerate it
             if (validationErrors.captchaInput) {
                 refreshCaptcha();
             }
@@ -123,23 +122,41 @@ const ContactUs = () => {
         }
 
         const { captchaInput, ...dataToSubmit } = formData;
-        console.log('Form submitted:', dataToSubmit);
 
-        // Reset form after successful submit
-        setFormData({
-            firstName: '',
-            lastName: '',
-            phone: '',
-            email: '',
-            address: '',
-            isNewCustomer: '',
-            message: '',
-            captchaInput: '',
-        });
-        setErrors({});
-        refreshCaptcha();
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dataToSubmit),
+            });
 
-        router.push('/contact-us/thank-you');
+            if (!response.ok) {
+                throw new Error("Failed to submit form");
+            }
+
+            // Reset form after successful submit
+            setFormData({
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: '',
+                address: '',
+                isNewCustomer: '',
+                message: '',
+                captchaInput: '',
+            });
+
+            setErrors({});
+            refreshCaptcha();
+
+            router.push('/contact-us/thank-you');
+
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Something went wrong. Please try again.");
+        }
     };
 
     return (
