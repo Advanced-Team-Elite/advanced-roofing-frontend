@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from './ReviewsPage.module.css';
 import {Review, reviewsData} from './constants';
 import ReviewCard from './ReviewCard';
@@ -9,8 +9,11 @@ import Link from "next/link";
 import ReviewModal from "@/features/reviews/ReviewModal";
 import {Footer} from "@/shared/components/layout/footer/Footer";
 
-const ReviewsPageContainer = () => {
-    const [apiReviews, setApiReviews] = useState<Review[]>([]);
+type Props = {
+    apiReviews: Review[];
+};
+
+const ReviewsPageContainer = ({ apiReviews }: Props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -26,23 +29,6 @@ const ReviewsPageContainer = () => {
     const [selectedReview, setSelectedReview] = useState<Review | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    useEffect(() => {
-        const fetchReviews = async () => {
-            try {
-                const res = await fetch("/api/reviews");
-                if (!res.ok) throw new Error("Failed to fetch reviews");
-
-                const data = await res.json();
-
-                setApiReviews(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchReviews();
-    }, []);
 
     const handleOpenReview = (review: Review) => {
         setSelectedReview(review);
