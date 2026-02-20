@@ -34,6 +34,7 @@
     margin: 90px 100px;
     max-width: 80%;
     text-align: center;
+    padding: 0 0 90px 0;
 }
 
 .areasTitle {
@@ -84,6 +85,7 @@
     align-items: center;
     gap: 12px;
     font-size: 1.1rem;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .dash {

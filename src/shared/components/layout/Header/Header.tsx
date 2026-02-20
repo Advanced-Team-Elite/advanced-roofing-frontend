@@ -66,7 +66,7 @@ export const Header = () => {
                                 <Link href="/about-us/gaf-masterelite-preferred-contractor">GAF Masterelite Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="roofing-insurance-claims">Insurance Claims</Link>
+                                <Link href="/roofing-insurance-claims">Insurance Claims</Link>
                             </li>
                         </ul>
                     </li>
@@ -90,7 +90,9 @@ export const Header = () => {
                     <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Roofing Insurance Claims</Link></li>
                     <li><Link href="/contact-us" className={styles.navLink}>Contact Us</Link></li>
                     <li>
-                        <button className={styles.quoteBtn}>Request a Quote</button>
+                        <Link href="/contact-us/" className={styles.quoteBtnLink}>
+                            <button className={styles.quoteBtn}>Request a Quote</button>
+                        </Link>
                     </li>
                     <li>
                         <Link href="/site-search" className={styles.searchIcon}>
@@ -185,7 +187,7 @@ export const Header = () => {
                                 <ul className={styles.mobileList}>
                                     <li><Link href="/about-us/owens-corning-preferred-contractor" onClick={closeDrawer}>Owens Corning Preferred Contractor</Link></li>
                                     <li><Link href="/about-us/gaf-masterelite-preferred-contractor" onClick={closeDrawer}>GAF Masterelite Preferred Contractor</Link></li>
-                                    <li><Link href="roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
+                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
                                 </ul>
                             </div>
                         </div>

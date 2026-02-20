@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styles from "./GafPreferred.module.css";
 import Image from "next/image";
 import {FlairIcon} from "@/shared/Icons/Icons";
+import { ScrollReveal } from "@/shared/animations/ScrollReveal";
 
 export const GafPreferred = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -66,15 +67,18 @@ export const GafPreferred = () => {
 
                 </div>
 
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <img
-                            src="/assets/images/features/about-us/content-v6.png"
-                            alt="Owens Corning Materials"
-                            className={styles.mainImage}
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <img
+                                src="/assets/images/features/about-us/content-v6.png"
+                                alt="Owens Corning Materials"
+                                className={styles.mainImage}
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

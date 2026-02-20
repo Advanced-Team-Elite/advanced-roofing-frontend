@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './RoofingProjects.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const RoofingProjects = () => {
     return (
@@ -11,11 +12,14 @@ const RoofingProjects = () => {
 
                 {/* Lado Izquierdo: Imagen (arriba en mobile) */}
                 <div className={styles.imageColumn}>
-                    <img
-                        src="/assets/images/features/about-us/content-v11.png"
-                        alt="Roofing Project Installation"
-                        className={styles.mainImage}
-                    />
+                    <ScrollReveal direction="right" distance={30}>
+                        <img
+                            src="/assets/images/features/about-us/content-v11.png"
+                            alt="Roofing Project Installation"
+                            className={styles.mainImage}
+                        />
+                    </ScrollReveal>
+
                 </div>
 
                 {/* Lado Derecho: Contenido */}

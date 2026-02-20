@@ -32,8 +32,10 @@ export const SkylightInstallationContainer = () => {
             <section>
                 <SkylightInstallation />
                 <ProductRecomendation/>
+
                 <WhySkylightInstallation/>
                 <WhatExpectSkylightInstallation/>
+
                 <ImageGalleryRow/>
                 <FrequentlyQuestionsSkylightInstallation/>
             </section>

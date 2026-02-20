@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import styles from './WorkDirectly.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import { ScrollReveal } from "@/shared/animations/ScrollReveal";
 
 export const WorkDirectly = () => {
 
@@ -44,14 +45,18 @@ export const WorkDirectly = () => {
                 </div>
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
+
                 <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <img
-                            src="/assets/images/features/about-us/content-v13.png"
-                            alt="Chicago Roofing Services"
-                            className={styles.mainImage}
-                        />
-                    </div>
+                    <ScrollReveal direction="right">
+                        <div className={styles.imageWrapper}>
+                            <img
+                                src="/assets/images/features/about-us/content-v13.png"
+                                alt="Chicago Roofing Services"
+                                className={styles.mainImage}
+                            />
+                        </div>
+                    </ScrollReveal>
+
                 </div>
 
             </div>

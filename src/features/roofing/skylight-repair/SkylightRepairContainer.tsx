@@ -22,8 +22,10 @@ export const SkylightRepairContainer = () => {
             <section>
                 <SkylightRepair />
                 <ProductRecomendation/>
+
                 <ChicagoSkylight/>
                 <WhyOwnersTrust/>
+
                 <ImageGalleryRow/>
                 <FrequentlyQuestionsSkylightRepair/>
             </section>

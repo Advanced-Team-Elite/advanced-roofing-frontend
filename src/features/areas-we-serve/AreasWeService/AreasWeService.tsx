@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './AreasWeService.module.css';
 import Link from "next/link";
 import {FlairIcon} from "@/shared/Icons/Icons";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const AreasWeService = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -59,17 +60,20 @@ export const AreasWeService = () => {
                 </div>
 
                 {/* RIGHT */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/assets/images/features/about-us/content-v6.png"
-                            alt="Chicago Roofing"
-                            fill
-                            className={styles.mainImage}
-                            priority
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src="/assets/images/features/about-us/content-v6.png"
+                                alt="Chicago Roofing"
+                                fill
+                                className={styles.mainImage}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

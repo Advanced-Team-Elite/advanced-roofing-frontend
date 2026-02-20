@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './ServingHome.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const ServingHome = () => {
     return (
@@ -50,13 +51,16 @@ const ServingHome = () => {
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
                 <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <img
-                            src="/assets/images/features/roofing/content-v10.png"
-                            alt="Chicago Roofing Services"
-                            className={styles.mainImage}
-                        />
-                    </div>
+                    <ScrollReveal direction="right">
+                        <div className={styles.imageWrapper}>
+                            <img
+                                src="/assets/images/features/roofing/content-v10.png"
+                                alt="Chicago Roofing Services"
+                                className={styles.mainImage}
+                            />
+                        </div>
+                    </ScrollReveal>
+
                 </div>
 
             </div>
