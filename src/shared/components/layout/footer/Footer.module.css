@@ -153,17 +153,21 @@ a:hover {
 /* Legal */
 .footerLegal {
     background-color: white;
-    color: #666;
+    color: #191919;
     padding: 30px 20px;
 }
 
 .legalContent {
     max-width: 1700px;
-    margin: 0 auto;
+    margin: 0 auto ;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 0.85rem;
+}
+
+.legalLeft p{
+    margin: 20px 0;
 }
 
 .legalLinks {
@@ -173,8 +177,8 @@ a:hover {
 }
 
 .legalLinks a {
-    color: #666;
-    text-decoration: none;
+    color: #191919;
+    text-decoration: underline;
 }
 
 .scorpionLogo {
