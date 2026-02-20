@@ -1,46 +1,74 @@
-.aboutSection {
+.recoverySection {
     width: 100%;
     background-color: #ffffff;
     overflow: hidden;
+    margin: 100px 0 50px 0;
 }
 
-.fullWidthContainer {
+.container {
+    width: 100%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
-    width: 100%;
+    gap: 50px;
+    align-items: flex-start;
 }
 
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- BLOQUE DERECHA: TEXTO --- */
 .textContent {
-    padding: 80px 8% 80px 12%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.title {
-    color: #00589e;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-family: var(--font-prompt);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    padding: 60px 10% 60px 5%;
+    background-color: #fff;
 }
 
 .subtitle {
-    color: #00589e;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    color: #004a8c;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    line-height: 1.4;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-.paragraph {
-    margin-bottom: 1.5rem;
-    font-size: 1.15rem;
+.title {
+    font-family: var(--font-prompt);
+    color: #00589e;
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.question{
+    color: #00589e;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.paragraph{
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
     color: #060606;
-    line-height: 1.7;
+}
+
+.textBold{
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #060606;
 }
 
 .inlineLink{
@@ -51,26 +79,18 @@
     color: #060606;
 }
 
-
-.benefitsList {
-    list-style: none;
-    padding: 0;
-}
-
-.benefitsList li {
-    position: relative;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
-
-.benefitsList li strong{
-    color: #060606;
+.ctaBanner {
+    background: #00589e;
+    padding: 30px 30px;
+    text-align: center;
+    font-size: 1rem;
     font-weight: bold;
+    color: white !important;
 }
 
-.highlight { color: #00ccff; font-weight: 600; }
-.linkText { color: #00ccff; text-decoration: underline; font-weight: 600; }
+
+/* --- LÓGICA DE EXPANSIÓN --- */
+
 
 .readMoreWrapper {
     border-top: 1px solid #e0e0e0;
@@ -88,12 +108,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 1px;
 }
 
-/* --- LÓGICA DE EXPANSIÓN --- */
 .expandableContent {
     max-height: 0;
     overflow: hidden;
@@ -102,7 +120,7 @@
 }
 
 .expanded {
-    max-height: 1000px;
+    max-height: none;
     opacity: 1;
     margin-top: 20px;
 }
@@ -129,33 +147,62 @@
     font-weight: 700;
 }
 
-.imageColumn {
+
+.benefitsList {
+    list-style: none;
+    padding: 0;
+}
+
+.benefitsList li {
     position: relative;
-    height: 100%;
-    overflow: hidden;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #060606;
 }
 
-.imageWrapper {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100%;
+.benefitsList li strong{
+    color: #060606;
+    font-weight: bold;
 }
 
-.mainImage {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
+.benefitsList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8; /* El guion celeste del mockup */
 }
+
+
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1280px) {
-    .fullWidthContainer {
-        grid-template-columns: 1fr;
+    .recoverySection {
+        padding: 0 100px;
+        margin: 0;
+    }
+    .textContent{
+        margin: 0;
     }
 
-    .paragraph{
+    .container{
+        display: flex;
+        margin: 0;
+    }
+
+    .paragraph, .textBold{
+        font-size: 0.95rem;
+    }
+
+    .title{
+        font-size: 2.6rem;
+    }
+
+    .bodyText p{
         font-size: 1rem;
     }
 
@@ -168,16 +215,18 @@
         text-align: center;
         font-size: 1rem;
     }
-    .imageColumn {
-        padding: 0 100px;
-        margin-bottom: 100px;
+    .imageContainer {
+        display: none;
     }
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+    .recoverySection {
+        padding: 0 20px;
+    }
 
-    .fullWidthContainer{
+    .container{
         display: flex;
         flex-direction: column-reverse;
     }
@@ -192,7 +241,7 @@
         font-size: 1.8rem;
     }
 
-    .paragraph{
+    .bodyText p{
         font-size: 0.9rem;
     }
 

@@ -8,7 +8,6 @@ import {FlairIcon} from "@/shared/Icons/Icons";
 import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const AreasWeService = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section className={styles.aboutSection}>

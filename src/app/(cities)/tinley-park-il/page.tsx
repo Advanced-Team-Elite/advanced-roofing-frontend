@@ -1,5 +1,5 @@
-import ArlingtonHeightsIlContainer from "@/features/areas-we-serve/arlington-heights-il/ArlingtonHeightsIlContainer";
+import TinleyParkIlContainer from "@/features/areas-we-serve/tinley-park-il/TinleyParkIlContainer";
 
 export default function Page() {
-    return <ArlingtonHeightsIlContainer />;
+    return <TinleyParkIlContainer />;
 }

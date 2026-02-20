@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './ServingHoffman.module.css';
 import {useState} from "react";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const ServingHoffman = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -15,13 +16,16 @@ export const ServingHoffman = () => {
                 <div className={styles.imageContainer}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/home/content-v15.png"
-                                alt="Roofing worker repairing storm damage"
-                                width={600}
-                                height={500}
-                                className={styles.mainImage}
-                            />
+                            <ScrollReveal direction="right" distance={30}>
+                                <Image
+                                    src="/assets/images/features/home/content-v15.png"
+                                    alt="Roofing worker repairing storm damage"
+                                    width={600}
+                                    height={500}
+                                    className={styles.mainImage}
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

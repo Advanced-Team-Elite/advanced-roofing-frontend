@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import styles from './RoofingHelp.module.css';
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const RoofingHelp = () => {
     return (
@@ -12,13 +13,16 @@ export const RoofingHelp = () => {
                 <div className={styles.imageContainer}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/home/content-v15.png"
-                                alt="Roofing worker repairing storm damage"
-                                width={600}
-                                height={500}
-                                className={styles.mainImage}
-                            />
+                            <ScrollReveal direction="right" distance={40}>
+                                <Image
+                                    src="/assets/images/features/home/content-v15.png"
+                                    alt="Roofing worker repairing storm damage"
+                                    width={600}
+                                    height={500}
+                                    className={styles.mainImage}
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

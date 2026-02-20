@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './RoofingInOrland.module.css';
 import Link from "next/link";
 import {useState} from "react";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export default function RoofingInOrland() {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -39,7 +40,7 @@ export default function RoofingInOrland() {
 
                     {/* PARTE EXPANDIBLE (image_d79b43.png) */}
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
-                        <h2 className={styles.subtitle} style={{ color: '#005aab' }}>We Handle Your Roofing Project From Start to Finish in Orland Park</h2>
+                        <h2 className={styles.subtitle} style={{ color: '#00589e' }}>We Handle Your Roofing Project From Start to Finish in Orland Park</h2>
 
                         <p className={styles.paragraph}>
                             At Advanced Roofing, we understand each customer’s needs and projects are unique. Our knowledgeable and licensed roofers have the skills to handle any situation, including the big problems. We handle insurance claims and catastrophe damage. If a storm has severely damaged your home, we can help you estimate the damage and retain coverage for your project.
@@ -72,14 +73,17 @@ export default function RoofingInOrland() {
                 <div className={styles.imageColumn}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
-                                width={1000}
-                                height={800}
-                                className={styles.mainImage}
-                                priority
-                            />
+                            <ScrollReveal direction="right">
+                                <Image
+                                    src="/assets/images/features/about-us/content-v6.png"
+                                    alt="Chicago Roofing"
+                                    width={1000}
+                                    height={800}
+                                    className={styles.mainImage}
+                                    priority
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

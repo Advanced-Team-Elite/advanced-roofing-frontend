@@ -26,7 +26,7 @@
 }
 
 .title {
-    color: #005aab;
+    color: #00589e;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
@@ -34,7 +34,7 @@
 }
 
 .subtitle {
-    color: #005aab;
+    color: #00589e;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     font-family: 'Open Sans', sans-serif;
