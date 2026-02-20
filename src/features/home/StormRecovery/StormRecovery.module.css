@@ -48,12 +48,28 @@
     max-width: 600px;
 }
 
+.imageContainerWrapper {
+    order: 2; /* por defecto en desktop no importa */
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1280px) {
 
     .recoverySection {
         margin: 0;
-        padding: 0 100px;
+        padding: 90px 100px 0 100px;
+    }
+
+    .container {
+        gap: 0;
+    }
+
+    .textContent {
+        order: 1;
+    }
+
+    .imageColumn {
+        order: 2;
     }
 
     .textContent {
@@ -73,9 +89,6 @@
         grid-template-columns: 1fr;
     }
 
-    .imageContainer {
-    }
-
     .yellowFrame {
         inset: 20px 0 20px 0;
     }
@@ -93,6 +106,10 @@
 
     .imageWrapper {
         padding: 0;
+    }
+
+    .title {
+        margin-top: 50px;
     }
 
 }

@@ -41,7 +41,6 @@ const WhyChooseUs = () => {
             <div className={styles.contentContainer}>
                 <div className={styles.grid}>
 
-
                         <div className={styles.imageCol}>
                             <div className={styles.imageWrapper}>
                                 <ScrollReveal direction="right">
@@ -61,8 +60,9 @@ const WhyChooseUs = () => {
                     <ScrollReveal direction="left">
                         <div className={styles.textCol}>
                             <h2 className={styles.title}>
-                                Why Choose <br />
-                                Advanced Roofing <br />
+                                Why Choose
+                                Advanced <br/>
+                                Roofing
                                 Team Construction?
                             </h2>
 
@@ -73,8 +73,8 @@ const WhyChooseUs = () => {
                                             {item.icon}
                                         </div>
                                         <span className={styles.benefitTitle}>
-                    {item.title}
-                  </span>
+                                            {item.title}
+                                        </span>
                                     </div>
                                 ))}
                             </div>
