@@ -32,7 +32,7 @@
 }
 
 .title {
-    color: #0056b3;
+    color: #00589e;
     font-size: 4rem;
     font-weight: 800;
     line-height: 1.1;
@@ -40,7 +40,7 @@
 }
 
 .subtitle {
-    color: #005aab;
+    color: #00589e;
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -146,7 +146,7 @@
 }
 
 .ctaBanner {
-    background-color: #004a8c;
+    background-color: #00589e;
     color: #fff;
     padding: 60px 40px;
     margin-top: 20px;

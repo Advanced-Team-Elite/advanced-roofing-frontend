@@ -260,6 +260,7 @@
 
 /* --- RESPONSIVE TABLET (1280px) --- */
 @media (max-width: 1280px) {
+
     .contactBanner {
         padding: 20px;
         text-align: center;
@@ -270,7 +271,7 @@
     }
 
     .servingSection {
-        padding: 40px 100px;
+        padding: 0 100px 40px 100px;
     }
 
     .container {

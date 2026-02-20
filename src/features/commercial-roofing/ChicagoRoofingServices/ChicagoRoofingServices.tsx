@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import styles from './ChicagoRoofingServices.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const ChicagoRoofingServices = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -107,15 +108,18 @@ export const ChicagoRoofingServices = () => {
                 </div>
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <img
-                            src="/assets/images/features/roofing/content-v16.png"
-                            alt="Chicago Roofing Services"
-                            className={styles.mainImage}
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <img
+                                src="/assets/images/features/roofing/content-v16.png"
+                                alt="Chicago Roofing Services"
+                                className={styles.mainImage}
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

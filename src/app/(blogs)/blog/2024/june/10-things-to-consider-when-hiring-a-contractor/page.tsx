@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './BlogPost.module.css';
 import RelatedPostsSection from "@/shared/components/RelatedPostsSection/RelatedPostsSection";
 import {Footer} from "@/shared/components/layout/footer/Footer";
@@ -7,7 +8,25 @@ export default function HiringContractorBlogPage() {
     return (
         <div>
             <article className={styles.container}>
-                {/* Cabecera */}
+
+                {/* BREADCRUMB */}
+                <nav className={styles.breadcrumb}>
+                    <Link href="/" className={styles.breadcrumbLink}>
+                        <span className={styles.homeIcon}>⌂</span>
+                    </Link>
+                    <span className={styles.breadcrumbSep}>/</span>
+                    <Link href="/blog" className={styles.breadcrumbLink}>Blog</Link>
+                    <span className={styles.breadcrumbSep}>/</span>
+                    <Link href="/blog/2024" className={styles.breadcrumbLink}>2024</Link>
+                    <span className={styles.breadcrumbSep}>/</span>
+                    <Link href="/blog/2024/june" className={styles.breadcrumbLink}>June</Link>
+                    <span className={styles.breadcrumbSep}>/</span>
+                    <span className={styles.breadcrumbCurrent}>10 Things to ...</span>
+                </nav>
+
+                <hr className={styles.breadcrumbDivider} />
+
+                {/* TÍTULO + META */}
                 <header className={styles.header}>
                     <h1 className={styles.mainTitle}>
                         10 Things to Consider When Hiring a Contractor
@@ -19,86 +38,68 @@ export default function HiringContractorBlogPage() {
                     </div>
                 </header>
 
-                {/* Imagen Principal */}
-                <div className={styles.featuredImageWrapper}>
-                    <Image
-                        src="/assets/images/features/blog/r7daqr5l_1q.png"
-                        alt="Contractor discussing roofing project"
-                        width={1000}
-                        height={500}
-                        priority
-                        className={styles.featuredImage}
-                    />
+                {/* 2 COLUMNAS */}
+                <div className={styles.twoCol}>
+
+                    <div className={styles.imageCol}>
+                        <Image
+                            src="/assets/images/features/blog/r7daqr5l_1q.png"
+                            alt="Hiring a roofing contractor"
+                            width={1000}
+                            height={700}
+                            priority
+                            className={styles.featuredImage}
+                        />
+                    </div>
+
+                    <div className={styles.contentCol}>
+                        <section className={styles.content}>
+                            <p>
+                                As a homeowner, there may come a time when you need to hire a contractor for your roofing needs. It's important to choose the right contractor for the job to ensure that your roof is installed or repaired properly. With so many contractors out there, it can be overwhelming to know who to trust with such an important task. That's why we've compiled a list of 10 things to consider when hiring a contractor.
+                            </p>
+
+                            <ul className={styles.list}>
+                                <li>
+                                    <strong>Reputation & Experience:</strong> The first thing you should consider when choosing a contractor is their reputation and experience in the industry. Look for reviews online and ask for references from previous clients. A reputable and experienced contractor will have a track record of satisfied customers.
+                                </li>
+                                <li>
+                                    <strong>Licensing & Insurance:</strong> It's crucial to make sure that the contractor you hire is licensed and insured. This protects both you and the contractor in case of any accidents or damages during the project.
+                                </li>
+                                <li>
+                                    <strong>Specialization:</strong> When looking for a roofing contractor, it's essential to find one who specializes in roofing rather than a general contractor who offers various services. A specialized roofing contractor will have more knowledge and expertise in this specific area.
+                                </li>
+                                <li>
+                                    <strong>Local Presence:</strong> Hiring a local contractor has its advantages, as they are more familiar with the climate and building codes in your area. They will also have easier access to materials and resources needed for your project.
+                                </li>
+                                <li>
+                                    <strong>Written Estimates:</strong> Before starting any work, make sure to get written estimates from multiple contractors. This will give you an idea of the market rate for your project, as well as help you compare contractors based on pricing and services offered.
+                                </li>
+                                <li>
+                                    <strong>Communication Skills:</strong> Good communication is key when working with any professional service provider, including contractors. Make sure that the contractor you hire has good communication skills, is responsive to your inquiries, and keeps you updated throughout the project.
+                                </li>
+                                <li>
+                                    <strong>Quality Materials:</strong> The quality of materials used for your roofing project is crucial in determining its durability and lifespan. Make sure to discuss with the contractor the materials they will be using and ensure that they are of good quality.
+                                </li>
+                                <li>
+                                    <strong>Warranty:</strong> A reputable contractor will provide a warranty for their work. This ensures that they stand behind the quality of their work and are willing to fix any issues that may arise after completion of the project.
+                                </li>
+                                <li>
+                                    <strong>Timeline:</strong> It's important to discuss the timeline for your project with the contractor before starting any work. A good contractor will be able to give you a realistic timeline and stick to it, ensuring that your project is completed within a reasonable time frame.
+                                </li>
+                                <li>
+                                    <strong>Payment Terms:</strong> Before hiring a contractor, make sure to discuss payment terms. Avoid paying the full amount upfront, as this can be risky. A reputable contractor will have flexible payment options and will only require a small deposit upfront.
+                                </li>
+                            </ul>
+
+                            <div className={styles.conclusion}>
+                                <p>
+                                    <strong>Final Thoughts:</strong> Take your time to research and consider these ten factors before making your final decision. Don't hesitate to ask questions and clarify any doubts or concerns you may have before signing any contracts or starting any work. With the right contractor by your side, you can rest assured that your roof is in good hands.
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+
                 </div>
-
-                {/* Contenido */}
-                <section className={styles.content}>
-                    <p>
-                        As a homeowner, there may come a time when you need to hire a contractor for your roofing needs.
-                        It’s important to choose the right professional to ensure that your roof is installed or repaired properly.
-                        With so many options out there, we’ve compiled a list of 10 essential things to consider.
-                    </p>
-
-                    <div className={styles.tipsGrid}>
-                        <div className={styles.tipItem}>
-                            <h3>1. Reputation & Experience</h3>
-                            <p>Look for online reviews and ask for references. A reputable contractor will have a track record of satisfied customers and years of experience in the industry.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>2. Licensing & Insurance</h3>
-                            <p>It’s crucial to ensure your contractor is licensed and insured. This protects you from liability in case of accidents or damages during the project.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>3. Specialization</h3>
-                            <p>Find a contractor who specializes in roofing specifically, rather than a generalist. They will have deeper knowledge of roofing systems and materials.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>4. Local Presence</h3>
-                            <p>Local contractors are familiar with Chicago's climate and building codes. Plus, they are easier to reach if you need follow-up service.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>5. Written Estimates</h3>
-                            <p>Always get detailed written estimates from multiple providers. This allows you to compare pricing and the scope of services accurately.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>6. Communication Skills</h3>
-                            <p>Your contractor should be responsive and keep you updated throughout the process. Good communication prevents misunderstandings.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>7. Quality Materials</h3>
-                            <p>Discuss the brands and types of materials they use. High-quality shingles and underlayment are essential for a long-lasting roof.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>8. Warranty</h3>
-                            <p>A reputable contractor stands behind their work. Ask about both the manufacturer's warranty and the contractor's workmanship warranty.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>9. Timeline</h3>
-                            <p>Ensure you have a realistic start and completion date. A professional should be able to manage the project within a reasonable timeframe.</p>
-                        </div>
-
-                        <div className={styles.tipItem}>
-                            <h3>10. Payment Terms</h3>
-                            <p>Avoid paying the full amount upfront. Reputable contractors typically ask for a small deposit and offer flexible payment terms upon milestones.</p>
-                        </div>
-                    </div>
-
-                    <div className={styles.conclusion}>
-                        <p>
-                            Take your time to research and consider these factors before making your final decision.
-                            Don’t hesitate to ask questions or clarify doubts before signing a contract.
-                            With the right professional by your side, your home is in good hands.
-                        </p>
-                    </div>
-                </section>
             </article>
             <RelatedPostsSection />
             <Footer/>

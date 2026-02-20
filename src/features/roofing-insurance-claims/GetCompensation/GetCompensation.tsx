@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import styles from './GetCompensation.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const GetCompensation = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -12,11 +13,14 @@ export const GetCompensation = () => {
 
                 {/* Lado Izquierdo: Imagen (arriba en mobile) */}
                 <div className={styles.imageColumn}>
-                    <img
-                        src="/assets/images/features/about-us/content-v11.png"
-                        alt="Roofing Project Installation"
-                        className={styles.mainImage}
-                    />
+                    <ScrollReveal direction="right" distance={20}>
+                        <img
+                            src="/assets/images/features/about-us/content-v11.png"
+                            alt="Roofing Project Installation"
+                            className={styles.mainImage}
+                        />
+                    </ScrollReveal>
+
                 </div>
 
                 {/* Lado Derecho: Contenido */}

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './RoofingInMount.module.css';
 import Link from "next/link";
 import {useState} from "react";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export default function RoofingInMount() {
 
@@ -37,14 +38,17 @@ export default function RoofingInMount() {
                 <div className={styles.imageColumn}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/home/content-v14.png"
-                                alt="Chicago Roofing"
-                                width={1000}
-                                height={800}
-                                className={styles.mainImage}
-                                priority
-                            />
+                            <ScrollReveal direction="right">
+                                <Image
+                                    src="/assets/images/features/home/content-v14.png"
+                                    alt="Chicago Roofing"
+                                    width={1000}
+                                    height={800}
+                                    className={styles.mainImage}
+                                    priority
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

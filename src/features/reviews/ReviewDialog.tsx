@@ -23,11 +23,11 @@ const ReviewDialog = ({ review, isOpen, onClose }: Props) => {
                     <h2 className={styles.dialogTitle}>{review.title}</h2>
 
                     <p className={styles.dialogText}>
-                        "{review.text}"
+                        "{review.review}"
                     </p>
 
                     <span className={styles.dialogAuthor}>
-                        - {review.name}
+                        - {review.fullName}
                     </span>
                 </div>
             </div>

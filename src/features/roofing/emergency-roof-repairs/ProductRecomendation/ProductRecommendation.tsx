@@ -10,6 +10,7 @@ import {
     ProfessionalIcon
 } from '@/shared/Icons/Icons';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const ProductRecommendation = () => {
     const [review, setReview] = useState<Review | null>(null);
@@ -25,23 +26,26 @@ const ProductRecommendation = () => {
 
                 {/* Lado Izquierdo: Testimonio */}
                 <div className={styles.testimonialSection}>
-                    {review ? (
-                        <>
-                            <h2 className={styles.quote}>"{review.title}"</h2>
-                            <p className={styles.author}>{review.author}</p>
-                        </>
-                    ) : (
-                        // Placeholder para evitar saltos visuales mientras carga
-                        <div className={styles.loader} />
-                    )}
+                    <ScrollReveal direction="left">
+                        {review ? (
+                            <>
+                                <h2 className={styles.quote}>"{review.title}"</h2>
+                                <p className={styles.author}>{review.author}</p>
+                            </>
+                        ) : (
+                            // Placeholder para evitar saltos visuales mientras carga
+                            <div className={styles.loader} />
+                        )}
 
-                    <Link href="/reviews/" className={styles.reviewsBtn}>
-                        All Reviews
-                    </Link>
+                        <Link href="/reviews/" className={styles.reviewsBtn}>
+                            All Reviews
+                        </Link>
+                    </ScrollReveal>
+
                 </div>
 
                 {/* Lado Derecho: Características (UNA SOLA COLUMNA) */}
-                <div className={styles.featuresList}>
+                <ScrollReveal direction="right" className={styles.featuresList}>
 
                     <div className={styles.featureItem}>
                         <div className={styles.iconCircle}><HammerIcon /></div>
@@ -74,8 +78,8 @@ const ProductRecommendation = () => {
                             <p>Experienced and professional, we deliver reliable roofing solutions with quality craftsmanship and trusted service.</p>
                         </div>
                     </div>
+                </ScrollReveal>
 
-                </div>
             </div>
         </section>
     );

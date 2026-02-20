@@ -12,6 +12,7 @@ import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import {RoofingServicesSection} from "@/shared/components/RoofingServicesSection/RoofingServicesSection";
 import {HandleRoofingProjectSection} from "@/shared/components/HandleRoofingProjectSection/HandleRoofingProjectSection";
 import RoofingInPalatine from "@/features/areas-we-serve/palatine-il/RoofingInPalatine/RoofingInPalatine";
+import {ServingPalatine} from "@/features/areas-we-serve/palatine-il/ServingPalatine/ServingPalatine";
 
 export default function PalatineIlContainer() {
     return (
@@ -20,7 +21,7 @@ export default function PalatineIlContainer() {
             <AwardsBanner />
 
             <RoofingInPalatine />
-            <HandleRoofingProjectSection city={"Palatine "}/>
+            <ServingPalatine/>
 
             <WhyChooseUs />
             <OurServices />

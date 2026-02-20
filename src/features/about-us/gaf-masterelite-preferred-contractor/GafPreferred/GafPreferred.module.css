@@ -43,7 +43,7 @@
 }
 
 .paragraph {
-    color: #333;
+    color: #060606;
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 20px;
@@ -151,5 +151,8 @@
 @media (max-width: 600px) {
     .aboutSection {
         padding: 40px 20px;
+    }
+    .paragraph {
+        font-size: 0.95rem;
     }
 }

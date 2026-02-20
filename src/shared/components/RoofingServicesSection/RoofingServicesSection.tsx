@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import styles from './RoofingServicesSection.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 interface RoofingServicesSectionProps {
     title: string;
@@ -55,14 +56,17 @@ export const RoofingServicesSection = ({ title, imageSrc }: RoofingServicesSecti
                 <div className={styles.imageColumn}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src={imageSrc}
-                                alt="Chicago Roofing"
-                                width={1000}
-                                height={800}
-                                className={styles.mainImage}
-                                priority
-                            />
+                            <ScrollReveal direction="right">
+                                <Image
+                                    src={imageSrc}
+                                    alt="Chicago Roofing"
+                                    width={1000}
+                                    height={800}
+                                    className={styles.mainImage}
+                                    priority
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

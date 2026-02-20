@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import styles from './ChoosingRoof.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const ChoosingRoof = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -12,13 +13,16 @@ export const ChoosingRoof = () => {
             <div className={styles.container}>
 
                 {/* Lado Izquierdo: Imagen (arriba en mobile) */}
-                <div className={styles.imageColumn}>
-                    <img
-                        src="/assets/images/features/about-us/content-v11.png"
-                        alt="Roofing Project Installation"
-                        className={styles.mainImage}
-                    />
-                </div>
+                <ScrollReveal direction="right" distance={30}>
+                    <div className={styles.imageColumn}>
+                        <img
+                            src="/assets/images/features/about-us/content-v11.png"
+                            alt="Roofing Project Installation"
+                            className={styles.mainImage}
+                        />
+                    </div>
+                </ScrollReveal>
+
 
                 {/* Lado Derecho: Contenido */}
                 <div className={styles.textContent}>

@@ -12,7 +12,7 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: -40px;
-    color: #333;
+    color: #060606;
 }
 .mainTitle {
     font-size: 3.5rem;
@@ -46,7 +46,7 @@
 
 .subTitle {
     font-size: 1.6rem;
-    color: #06060;
+    color: #060606;
     margin-bottom: 20px;
     font-weight: 600;
 }
@@ -110,5 +110,16 @@
 @media (max-width: 600px) {
     .aboutSection {
         padding: 60px 20px;
+    }
+    .iconWrapper {
+        margin: -40px 0;
+    }
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .footerContact {
+        margin-top: 0;
+        font-size: 0.95rem;
     }
 }

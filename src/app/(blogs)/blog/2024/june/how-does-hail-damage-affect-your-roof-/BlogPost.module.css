@@ -1,32 +1,188 @@
 .container {
-    max-width: 800px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 30px 20px 60px 20px;
     font-family: sans-serif;
     line-height: 1.6;
 }
 
+/* --- BREADCRUMB --- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+    color: #00c3f8;
+}
+
+.breadcrumbSep {
+    color: #999;
+}
+
+.breadcrumbCurrent {
+    color: #00c4f0;
+}
+
+.homeIcon {
+    font-size: 1.1rem;
+}
+
+.breadcrumbDivider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+/* --- HEADER: ancho completo --- */
+.header {
+    margin-bottom: 30px;
+}
+
 .mainTitle {
-    color: #0056b3; /* El azul de tu diseño */
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    color: #00589e;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.metaInfo {
+    font-size: 1rem;
+    color: #060606;
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+    border-radius: 4px;
+}
+
+.separator {
+    color: #999;
+}
+
+/* --- 2 COLUMNAS: imagen izq | contenido derecha --- */
+.twoCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    padding-top: 10px;
+}
+
+.imageCol {
+    position: sticky;
+    top: 20px;
+}
+
+.featuredImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.contentCol {
+    min-width: 0;
+}
+
+/* --- CONTENIDO --- */
+.content {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.content p {
+    margin-bottom: 20px;
 }
 
 .subTitle {
-    color: #0056b3;
-    font-size: 1.8rem;
+    color: #00589e;
+    font-size: 1.5rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     margin-top: 30px;
     margin-bottom: 15px;
 }
 
-.featuredImage {
-    border-radius: 8px;
-    margin-bottom: 30px;
+.list li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 35px;
+    font-size: 1.1rem;
+    color: #060606;
 }
 
-.bodyImage {
-    margin: 40px 0;
-    text-align: center;
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 20px;
+}
+
+/* Línea azul horizontal en lugar de puntos */
+.list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8;
+}
+
+.caseStudy {
+    background: #f5f5f5;
+    border-left: 4px solid #00589e;
+    padding: 20px 25px;
+    margin: 30px 0;
+}
+
+.caseStudy h3 {
+    color: #00589e;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.caseStudy p {
+    margin-bottom: 8px;
+}
+
+.conclusion {
+    background: #eef4ff;
+    border-left: 4px solid #00c4f0;
+    padding: 20px 25px;
+    margin-top: 30px;
+}
+
+/* --- TABLET: una sola columna, imagen arriba --- */
+@media (max-width: 768px) {
+    .twoCol {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .imageCol {
+        position: static;
+    }
+
+    .mainTitle {
+        font-size: 1.8rem;
+    }
+
+    .subTitle {
+        font-size: 1.3rem;
+    }
 }

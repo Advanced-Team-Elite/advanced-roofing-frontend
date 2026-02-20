@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './RoofingMaterials.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const RoofingMaterials = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -67,17 +68,20 @@ export const RoofingMaterials = () => {
                 </div>
 
                 {/* RIGHT */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/assets/images/features/about-us/content-v6.png"
-                            alt="Chicago Roofing"
-                            fill
-                            className={styles.mainImage}
-                            priority
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src="/assets/images/features/about-us/content-v6.png"
+                                alt="Chicago Roofing"
+                                fill
+                                className={styles.mainImage}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

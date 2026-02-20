@@ -19,7 +19,7 @@
 }
 
 .title {
-    color: #005aab;
+    color: #00589e;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-family: var(--font-prompt);
     font-weight: 800;
@@ -28,7 +28,7 @@
 }
 
 .subtitle {
-    color: #005aab;
+    color: #00589e;
     font-size: 2rem;
     margin-bottom: 1.5rem;
     font-family: 'Open Sans', sans-serif;
@@ -126,7 +126,7 @@
 .arrowUp { transform: rotate(180deg); }
 
 .ctaBanner {
-    background-color: #004a8c;
+    background-color: #00589e;
     color: #fff;
     padding: 30px;
     border-radius: 2px;
@@ -199,7 +199,7 @@
     }
 
     .subtitle {
-        color: #005aab;
+        color: #00589e;
         font-size: 1.8rem;
     }
 

@@ -11,7 +11,7 @@
 
 .mainTitle {
     color: #0056b3;
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -37,7 +37,7 @@
 .description {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #333333;
+    color: #060606;
     margin-bottom: 20px;
     font-weight: 400;
 }
@@ -86,5 +86,12 @@
 @media (max-width: 600px) {
     .benefitsSection {
         padding: 40px 20px;
+    }
+    .description {
+        font-size: 0.95rem;
+    }
+    .ctaText {
+        font-size: 0.95rem;
+        text-align: center;
     }
 }

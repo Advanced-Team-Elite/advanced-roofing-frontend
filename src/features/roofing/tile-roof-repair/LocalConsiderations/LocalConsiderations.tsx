@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './LocalConsiderations.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const LocalConsiderations = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -13,17 +14,20 @@ export const LocalConsiderations = () => {
             <div className={styles.fullWidthContainer}>
 
                 {/* LEFT */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/assets/images/features/roofing/content-v7.png"
-                            alt="Chicago Roofing"
-                            fill
-                            className={styles.mainImage}
-                            priority
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src="/assets/images/features/roofing/content-v7.png"
+                                alt="Chicago Roofing"
+                                fill
+                                className={styles.mainImage}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
                 {/* RIGHT */}
                 <div className={styles.textContent}>

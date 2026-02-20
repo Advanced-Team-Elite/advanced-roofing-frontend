@@ -35,13 +35,15 @@ export const Footer = ({ upperSection }: FooterProps) => {
                     <div className={styles.footerGrid}>
                         {/* Logo */}
                         <div className={`${styles.footerColumn} ${styles.logoColumn}`}>
-                            <Image
-                                src="/assets/brand/logo-light.png"
-                                alt="Advanced Roofing Team"
-                                width={250}
-                                height={80}
-                                className={styles.footerLogo}
-                            />
+                            <Link href="/">
+                                <Image
+                                    src="/assets/brand/logo-light.png"
+                                    alt="Advanced Roofing Team"
+                                    width={250}
+                                    height={80}
+                                    className={styles.footerLogo}
+                                />
+                            </Link>
                         </div>
 
                         {/* Quick Links */}
@@ -81,11 +83,50 @@ export const Footer = ({ upperSection }: FooterProps) => {
                         <div className={styles.footerColumn}>
                             <h3 className={styles.columnTitle}>Follow Us</h3>
                             <div className={styles.socialIcons}>
-                                <a className={styles.socialIcon}><FacebookIcon /></a>
-                                <a className={styles.socialIcon}><XIcon /></a>
-                                <a className={styles.socialIcon}><YelpIcon /></a>
-                                <a className={styles.socialIcon}><HouzzIcon /></a>
-                                <a className={styles.socialIcon}><GoogleBusinessIcon /></a>
+                                <Link
+                                    href="https://www.facebook.com/advancedroofingteam"
+                                    className={styles.socialIcon}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FacebookIcon />
+                                </Link>
+
+                                <Link
+                                    href="https://x.com/advancedroofs"
+                                    className={styles.socialIcon}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <XIcon />
+                                </Link>
+
+                                <Link
+                                    href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                                    className={styles.socialIcon}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <YelpIcon />
+                                </Link>
+
+                                <Link
+                                    href="https://www.houzz.com/hznb/professionals/roofing-and-gutters/advanced-roofing-team-construction-pfvwus-pf~314416282"
+                                    className={styles.socialIcon}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <HouzzIcon />
+                                </Link>
+
+                                <Link
+                                    href="https://www.google.com/maps/place/Advanced+Roofing+Team/@42.0550959,-87.9011083,17z/data=!3m1!4b1!4m6!3m5!1s0x880fa526c3541823:0x49e5f78978a3d315!8m2!3d42.0550959!4d-87.9011083!16s%2Fg%2F11b6tylkft?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D"
+                                    className={styles.socialIcon}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <GoogleBusinessIcon />
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -118,7 +159,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                     </div>
 
                     <div className={styles.legalRight}>
-                        <span className={styles.scorpionLogo}>SCORPION</span>
+                        <span className={styles.scorpionLogo}>ADVANCE</span>
                     </div>
                 </div>
             </section>

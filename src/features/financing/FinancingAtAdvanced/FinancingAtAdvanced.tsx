@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './FinancingAtAdvanced.module.css';
 import Link from "next/link";
 import {FlairIcon} from "@/shared/Icons/Icons";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const FinancingAtAdvanced = () => {
 
@@ -30,29 +31,27 @@ export const FinancingAtAdvanced = () => {
                         , we offer flexible financing options to help make the process straightforward and accessible. Our financing solutions are designed to provide a smooth experience, with an easy application process, convenient payment structures, and prompt approvals, allowing you to move forward with your roofing project confidently and without unnecessary delays.
                     </p>
 
-                    <div className={styles.ctaBanner}>
-                        <p>
-                            Contact us at {' '}
-                            <a href="tel:8472629774" className={styles.inlineLink}>
-                                <strong>(847) 262-9774</strong>
-                            </a>{' '}  for a free roofing estimate anywhere in Chicago or the surrounding suburbs.
-                        </p>
-                    </div>
+                    <img
+                        src="https://app.gethearth.com/contractor_images/advanced-team/banner.jpg?size_id=310x120&amp;color=darkblue"
+                        alt="home_improvement 310x120"/>
 
                 </div>
 
                 {/* RIGHT */}
-                <div className={styles.imageColumn}>
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
                     <div className={styles.imageWrapper}>
-                        <Image
-                            src="/assets/images/features/about-us/content-v6.png"
-                            alt="Chicago Roofing"
-                            fill
-                            className={styles.mainImage}
-                            priority
-                        />
+                            <Image
+                                src="/assets/images/features/about-us/content-v6.png"
+                                alt="Chicago Roofing"
+                                fill
+                                className={styles.mainImage}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

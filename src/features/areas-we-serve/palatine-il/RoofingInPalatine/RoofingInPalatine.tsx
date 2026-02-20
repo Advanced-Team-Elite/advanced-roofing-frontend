@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import styles from './RoofingInPalatine.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export default function RoofingInPalatine() {
 
@@ -33,14 +34,17 @@ export default function RoofingInPalatine() {
                 <div className={styles.imageColumn}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
-                                width={1000}
-                                height={800}
-                                className={styles.mainImage}
-                                priority
-                            />
+                            <ScrollReveal direction="right">
+                                <Image
+                                    src="/assets/images/features/about-us/content-v6.png"
+                                    alt="Chicago Roofing"
+                                    width={1000}
+                                    height={800}
+                                    className={styles.mainImage}
+                                    priority
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

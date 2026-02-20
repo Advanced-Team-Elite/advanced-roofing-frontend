@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './AboutHome.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const AboutHome = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -76,18 +77,21 @@ export const AboutHome = () => {
                 </div>
 
                 {/* Bloque Derecho: Imagen Full a Sangre */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/assets/images/features/home/content-v14.png"
-                            alt="Chicago Roofing"
-                            width={1000}
-                            height={800}
-                            className={styles.mainImage}
-                            priority
-                        />
+                <ScrollReveal direction="right" >
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src="/assets/images/features/home/content-v14.png"
+                                alt="Chicago Roofing"
+                                width={1000}
+                                height={800}
+                                className={styles.mainImage}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

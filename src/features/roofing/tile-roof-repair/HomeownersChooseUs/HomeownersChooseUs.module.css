@@ -18,7 +18,7 @@
 }
 
 .title {
-    color: #005aab;
+    color: #00589e;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
@@ -195,4 +195,13 @@
     .aboutSection {
         padding: 0 20px;
     }
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .processList li {
+        font-size: 0.95rem;
+    }
+
+
 }

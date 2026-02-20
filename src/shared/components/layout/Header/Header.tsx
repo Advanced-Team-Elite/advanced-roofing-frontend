@@ -23,7 +23,7 @@ export const Header = () => {
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
-                    <span className="text-black text-lg ml-4">847-262-9774</span>
+                    <span className={styles.telf} >847-262-9774</span>
                 </div>
             </div>
 
@@ -39,13 +39,17 @@ export const Header = () => {
                 </button>
 
                 <div className={styles.logoContainer}>
-                    <Image
-                        src="/assets/brand/logo-light.png"
-                        alt="Advanced Roofing Logo"
-                        width={250}
-                        height={80}
-                        priority
-                    />
+
+                    <Link href="/">
+                        <Image
+                            src="/assets/brand/logo-light.png"
+                            alt="Advanced Roofing Logo"
+                            width={250}
+                            height={80}
+                            priority
+                        />
+                    </Link>
+
                 </div>
 
                 {/* Desktop Links */}
@@ -62,7 +66,7 @@ export const Header = () => {
                                 <Link href="/about-us/gaf-masterelite-preferred-contractor">GAF Masterelite Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="roofing-insurance-claims">Insurance Claims</Link>
+                                <Link href="/roofing-insurance-claims">Insurance Claims</Link>
                             </li>
                         </ul>
                     </li>
@@ -86,7 +90,9 @@ export const Header = () => {
                     <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Roofing Insurance Claims</Link></li>
                     <li><Link href="/contact-us" className={styles.navLink}>Contact Us</Link></li>
                     <li>
-                        <button className={styles.quoteBtn}>Request a Quote</button>
+                        <Link href="/contact-us/" className={styles.quoteBtnLink}>
+                            <button className={styles.quoteBtn}>Request a Quote</button>
+                        </Link>
                     </li>
                     <li>
                         <Link href="/site-search" className={styles.searchIcon}>
@@ -172,7 +178,7 @@ export const Header = () => {
                                     <li><Link href="/roofing/skylight-installation" onClick={closeDrawer}>Skylight Installation</Link></li>
                                     <li><Link href="/roofing/storm-damage-repair" onClick={closeDrawer}>Storm Damage Repair</Link></li>
                                     <li><Link href="/roofing/tile-roof-repair" onClick={closeDrawer}>Tile Roof Repair</Link></li>
-                                    <li><Link href="/roofing/types" onClick={closeDrawer}>Roof Types</Link></li>
+                                    <li><Link href="/roof-types" onClick={closeDrawer}>Roof Types</Link></li>
                                 </ul>
                             </div>
 
@@ -181,7 +187,7 @@ export const Header = () => {
                                 <ul className={styles.mobileList}>
                                     <li><Link href="/about-us/owens-corning-preferred-contractor" onClick={closeDrawer}>Owens Corning Preferred Contractor</Link></li>
                                     <li><Link href="/about-us/gaf-masterelite-preferred-contractor" onClick={closeDrawer}>GAF Masterelite Preferred Contractor</Link></li>
-                                    <li><Link href="roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
+                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
                                 </ul>
                             </div>
                         </div>

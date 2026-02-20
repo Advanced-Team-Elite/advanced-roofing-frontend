@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState } from "react";
 import styles from './ReviewsPage.module.css';
 import {Review, reviewsData} from './constants';
 import ReviewCard from './ReviewCard';
@@ -9,15 +9,22 @@ import Link from "next/link";
 import ReviewModal from "@/features/reviews/ReviewModal";
 import {Footer} from "@/shared/components/layout/footer/Footer";
 
-const ReviewsPageContainer = () => {
+type Props = {
+    apiReviews: Review[];
+};
+
+const ReviewsPageContainer = ({ apiReviews }: Props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    // Lógica de paginación
+    const allReviews = [...reviewsData, ...apiReviews];
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentReviews = reviewsData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(reviewsData.length / itemsPerPage);
+
+    const currentReviews = allReviews.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(allReviews.length / itemsPerPage);
+
 
     const [selectedReview, setSelectedReview] = useState<Review | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -67,7 +74,7 @@ const ReviewsPageContainer = () => {
                         <ReviewCard
                             key={review.id}
                             review={review}
-                            onReadMore={handleOpenReview} // Pasamos la función aquí
+                            onReadMore={handleOpenReview}
                         />
                     ))}
                 </div>

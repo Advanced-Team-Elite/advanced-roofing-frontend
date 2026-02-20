@@ -49,6 +49,12 @@
     margin: 20px 0;
 }
 
+.error {
+    color: #cc0000;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
 .submitReviewBtn {
     background-color: #00c3f8;
     color: white;
