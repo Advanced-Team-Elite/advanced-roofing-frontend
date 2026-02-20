@@ -49,7 +49,15 @@
 }
 
 .imageContainerWrapper {
-    order: 2; /* por defecto en desktop no importa */
+    order: 1; /* por defecto en desktop no importa */
+}
+
+.textContent {
+    order: 2;
+}
+
+.imageColumn {
+    order: 1;
 }
 
 /* --- RESPONSIVE --- */
