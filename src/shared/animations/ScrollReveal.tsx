@@ -1,6 +1,6 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 interface ScrollRevealProps {
     children: React.ReactNode;
@@ -18,6 +18,18 @@ export const ScrollReveal = ({
                                  className,
                              }: ScrollRevealProps) => {
     const ref = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detectar el ancho de pantalla para desactivar en tablet/mobile
+    useEffect(() => {
+        const checkScreen = () => {
+            setIsMobile(window.innerWidth < 1280);
+        };
+
+        checkScreen(); // Check inicial
+        window.addEventListener('resize', checkScreen);
+        return () => window.removeEventListener('resize', checkScreen);
+    }, []);
 
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -29,23 +41,24 @@ export const ScrollReveal = ({
     const xOffset = isNoMovement ? 0 : (direction === 'left' ? -distance : direction === 'right' ? distance : 0);
     const yOffset = isNoMovement ? 0 : (direction === 'up' ? distance : direction === 'down' ? -distance : 0);
 
-    const opacity = useTransform(scrollYProgress, [0, 1], [initialOpacity, 1]);
-    const x = useTransform(scrollYProgress, [0, 1], [xOffset, 0]);
-    const y = useTransform(scrollYProgress, [0, 1], [yOffset, 0]);
-
+    // Valores transformados
+    const opacityAnim = useTransform(scrollYProgress, [0, 1], [initialOpacity, 1]);
+    const xAnim = useTransform(scrollYProgress, [0, 1], [xOffset, 0]);
+    const yAnim = useTransform(scrollYProgress, [0, 1], [yOffset, 0]);
     const scaleStart = direction === 'zoom' ? 0.9 : 1;
-    const scale = useTransform(scrollYProgress, [0, 1], [scaleStart, 1]);
+    const scaleAnim = useTransform(scrollYProgress, [0, 1], [scaleStart, 1]);
 
     return (
         <motion.div
             ref={ref}
             className={className}
             style={{
-                opacity,
-                x,
-                y,
-                scale,
-                willChange: "transform, opacity"
+                // Si es mobile (< 1280px), usamos valores estáticos, si no, la animación
+                opacity: isMobile ? 1 : opacityAnim,
+                x: isMobile ? 0 : xAnim,
+                y: isMobile ? 0 : yAnim,
+                scale: isMobile ? 1 : scaleAnim,
+                willChange: isMobile ? "auto" : "transform, opacity"
             }}
         >
             {children}

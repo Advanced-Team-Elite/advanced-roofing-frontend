@@ -41,10 +41,10 @@ const WhyChooseUs = () => {
             <div className={styles.contentContainer}>
                 <div className={styles.grid}>
 
-                    <ScrollReveal direction="right">
+
                         <div className={styles.imageCol}>
                             <div className={styles.imageWrapper}>
-
+                                <ScrollReveal direction="right">
                                     <Image
                                         src="/assets/images/features/home/content-v5.png"
                                         alt="Our professional team"
@@ -52,11 +52,10 @@ const WhyChooseUs = () => {
                                         height={700}
                                         className={styles.mainImage}
                                     />
-
-
+                                </ScrollReveal>
                             </div>
                         </div>
-                    </ScrollReveal>
+
 
                     {/* Right: Text and Benefits */}
                     <ScrollReveal direction="left">
