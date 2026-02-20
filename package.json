@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
+    "framer-motion": "^12.34.3",
     "next": "16.1.6",
     "prisma": "^6.19.2",
     "react": "19.2.3",

@@ -1,22 +1,25 @@
 import { useEffect, useRef } from 'react';
 
-export function useAnimateOnView(animationClass: string, threshold = 0.3) {
-    const ref = useRef<HTMLDivElement>(null);
+export function useAnimateOnView(threshold = 0.2) {
+    const ref = useRef<HTMLElement>(null);
 
     useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add(animationClass);
+                    el.classList.add('is-visible');
                     observer.disconnect();
                 }
             },
             { threshold }
         );
 
-        if (ref.current) observer.observe(ref.current);
+        observer.observe(el);
         return () => observer.disconnect();
-    }, [animationClass, threshold]);
+    }, [threshold]);
 
     return ref;
 }
