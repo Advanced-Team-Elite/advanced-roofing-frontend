@@ -271,18 +271,19 @@
     }
 
     .servingSection {
-        padding: 0 100px 40px 100px;
+        padding: 40px 100px 40px 100px;
     }
 
     .container {
-        gap: 40px;
-        flex-direction: column-reverse;
+        gap: 50px;
+        flex-direction: column;
     }
 
     .imageColumn {
         order: -1;
         width: 100%;
         margin-bottom: 30px;
+        height: auto;
     }
 
     .textContent {
@@ -301,6 +302,10 @@
     .iconWrapper {
         margin-bottom: -35px;
     }
+
+    .mainImage{
+        height: fit-content;
+    }
 }
 
 /* --- RESPONSIVE MOBILE (768px) --- */
@@ -314,7 +319,7 @@
     }
 
     .servingSection {
-        padding: 40px 0;
+        padding: 40px 0 0 0;
     }
 
     .paragraph {
