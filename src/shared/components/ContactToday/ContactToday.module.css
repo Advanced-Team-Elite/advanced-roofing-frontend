@@ -55,30 +55,26 @@
     margin-bottom: 15px;
 }
 .scrollList {
-    max-height: 250px; /* Ajustado para que se vean aprox 5 items */
+    max-height: 250px;
     overflow-y: auto;
     padding-right: 20px;
     margin-top: 20px;
 }
 
-/* 1. Ancho del scrollbar */
 .scrollList::-webkit-scrollbar {
     width: 4px;
 }
 
-/* 2. El carril (la línea gris larga) */
 .scrollList::-webkit-scrollbar-track {
     background: #cccccc;
     border-radius: 10px;
 }
 
-/* 3. El indicador (la barrita negra que se mueve) */
 .scrollList::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 10px;
 }
 
-/* Estilos de los items */
 .areaItem {
     padding: 10px 0;
     display: flex;
@@ -157,10 +153,9 @@
 
 .field select option {
     color: #060606;
-    background-color: #ffffff; /* Asegura un fondo claro para legibilidad */
+    background-color: #ffffff;
 }
 
-/* Opcional: Estilo para el estado inicial (placeholder) */
 .field select option[value=""][disabled] {
     color: #999999;
 }
@@ -168,15 +163,14 @@
 .field input[type="text"],
 .field textarea,
 .field select {
-    color: #060606 !important; /* Color casi negro para máxima visibilidad */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 1px solid #ccc;    /* Un borde suave para que se vean los límites */
+    color: #060606 !important;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     padding: 10px;
     font-size: 1rem;
     width: 100%;
 }
 
-/* Estilo específico para las opciones del select */
 .field select option {
     color: #060606;
     background-color: #ffffff;
@@ -212,8 +206,6 @@
     cursor: pointer;
     margin-top: 20px;
 }
-
-/* ---------------- CAPTCHA (agregar al final) ---------------- */
 
 .captchaRow {
     display: flex;
@@ -336,10 +328,18 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 678px) {
 
     .container {
-        padding: 0 20px; /* Reducimos padding lateral del contenedor principal */
+        padding: 0 10px;
+    }
+
+    .disclaimer{
+        font-size: 0.95rem;
+    }
+
+    .submitBtn {
+        padding: 15px 20px;
     }
 
 }
