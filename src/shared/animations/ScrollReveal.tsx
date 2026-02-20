@@ -20,13 +20,9 @@ export const ScrollReveal = ({
     const ref = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
 
-    // Detectar el ancho de pantalla para desactivar en tablet/mobile
     useEffect(() => {
-        const checkScreen = () => {
-            setIsMobile(window.innerWidth < 1280);
-        };
-
-        checkScreen(); // Check inicial
+        const checkScreen = () => setIsMobile(window.innerWidth < 1280);
+        checkScreen();
         window.addEventListener('resize', checkScreen);
         return () => window.removeEventListener('resize', checkScreen);
     }, []);
@@ -41,7 +37,6 @@ export const ScrollReveal = ({
     const xOffset = isNoMovement ? 0 : (direction === 'left' ? -distance : direction === 'right' ? distance : 0);
     const yOffset = isNoMovement ? 0 : (direction === 'up' ? distance : direction === 'down' ? -distance : 0);
 
-    // Valores transformados
     const opacityAnim = useTransform(scrollYProgress, [0, 1], [initialOpacity, 1]);
     const xAnim = useTransform(scrollYProgress, [0, 1], [xOffset, 0]);
     const yAnim = useTransform(scrollYProgress, [0, 1], [yOffset, 0]);
@@ -53,7 +48,6 @@ export const ScrollReveal = ({
             ref={ref}
             className={className}
             style={{
-                // Si es mobile (< 1280px), usamos valores estáticos, si no, la animación
                 opacity: isMobile ? 1 : opacityAnim,
                 x: isMobile ? 0 : xAnim,
                 y: isMobile ? 0 : yAnim,
