@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { getHierarchy, RouteNode } from '@/shared/utils/routeScanner';
 import styles from './Sitemap.module.css';
+import {Footer} from "@/shared/components/layout/footer/Footer";
 
 function RenderNode({ node, depth = 0 }: { node: RouteNode; depth?: number }) {
     const icon = depth === 0 ? '—' : '○';
@@ -34,15 +35,19 @@ export default function SitemapPage() {
     const routes = getHierarchy();
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.container}>
-                <h1 className={styles.title}>Site Map</h1>
-                <ul className={styles.list}>
-                    {routes.map((route, i) => (
-                        <RenderNode key={i} node={route} depth={0} />
-                    ))}
-                </ul>
+        <div>
+            <div className={styles.wrapper}>
+                <div className={styles.container}>
+                    <h1 className={styles.title}>Site Map</h1>
+                    <ul className={styles.list}>
+                        {routes.map((route, i) => (
+                            <RenderNode key={i} node={route} depth={0} />
+                        ))}
+                    </ul>
+                </div>
             </div>
+            <Footer/>
         </div>
+
     );
 }
