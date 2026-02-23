@@ -94,6 +94,7 @@
 
     .title{
         font-size: 2.6rem;
+        width: 70%;
     }
 
     .bodyText p{
@@ -161,5 +162,5 @@
         margin-bottom: 50px;
     }
 
-    .title { font-size: 2.2rem; }
+    .title { font-size: 2.2rem; width: 100%}
 }

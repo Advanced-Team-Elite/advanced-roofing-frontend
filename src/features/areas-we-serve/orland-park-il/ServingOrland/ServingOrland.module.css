@@ -55,7 +55,6 @@
 }
 
 .paragraph{
-
     font-family: 'Open Sans', sans-serif;
     line-height: 1.8;
     font-size: 1.1rem;
@@ -193,6 +192,12 @@
         order: 2;
     }
 
+    .title { font-size: 2.2rem; margin-bottom: 0; }
+
+    .paragraph{
+        font-size: 0.95rem;
+    }
+
     .subtitle {
         color: #00589e;
         font-size: 1.8rem;
@@ -224,5 +229,5 @@
         margin-bottom: 50px;
     }
 
-    .title { font-size: 2.2rem; }
+
 }

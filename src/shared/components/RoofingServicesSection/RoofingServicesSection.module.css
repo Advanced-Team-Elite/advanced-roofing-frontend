@@ -2,6 +2,7 @@
     width: 100%;
     background-color: #ffffff;
     overflow: hidden;
+    padding: 0;
 }
 
 .fullWidthContainer {
@@ -92,7 +93,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 1px;
 }
@@ -160,14 +160,20 @@
     .paragraph{
         font-size: 1rem;
     }
+    .title { font-size: 2.8rem; width: 60%}
+
+    .subtitle {
+        font-size: 1.9rem;
+    }
+
 
     .benefitsList li{
         font-size: 1rem;
     }
 
     .ctaBanner {
-        padding: 30px 10px;
-        text-align: center;
+        padding: 50px 30px;
+        text-align: left;
         font-size: 1rem;
     }
     .imageColumn {
@@ -179,9 +185,14 @@
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
 
+    .aboutSection {
+        padding: 0 10px;
+    }
+
     .fullWidthContainer{
         display: flex;
         flex-direction: column-reverse;
+        gap: 30px;
     }
 
     .textContent {
@@ -220,5 +231,5 @@
         margin-bottom: 50px;
     }
 
-    .title { font-size: 2.2rem; }
+    .title { font-size: 2.2rem; width: 100% }
 }
