@@ -288,6 +288,10 @@
         grid-template-columns: 1fr 1fr; /* Desktop */
     }
 
+    .container {
+        padding: 80px 0 160px 0;
+    }
+
 }
 
 /* Pagination */
