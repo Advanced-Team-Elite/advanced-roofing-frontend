@@ -219,4 +219,8 @@
     .aboutSection {
         padding: 0 20px;
     }
+
+    .ctaBanner p{
+        font-size: 0.95rem;
+    }
 }

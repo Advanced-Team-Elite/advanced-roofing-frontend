@@ -306,7 +306,9 @@ const ContactUsPage = () => {
                                     <div className={styles.iconCircle}><PhoneIcon size={19}/></div>
                                     <div>
                                         <p className={styles.infoTitle}>Call Us Today!</p>
-                                        <p className={styles.infoTextCall}>847-262-9774</p>
+                                        <a href="tel:8472629774" className={styles.infoTextCall}>
+                                            847-262-9774
+                                        </a>
                                     </div>
                                 </div>
 

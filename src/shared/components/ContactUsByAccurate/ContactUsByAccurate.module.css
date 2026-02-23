@@ -203,7 +203,7 @@
 }
 
 .disclaimer{
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: black;
     text-align: center;
 }
@@ -394,6 +394,11 @@
 }
 
 @media (max-width: 768px) {
+
+    .contactSection {
+        padding: 0 0 40px 0;
+    }
+
     .title {
         font-size: 2.4rem;
         font-weight: 800;
@@ -419,6 +424,10 @@
 
     .container {
         padding: 0;
+    }
+
+    .disclaimer{
+        font-size: 0.95rem;
     }
 
     .contactUsBtn {

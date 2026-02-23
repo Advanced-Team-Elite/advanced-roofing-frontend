@@ -74,7 +74,12 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 975 Rand Rd<br />
                                 Des Plaines, IL 60016
                             </p>
-                            <Link href="#" className={styles.mapLink}>
+                            <Link
+                                href="https://www.google.com/maps?cid=5324934304242062101"
+                                className={styles.mapLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 Map & Directions
                             </Link>
                         </div>

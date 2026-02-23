@@ -81,21 +81,20 @@
     content: "";
     position: absolute;
     left: 0;
-    width: 20px; /* Largo de la línea */
-    height: 3px;  /* Grosor de la línea */
-    background-color: #00c3f8; /* Azul claro */
+    width: 20px;
+    height: 3px;
+    background-color: #00c3f8;
 }
 
 .contactBanner {
-    background-color: #00589e; /* Azul oscuro corporativo */
+    background-color: #00589e;
     padding: 25px 30px;
     margin-top: 40px;
-    border-radius: 4px; /* Opcional, según mockup */
 }
 
 .contactText {
-    color: #ffffff; /* Texto blanco para contraste */
-    font-size: 1.15rem;
+    color: #ffffff;
+    font-size: 1.1rem;
     margin: 0;
     line-height: 1.5;
     text-align: center;
@@ -157,7 +156,7 @@
     }
 
     .servingSection {
-        padding: 40px 0;
+        padding: 40px 20px;
     }
 
     .container {
@@ -168,12 +167,23 @@
     .imageColumn {
         order: -1;
         width: 100%;
+        height: auto;
         margin-bottom: 30px;
     }
 
     .textContent {
         width: 100%;
         text-align: left;
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: left;
+        margin: -55px 0 -45px 0;
+    }
+
+    .iconWrapper svg{
+        width: 90px;
     }
 
     .title {
@@ -188,6 +198,10 @@
         font-size: 0.95rem;
     }
     .benefitList li {
+        font-size: 0.95rem;
+    }
+
+    .contactText {
         font-size: 0.95rem;
     }
 

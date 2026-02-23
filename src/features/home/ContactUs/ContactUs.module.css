@@ -109,9 +109,8 @@
     background-color: #00CCFF;
     color: #fff;
     border: none;
-    padding: 15px 60px;
+    padding: 15px 30px;
     font-weight: 800;
-    text-transform: uppercase;
     cursor: pointer;
     font-size: 1rem;
     transition: background 0.3s;
@@ -141,10 +140,16 @@
     }
 
     .formCard {
-        padding: 90px 30px;
+        padding: 60px 30px;
     }
 
+    .disclaimer {
+        line-height: 1.8;
+        text-align: center;
+    }
+
+
     .submitBtn {
-        width: 100%;
+        margin: 0 auto;
     }
 }

@@ -319,7 +319,7 @@
     }
 
     .servingSection {
-        padding: 40px 0 0 0;
+        padding: 40px 10px 0 10px;
     }
 
     .paragraph {
@@ -346,14 +346,19 @@
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        width: 90%;
     }
 
     .subtitle {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .iconWrapper {
-        margin-bottom: -35px;
+        margin: -35px 0 -35px 0;
+    }
+
+    .iconWrapper svg {
+        width: 90px;
     }
 }

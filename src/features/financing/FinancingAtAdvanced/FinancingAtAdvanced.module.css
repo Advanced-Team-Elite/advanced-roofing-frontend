@@ -221,11 +221,16 @@
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
 
+    .iconWrapper {
+        margin: -60px 0 -40px 0;
+    }
+
     .iconWrapper svg{
         width: 90px;
     }
 
     .title {
+        width: 90%;
         font-size: 2.2rem;
     }
 

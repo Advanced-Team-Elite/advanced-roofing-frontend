@@ -80,12 +80,12 @@
 }
 
 .phoneLink {
-    color: #060606;
+    color: #f7d000;
     text-decoration: none;
 }
 
 .blueLink {
-    color: #10c8f8;
+    color: #f7d000;
     font-weight: 700;
     transition: color 0.3s ease;
 }
@@ -305,7 +305,7 @@
 
     .formColumnContainer {
         width: 100% !important;
-        padding: 40px 30px;
+        padding: 40px 30px ;
         margin: 0;
         box-sizing: border-box;
     }
@@ -342,8 +342,16 @@
         line-height: 1.1;
     }
 
+    .iconWrapper {
+        margin: -35px 0 -45px 0;
+    }
+
     .iconWrapper svg{
         width: 90px;
+    }
+
+    .contactSection {
+        padding: 0 0 60px 0;
     }
 
     .paragraph {

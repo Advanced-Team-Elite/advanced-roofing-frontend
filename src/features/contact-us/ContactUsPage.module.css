@@ -123,8 +123,9 @@
 }
 
 .disclaimer {
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 1.7;
+    color: #060606;
 }
 
 .disclaimer a {
@@ -144,7 +145,7 @@
 
 /* ---------------- TABLET ---------------- */
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .container {
         max-width: 80%;
         display: grid;
@@ -176,7 +177,13 @@
 
 /* ---------------- MOBILE ---------------- */
 
-@media (max-width: 600px) {
+@media (max-width: 678px) {
+
+    .contactSection {
+        padding: 80px 30px 120px 30px;
+        background: #f4f4f4;
+    }
+
     .container {
         max-width: 90%;
     }
@@ -195,12 +202,16 @@
         padding: 30px 17px;
     }
 
+    .disclaimer {
+        font-size: 0.95rem;
+    }
+
     .mapWrapper {
         height: 280px;
     }
 
     .submitBtn {
-        width: 100%;
+
     }
 
     .iconCircle {

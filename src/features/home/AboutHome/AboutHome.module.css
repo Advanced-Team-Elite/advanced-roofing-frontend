@@ -180,4 +180,9 @@
         font-size: 0.95rem;
         text-align: center;
     }
+
+    .textContent {
+        padding: 30px 5% 0 5%;
+        order: 2;
+    }
 }

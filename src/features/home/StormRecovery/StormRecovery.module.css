@@ -108,6 +108,10 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+    .imageContainerWrapper {
+        display: none;
+    }
+
     .recoverySection {
         padding: 0 40px;
     }
@@ -118,6 +122,8 @@
 
     .title {
         margin-top: 50px;
+        margin-bottom: 20px;
     }
+
 
 }

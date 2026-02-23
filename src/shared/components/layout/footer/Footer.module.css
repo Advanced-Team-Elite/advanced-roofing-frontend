@@ -231,6 +231,13 @@ a:hover {
         width: 200px;
     }
 
+    .legalLinks {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
     .footerBottomLine {
         margin: 0 10px;
     }

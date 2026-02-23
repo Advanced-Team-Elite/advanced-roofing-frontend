@@ -83,7 +83,14 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 678px) {
+    .iconWrapper {
+        margin: -100px 0 -45px 0;
+    }
+    .iconWrapper svg{
+        width: 90px;
+    }
+
     .benefitsSection {
         padding: 40px 20px;
     }

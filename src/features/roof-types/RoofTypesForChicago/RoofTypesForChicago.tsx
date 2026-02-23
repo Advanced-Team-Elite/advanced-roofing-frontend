@@ -58,7 +58,7 @@ export const RoofTypesForChicago = () => {
                 </div>
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
-                <ScrollReveal direction="right">
+                <ScrollReveal direction="right" >
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <img

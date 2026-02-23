@@ -76,25 +76,23 @@
     align-items: center;
 }
 
-/* La línea horizontal azul */
 .benefitList li::before {
     content: "";
     position: absolute;
     left: 0;
-    width: 20px; /* Largo de la línea */
-    height: 2px;  /* Grosor de la línea */
-    background-color: #00c3f8; /* Azul claro */
+    width: 20px;
+    height: 2px;
+    background-color: #00c3f8;
 }
 
 .contactBanner {
-    background-color: #00589e; /* Azul oscuro corporativo */
+    background-color: #00589e;
     padding: 25px 30px;
     margin-top: 40px;
-    border-radius: 4px; /* Opcional, según mockup */
 }
 
 .contactText {
-    color: #ffffff; /* Texto blanco para contraste */
+    color: #ffffff;
     font-size: 1.15rem;
     margin: 0;
     line-height: 1.5;
@@ -106,7 +104,6 @@
     font-weight: 800;
 }
 
-/* Estilo para los enlaces dentro del banner azul */
 .contactText a {
     color: #ffffff;
 }
@@ -139,7 +136,7 @@
 @media (max-width: 1280px) {
     .container {
         gap: 40px;
-        flex-direction: column; /* Apila */
+        flex-direction: column;
     }
 
 
@@ -161,7 +158,7 @@
     }
 
     .contactBanner {
-        padding: 20px;
+        padding: 30px 20px;
         text-align: center;
     }
 
@@ -170,14 +167,13 @@
     }
 
     .servingSection {
-        padding: 40px 0;
+        padding: 40px 20px 0 20px;
     }
 
     .container {
-        flex-direction: column-reverse; /* Apila */
+        flex-direction: column-reverse;
     }
 
-    /* Imagen arriba en Mobile */
     .imageColumn {
         order: -1;
         width: 100%;
@@ -190,7 +186,7 @@
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
     }
 
     .subtitle {
@@ -201,11 +197,23 @@
         font-size: 0.95rem;
     }
 
+    .listHeader {
+        font-size: 1rem;
+    }
+
     .benefitList li {
         font-size: 0.95rem;
     }
 
+    .contactText {
+        font-size: 0.95rem;
+    }
+
     .iconWrapper {
-        margin-bottom: -35px;
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 90px;
     }
 }

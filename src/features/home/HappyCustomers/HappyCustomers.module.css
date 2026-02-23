@@ -60,7 +60,6 @@
 
 .cardText {
     font-size: 1.1rem;
-    font-style: italic;
     margin-bottom: 20px;
     flex-grow: 1;
 }
@@ -129,12 +128,18 @@
     }
 
     .mainTitle {
+        margin-bottom: 10px;
         font-size: 2rem;
         text-align: center;
+        font-weight: bold;
+    }
+
+    .cardText {
+        font-size: 1rem;
     }
 
     .cardTitle {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .carouselWrapper {

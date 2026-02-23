@@ -205,6 +205,9 @@
     .aboutSection {
         padding: 0 20px;
     }
+    .columnTitle {
+        font-size: 1.7rem;
+    }
     .paragraph {
         font-size: 0.95rem;
     }

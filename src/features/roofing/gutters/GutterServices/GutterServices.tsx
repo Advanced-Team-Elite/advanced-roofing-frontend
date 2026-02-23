@@ -57,7 +57,7 @@ export const GutterServices = () => {
                         {/* Banner de contacto interno (Gris) */}
                         <div className={styles.innerCta}>
                             <p>
-                                Contact us at <strong>(847) 262-9774</strong> or through our{' '}
+                                Contact us at (847) 262-9774 or through our{' '}
                                 <Link href="/contact-us/" className={styles.blueLink}>
                                     online form
                                 </Link>{' '}
