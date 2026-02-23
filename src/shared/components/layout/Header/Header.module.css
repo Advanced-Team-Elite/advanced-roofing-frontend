@@ -340,9 +340,6 @@
 }
 
 @media (max-width: 1520px) {
-    .logoContainer{
-        margin: 0;
-    }
 
     .mainNav {
         padding: 40px 40px;
@@ -362,6 +359,10 @@
 }
 
 @media (max-width: 1280px) {
+    .logoContainer{
+        margin: 0;
+    }
+
     .logoContainer img {
         height: 95px;
         width: auto;
