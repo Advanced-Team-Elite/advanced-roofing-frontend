@@ -346,7 +346,7 @@ const ContactToday = () => {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                             />
-                                            {errors.email && <span className={styles.error}>{errors.error}</span>}
+                                            {errors.email && <span className={styles.error}>{errors.email}</span>}
                                         </div>
                                     </div>
 
