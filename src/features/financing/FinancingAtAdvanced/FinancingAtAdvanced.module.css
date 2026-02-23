@@ -188,7 +188,7 @@
 /* RESPONSIVE */
 @media (max-width: 1280px) {
     .aboutSection{
-        padding: 0px 100px;
+        padding: 0 100px 90px 100px;
     }
 
     .paragraph {
@@ -200,8 +200,12 @@
         gap: 40px;
     }
 
+    .title {
+        font-size: 2.5rem;
+    }
+
     .textContent {
-        padding: 60px 5% 0 5%;
+        padding: 60px 0 0 0;
     }
 
     .imageWrapper {
@@ -210,7 +214,7 @@
     }
     .iconWrapper {
         margin-top: -40px;
-        margin-bottom: 5px;
+        margin-bottom: -40px;
     }
 }
 
@@ -219,8 +223,12 @@
 
     .iconWrapper svg{
         width: 90px;
-        margin: -45px 0 -55px 0;
     }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
     .subtitle {
         font-size: 1.5rem;
     }
@@ -237,6 +245,6 @@
     }
 
     .aboutSection {
-        padding: 0 20px 20px 20px;
+        padding: 0 30px 20px 30px;
     }
 }
