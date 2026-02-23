@@ -99,7 +99,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 1px;
 }
@@ -166,6 +165,11 @@
         grid-template-columns: 1fr;
     }
 
+
+    .title { font-size: 2.8rem; }
+
+    .subtitle { font-size: 1.8rem;}
+
     .paragraph{
         font-size: 1rem;
     }
@@ -175,7 +179,7 @@
     }
 
     .ctaBanner {
-        padding: 30px 10px;
+        padding: 40px 30px;
         text-align: center;
         font-size: 1rem;
     }
@@ -204,11 +208,11 @@
     }
 
     .paragraph{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {
@@ -220,7 +224,7 @@
     .ctaBanner {
         padding: 30px 10px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .imageColumn {

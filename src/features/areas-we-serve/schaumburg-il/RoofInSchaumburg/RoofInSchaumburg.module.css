@@ -73,7 +73,7 @@
 .linkText { color: #00ccff; text-decoration: underline; font-weight: 600; }
 
 .readMoreWrapper {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #f7d000;
     padding-top: 20px;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -88,12 +88,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 1px;
 }
 
-/* --- LÓGICA DE EXPANSIÓN --- */
 .expandableContent {
     max-height: 0;
     overflow: hidden;
@@ -163,8 +161,16 @@
         font-size: 1rem;
     }
 
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.8rem;
+    }
+
     .ctaBanner {
-        padding: 30px 10px;
+        padding: 40px 30px;
         text-align: center;
         font-size: 1rem;
     }
@@ -176,6 +182,10 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+
+    .aboutSection {
+        padding: 0 10px;
+    }
 
     .fullWidthContainer{
         display: flex;
@@ -193,11 +203,11 @@
     }
 
     .paragraph{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {
@@ -209,7 +219,7 @@
     .ctaBanner {
         padding: 30px 10px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .imageColumn {

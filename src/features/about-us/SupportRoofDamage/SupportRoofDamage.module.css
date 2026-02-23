@@ -116,6 +116,10 @@
         padding: 20px 20px;
     }
 
+    .iconWrapper svg{
+        width: 90px;
+    }
+
     .paragraph {
         font-size: 0.95rem;
     }

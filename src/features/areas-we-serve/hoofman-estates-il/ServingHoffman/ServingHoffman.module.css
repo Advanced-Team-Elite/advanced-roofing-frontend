@@ -40,7 +40,7 @@
 .title {
     font-family: var(--font-prompt);
     color: #00589e;
-    font-size: 3rem;
+    font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 30px;
     font-weight: 800;
@@ -55,7 +55,6 @@
 }
 
 .paragraph{
-
     font-family: 'Open Sans', sans-serif;
     line-height: 1.8;
     font-size: 1.1rem;
@@ -92,7 +91,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 1px;
 }
@@ -186,17 +184,21 @@
         order: 2;
     }
 
+    .paragraph{
+        font-size: 0.95rem;
+    }
+
     .subtitle {
         color: #00589e;
         font-size: 1.8rem;
     }
 
     .bodyText p{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {
@@ -208,7 +210,7 @@
     .ctaBanner {
         padding: 30px 10px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .imageColumn {

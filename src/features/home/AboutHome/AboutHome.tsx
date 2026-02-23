@@ -77,7 +77,7 @@ export const AboutHome = () => {
                 </div>
 
                 {/* Bloque Derecho: Imagen Full a Sangre */}
-                <ScrollReveal direction="right" >
+                <ScrollReveal direction="right" className={styles.imageColumnWrapper}>
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <Image

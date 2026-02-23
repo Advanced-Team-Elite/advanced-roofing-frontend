@@ -11,15 +11,13 @@ const SupportRoofDamage = () => {
             <div className={styles.container}>
                 <div className={styles.flexLayout}>
 
-                    <div className={styles.imageColumn}>
-                        <ScrollReveal direction="right" distance={40}>
-                            <img
-                                src="/assets/images/features/about-us/content-v9.png"
-                                alt="Roof Inspection Support"
-                                className={styles.mainImage}
-                            />
-                        </ScrollReveal>
-                    </div>
+                    <ScrollReveal direction="right" distance={40} className={styles.imageColumn}>
+                        <img
+                            src="/assets/images/features/about-us/content-v9.png"
+                            alt="Roof Inspection Support"
+                            className={styles.mainImage}
+                        />
+                    </ScrollReveal>
 
 
 

@@ -12,16 +12,13 @@ export const TrustedLocal = () => {
                 <div className={styles.flexLayout}>
 
                     {/* Columna de Imagen con borde amarillo */}
-                    <div className={styles.imageColumn}>
-                        <ScrollReveal direction="right" distance={30}>
-                            <img
-                                src="/assets/images/features/about-us/content-v9.png"
-                                alt="Roof Inspection Support"
-                                className={styles.mainImage}
-                            />
-                        </ScrollReveal>
-
-                    </div>
+                    <ScrollReveal direction="right" distance={30} className={styles.imageColumn}>
+                        <img
+                            src="/assets/images/features/about-us/content-v9.png"
+                            alt="Roof Inspection Support"
+                            className={styles.mainImage}
+                        />
+                    </ScrollReveal>
 
                     {/* Columna de Texto */}
                     <div className={styles.textColumn}>

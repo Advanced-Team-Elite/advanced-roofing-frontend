@@ -188,7 +188,7 @@
 /* Ajustes para Mobile */
 @media (max-width: 1280px) {
     .supportSection {
-        padding: 40px 100px;
+        padding: 40px 100px 80px 100px;
     }
 
     .mainTitle {
@@ -208,7 +208,7 @@
     }
 
     .iconWrapper {
-        margin-bottom: 5px;
+        margin: 0 0 -40px 0;
     }
 }
 
@@ -216,8 +216,20 @@
 
     .iconWrapper svg{
         width: 90px;
-        margin: -45px 0 -55px 0;
     }
+
+    .iconWrapper {
+        margin: -30px 0 -50px 0;
+    }
+
+    .introText, .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .cityItem {
+        font-size: 0.95rem;
+    }
+
     .subtitle {
         font-size: 1.5rem;
     }
@@ -227,6 +239,10 @@
 
     .citiesGridList {
         column-count: 1;
+    }
+
+    .readMoreBtn {
+        font-size: 0.95rem;
     }
 
     .supportSection {

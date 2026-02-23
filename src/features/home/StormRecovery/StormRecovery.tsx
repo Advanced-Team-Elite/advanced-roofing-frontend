@@ -9,7 +9,7 @@ export const StormRecovery = () => {
         <section className={styles.recoverySection}>
             <div className={styles.container}>
 
-                <ScrollReveal direction="left">
+                <ScrollReveal direction="left" className={styles.imageContainerWrapper}>
                     <div className={styles.imageContainer}>
                         <div className={styles.yellowFrame}>
                             <div className={styles.imageWrapper}>

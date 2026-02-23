@@ -55,7 +55,6 @@
 }
 
 .paragraph{
-
     font-family: 'Open Sans', sans-serif;
     line-height: 1.8;
     font-size: 1.1rem;
@@ -85,7 +84,7 @@
 
 
 .readMoreWrapper {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #f7d000;
     padding-top: 20px;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -193,17 +192,21 @@
         order: 2;
     }
 
+    .paragraph{
+        font-size: 0.95rem;
+    }
+
     .subtitle {
         color: #00589e;
         font-size: 1.8rem;
     }
 
     .bodyText p{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {
@@ -215,7 +218,7 @@
     .ctaBanner {
         padding: 30px 10px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .imageColumn {

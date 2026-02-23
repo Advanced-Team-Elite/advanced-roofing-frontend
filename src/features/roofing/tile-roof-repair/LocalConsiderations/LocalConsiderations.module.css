@@ -210,11 +210,11 @@
 @media (max-width: 768px) {
 
     .benefitsList li {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .paragraph {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.7;
     }
 
