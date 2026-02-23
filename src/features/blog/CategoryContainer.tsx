@@ -4,7 +4,6 @@ import { BreadCrumbsHomeIcon} from "@/shared/Icons/Icons";
 import { ALL_POSTS} from "@/shared/utils/blogData";
 import styles from "./Category.module.css";
 import {Footer} from "@/shared/components/layout/footer/Footer";
-import {ContactUsForWeather} from "@/shared/components/ContactUsForWeather/ContactUsForWeather";
 
 interface CategoryContainerProps {
     category: string;

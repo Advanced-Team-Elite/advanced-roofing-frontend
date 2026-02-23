@@ -253,29 +253,80 @@
     font-family: Arial, sans-serif;
 }
 .drawerFooter {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    background-color: #004a85;
+    padding: 30px 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.buttonsWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.footerColumn {
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.columnTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0 ;
+}
+
+.socialIcon {
+    color: #ffcc00;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.socialIcon svg:hover {
+    fill: white;
+}
+
+.socialIcon svg {
+    fill: #ffcc00;
+    width: 28px;
+    height: 28px;
 }
 
 .mobileContactBtn {
     background-color: #00aeef;
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 12px 24px;
     font-weight: bold;
     text-decoration: none;
+    margin: 0 30px;
 }
 
 .mobileCallBtn {
     background-color: white;
     color: black;
     text-align: center;
-    padding: 12px;
+    padding: 12px 24px;
     font-weight: bold;
     text-decoration: none;
+    margin: 0 30px;
 }
 
 .phoneToggle {
@@ -286,6 +337,10 @@
     .logoContainer img {
         height: 95px;
         width: auto;
+    }
+
+    .mobileCallBtn {
+        margin: 0;
     }
 
     .desktopMenu, .topBar {
@@ -331,6 +386,10 @@
         padding: 45px 100px;
     }
 
+    .drawerContainer {
+        width: 90vw;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -338,4 +397,23 @@
         padding: 45px 25px;
     }
 
+    .drawerFooter {
+        flex-direction: column;
+    }
+
+    .buttonsWrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobileContactBtn,
+    .mobileCallBtn {
+        width: 200px;
+        margin: 0;
+    }
+
+    .drawerContainer {
+        width: 320px;
+    }
 }
