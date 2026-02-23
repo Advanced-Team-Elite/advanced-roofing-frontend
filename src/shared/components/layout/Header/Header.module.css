@@ -50,11 +50,16 @@
     width: auto;
 }
 
+.logoContainer{
+    margin-right: 30px;
+}
+
 .desktopMenu {
     display: flex;
     align-items: center;
-    gap: 45px;
+    gap: clamp(10px, 2vw, 45px);
     list-style: none;
+    flex-wrap: nowrap;
 }
 
 .hasDropdown {
@@ -102,12 +107,12 @@
 
 
 .dropdownMenu li a:hover {
-    color: #ffcc00; /* Color celeste de tu marca */
+    color: #ffcc00;
 }
 
 
 .hasDropdown:hover .navLink {
-    color: #ffcc00; /* O el color que uses para hover en el menú principal */
+    color: #ffcc00;
     padding: 20px 0;
 }
 
@@ -117,6 +122,7 @@
     font-weight: 700;
     font-size: 1.1rem;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .navLink:hover {
@@ -331,6 +337,28 @@
 
 .phoneToggle {
     display: none;
+}
+
+@media (max-width: 1520px) {
+    .logoContainer{
+        margin: 0;
+    }
+
+    .mainNav {
+        padding: 40px 40px;
+    }
+
+    .topBar{
+        padding: 15px 40px;
+    }
+
+    .navLink {
+        font-size: 1.05rem;
+    }
+
+    .quoteBtn {
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 1280px) {
