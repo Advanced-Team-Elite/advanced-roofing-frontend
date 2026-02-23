@@ -98,7 +98,7 @@
 @media (max-width: 1280px) {
 
     .sectionWrapper {
-        padding: 80px 20px;
+        padding: 80px 100px;
     }
 
     .iconWrapper {
@@ -106,6 +106,12 @@
         color: #333;
         width: 100%;
     }
+
+    .subtitle{
+        font-size: 1.5rem;
+
+    }
+
 
     .flexLayout {
         flex-direction: column;
@@ -127,6 +133,19 @@
 }
 
 @media (max-width: 600px) {
+
+    .iconWrapper svg{
+        width: 90px;
+    }
+
+    .flexLayout {
+        gap: 0;
+    }
+
+    .ctaText {
+        font-size: 0.95rem;
+    }
+
     .paragraph {
         font-size: 0.95rem;
     }
