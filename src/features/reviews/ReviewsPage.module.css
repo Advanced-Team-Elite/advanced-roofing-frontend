@@ -1,5 +1,3 @@
-
-
 .modalWhiteCard {
     background-color: white;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -222,13 +220,13 @@
     }
 }
 
-
 .container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 80px 20px 160px 20px;
     font-family: Arial, sans-serif;
 }
+
 /* Breadcrumb Styles */
 .breadcrumb {
     display: flex;
@@ -260,7 +258,7 @@
 
 .title {
     color: #0056b3;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
 }
 
@@ -281,10 +279,15 @@
     gap: 30px;
 }
 
-@media (min-width: 1024px) {
+.container {
+    padding: 80px 200px 160px 200px;
+}
+
+@media (min-width: 1280px) {
     .reviewsGrid {
         grid-template-columns: 1fr 1fr; /* Desktop */
     }
+
 }
 
 /* Pagination */
@@ -366,6 +369,14 @@
     .reviewTitle {
         font-size: 1.8rem;
         line-height: 1.2;
+    }
+
+    .title{
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 80px 30px 80px 30px;
     }
 
     .stars {
