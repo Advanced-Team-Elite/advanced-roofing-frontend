@@ -273,9 +273,18 @@ const ContactToday = () => {
                                     {areas.map((area, index) => (
                                         <div key={index} className={styles.areaItem}>
                                             <span className={styles.dash}>—</span>
-                                            <span className={area.served ? styles.served : styles.notServed}>
-                                            {area.name}
-                                        </span>
+
+                                            {area.served && area.path ? (
+                                                <Link href={area.path} className={styles.servedLink}>
+                                                    <span className={styles.served}>
+                                                        {area.name}
+                                                    </span>
+                                                </Link>
+                                            ) : (
+                                                <span className={styles.notServed}>
+                                                    {area.name}
+                                                </span>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
