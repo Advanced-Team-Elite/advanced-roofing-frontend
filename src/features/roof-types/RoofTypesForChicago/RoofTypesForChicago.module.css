@@ -184,6 +184,13 @@
         font-size: 1.3rem;
     }
 
+    .paragraph {
+        font-size: 0.95rem;
+    }
+    .benefitList li {
+        font-size: 0.95rem;
+    }
+
     .iconWrapper {
         margin-bottom: -35px;
     }

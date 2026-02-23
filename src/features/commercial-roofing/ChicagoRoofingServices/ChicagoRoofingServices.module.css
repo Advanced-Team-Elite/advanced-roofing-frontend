@@ -260,6 +260,7 @@
 
 /* --- RESPONSIVE TABLET (1280px) --- */
 @media (max-width: 1280px) {
+
     .contactBanner {
         padding: 20px;
         text-align: center;
@@ -270,18 +271,19 @@
     }
 
     .servingSection {
-        padding: 40px 100px;
+        padding: 40px 100px 40px 100px;
     }
 
     .container {
-        gap: 40px;
-        flex-direction: column-reverse;
+        gap: 50px;
+        flex-direction: column;
     }
 
     .imageColumn {
         order: -1;
         width: 100%;
         margin-bottom: 30px;
+        height: auto;
     }
 
     .textContent {
@@ -300,6 +302,10 @@
     .iconWrapper {
         margin-bottom: -35px;
     }
+
+    .mainImage{
+        height: fit-content;
+    }
 }
 
 /* --- RESPONSIVE MOBILE (768px) --- */
@@ -309,11 +315,11 @@
     }
 
     .benefitsList li {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .servingSection {
-        padding: 40px 0;
+        padding: 40px 0 0 0;
     }
 
     .paragraph {

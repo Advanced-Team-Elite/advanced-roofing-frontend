@@ -25,7 +25,7 @@ const SharedBanner = ({
                 <div className={styles.overlay}>
                     <div className={styles.titleWrapper}>
                         {isIconVisible && (
-                            <div className={styles.iconWrapper}>
+                            <div className={`${styles.iconWrapper} ${!isIconVisible ? styles.hidden : ''}`}>
                                 <FlairIcon size={150} />
                             </div>
                         )}

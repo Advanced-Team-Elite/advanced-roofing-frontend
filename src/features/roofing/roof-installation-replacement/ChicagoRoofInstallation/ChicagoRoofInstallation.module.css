@@ -184,6 +184,15 @@
         text-align: left;
     }
 
+    .textContent p {
+        font-size: 0.95rem;
+    }
+
+    .benefitsList li {
+        font-size: 0.95rem;
+    }
+
+
     .innerCta {
         padding: 20px;
     }

@@ -30,7 +30,7 @@
 }
 
 .subtitle {
-    color: #004a8c;
+    color: #00589e;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 2rem;
@@ -39,7 +39,7 @@
 
 .title {
     font-family: var(--font-prompt);
-    color: #005aab;
+    color: #00589e;
     font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 30px;
@@ -47,7 +47,7 @@
 }
 
 .question{
-    color: #004a8c;
+    color: #00589e;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 1.5rem;
@@ -55,7 +55,6 @@
 }
 
 .paragraph{
-
     font-family: 'Open Sans', sans-serif;
     line-height: 1.8;
     font-size: 1.1rem;
@@ -72,7 +71,7 @@
 }
 
 .ctaBanner {
-    background: #005aab;
+    background: #00589e;
     padding: 30px 30px;
     text-align: center;
     font-size: 1rem;
@@ -85,7 +84,7 @@
 
 
 .readMoreWrapper {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #f7d000;
     padding-top: 20px;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -125,7 +124,7 @@
 .arrowUp { transform: rotate(180deg); }
 
 .ctaBanner {
-    background-color: #004a8c;
+    background-color: #00589e;
     color: #fff;
     padding: 30px;
     border-radius: 2px;
@@ -193,17 +192,23 @@
         order: 2;
     }
 
+    .title { font-size: 2.2rem; margin-bottom: 0; }
+
+    .paragraph{
+        font-size: 0.95rem;
+    }
+
     .subtitle {
-        color: #005aab;
+        color: #00589e;
         font-size: 1.8rem;
     }
 
     .bodyText p{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li{
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .benefitsList li::before {
@@ -215,7 +220,7 @@
     .ctaBanner {
         padding: 30px 10px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .imageColumn {
@@ -224,5 +229,5 @@
         margin-bottom: 50px;
     }
 
-    .title { font-size: 2.2rem; }
+
 }

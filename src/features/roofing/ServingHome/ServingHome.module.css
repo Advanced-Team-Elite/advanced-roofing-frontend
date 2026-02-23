@@ -71,7 +71,7 @@
     padding-left: 35px; /* Espacio para la línea */
     margin-bottom: 8px;
     font-size: 1.1rem;
-    color: #333;
+    color: #060606;
     display: flex;
     align-items: center;
 }
@@ -139,14 +139,27 @@
 @media (max-width: 1280px) {
     .container {
         gap: 40px;
+        flex-direction: column; /* Apila */
     }
+
+
     .title {
         font-size: 3rem;
     }
+
+    .servingSection {
+        padding: 40px 100px;
+    }
+
 }
 
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
+    .iconWrapper {
+        margin-bottom: -45px;
+        margin-top: -70px;
+    }
+
     .contactBanner {
         padding: 20px;
         text-align: center;
@@ -161,7 +174,7 @@
     }
 
     .container {
-        flex-direction: column; /* Apila */
+        flex-direction: column-reverse; /* Apila */
     }
 
     /* Imagen arriba en Mobile */
@@ -182,6 +195,14 @@
 
     .subtitle {
         font-size: 1.3rem;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .benefitList li {
+        font-size: 0.95rem;
     }
 
     .iconWrapper {

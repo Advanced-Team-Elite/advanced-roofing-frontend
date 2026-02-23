@@ -34,6 +34,7 @@
     margin: 90px 100px;
     max-width: 80%;
     text-align: center;
+    padding: 0 0 90px 0;
 }
 
 .areasTitle {
@@ -54,36 +55,33 @@
     margin-bottom: 15px;
 }
 .scrollList {
-    max-height: 250px; /* Ajustado para que se vean aprox 5 items */
+    max-height: 250px;
     overflow-y: auto;
     padding-right: 20px;
     margin-top: 20px;
 }
 
-/* 1. Ancho del scrollbar */
 .scrollList::-webkit-scrollbar {
     width: 4px;
 }
 
-/* 2. El carril (la línea gris larga) */
 .scrollList::-webkit-scrollbar-track {
     background: #cccccc;
     border-radius: 10px;
 }
 
-/* 3. El indicador (la barrita negra que se mueve) */
 .scrollList::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 10px;
 }
 
-/* Estilos de los items */
 .areaItem {
     padding: 10px 0;
     display: flex;
     align-items: center;
     gap: 12px;
     font-size: 1.1rem;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .dash {
@@ -99,7 +97,7 @@
 }
 
 .notServed {
-    color: #333;
+    color: #060606;
 }
 
 .disclaimerLink{
@@ -122,7 +120,7 @@
 
 .formTitle {
     font-size: 4.5rem;
-    color: #0056b3;
+    color: #00589e;
     font-weight: bolder;
     margin-bottom: 15px;
 }
@@ -130,7 +128,8 @@
 .formSubtitle{
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: black;
+    color: #060606;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .field {
@@ -155,10 +154,9 @@
 
 .field select option {
     color: #060606;
-    background-color: #ffffff; /* Asegura un fondo claro para legibilidad */
+    background-color: #ffffff;
 }
 
-/* Opcional: Estilo para el estado inicial (placeholder) */
 .field select option[value=""][disabled] {
     color: #999999;
 }
@@ -166,15 +164,14 @@
 .field input[type="text"],
 .field textarea,
 .field select {
-    color: #060606 !important; /* Color casi negro para máxima visibilidad */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 1px solid #ccc;    /* Un borde suave para que se vean los límites */
+    color: #060606 !important;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     padding: 10px;
     font-size: 1rem;
     width: 100%;
 }
 
-/* Estilo específico para las opciones del select */
 .field select option {
     color: #060606;
     background-color: #ffffff;
@@ -187,7 +184,7 @@
 }
 
 .disclaimer{
-    color: black;
+    color: #060606;
 }
 
 .captchaCode{
@@ -210,8 +207,6 @@
     cursor: pointer;
     margin-top: 20px;
 }
-
-/* ---------------- CAPTCHA (agregar al final) ---------------- */
 
 .captchaRow {
     display: flex;
@@ -279,12 +274,8 @@
         grid-template-columns: 1fr;
     }
 
-    .formTitle {
-        font-size: 2.5rem;
-    }
-
     .contactSection {
-        padding: 40px 0;
+        padding: 40px 0 80px 0;
     }
 
     .areasBox {
@@ -297,14 +288,9 @@
         gap: 0;
     }
 
-    .formColumn {
-        display: block;
-        width: 100%;
-    }
-
     .formColumnContainer {
         width: 100% !important;
-        padding: 40px 30px;
+        padding: 60px;
         margin: 0;
         box-sizing: border-box;
     }
@@ -334,10 +320,30 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 678px) {
 
     .container {
-        padding: 0 20px; /* Reducimos padding lateral del contenedor principal */
+        padding: 0 10px;
+    }
+
+    .formColumnContainer {
+        padding: 60px 30px;
+    }
+
+    .formTitle {
+        text-align: left;
+    }
+
+    .formSubtitle{
+        font-size: 0.95rem;
+    }
+
+    .disclaimer{
+        font-size: 0.95rem;
+    }
+
+    .submitBtn {
+        padding: 15px 20px;
     }
 
 }

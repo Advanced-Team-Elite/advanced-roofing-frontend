@@ -49,7 +49,7 @@
 }
 
 .paragraph {
-    color: #333;
+    color: #060606;
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 20px;
@@ -98,5 +98,11 @@
 
     .iconWrapper {
         margin-bottom: -35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .paragraph {
+        font-size: 0.95rem;
     }
 }

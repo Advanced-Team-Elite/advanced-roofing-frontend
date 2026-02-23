@@ -76,6 +76,12 @@
     .overlay {
         padding: 80px 100px;
     }
+
+    .mainTitle {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
     .featuresGrid {
         grid-template-columns: 1fr 1fr;
         gap: 40px 20px;

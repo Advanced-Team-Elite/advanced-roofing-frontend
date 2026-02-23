@@ -13,8 +13,10 @@ const ReviewCard = ({ review, onReadMore }: Props) => {
                 {"★".repeat(review.rating)}
             </div>
             <h3 className={styles.reviewTitle}>{review.title}</h3>
-            <p className={styles.reviewText}>"{review.text.substring(0, 120)}..."</p>
-            <span className={styles.author}>- {review.name}</span>
+            <p className={styles.reviewText}>
+                &ldquo;{review.review.substring(0, 120)}...&rdquo;
+            </p>
+            <span className={styles.author}>- {review.fullName}</span>
             <button
                 className={styles.readMoreBtn}
                 onClick={() => onReadMore(review)}

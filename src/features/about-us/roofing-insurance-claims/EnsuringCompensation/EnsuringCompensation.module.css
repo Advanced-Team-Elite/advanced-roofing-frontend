@@ -150,7 +150,13 @@
 }
 
 @media (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+    }
     .aboutSection {
         padding: 40px 20px;
+    }
+    .paragraph {
+        font-size: 0.95rem;
     }
 }

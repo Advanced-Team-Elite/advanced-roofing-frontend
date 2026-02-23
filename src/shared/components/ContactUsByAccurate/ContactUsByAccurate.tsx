@@ -4,6 +4,7 @@ import styles from './ContactUsByAccurate.module.css';
 import Link from "next/link";
 import { FlairIcon } from "@/shared/Icons/Icons";
 import { useRouter } from 'next/navigation';
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -109,7 +110,7 @@ export const ContactUsByAccurate = () => {
         return newErrors;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const validationErrors = validate();
@@ -123,9 +124,41 @@ export const ContactUsByAccurate = () => {
         }
 
         const { captchaInput, ...dataToSubmit } = formData;
-        console.log('Form submitted:', dataToSubmit);
 
-        router.push('/contact-us/thank-you');
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dataToSubmit),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit form");
+            }
+
+            // Reset form after successful submit
+            setFormData({
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: '',
+                address: '',
+                isNewCustomer: '',
+                message: '',
+                captchaInput: '',
+            });
+
+            setErrors({});
+            refreshCaptcha();
+
+            router.push('/contact-us/thank-you');
+
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Something went wrong. Please try again.");
+        }
     };
 
     return (
@@ -134,125 +167,128 @@ export const ContactUsByAccurate = () => {
                 <div className={styles.mainGrid}>
 
                     <div className={styles.formColumn}>
-                        <div className={styles.formColumnContainer}>
-                            <h2 className={styles.formTitle}>Contact Us</h2>
-                            <p className={styles.formSubtitle}>
-                                At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
-                            </p>
-
-                            <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
-                                <div className={styles.row}>
-                                    <div className={styles.field}>
-                                        <label>First Name</label>
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                        />
-                                        {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
-                                    </div>
-                                    <div className={styles.field}>
-                                        <label>Last Name</label>
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                        />
-                                        {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
-                                    </div>
-                                </div>
-
-                                <div className={styles.row}>
-                                    <div className={styles.field}>
-                                        <label>Phone</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                        />
-                                        {errors.phone && <span className={styles.error}>{errors.phone}</span>}
-                                    </div>
-                                    <div className={styles.field}>
-                                        <label>Email</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                        />
-                                        {errors.email && <span className={styles.error}>{errors.email}</span>}
-                                    </div>
-                                </div>
-
-                                <div className={styles.field}>
-                                    <label>Address</label>
-                                    <input
-                                        type="text"
-                                        name="address"
-                                        placeholder="Enter a location"
-                                        value={formData.address}
-                                        onChange={handleChange}
-                                    />
-                                    {errors.address && <span className={styles.error}>{errors.address}</span>}
-                                </div>
-
-                                <div className={styles.field}>
-                                    <label>Are you a new customer?</label>
-                                    <select
-                                        name="isNewCustomer"
-                                        value={formData.isNewCustomer}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="" disabled hidden>Select an option</option>
-                                        <option value="new">Yes, I am a potential new customer</option>
-                                        <option value="current">No, I'm a current existing customer</option>
-                                        <option value="neither">I'm neither.</option>
-                                    </select>
-                                    {errors.isNewCustomer && <span className={styles.error}>{errors.isNewCustomer}</span>}
-                                </div>
-
-                                <div className={styles.field}>
-                                    <label>How can we help you?</label>
-                                    <textarea
-                                        name="message"
-                                        rows={4}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                    ></textarea>
-                                    {errors.message && <span className={styles.error}>{errors.message}</span>}
-                                </div>
-
-                                <div className={styles.field}>
-                                    <div className={styles.captchaRow}>
-                                        <span className={styles.captchaCode}>{captchaCode}</span>
-                                        <button type="button" onClick={refreshCaptcha} className={styles.captchaRefresh}>↻</button>
-                                    </div>
-                                    <label>Please enter the captcha code above:</label>
-                                    <input
-                                        type="text"
-                                        name="captchaInput"
-                                        value={formData.captchaInput}
-                                        onChange={handleChange}
-                                    />
-                                    {errors.captchaInput && <span className={styles.error}>{errors.captchaInput}</span>}
-                                </div>
-
-                                <p className={styles.disclaimer}>
-                                    By submitting, you agree to receive text messages from Advanced Roofing Team
-                                    Construction at the number provided, including those related to your inquiry, follow-ups,
-                                    and review requests, via automated technology. Consent is not a condition of purchase.
-                                    Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for assistance.{" "}
-                                    <Link className={styles.disclaimerLink} href="#">Acceptable Use Policy</Link>
+                        <ScrollReveal direction="left" distance={30}>
+                            <div className={styles.formColumnContainer}>
+                                <h2 className={styles.formTitle}>Contact Us</h2>
+                                <p className={styles.formSubtitle}>
+                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
                                 </p>
 
-                                <div className={styles.rowBtn}>
-                                    <button type="submit" className={styles.submitBtn}>Send Message</button>
-                                </div>
-                            </form>
-                        </div>
+                                <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
+                                    <div className={styles.row}>
+                                        <div className={styles.field}>
+                                            <label>First Name</label>
+                                            <input
+                                                type="text"
+                                                name="firstName"
+                                                value={formData.firstName}
+                                                onChange={handleChange}
+                                            />
+                                            {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label>Last Name</label>
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                value={formData.lastName}
+                                                onChange={handleChange}
+                                            />
+                                            {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.row}>
+                                        <div className={styles.field}>
+                                            <label>Phone</label>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                            />
+                                            {errors.phone && <span className={styles.error}>{errors.phone}</span>}
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label>Email</label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                            />
+                                            {errors.email && <span className={styles.error}>{errors.email}</span>}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label>Address</label>
+                                        <input
+                                            type="text"
+                                            name="address"
+                                            placeholder="Enter a location"
+                                            value={formData.address}
+                                            onChange={handleChange}
+                                        />
+                                        {errors.address && <span className={styles.error}>{errors.address}</span>}
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label>Are you a new customer?</label>
+                                        <select
+                                            name="isNewCustomer"
+                                            value={formData.isNewCustomer}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="" disabled hidden>Select an option</option>
+                                            <option value="new">Yes, I am a potential new customer</option>
+                                            <option value="current">No, I'm a current existing customer</option>
+                                            <option value="neither">I'm neither.</option>
+                                        </select>
+                                        {errors.isNewCustomer && <span className={styles.error}>{errors.isNewCustomer}</span>}
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label>How can we help you?</label>
+                                        <textarea
+                                            name="message"
+                                            rows={4}
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                        ></textarea>
+                                        {errors.message && <span className={styles.error}>{errors.message}</span>}
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <div className={styles.captchaRow}>
+                                            <span className={styles.captchaCode}>{captchaCode}</span>
+                                            <button type="button" onClick={refreshCaptcha} className={styles.captchaRefresh}>↻</button>
+                                        </div>
+                                        <label>Please enter the captcha code above:</label>
+                                        <input
+                                            type="text"
+                                            name="captchaInput"
+                                            value={formData.captchaInput}
+                                            onChange={handleChange}
+                                        />
+                                        {errors.captchaInput && <span className={styles.error}>{errors.captchaInput}</span>}
+                                    </div>
+
+                                    <p className={styles.disclaimer}>
+                                        By submitting, you agree to receive text messages from Advanced Roofing Team
+                                        Construction at the number provided, including those related to your inquiry, follow-ups,
+                                        and review requests, via automated technology. Consent is not a condition of purchase.
+                                        Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for assistance.{" "}
+                                        <Link className={styles.disclaimerLink} href="#">Acceptable Use Policy</Link>
+                                    </p>
+
+                                    <div className={styles.rowBtn}>
+                                        <button type="submit" className={styles.submitBtn}>Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </ScrollReveal>
+
                     </div>
 
                     <div className={styles.infoColumn}>

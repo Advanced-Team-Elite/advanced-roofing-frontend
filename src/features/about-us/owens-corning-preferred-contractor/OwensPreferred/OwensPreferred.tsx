@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './OwensPreferred.module.css';
 import {FlairIcon} from "@/shared/Icons/Icons";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const OwensPreferred = () => {
     return (
@@ -27,15 +28,18 @@ const OwensPreferred = () => {
                     </div>
                 </div>
 
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageFrame}>
-                        <img
-                            src="/assets/images/features/about-us/content-v6.png"
-                            alt="Owens Corning Materials"
-                            className={styles.aboutImage}
-                        />
+                <ScrollReveal direction="right" initialOpacity={0.8}>
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageFrame}>
+                            <img
+                                src="/assets/images/features/about-us/content-v6.png"
+                                alt="Owens Corning Materials"
+                                className={styles.aboutImage}
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

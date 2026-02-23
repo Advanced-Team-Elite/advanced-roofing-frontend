@@ -7,7 +7,7 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: -40px;
-    color: #333;
+    color: #060606;
 }
 .container {
     max-width: 1500px;
@@ -109,7 +109,7 @@
     }
 
     .iconWrapper {
-        margin-bottom: 5px;
+        margin-bottom: -40px;
     }
 }
 
@@ -117,5 +117,17 @@
 
     .supportSection {
         padding: 40px 20px;
+    }
+
+    .iconWrapper {
+        margin: -40px 0;
+    }
+
+    .serviceList li, .recognitionList li {
+        font-size: 0.95rem;
+    }
+
+    .introText, .paragraph {
+        font-size: 0.95rem;
     }
 }

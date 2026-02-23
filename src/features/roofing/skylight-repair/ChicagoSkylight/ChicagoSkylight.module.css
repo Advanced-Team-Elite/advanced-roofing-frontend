@@ -18,7 +18,7 @@
 }
 
 .title {
-    color: #005aab;
+    color: #00589e;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
@@ -26,9 +26,10 @@
 }
 
 .paragraph {
+    font-family: 'Open Sans', sans-serif;
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
 }
 
@@ -188,5 +189,8 @@
 @media (max-width: 768px) {
     .aboutSection {
         padding: 0 20px;
+    }
+    .paragraph {
+        font-size: 0.95rem;
     }
 }

@@ -97,23 +97,12 @@
     border: none;
     padding: 12px 30px;
     font-weight: 700;
-    text-transform: uppercase;
     cursor: pointer;
 }
 
 /* --- RESPONSIVE --- */
 
-@media (max-width: 1024px) {
-    .track {
-        width: calc(100% * 4 / 2);
-    }
-    .mainTitle {
-        font-size: 2.5rem;
-    }
-}
-
-/* Mobile: 1 columna */
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
     .track {
         width: calc(100% * 4 / 1);
     }
@@ -123,13 +112,53 @@
         text-align: center;
     }
 
+    .section {
+        padding: 20px 100px;
+    }
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 768px) {
+
+    .section {
+        padding: 20px 0 50px 0;
+    }
+
+    .track {
+        width: calc(100% * 4 / 1);
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .cardTitle {
+        font-size: 2rem;
+    }
+
+    .carouselWrapper {
+        margin-bottom: 10px;
+    }
+
     .controlsRow {
+        margin-top: 0;
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
+    }
+
+    .arrows{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .arrowBtn {
+        margin: 0 10px;
     }
 
     .reviewCard {
         min-height: 300px;
         text-align: center;
     }
+
 }

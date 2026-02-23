@@ -2,26 +2,29 @@
 
 import Image from 'next/image';
 import styles from './StormRecovery.module.css';
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const StormRecovery = () => {
     return (
         <section className={styles.recoverySection}>
             <div className={styles.container}>
 
-                {/* Bloque de Imagen con Marco y Logo */}
-                <div className={styles.imageContainer}>
-                    <div className={styles.yellowFrame}>
-                        <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/home/content-v15.png"
-                                alt="Roofing worker repairing storm damage"
-                                width={600}
-                                height={500}
-                                className={styles.mainImage}
-                            />
+                <ScrollReveal direction="left" className={styles.imageContainerWrapper}>
+                    <div className={styles.imageContainer}>
+                        <div className={styles.yellowFrame}>
+                            <div className={styles.imageWrapper}>
+                                <Image
+                                    src="/assets/images/features/home/content-v15.png"
+                                    alt="Roofing worker repairing storm damage"
+                                    width={600}
+                                    height={500}
+                                    className={styles.mainImage}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
                 {/* Bloque de Texto */}
                 <div className={styles.textContent}>

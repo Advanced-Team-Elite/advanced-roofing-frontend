@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './TrustedLocal.module.css';
 // Asegúrate de tener el FlairIcon disponible
 import { FlairIcon} from "@/shared/Icons/Icons";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const TrustedLocal = () => {
     return (
@@ -11,13 +12,13 @@ export const TrustedLocal = () => {
                 <div className={styles.flexLayout}>
 
                     {/* Columna de Imagen con borde amarillo */}
-                    <div className={styles.imageColumn}>
+                    <ScrollReveal direction="right" distance={30} className={styles.imageColumn}>
                         <img
                             src="/assets/images/features/about-us/content-v9.png"
                             alt="Roof Inspection Support"
                             className={styles.mainImage}
                         />
-                    </div>
+                    </ScrollReveal>
 
                     {/* Columna de Texto */}
                     <div className={styles.textColumn}>

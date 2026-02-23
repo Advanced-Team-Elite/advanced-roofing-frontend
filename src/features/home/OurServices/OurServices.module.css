@@ -4,7 +4,7 @@
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
@@ -71,7 +71,6 @@
     border: none;
     padding: 15px 40px;
     font-weight: 700;
-    text-transform: uppercase;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -80,15 +79,43 @@
     background-color: #0099cc;
 }
 
+@media (max-width: 1280px) {
+    .section {
+        padding: 40px 100px;
+    }
+
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .serviceCard:last-child {
+        grid-column: span 2;
+    }
+
+    .serviceCard {
+        height: 180px;
+    }
+}
+
+
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     .mainTitle {
         font-size: 2.2rem;
     }
 
+    .section {
+        padding: 40px 20px;
+    }
+
     .servicesGrid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .serviceCard:last-child {
+        grid-column: span 1;
     }
 
     .serviceCard {

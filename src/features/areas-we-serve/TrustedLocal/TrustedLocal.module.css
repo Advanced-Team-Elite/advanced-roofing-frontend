@@ -107,6 +107,12 @@
         width: 100%;
     }
 
+    .subtitle{
+        font-size: 1.5rem;
+
+    }
+
+
     .flexLayout {
         flex-direction: column;
     }
@@ -127,7 +133,23 @@
 }
 
 @media (max-width: 600px) {
+
+    .iconWrapper svg{
+        width: 90px;
+    }
+
+    .flexLayout {
+        gap: 0;
+    }
+
+    .ctaText {
+        font-size: 0.95rem;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
     .sectionWrapper {
-        padding: 80px 20px;
+        padding: 0 20px 80px 20px;
     }
 }

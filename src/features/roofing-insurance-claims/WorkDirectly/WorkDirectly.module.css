@@ -291,7 +291,7 @@
 
     .title {
         font-size: 2.5rem;
-        width: 60%;
+        width: 100%;
     }
 
     .paragraph {
@@ -314,7 +314,7 @@
     }
 
     .benefitsList li {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .servingSection {

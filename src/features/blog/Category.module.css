@@ -1,7 +1,7 @@
 .wrapper {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 100px 20px ;
 }
 
 .breadcrumb {
@@ -37,7 +37,7 @@
 
 .title {
     font-size: 4rem;
-    color: #005aab;
+    color: #00589e;
     font-weight: 700;
 }
 
@@ -84,8 +84,22 @@
     letter-spacing: 1px;
 }
 
+@media (max-width: 1280px) {
+
+    .mainWrapper {
+        padding: 80px 200px;
+    }
+
+    .blogGrid {
+        grid-template-columns: 1fr;
+    }
+    .title {
+        font-size: 24px;
+    }
+}
+
 /* Mobile: Una sola columna */
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     .blogGrid {
         grid-template-columns: 1fr;
     }

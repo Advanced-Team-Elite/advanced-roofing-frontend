@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './RoofingInHoffman.module.css';
 import Link from "next/link";
 import {useState} from "react";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export default function RoofingInHoffman() {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -84,14 +85,17 @@ export default function RoofingInHoffman() {
                 <div className={styles.imageColumn}>
                     <div className={styles.yellowFrame}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
-                                width={1000}
-                                height={800}
-                                className={styles.mainImage}
-                                priority
-                            />
+                            <ScrollReveal direction="right">
+                                <Image
+                                    src="/assets/images/features/about-us/content-v6.png"
+                                    alt="Chicago Roofing"
+                                    width={1000}
+                                    height={800}
+                                    className={styles.mainImage}
+                                    priority
+                                />
+                            </ScrollReveal>
+
                         </div>
                     </div>
                 </div>

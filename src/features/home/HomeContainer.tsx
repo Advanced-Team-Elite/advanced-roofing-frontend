@@ -10,11 +10,10 @@ import {Footer} from "@/shared/components/layout/footer/Footer";
 import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
-import styles from './Home.module.css';
 
 export default function HomeContainer() {
     return (
-        <main className={styles.mainWrapper}>
+        <main>
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
             <OurServices />

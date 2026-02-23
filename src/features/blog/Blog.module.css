@@ -1,7 +1,7 @@
 .mainWrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 100px 20px ;
 }
 
 .breadcrumb {
@@ -11,6 +11,16 @@
     font-size: 14px;
     color: #00c3f8;
 }
+
+.breadcrumb a:hover{
+    color: #00c3f8;
+}
+
+.homeLink{
+    color: black;
+}
+
+
 
 .separator {
     height: 1px;
@@ -26,13 +36,14 @@
 }
 
 .title {
-    font-size: 42px;
+    font-size: 52px;
     color: #004a8c; /* Azul oscuro del logo */
     margin: 0;
 }
 
 .categoryLabel {
-    color: #666;
+    font-size: 22px;
+    color: #004a8c;
     margin: 5px 0 0 0;
 }
 
@@ -42,6 +53,10 @@
     color: #000;
     border-bottom: 2px solid #000;
     padding-bottom: 2px;
+}
+
+.viewMoreBtn:hover {
+    color: #000;
 }
 
 /* Grid 2x2 */
@@ -79,8 +94,23 @@
     color: #bbb;
 }
 
+@media (max-width: 1280px) {
+    .mainWrapper {
+        padding: 80px 200px;
+    }
+
+    .blogGrid {
+        grid-template-columns: 1fr;
+    }
+    .title { font-size: 32px; }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
+    .mainWrapper {
+        padding: 30px 30px;
+    }
+
     .blogGrid {
         grid-template-columns: 1fr;
     }

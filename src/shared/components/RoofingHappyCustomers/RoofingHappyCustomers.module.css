@@ -157,7 +157,6 @@
     border: none;
     padding: 14px 35px;
     font-weight: 700;
-    text-transform: uppercase;
     cursor: pointer;
 }
 
@@ -202,7 +201,7 @@
     }
 
     .section {
-        padding: 80px 10px;
+        padding: 10px 10px 80px 10px;
     }
 
     .track {

@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './RoofTypesForChicago.module.css';
 import { FlairIcon } from "@/shared/Icons/Icons";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const RoofTypesForChicago = () => {
     return (
@@ -57,15 +58,18 @@ export const RoofTypesForChicago = () => {
                 </div>
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
-                <div className={styles.imageColumn}>
-                    <div className={styles.imageWrapper}>
-                        <img
-                            src="/assets/images/features/roofing/content-v10.png"
-                            alt="Chicago Roofing Services"
-                            className={styles.mainImage}
-                        />
+                <ScrollReveal direction="right">
+                    <div className={styles.imageColumn}>
+                        <div className={styles.imageWrapper}>
+                            <img
+                                src="/assets/images/features/roofing/content-v10.png"
+                                alt="Chicago Roofing Services"
+                                className={styles.mainImage}
+                            />
+                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>
