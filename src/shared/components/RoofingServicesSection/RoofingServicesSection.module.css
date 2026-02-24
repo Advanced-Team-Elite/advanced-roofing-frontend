@@ -121,9 +121,10 @@
 .ctaBanner {
     background-color: #004a8c;
     color: #fff;
-    padding: 30px;
+    margin-top: 20px;
+    padding: 50px 30px;
     border-radius: 2px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .yellowLink {
@@ -202,7 +203,7 @@
 
     .subtitle {
         color: #00589e;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .paragraph{
@@ -220,8 +221,8 @@
     }
 
     .ctaBanner {
-        padding: 30px 10px;
-        text-align: center;
+        padding: 30px 20px;
+        text-align: justify;
         font-size: 0.95rem;
     }
 

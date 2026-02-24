@@ -32,7 +32,7 @@
 }
 
 .title {
-    color: #0056b3;
+    color: #00589e;
     font-size: 4rem;
     font-weight: 800;
     line-height: 1.1;
@@ -98,12 +98,32 @@
         gap: 40px;
     }
 
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
+
     .comercialSection {
         padding: 40px 100px;
     }
 
     .title {
-        font-size: 3.2rem;
+        font-size: 3rem;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .listHeader {
+        font-size: 1.05rem;
+    }
+
+    .benefitList li{
+        font-size: 1rem;
     }
 }
 
@@ -128,7 +148,7 @@
 
     .title {
         font-size: 2.5rem;
-        text-align: center;
+        text-align: left;
     }
 
     .paragraph {
@@ -136,7 +156,7 @@
     }
 
     .listHeader {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .benefitList li{
@@ -149,8 +169,11 @@
 
     .iconWrapper {
         display: flex;
-        justify-content: center;
-        margin-left: 0;
-        margin-bottom: -35px;
+        justify-content: left;
+        margin: -55px 0 -45px 0;
+    }
+
+    .iconWrapper svg{
+        width: 90px;
     }
 }

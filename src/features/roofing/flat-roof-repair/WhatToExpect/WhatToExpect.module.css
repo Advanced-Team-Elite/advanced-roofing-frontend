@@ -189,7 +189,19 @@
 
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
+    .title {
+        font-size: 2.3rem;
+    }
     .aboutSection {
         padding: 0 20px;
+    }
+
+    .ctaBanner {
+        padding: 30px 20px;
+        margin-top: 20px;
+    }
+
+    .ctaBanner p{
+        font-size: 0.95rem;
     }
 }

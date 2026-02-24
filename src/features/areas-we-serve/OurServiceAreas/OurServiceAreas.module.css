@@ -191,6 +191,14 @@
         padding: 40px 100px 80px 100px;
     }
 
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
+
     .mainTitle {
         font-size: 2.5rem;
     }

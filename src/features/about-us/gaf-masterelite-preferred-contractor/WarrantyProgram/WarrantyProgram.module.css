@@ -69,7 +69,15 @@
     }
 
     .subTitle {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+    }
+
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
     }
 
     .ctaBox {
@@ -83,7 +91,18 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 678px) {
+    .iconWrapper {
+        margin: -100px 0 -45px 0;
+    }
+    .iconWrapper svg{
+        width: 90px;
+    }
+
+    .subTitle {
+        font-size: 1.3rem;
+    }
+
     .benefitsSection {
         padding: 40px 20px;
     }

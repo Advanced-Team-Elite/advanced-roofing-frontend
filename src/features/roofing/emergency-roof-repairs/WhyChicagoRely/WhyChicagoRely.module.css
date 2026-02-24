@@ -196,6 +196,10 @@
 
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
+    .title {
+        font-size: 2.4rem;
+    }
+
     .paragraph {
         font-size: 0.95rem;
         line-height: 1.7;
@@ -203,6 +207,10 @@
 
     .textContent {
         padding: 60px 5% 0 5%;
+    }
+
+    .ctaBanner {
+        padding: 40px 20px;
     }
 
     .aboutSection {

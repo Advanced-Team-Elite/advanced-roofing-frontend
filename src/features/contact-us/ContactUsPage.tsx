@@ -290,8 +290,8 @@ const ContactUsPage = () => {
                                 follow-ups, and review requests, via automated technology. Consent is not a condition of
                                 purchase.
                                 Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for
-                                assistance.
-                                <a href="#"> Acceptable Use Policy</a>
+                                assistance.{" "}
+                                <a href="#">Acceptable Use Policy</a>
                             </p>
 
                             <button type="submit" className={styles.submitBtn}>
@@ -306,7 +306,9 @@ const ContactUsPage = () => {
                                     <div className={styles.iconCircle}><PhoneIcon size={19}/></div>
                                     <div>
                                         <p className={styles.infoTitle}>Call Us Today!</p>
-                                        <p className={styles.infoTextCall}>847-262-9774</p>
+                                        <a href="tel:8472629774" className={styles.infoTextCall}>
+                                            847-262-9774
+                                        </a>
                                     </div>
                                 </div>
 

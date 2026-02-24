@@ -140,15 +140,25 @@
     }
 
     .subtitle {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .iconWrapper {
-        margin-bottom: -35px;
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
     }
 }
 
 @media (max-width: 600px) {
+    .iconWrapper {
+        margin: -55px 0 -45px 0;
+    }
+    .iconWrapper svg{
+        width: 90px;
+    }
     .aboutSection {
         padding: 40px 20px;
     }

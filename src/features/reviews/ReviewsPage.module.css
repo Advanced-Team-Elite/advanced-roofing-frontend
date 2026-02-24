@@ -188,7 +188,7 @@
 }
 
 .dialogText {
-    color: #444;
+    color: #060606;
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 0;
@@ -257,8 +257,8 @@
 }
 
 .title {
-    color: #0056b3;
-    font-size: 3.5rem;
+    color: #00589e;
+    font-size: 3rem;
     font-weight: bold;
 }
 
@@ -284,6 +284,10 @@
 }
 
 @media (min-width: 1280px) {
+    .title{
+        font-size: 3.5rem;
+    }
+
     .reviewsGrid {
         grid-template-columns: 1fr 1fr; /* Desktop */
     }

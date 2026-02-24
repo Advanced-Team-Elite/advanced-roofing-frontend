@@ -111,6 +111,10 @@
     .iconWrapper {
         margin-bottom: -40px;
     }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -120,7 +124,24 @@
     }
 
     .iconWrapper {
-        margin: -40px 0;
+        margin: -40px 0 -50px 0;
+    }
+
+    .iconWrapper svg{
+        width: 90px;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+        width: 90%;
+    }
+
+    .secondaryTitle {
+        font-size: 1.5rem;
+    }
+
+    .listHeading {
+        font-size: 0.95rem;
     }
 
     .serviceList li, .recognitionList li {

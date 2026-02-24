@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './AboutOurServices.module.css';
 import {ArrowIcon} from "@/shared/Icons/Icons";
@@ -12,6 +12,11 @@ const services = [
 ];
 
 const AboutOurServices = () => {
+    const [current, setCurrent] = useState(0);
+
+    const prev = () => setCurrent(c => (c - 1 + services.length) % services.length);
+    const next = () => setCurrent(c => (c + 1) % services.length);
+
     return (
         <section className={styles.servicesSection}>
             <div className={styles.header}>
@@ -21,18 +26,14 @@ const AboutOurServices = () => {
                 </Link>
             </div>
 
+            {/* DESKTOP: grid normal */}
             <div className={styles.servicesGrid}>
                 {services.map((service, index) => (
                     <Link href={service.href} key={index} className={styles.serviceCard}>
                         <div className={styles.imageWrapper}>
-                            <img
-                                src={service.img}
-                                alt={service.title}
-                                className={styles.serviceImage}
-                            />
+                            <img src={service.img} alt={service.title} className={styles.serviceImage} />
                             <div className={styles.overlay}></div>
                         </div>
-
                         <div className={styles.cardContent}>
                             <span className={styles.serviceTitle}>{service.title}</span>
                             <div className={styles.arrowCircle}>
@@ -42,15 +43,38 @@ const AboutOurServices = () => {
                     </Link>
                 ))}
             </div>
-            <br/>
+
+            {/* TABLET + MOBILE: carrusel 1 item visible */}
+            <div className={styles.carousel}>
+                <div className={styles.carouselTrack}
+                     style={{ transform: `translateX(-${current * 100}%)` }}>
+                    {services.map((service, index) => (
+                        <Link href={service.href} key={index} className={styles.carouselCard}>
+                            <div className={styles.imageWrapper}>
+                                <img src={service.img} alt={service.title} className={styles.serviceImage} />
+                                <div className={styles.overlay}></div>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <span className={styles.serviceTitle}>{service.title}</span>
+                                <div className={styles.arrowCircle}>
+                                    <ArrowIcon size={50} className={styles.arrowIcon} />
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+
+                <div className={styles.carouselControls}>
+                    <button onClick={prev} className={styles.arrowBtn}>←</button>
+                    <button onClick={next} className={styles.arrowBtn}>→</button>
+                </div>
+            </div>
 
             <div className={styles.viewAllBtnMobileContainer}>
                 <Link href="/our-services" className={styles.viewAllBtn}>
                     View All Services
                 </Link>
             </div>
-
-
         </section>
     );
 };

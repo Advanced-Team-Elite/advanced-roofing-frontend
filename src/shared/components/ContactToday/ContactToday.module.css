@@ -114,7 +114,7 @@
 .formColumnContainer{
     background: #f2f2f2;
     padding: 60px 60px;
-    width: 87%;
+    width: 90%;
     box-sizing: border-box;
 }
 
@@ -266,10 +266,6 @@
         margin-bottom: 20px;
     }
 
-    .contactSection {
-        padding: 60px 0;
-    }
-
     .row {
         grid-template-columns: 1fr;
     }
@@ -281,6 +277,7 @@
     .areasBox {
         margin: 60px 60px;
         max-width: none;
+        padding-bottom: 10px;
     }
 
     .row {
@@ -326,6 +323,10 @@
         padding: 0 10px;
     }
 
+    .contactSection {
+        padding: 0px 0 80px 0;
+    }
+
     .formColumnContainer {
         padding: 60px 30px;
     }
@@ -338,7 +339,15 @@
         font-size: 0.95rem;
     }
 
+    .areasLink {
+        font-size: 1.2rem;
+    }
+
     .disclaimer{
+        font-size: 0.95rem;
+    }
+
+    .areaItem {
         font-size: 0.95rem;
     }
 
