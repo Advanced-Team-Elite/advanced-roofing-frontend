@@ -299,11 +299,15 @@
     }
 
     .subtitle {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .iconWrapper {
-        margin-bottom: -35px;
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
     }
 }
 
@@ -318,7 +322,7 @@
     }
 
     .servingSection {
-        padding: 40px 0;
+        padding: 40px 10px;
     }
 
     .paragraph {
@@ -327,6 +331,10 @@
 
     .contactText {
         font-size: 0.95rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
     }
 
     .container {
@@ -345,8 +353,8 @@
     }
 
     .title {
-        width: 100%;
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        width: 90%;
     }
 
     .subtitle {
@@ -354,7 +362,7 @@
     }
 
     .iconWrapper {
-        margin-bottom: -35px;
+        margin: -35px 0 -45px 0;
     }
 
     .iconWrapper svg{

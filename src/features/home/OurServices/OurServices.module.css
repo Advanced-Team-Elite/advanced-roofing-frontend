@@ -94,7 +94,11 @@
     }
 
     .serviceCard {
-        height: 180px;
+        height: 160px;
+    }
+
+    .serviceTitle {
+        font-size: 1.5rem;
     }
 }
 
@@ -109,6 +113,10 @@
         padding: 40px 20px;
     }
 
+    .serviceTitle {
+        font-size: 1.5rem;
+    }
+
     .servicesGrid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -119,6 +127,6 @@
     }
 
     .serviceCard {
-        height: 180px;
+        height: 140px;
     }
 }

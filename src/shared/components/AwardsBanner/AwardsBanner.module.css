@@ -1,6 +1,6 @@
 .awardsSection {
     background-color: #ffffff;
-    padding: 60px 20px;
+    padding: 60px 20px 75px 20px;
     width: 100%;
 }
 
@@ -17,6 +17,7 @@
     font-weight: 700;
 }
 
+/* --- DESKTOP: grid normal --- */
 .awardsGrid {
     display: flex;
     flex-wrap: wrap;
@@ -36,31 +37,98 @@
     transform: scale(1.05);
 }
 
-/* --- RESPONSIVE --- */
+/* --- CARRUSELES: ocultos en desktop --- */
+.carouselTablet,
+.carouselMobile {
+    display: none;
+}
 
+/* --- CAROUSEL BASE --- */
+.carouselTablet,
+.carouselMobile {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carouselTrack {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+/* Tablet: cada item ocupa 1/3 del ancho */
+.carouselItem {
+    min-width: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Mobile: cada item ocupa 1/2 del ancho */
+.carouselItemMobile {
+    min-width: calc(100% / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.carouselControls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.arrowBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #00c3f8;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.arrowBtn:hover {
+    color: #00589e;
+}
+
+/* --- TABLET (1224px): ocultar grid, mostrar carrusel tablet --- */
 @media (max-width: 1224px) {
     .awardsSection {
-        padding: 60px 100px;
-    }
-
-    .awardsGrid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        padding: 60px 40px;
     }
 
     .awardsTitle {
         font-size: 2.5rem;
     }
-}
 
-@media (max-width: 640px) {
     .awardsGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        display: none;
     }
 
+    .carouselTablet {
+        display: block;
+    }
+
+    .carouselMobile {
+        display: none;
+    }
+}
+
+/* --- MOBILE (640px): ocultar carrusel tablet, mostrar carrusel mobile --- */
+@media (max-width: 640px) {
     .awardsSection {
         padding: 40px 20px;
+    }
+
+    .carouselTablet {
+        display: none;
+    }
+
+    .carouselMobile {
+        display: block;
     }
 }

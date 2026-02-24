@@ -209,6 +209,11 @@
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
 
+
+    .title {
+        font-size: 2rem;
+    }
+
     .benefitsList li {
         font-size: 0.95rem;
     }

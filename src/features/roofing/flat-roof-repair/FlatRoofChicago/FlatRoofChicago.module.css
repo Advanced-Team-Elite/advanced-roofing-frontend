@@ -201,6 +201,19 @@
         line-height: 1.7;
     }
 
+    .title {
+        font-size: 2.3rem;
+    }
+
+    .ctaBanner {
+        padding: 30px 20px;
+        margin-top: 20px;
+    }
+
+    .ctaBanner p{
+        font-size: 0.95rem;
+    }
+
     .textContent {
         padding: 60px 5% 0 5%;
     }

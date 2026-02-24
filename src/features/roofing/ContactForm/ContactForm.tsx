@@ -270,7 +270,7 @@ const ContactForm = () => {
 
                 <p className={styles.disclaimer}>
                     By submitting, you agree to receive text messages from Advanced Roofing Team Construction at the number provided, including those related to your inquiry, follow-ups, and review requests, via automated technology. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for assistance.
-                    <a href="#" className={styles.policyLink}>Acceptable Use Policy</a>
+                    {" "}<a href="#" className={styles.policyLink}>Acceptable Use Policy</a>
                 </p>
 
                 <button type="submit" className={styles.submitBtn}>

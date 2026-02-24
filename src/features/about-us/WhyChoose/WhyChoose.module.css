@@ -105,5 +105,11 @@
 
     .featureTitle {
         min-height: auto;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .featureDescription {
+        font-size: 0.95rem;
     }
 }

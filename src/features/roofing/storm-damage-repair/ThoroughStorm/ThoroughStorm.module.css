@@ -28,7 +28,7 @@
 .paragraph {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    color: #333;
+    color: #060606;
     line-height: 1.7;
 }
 
@@ -192,6 +192,10 @@
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
     .aboutSection {
-        padding: 0 20px;
+        padding: 0 30px;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
     }
 }

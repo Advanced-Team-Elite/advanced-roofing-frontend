@@ -73,7 +73,7 @@ export const FlatRoofChicago = () => {
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
                         <div className={styles.ctaBanner}>
                             <p>
-                                NReady to fix persistent leaks on your commercial or residential flat roof? Contact us at  <strong>(847) 262-9774</strong> or{' '}
+                                Ready to fix persistent leaks on your commercial or residential flat roof? Contact us at  <strong>(847) 262-9774</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

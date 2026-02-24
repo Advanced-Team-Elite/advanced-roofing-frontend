@@ -190,6 +190,20 @@
         text-align: left;
     }
 
+    .iconWrapper {
+        display: flex;
+        justify-content: left;
+        margin: -55px 0 -45px 0;
+    }
+
+    .iconWrapper svg{
+        width: 90px;
+    }
+
+    .subTitle {
+        font-size: 1.5rem;
+    }
+
     .textContent p {
         font-size: 0.95rem;
     }
@@ -208,6 +222,6 @@
     }
 
     .textColumn {
-        padding: 0 20px;
+        padding: 0 30px;
     }
 }

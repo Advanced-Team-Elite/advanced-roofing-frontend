@@ -51,14 +51,14 @@ export const RoofTypesForChicago = () => {
 
                     <div className={styles.contactBanner}>
                         <p className={styles.contactText}>
-                            Call <a href="tel:8472629774"><strong>(847) 262-9774</strong></a> or <Link href="/contact"><strong className={styles.contactUs}>contact us online</strong></Link>
+                            Call <a href="tel:8472629774">(847) 262-9774</a> or <Link href="/contact"><strong className={styles.contactUs}>contact us online</strong></Link>
                             to request your free estimate. We’ll help you find the right roofing solution for your home or business.
                         </p>
                     </div>
                 </div>
 
                 {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
-                <ScrollReveal direction="right">
+                <ScrollReveal direction="right" >
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <img

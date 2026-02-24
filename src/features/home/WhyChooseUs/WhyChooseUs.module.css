@@ -84,7 +84,6 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
 }
 
 .benefitTitle {
@@ -158,9 +157,14 @@
     }
 
     .iconCircle {
-        width: 65px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
         margin-bottom: 5px;
+    }
+
+    .iconCircle svg{
+        width: 30px;
+        height: 30px;
     }
 
     .benefitTitle {

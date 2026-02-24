@@ -1,3 +1,4 @@
+
 interface IconProps {
     size?: number;
     className?: string;
@@ -186,7 +187,7 @@ export const FlairIcon = ({ size = 28, className }: IconProps) => (
         viewBox="0 0 24 24"
         width={size}
         height={size}
-        className={className}
+        className={`${className}`}
         fill="currentColor"
         aria-hidden
     >

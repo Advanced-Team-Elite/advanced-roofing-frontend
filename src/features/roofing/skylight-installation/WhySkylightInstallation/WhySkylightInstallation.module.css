@@ -188,12 +188,24 @@
 /* --- RESPONSIVE MOBILE (768px) --- */
 @media (max-width: 768px) {
     .aboutSection {
-        padding: 0 20px;
+        padding: 0 30px;
+    }
+    .title {
+        font-size: 2rem;
     }
     .paragraph {
         font-size: 0.95rem;
     }
     .processList li {
+        font-size: 0.95rem;
+    }
+
+    .ctaBanner {
+        padding: 30px 20px;
+        margin-top: 20px;
+    }
+
+    .ctaBanner p{
         font-size: 0.95rem;
     }
 }

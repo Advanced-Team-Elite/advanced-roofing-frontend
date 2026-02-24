@@ -67,15 +67,13 @@ export const GafPreferred = () => {
 
                 </div>
 
-                <ScrollReveal direction="right">
-                    <div className={styles.imageColumn}>
-                        <div className={styles.imageWrapper}>
-                            <img
-                                src="/assets/images/features/about-us/content-v6.png"
-                                alt="Owens Corning Materials"
-                                className={styles.mainImage}
-                            />
-                        </div>
+                <ScrollReveal direction="right" className={styles.imageColumn}>
+                    <div className={styles.imageWrapper}>
+                        <img
+                            src="/assets/images/features/about-us/content-v6.png"
+                            alt="Owens Corning Materials"
+                            className={styles.mainImage}
+                        />
                     </div>
                 </ScrollReveal>
 

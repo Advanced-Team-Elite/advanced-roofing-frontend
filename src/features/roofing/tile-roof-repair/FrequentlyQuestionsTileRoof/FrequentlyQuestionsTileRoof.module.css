@@ -175,10 +175,10 @@
     }
 
     .blackBanner {
-        padding: 25px 25px;
+        padding: 30px 25px;
     }
 
     .blackBanner p{
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 }
