@@ -112,6 +112,21 @@
         margin-bottom: 20px;
     }
 
+    .controlsRow {
+        margin-top: 0;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .arrows{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .arrowBtn {
+        margin: 0 10px;
+    }
+
     .section {
         padding: 20px 100px;
     }
@@ -147,20 +162,7 @@
         margin-bottom: 10px;
     }
 
-    .controlsRow {
-        margin-top: 0;
-        flex-direction: column;
-        gap: 20px;
-    }
 
-    .arrows{
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .arrowBtn {
-        margin: 0 10px;
-    }
 
     .reviewCard {
         min-height: 300px;
