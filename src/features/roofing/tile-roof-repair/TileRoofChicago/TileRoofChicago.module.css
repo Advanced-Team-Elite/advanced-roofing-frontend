@@ -23,17 +23,22 @@
     color: #333;
 }
 
+.iconWrapper svg{
+    width: 110px;
+}
+
+
 .mainTitle {
     color: #00589e;
-    font-size: 4rem;
+    font-size: 2.7rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .subTitle {
     color: #00589e;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     margin-bottom: 25px;
@@ -44,7 +49,7 @@
 }
 
 .textContent p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: #060606;
     font-family: 'Open Sans', sans-serif;
@@ -122,7 +127,7 @@
     position: relative;
     padding-left: 35px;
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: #060606;
 }
@@ -155,6 +160,18 @@
         padding: 60px 0 60px 0;
     }
 
+    .iconWrapper svg{
+        width: 150px;
+    }
+
+    .mainTitle {
+        font-size: 4rem;
+    }
+
+    .subTitle {
+        font-size: 1.7rem;
+    }
+
     .container {
         max-width: 1500px;
         display: flex;
@@ -165,6 +182,13 @@
     .textColumn {
         flex: 1.4;
         padding: 0 20px;
+    }
+    .textContent p {
+        font-size: 1.1rem;
+    }
+
+    .benefitsList li {
+        font-size: 1.1rem;
     }
 
     .formColumn {

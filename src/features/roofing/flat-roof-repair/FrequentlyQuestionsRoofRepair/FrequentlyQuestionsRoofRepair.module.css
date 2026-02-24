@@ -130,6 +130,14 @@
         gap: 40px;
     }
 
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
+
     .mainTitle {
         font-size: 2.4rem;
     }
@@ -141,7 +149,7 @@
 
 @media (max-width: 768px) {
 
-    .questionBlock h3 {
+    .questionBlock h3, .questionBlock h4 {
         font-size: 1.3rem;
         line-height: 1.4;
         width: 95%;

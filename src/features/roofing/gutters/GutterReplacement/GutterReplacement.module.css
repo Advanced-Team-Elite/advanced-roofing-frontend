@@ -186,6 +186,17 @@
         padding: 0px 100px;
     }
 
+    .title {
+        font-size: 2.5rem;
+    }
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .subTitle {
+        font-size: 1.7rem;
+    }
+
     .fullWidthContainer {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -206,8 +217,14 @@
     .aboutSection {
         padding: 0 20px;
     }
+    .title {
+        font-size: 2.3rem;
+    }
     .paragraph {
         font-size: 0.95rem;
+    }
+    .subTitle {
+        font-size: 1.5rem;
     }
     .processList li {
         font-size: 0.95rem;

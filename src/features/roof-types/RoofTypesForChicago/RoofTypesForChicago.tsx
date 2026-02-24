@@ -10,7 +10,6 @@ export const RoofTypesForChicago = () => {
         <section className={styles.servingSection}>
             <div className={styles.container}>
 
-                {/* Bloque de Texto: Izquierda en Desktop, Abajo en Mobile */}
                 <div className={styles.textContent}>
                     <div className={styles.iconWrapper}>
                         <FlairIcon size={150} />
@@ -57,7 +56,6 @@ export const RoofTypesForChicago = () => {
                     </div>
                 </div>
 
-                {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
                 <ScrollReveal direction="right" >
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>

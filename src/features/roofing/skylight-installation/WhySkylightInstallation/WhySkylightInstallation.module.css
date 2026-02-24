@@ -175,6 +175,16 @@
         gap: 40px;
     }
 
+    .title {
+        font-size: 2.5rem;
+    }
+    .paragraph {
+        font-size: 1rem;
+    }
+    .processList li {
+        font-size: 1rem;
+    }
+
     .textContent {
         padding: 60px 5% 0 5%;
     }

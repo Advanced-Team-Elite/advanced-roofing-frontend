@@ -68,7 +68,7 @@
 
 .benefitList li {
     position: relative;
-    padding-left: 35px; /* Espacio para la línea */
+    padding-left: 35px;
     margin-bottom: 8px;
     font-size: 1.1rem;
     color: #060606;
@@ -76,7 +76,6 @@
     align-items: center;
 }
 
-/* La línea horizontal azul */
 .benefitList li::before {
     content: "";
     position: absolute;
@@ -106,7 +105,6 @@
     font-weight: 800;
 }
 
-/* Estilo para los enlaces dentro del banner azul */
 .contactText a {
     color: #ffffff;
 }
@@ -141,7 +139,7 @@
         gap: 40px;
     }
     .title {
-        font-size: 3rem;
+        font-size: 2.7rem;
     }
 }
 
