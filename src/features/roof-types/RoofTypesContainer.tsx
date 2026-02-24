@@ -12,7 +12,7 @@ import {ChoosingRoof} from "@/features/roof-types/ChoosingRoof/ChoosingRoof";
 export const RoofTypesContainer = () => {
     return (
         <div className={styles.mainWrapper}>
-            {/* Usamos el SharedBanner con la ciudad visible */}
+
             <SharedBanner
                 title="Roofing"
                 isCityVisible={false}
@@ -20,7 +20,7 @@ export const RoofTypesContainer = () => {
                 backgroundImage={"/assets/images/features/roofing/banner-v3.jpg"}
             />
 
-            {/* Contenido principal que respira debajo de la imagen */}
+
             <section className={styles.contentSection}>
                 <div className={styles.container}>
 

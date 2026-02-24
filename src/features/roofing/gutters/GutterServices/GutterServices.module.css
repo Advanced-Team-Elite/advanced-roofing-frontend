@@ -19,16 +19,18 @@
 
 .iconWrapper {
     margin-bottom: -40px;
-    margin-top: -40px;
-    color: #333;
+}
+
+.iconWrapper svg{
+    width: 110px;
 }
 
 .mainTitle {
     color: #00589e;
-    font-size: 4rem;
+    font-size: 2.7rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .subTitle {
@@ -141,6 +143,14 @@
 @media (min-width: 1280px) {
     .mainSection {
         padding: 60px 0 60px 0;
+    }
+
+    .iconWrapper svg{
+        width: 150px;
+    }
+
+    .mainTitle {
+        font-size: 4rem;
     }
 
     .container {

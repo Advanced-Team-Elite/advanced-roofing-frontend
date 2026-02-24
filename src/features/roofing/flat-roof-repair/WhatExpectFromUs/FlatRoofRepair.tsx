@@ -21,7 +21,7 @@ const FlatRoofRepair = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h1 className={styles.mainTitle}>Flat Roof Repair <br/> in Chicago, IL</h1>
+                    <h1 className={styles.mainTitle}>Flat Roof Repair in Chicago, IL</h1>
                     <h2 className={styles.subTitle}>Expert Flat Roof Repair for Guaranteed Leak Prevention and Durability</h2>
 
                     <div className={styles.textContent}>
