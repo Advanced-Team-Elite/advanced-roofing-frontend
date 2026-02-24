@@ -290,8 +290,8 @@ const ContactUsPage = () => {
                                 follow-ups, and review requests, via automated technology. Consent is not a condition of
                                 purchase.
                                 Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for
-                                assistance.
-                                <a href="#"> Acceptable Use Policy</a>
+                                assistance.{" "}
+                                <a href="#">Acceptable Use Policy</a>
                             </p>
 
                             <button type="submit" className={styles.submitBtn}>

@@ -141,7 +141,10 @@ export const Footer = ({ upperSection }: FooterProps) => {
                         <div className={styles.phoneWrapper}>
                             <span>Call Us Today!</span>
                             <a href="tel:8472629774" className={styles.phoneNumber}>
-                                847-262-9774
+                                <strong>
+                                    847-262-9774
+                                </strong>
+
                             </a>
                         </div>
                     </div>

@@ -103,11 +103,11 @@
         font-size: 2.5rem;
     }
     .iconWrapper {
-        margin-bottom: 5px;
+        margin-bottom: -40px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 687px) {
     .aboutSection {
         padding: 60px 20px;
     }

@@ -68,8 +68,8 @@
         padding: 90px 100px 0 100px;
     }
 
-    .container {
-        gap: 0;
+    .imageContainerWrapper {
+        display: none;
     }
 
     .textContent {
@@ -85,15 +85,16 @@
     }
 
     .title {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
 
     .bodyText p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         max-width: none;
     }
 
     .container {
+        gap: 0;
         grid-template-columns: 1fr;
     }
 
@@ -108,8 +109,10 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .imageContainerWrapper {
-        display: none;
+
+    .bodyText p {
+        font-size: 1rem;
+        max-width: none;
     }
 
     .recoverySection {
@@ -121,6 +124,7 @@
     }
 
     .title {
+        font-size: 2.2rem;
         margin-top: 50px;
         margin-bottom: 20px;
     }

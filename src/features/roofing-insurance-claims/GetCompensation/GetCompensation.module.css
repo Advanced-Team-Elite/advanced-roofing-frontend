@@ -208,7 +208,11 @@
         flex-direction: column-reverse;
     }
     .title {
-        font-size: 3.2rem;
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
     }
 }
 

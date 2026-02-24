@@ -1,6 +1,6 @@
 .contactSection {
     padding: 80px 20px 120px 20px;
-    background: #f4f4f4;
+    background: white;
 }
 
 .container {
@@ -18,11 +18,10 @@
     color: #fff;
     padding: 50px 30px;
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
 }
 
 .infoItem {
+    width: 50%;
     display: flex;
     gap: 15px;
     align-items: center;
@@ -45,7 +44,8 @@
 }
 
 .infoText{
-    font-size: 18px;
+    max-width: 260px;
+    font-size: 17px;
     font-weight: 400;
 }
 
@@ -146,6 +146,11 @@
 /* ---------------- TABLET ---------------- */
 
 @media (max-width: 1280px) {
+    .contactSection {
+        padding: 80px 100px 120px 100px;
+        background: #f4f4f4;
+    }
+
     .container {
         max-width: 80%;
         display: grid;
@@ -170,8 +175,20 @@
     }
 
     .mapWrapper {
-        width: 100%; /* Opcional: que ocupe todo el ancho en tablet */
+        width: 100%;
         aspect-ratio: 1 / 1;
+    }
+
+    .infoTextCall {
+        font-size: 15px;
+    }
+
+    .infoText{
+        font-size: 15px;
+    }
+
+    .disclaimer {
+        font-size: 0.95rem;
     }
 }
 

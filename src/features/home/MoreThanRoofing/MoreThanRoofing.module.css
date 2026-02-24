@@ -22,17 +22,17 @@
 }
 
 .flairSvg {
-    width: 120px;
+    width: 150px;
     height: auto;
     color: #000000;
     display: block;
-    margin-bottom: -10px;
+    margin-bottom: -30px;
     margin-top: -10px;
 }
 
 .mainTitle {
     font-size: 4rem;
-    color: #0056b3;
+    color: #00589e;
     font-weight: 800;
     margin-bottom: 25px;
 }
@@ -81,12 +81,12 @@
     font-size: 2rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    color: #0056b3;
+    color: #00589e;
     margin-bottom: 15px;
 }
 
 .ctaBox {
-    background-color: #0056b3;
+    background-color: #00589e;
     color: #fff;
     padding: 60px 30px;
     text-align: center;
@@ -106,8 +106,12 @@
         line-height: 1.2;
     }
 
+    .ctaBox {
+        padding: 40px 30px;
+    }
+
     .section {
-        padding: 0 100px;
+        padding: 0 100px 100px 100px;
     }
 
 }

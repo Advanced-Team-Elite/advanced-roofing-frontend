@@ -65,6 +65,14 @@
         padding: 80px 100px;
     }
 
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
+
     .flexContainer {
         flex-direction: column;
         gap: 40px;

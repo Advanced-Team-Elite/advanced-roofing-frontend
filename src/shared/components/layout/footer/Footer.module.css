@@ -192,9 +192,17 @@ a:hover {
         font-size: 36px;
     }
 
+    .footerLogo{
+        width: 224px;
+    }
+
     .footerGrid {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .linkList a {
+        font-size: 1.05rem;
     }
 
     .linksSubgrid {

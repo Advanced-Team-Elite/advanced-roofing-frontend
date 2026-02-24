@@ -111,6 +111,10 @@
     .iconWrapper {
         margin-bottom: -40px;
     }
+
+    .iconWrapper svg{
+        width: 110px;
+    }
 }
 
 @media (max-width: 600px) {
