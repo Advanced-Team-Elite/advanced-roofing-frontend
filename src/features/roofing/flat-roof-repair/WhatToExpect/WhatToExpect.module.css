@@ -169,7 +169,11 @@
 /* RESPONSIVE */
 @media (max-width: 1280px) {
     .aboutSection{
-        padding: 0px 100px;
+        padding: 0 100px;
+    }
+
+    .title {
+        font-size: 2.5rem;
     }
 
     .fullWidthContainer {
@@ -199,6 +203,14 @@
     .ctaBanner {
         padding: 30px 20px;
         margin-top: 20px;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .processList li {
+        font-size: 0.95rem;
     }
 
     .ctaBanner p{

@@ -20,7 +20,7 @@ export const FrequentlyQuestionsTileRoof = () => {
                 <ScrollReveal direction="left">
                     <div className={styles.column}>
                         <div className={styles.questionBlock}>
-                            <h4>How do I know if my tile roof needs repair?</h4>
+                            <h3>How do I know if my tile roof needs repair?</h3>
                             <p className={styles.paragraph}>
                                 Visible cracks, slipping or missing tiles, leaks, or water stains inside suggest
                                 the need for roof repairs. Sometimes,{' '}

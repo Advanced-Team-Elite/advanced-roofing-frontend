@@ -49,9 +49,9 @@ export const WhyGutters = () => {
                         Our team delivers gutter solutions built to handle local conditions and help keep your property better protected year-round.
                     </p>
 
-                    <h3>Request Your Free Gutter Estimate Today</h3>
+                    <h3 className={styles.subtitle} >Request Your Free Gutter Estimate Today</h3>
 
-                    <p>Advanced Roofing Team Construction offers dependable gutter installation and replacement to help manage water around your home or commercial building. We proudly serve Chicago and the Greater Chicagoland Area with solutions built for our weather.</p>
+                    <p className={styles.paragraph}>Advanced Roofing Team Construction offers dependable gutter installation and replacement to help manage water around your home or commercial building. We proudly serve Chicago and the Greater Chicagoland Area with solutions built for our weather.</p>
 
                     <div className={styles.ctaBanner}>
                         <p>

@@ -189,6 +189,19 @@
         padding: 0 100px;
     }
 
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .benefitsList li {
+        font-size: 1rem;
+    }
+
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
     .fullWidthContainer {
         grid-template-columns: 1fr;
         display: flex;
@@ -211,6 +224,10 @@
 
     .benefitsList li {
         font-size: 0.95rem;
+    }
+
+    .title {
+        font-size: 2.1rem;
     }
 
     .paragraph {

@@ -127,8 +127,16 @@
     }
 
     .container {
-        grid-template-columns: 1fr; /* Una sola columna como el mockup mobile */
+        grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .iconWrapper {
+        margin-bottom: -40px;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
     }
 
     .mainTitle {
@@ -136,13 +144,16 @@
     }
 
     .questionBlock h3 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+    }
+    .questionBlock h4 {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
 
-    .questionBlock h3 {
+    .questionBlock h3, .questionBlock h4 {
         font-size: 1.3rem;
         line-height: 1.4;
         width: 95%;

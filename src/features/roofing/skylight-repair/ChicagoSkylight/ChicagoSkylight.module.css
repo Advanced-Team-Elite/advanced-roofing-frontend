@@ -175,6 +175,14 @@
         gap: 40px;
     }
 
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
     .textContent {
         padding: 60px 5% 0 5%;
     }
@@ -190,6 +198,10 @@
     .aboutSection {
         padding: 0 20px;
     }
+    .title {
+        font-size: 2.2rem;
+    }
+
     .paragraph {
         font-size: 0.95rem;
     }
