@@ -29,13 +29,14 @@
     transition: background 0.3s ease;
 }
 
-.viewAllBtnMobileContainer{
+.viewAllBtnMobileContainer {
     display: none;
     justify-content: center;
     width: 100%;
+    padding: 30px 0;
 }
 
-/* --- GRID SYSTEM --- */
+
 .servicesGrid {
     display: flex;
     width: 100%;
@@ -50,7 +51,26 @@
     display: block;
 }
 
-/* --- IMAGEN Y HOVER EFFECTS --- */
+
+.carousel {
+    display: none;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carouselTrack {
+    display: flex;
+    transition: transform 0.4s ease;
+    width: 100%;
+}
+
+.carouselCard {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+
 .imageWrapper {
     width: 100%;
     height: 100%;
@@ -75,10 +95,9 @@
 }
 
 .serviceCard:hover .imageWrapper {
-    transform: scale(1.1); /* Transformación de size solicitado */
+    transform: scale(1.1);
 }
 
-/* --- CONTENIDO DE LA CARD --- */
 .cardContent {
     position: absolute;
     bottom: 40px;
@@ -116,46 +135,82 @@
     transition: transform 0.3s ease;
 }
 
-/* Transformación de la flecha al hacer hover */
-.serviceCard:hover .arrowIcon {
-    transform: rotate(45deg); /* Cambia de diagonal a horizontal derecha */
+.serviceCard:hover .arrowIcon,
+.carouselCard:hover .arrowIcon {
+    transform: rotate(45deg);
 }
 
-/* --- TABLET (Breakpoint 1280px - 4x4 o Grid flexible) --- */
-@media (max-width: 1380px) {
+/* --- CAROUSEL STYLES --- */
+.carouselTrack {
+    display: flex;
+    transition: transform 0.4s ease;
+}
 
-    .viewAllBtn {
-        margin: 0;
+.carouselCard {
+    position: relative;
+    min-width: 100%;
+    height: 450px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    flex-shrink: 0;
+}
+
+.carouselControls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.arrowBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #00c3f8;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.arrowBtn:hover {
+    color: #00589e;
+}
+
+/* --- TABLET --- */
+@media (max-width: 1380px) {
+    .servicesSection {
+        padding: 60px 100px 0;
     }
 
     .header {
         width: 100%;
         padding: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
     }
 
     .mainTitle {
-        text-align: center;
-    }
-
-    .servicesSection {
-        padding: 60px 100px; /* Ajustado al mockup */
+        font-size: 2.8rem;
     }
 
     .servicesGrid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2x2 para acomodar las 4 cards */
+        display: none;
     }
 
-    .serviceCard {
+    .carousel {
+        display: block;
+    }
+
+    .carouselCard {
         height: 400px;
     }
 }
 
 /* --- MOBILE --- */
 @media (max-width: 768px) {
+    .servicesSection {
+        padding: 60px 35px 0;
+    }
+
     .header {
         flex-direction: column;
         align-items: flex-start;
@@ -171,20 +226,11 @@
         width: 100%;
     }
 
-    .viewAllBtnMobileContainer{
+    .viewAllBtnMobileContainer {
         display: flex;
-        margin: 0 auto;
     }
 
-    .servicesSection {
-        padding: 60px 35px; /* Ajustado al mockup */
-    }
-
-    .servicesGrid {
-        grid-template-columns: 1fr; /* Una sola columna en mobile */
-    }
-
-    .serviceCard {
+    .carouselCard {
         height: 350px;
     }
 }

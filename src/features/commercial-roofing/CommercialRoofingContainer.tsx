@@ -20,7 +20,7 @@ import {ContactUsForWeather} from "@/shared/components/ContactUsForWeather/Conta
 export const CommercialRoofingContainer = () => {
     return (
         <div className={styles.mainWrapper}>
-            {/* Usamos el SharedBanner con la ciudad visible */}
+
             <SharedBanner
                 title="Commercial Roofing"
                 isCityVisible={false}
@@ -28,7 +28,6 @@ export const CommercialRoofingContainer = () => {
                 backgroundImage={"/assets/images/features/roofing/banner-v4.jpg"}
             />
 
-            {/* Contenido principal que respira debajo de la imagen */}
             <section className={styles.contentSection}>
                 <div className={styles.container}>
 
