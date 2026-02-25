@@ -14,7 +14,7 @@ export async function POST(req: Request) {
                 review: body.review,
                 email: body.email,
                 rating: body.rating,
-                approved: true,
+                approved: false,
             },
         });
 
