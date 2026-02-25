@@ -17,7 +17,7 @@ const ReviewsPageContainer = ({ apiReviews }: Props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    const allReviews = [...reviewsData, ...apiReviews];
+    const allReviews = [...apiReviews, ...reviewsData];
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
