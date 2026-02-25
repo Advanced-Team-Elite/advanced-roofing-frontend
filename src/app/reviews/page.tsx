@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import ReviewsPageContainer from "@/features/reviews/ReviewsPageContainer";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
     title: 'Customer Reviews & Testimonials | Advanced Roofing Team Chicago',
     description: 'See what our customers say about Advanced Roofing Team. Top-rated roofing services, storm damage repairs, and professional craftsmanship in the Chicagoland area.',
