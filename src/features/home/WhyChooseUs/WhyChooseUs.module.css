@@ -42,12 +42,22 @@
 .imageCol {
     display: flex;
     justify-content: flex-end;
+    width: 100%;
+}
+
+.imageWrapper {
+    position: relative; /* Obligatorio para Image fill */
+    width: 100%;
+    max-width: 850px;
+    /* Define una relación de aspecto para que no dependa del cálculo de JS */
+    aspect-ratio: 800 / 700;
 }
 
 .mainImage {
-    width: 100%;
-    height: auto;
-    max-width: 850px;
+    object-fit: contain; /* Mantiene la proporción sin recortar */
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important; /* Sobrescribe el absolute del fill si es necesario */
 }
 
 .textCol {

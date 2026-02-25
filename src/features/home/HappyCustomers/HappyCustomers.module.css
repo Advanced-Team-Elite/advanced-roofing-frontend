@@ -27,11 +27,10 @@
 .track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: calc(100% * 4 / 3);
 }
 
 .cardContainer {
-    width: 100%;
+    flex-shrink: 0; /* Vital para que no se aplasten */
     padding: 10px;
 }
 
@@ -40,7 +39,7 @@
     color: #fff;
     padding: 40px 30px;
     height: 100%;
-    min-height: 350px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -112,6 +111,30 @@
         margin-bottom: 20px;
     }
 
+    .reviewCard{
+        padding: 60px 56px;
+    }
+
+    .stars {
+        margin-bottom: 10px;
+    }
+
+    .cardTitle {
+        font-size: 1.9rem;
+    }
+
+    .author{
+        font-size: 1.4rem;
+    }
+
+    .cardTitle, .cardText, .author, .stars {
+        text-align: center;
+    }
+
+    .cardContainer{
+        width:100%;
+    }
+
     .controlsRow {
         margin-top: 0;
         flex-direction: column;
@@ -139,6 +162,26 @@
         padding: 20px 0 50px 0;
     }
 
+    .cardContainer{
+        width:100%;
+    }
+
+    .reviewCard{
+        padding: 34px 30px;
+    }
+
+    .stars {
+        margin-bottom: 10px;
+    }
+
+    .cardTitle {
+        font-size: 1.6rem;
+    }
+
+    .author{
+        font-size: 1.2rem;
+    }
+
     .track {
         width: calc(100% * 4 / 1);
     }
@@ -151,11 +194,7 @@
     }
 
     .cardText {
-        font-size: 1rem;
-    }
-
-    .cardTitle {
-        font-size: 1.8rem;
+        font-size: 0.95rem;
     }
 
     .carouselWrapper {
