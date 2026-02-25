@@ -14,7 +14,6 @@ const ReviewDialog = ({ review, isOpen, onClose }: Props) => {
     return (
         <div className={styles.dialogOverlay} onClick={onClose}>
             <div className={styles.dialogContainer}>
-                {/* Botón de cierre amarillo con rotación */}
                 <button className={styles.closeYellowX} onClick={onClose}>
                     &times;
                 </button>
