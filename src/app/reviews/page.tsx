@@ -24,7 +24,10 @@ export default async function Page() {
     const reviews = await prisma.review.findMany({
         where: { approved: true },
         orderBy: { createdAt: "desc" },
+
     });
+
+    //console.log("Reviews fetched from DB:", reviews);
 
     const serializedReviews = reviews.map((review) => ({
         ...review,
