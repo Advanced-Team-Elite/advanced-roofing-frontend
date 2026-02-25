@@ -11,7 +11,7 @@ import FinancingSection from "@/shared/components/FinancingSection/FinancingSect
 import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 
-export default function HomeContainer() {
+export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
             {/* --- HERO SECTION --- */}
@@ -22,7 +22,7 @@ export default function HomeContainer() {
             <AwardsBanner />
             <WhyChooseUs />
             <MoreThanRoofing />
-            <HappyCustomers />
+            <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
             <Footer upperSection={<FinancingSection/>}/>
 

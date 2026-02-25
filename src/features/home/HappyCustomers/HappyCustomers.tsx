@@ -1,40 +1,55 @@
-import { useState } from 'react';
+"use client";
+import { useState, useEffect } from 'react';
 import styles from './HappyCustomers.module.css';
+import { Review, reviewsData } from "@/features/reviews/constants";
 import Link from "next/link";
 
-const HappyCustomers = () => {
+interface Props {
+    dbReviews?: Review[];
+}
+
+const HappyCustomers = ({ dbReviews = [] }: Props) => {
+    const [reviews, setReviews] = useState<Review[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const reviews = [
-        {
-            title: "They came out quickly for an emergency roof repair, and did a great job.",
-            text: "We have used them in the past for larger projects, and have always been pleased.",
-            author: "Darrell T."
-        },
-        {
-            title: "Would definitely recommend them.",
-            text: "They finished the work in one day, and the new roof looks great!",
-            author: "Melinda T."
-        },
-        {
-            title: "Can't thank you enough!",
-            text: "Peter helped me through the whole process and was able to replace my entire roof!",
-            author: "Yawar K."
-        },
-        {
-            title: "Very quick at getting back to you and very quick with results!",
-            text: "I have already recommended Peter to multiple friends, and they have all been highly satisfied.",
-            author: "David"
-        }
-    ];
+    const [visibleCards, setVisibleCards] = useState(3);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 1280) {
+                setVisibleCards(1);
+            } else {
+                setVisibleCards(3);
+            }
+        };
+
+        const TOTAL = 9;
+        const staticNeeded = Math.max(0, TOTAL - dbReviews.length);
+        const selectedStatic = [...reviewsData]
+            .sort(() => 0.5 - Math.random())
+            .slice(0, staticNeeded);
+
+        const combined = [...dbReviews, ...selectedStatic].slice(0, TOTAL);
+
+        const fullyShuffled = combined.sort(() => 0.5 - Math.random());
+
+        setReviews(fullyShuffled);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [dbReviews]);
+
+    const maxIndex = reviews.length - visibleCards;
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1 === reviews.length ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
     };
+
+    if (reviews.length === 0) return null;
 
     return (
         <section className={styles.section}>
@@ -44,15 +59,22 @@ const HappyCustomers = () => {
                 <div className={styles.carouselWrapper}>
                     <div
                         className={styles.track}
-                        style={{ transform: `translateX(-${currentIndex * (100 / reviews.length)}%)` }}
+                        style={{
+                            width: `${(100 / visibleCards) * reviews.length}%`,
+                            transform: `translateX(-${currentIndex * (100 / reviews.length)}%)`
+                        }}
                     >
-                        {reviews.map((rev, idx) => (
-                            <div key={idx} className={styles.cardContainer}>
+                        {reviews.map((rev) => (
+                            <div
+                                key={rev.id}
+                                className={styles.cardContainer}
+                                style={{ width: `${100 / reviews.length}%` }}
+                            >
                                 <div className={styles.reviewCard}>
-                                    <div className={styles.stars}>★★★★★</div>
+                                    <div className={styles.stars}>{"★".repeat(rev.rating)}</div>
                                     <h3 className={styles.cardTitle}>{rev.title}</h3>
-                                    <p className={styles.cardText}>“{rev.text}”</p>
-                                    <span className={styles.author}>- {rev.author}</span>
+                                    <p className={styles.cardText}>“{rev.review}”</p>
+                                    <span className={styles.author}>- {rev.fullName}</span>
                                 </div>
                             </div>
                         ))}
@@ -64,7 +86,7 @@ const HappyCustomers = () => {
                         <button onClick={prevSlide} className={styles.arrowBtn}>←</button>
                         <button onClick={nextSlide} className={styles.arrowBtn}>→</button>
                     </div>
-                    <Link href="/reviews" className={styles.servicesLink}>
+                    <Link href="/reviews">
                         <button className={styles.viewAllBtn}>View All Reviews</button>
                     </Link>
                 </div>

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import HomeContainer from "@/features/home/HomeContainer";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
     title: 'Advanced Roofing Team | Roofing Services in Des Plaines, IL',
@@ -19,10 +20,25 @@ export const metadata: Metadata = {
     },
 };
 
-export default function MainPage() {
+export default async function MainPage() {
+
+    const reviewsFromDb = await prisma.review.findMany({
+        where: {
+            approved: true,
+            rating: 5
+        },
+        orderBy: { createdAt: "desc" },
+        take: 10,
+    });
+
+    const serializedReviews = reviewsFromDb.map(r => ({
+        ...r,
+        createdAt: r.createdAt.toISOString(),
+    }));
+
     return (
         <main>
-            <HomeContainer />
+            <HomeContainer dbReviews={serializedReviews}/>
         </main>
     );
 }

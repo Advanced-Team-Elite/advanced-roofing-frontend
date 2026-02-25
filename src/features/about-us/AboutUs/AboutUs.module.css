@@ -83,33 +83,38 @@
 .contactLink {
     color: #4803b1;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 /* Ajuste para Mobile */
 @media (max-width: 1280px) {
     .aboutSection {
-        padding: 60px 100px;
+        padding: 0 100px 60px 100px;
+    }
+
+    .iconWrapper {
+        margin: -20px 0 -50px 0;
+    }
+
+    .iconWrapper svg{
+        width: 110px;
     }
 
     .imageFloatContainer {
         float: none;
         width: 100%;
         margin-left: 0;
-        margin-bottom: 30px;
+        margin-bottom: 60px;
     }
 
     .mainTitle {
         font-size: 2.5rem;
     }
-    .iconWrapper {
-        margin-bottom: -40px;
-    }
 }
 
 @media (max-width: 687px) {
     .aboutSection {
-        padding: 60px 20px;
+        padding: 0 20px 60px 20px;
     }
     .iconWrapper {
         margin: -40px 0 -50px 0;

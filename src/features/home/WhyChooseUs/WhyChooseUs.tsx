@@ -46,8 +46,8 @@ const WhyChooseUs = () => {
                                 <Image
                                     src="/assets/images/features/home/content-v5.png"
                                     alt="Our professional team"
-                                    width={800}
-                                    height={700}
+                                    fill
+                                    sizes="(max-width: 1280px) 100vw, 50vw"
                                     className={styles.mainImage}
                                 />
                             </ScrollReveal>

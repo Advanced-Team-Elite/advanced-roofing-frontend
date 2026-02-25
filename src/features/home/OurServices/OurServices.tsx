@@ -7,8 +7,8 @@ const OurServices = () => {
         { title: "Commercial Roofing", img: "/assets/images/features/home/1.jpg", href: "/commercial-roofing" },
         { title: "Insurance Claims", img: "/assets/images/features/home/2.jpg", href: "/roofing-insurance-claims" },
         { title: "Shingle Roofing", img: "/assets/images/features/home/3.jpg", href: "/roof-types/shingle-roofing/" },
-        { title: "Roofing Services", img: "/assets/images/features/home/4.jpg", href: "/roofing" },
-        { title: "Roof Installation & Replacement", img: "/assets/images/features/home/5.jpg", href: "/roofing" },
+        { title: "Roofing Services", img: "/assets/images/features/home/4.jpg", href: "/roofing/" },
+        { title: "Roof Installation & Replacement", img: "/assets/images/features/home/5.jpg", href: "/roofing/roof-installation-replacement/" },
     ];
 
     return (
