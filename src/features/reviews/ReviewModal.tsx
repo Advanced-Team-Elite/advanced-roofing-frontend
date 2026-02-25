@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import styles from './ReviewsPage.module.css';
+import { useRouter } from 'next/navigation';
 
 const locations = [
     { label: "--- UNITED STATES ---", value: "", disabled: true },
@@ -40,6 +41,7 @@ const ReviewModal = ({ onClose }: { onClose: () => void }) => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
 
     const [formData, setFormData] = useState<FormData>({
@@ -134,6 +136,8 @@ const ReviewModal = ({ onClose }: { onClose: () => void }) => {
                 email: "",
             });
             setRating(0);
+
+            router.refresh();
 
             onClose();
 
