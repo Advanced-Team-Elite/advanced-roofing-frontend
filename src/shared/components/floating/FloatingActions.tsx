@@ -65,7 +65,12 @@ export const FloatingActions = () => {
     return (
         <>
             {/* Accesibilidad */}
-            <button className={styles.accessibilityBtn} aria-label="Accessibility">
+            <button
+                className={`${styles.accessibilityBtn} ${
+                    showBubble ? styles.withBubble : styles.withoutBubble
+                }`}
+                aria-label="Accessibility"
+            >
                 <AccessibilityIcon size={35} />
             </button>
 

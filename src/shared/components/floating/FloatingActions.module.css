@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 8999;
+    z-index: 10;
     border: 3px solid white;
 }
 
@@ -27,7 +27,7 @@
     font-weight: bold;
     border: none;
     cursor: pointer;
-    z-index: 8999;
+    z-index: 10;
     transition: transform 0.3s ease;
 }
 
@@ -151,9 +151,16 @@
     }
 
     .accessibilityBtn {
-        bottom: 160px;
         left: 15px;
-        transition: bottom 0.3s ease;
+        transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .withBubble {
+        bottom: 160px;
+    }
+
+    .withoutBubble {
+        bottom: 80px;
     }
 
     .bubbleTriangle {
