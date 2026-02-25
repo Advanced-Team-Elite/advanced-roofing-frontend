@@ -31,7 +31,3 @@ export const getRandomReview = (): Review => {
     const randomIndex = Math.floor(Math.random() * reviews.length);
     return reviews[randomIndex];
 };
-
-export const getAllReviews = (): Review[] => {
-    return reviews;
-};
