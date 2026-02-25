@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import HomeContainer from "@/features/home/HomeContainer";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
     title: 'Advanced Roofing Team | Roofing Services in Des Plaines, IL',
     description: 'Top-rated roofing company in Des Plaines. We offer free inspections, emergency repairs, and full roof replacements. Haag Certified professionals at your service.',
