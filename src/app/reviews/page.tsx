@@ -27,7 +27,7 @@ export default async function Page() {
 
     });
 
-    //console.log("Reviews fetched from DB:", reviews);
+    console.log("Reviews fetched from DB:", reviews);
 
     const serializedReviews = reviews.map((review) => ({
         ...review,
