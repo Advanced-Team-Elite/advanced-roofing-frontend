@@ -273,7 +273,7 @@ const ContactUs = () => {
                             </div>
 
                             <div className={styles.captchaField}>
-                                <label className={styles.captchaCode}>{captchaCode}</label>
+                                <label className={styles.captchaCode} htmlFor="captchaInput">{captchaCode}</label>
                                 <button
                                     type="button"
                                     onClick={refreshCaptcha}

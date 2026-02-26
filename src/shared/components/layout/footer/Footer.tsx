@@ -61,7 +61,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     <li><Link href="/about-us">About Us</Link></li>
                                     <li><Link href="/commercial-roofing">Commercial Roofing</Link></li>
                                     <li><Link href="/financing">Financing</Link></li>
-                                    <li><Link href="/contact-us">Contact Us</Link></li>
+                                    <li><Link href="/contact-us" title="Go to our contact page">Contact Us</Link></li>
                                 </ul>
                             </div>
                         </div>
