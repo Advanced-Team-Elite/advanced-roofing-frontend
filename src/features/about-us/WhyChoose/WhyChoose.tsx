@@ -8,7 +8,7 @@ const WhyChoose = () => {
     return (
         <section
             className={styles.whyChooseSection}
-            style={{ backgroundImage: `url('/assets/images/features/about-us/bg-4.jpg')` }}
+            style={{ backgroundImage: `url('/assets/images/features/about-us/bg-4.webp')` }}
         >
             <div className={styles.overlay}>
                 <div className={styles.container}>

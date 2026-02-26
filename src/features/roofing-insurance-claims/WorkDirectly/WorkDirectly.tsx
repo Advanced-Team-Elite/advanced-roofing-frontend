@@ -47,7 +47,7 @@ export const WorkDirectly = () => {
                     <ScrollReveal direction="right">
                         <div className={styles.imageWrapper}>
                             <img
-                                src="/assets/images/features/about-us/content-v13.png"
+                                src="/assets/images/features/about-us/content-v13.webp"
                                 alt="Professional roofers in Chicago"
                                 className={styles.mainImage}
                             />

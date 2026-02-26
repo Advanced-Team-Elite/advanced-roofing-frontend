@@ -16,7 +16,7 @@ const AboutUs = () => {
                     {/* Contenedor de la imagen con float */}
                     <div className={styles.imageFloatContainer}>
                         <img
-                            src="/assets/images/features/about-us/content-v6.png"
+                            src="/assets/images/features/about-us/content-v6.webp"
                             alt="Advanced Roofing Team Truck"
                             className={styles.aboutImage}
                         />

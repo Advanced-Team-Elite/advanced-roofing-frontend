@@ -54,7 +54,7 @@ const ServingHome = () => {
                     <ScrollReveal direction="right">
                         <div className={styles.imageWrapper}>
                             <img
-                                src="/assets/images/features/roofing/content-v10.png"
+                                src="/assets/images/features/roofing/content-v10.webp"
                                 alt="Chicago Roofing Services"
                                 className={styles.mainImage}
                             />

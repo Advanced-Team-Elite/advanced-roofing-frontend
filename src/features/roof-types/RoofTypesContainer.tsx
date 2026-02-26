@@ -17,7 +17,7 @@ export const RoofTypesContainer = () => {
                 title="Roofing"
                 isCityVisible={false}
                 isIconVisible={true}
-                backgroundImage={"/assets/images/features/roofing/banner-v3.jpg"}
+                backgroundImage={"/assets/images/features/roofing/banner-v3.webp"}
             />
 
 

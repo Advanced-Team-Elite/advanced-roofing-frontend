@@ -14,7 +14,7 @@ const SharedBanner = ({
                           title,
                           isCityVisible = true,
                           isIconVisible = false,
-                          backgroundImage = '/assets/images/features/about-us/banner-v1.jpg' // Valor por defecto
+                          backgroundImage = '/assets/images/features/about-us/banner-v1.webp' // Valor por defecto
                       }: SharedBannerProps) => {
     return (
         <>
@@ -37,7 +37,7 @@ const SharedBanner = ({
             {isCityVisible && (
                 <div className={styles.cityWrapper}>
                     <img
-                        src="/assets/images/features/about-us/bg-3.jpg"
+                        src="/assets/images/features/about-us/bg-3.webp"
                         alt="City Landscape"
                         className={styles.cityImage}
                     />
