@@ -11,7 +11,6 @@ export const WorkDirectly = () => {
         <section className={styles.servingSection}>
             <div className={styles.container}>
 
-                {/* Bloque de Texto: Izquierda en Desktop, Abajo en Mobile */}
                 <div className={styles.textContent}>
                     <div className={styles.iconWrapper}>
                         <FlairIcon size={150} />
@@ -44,14 +43,12 @@ export const WorkDirectly = () => {
 
                 </div>
 
-                {/* Bloque de Imagen: Derecha en Desktop, Arriba en Mobile */}
-
                 <div className={styles.imageColumn}>
                     <ScrollReveal direction="right">
                         <div className={styles.imageWrapper}>
                             <img
                                 src="/assets/images/features/about-us/content-v13.png"
-                                alt="Chicago Roofing Services"
+                                alt="Professional roofers in Chicago"
                                 className={styles.mainImage}
                             />
                         </div>

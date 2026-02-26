@@ -19,7 +19,7 @@ export const FlatRoofChicago = () => {
                         <div className={styles.imageWrapper}>
                             <Image
                                 src="/assets/images/features/roofing/content-v7.png"
-                                alt="Chicago Roofing"
+                                alt="Roofing contractor installing shingles"
                                 fill
                                 className={styles.mainImage}
                                 priority

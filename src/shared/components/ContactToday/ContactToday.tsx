@@ -306,8 +306,9 @@ const ContactToday = () => {
                                 <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
                                     <div className={styles.row}>
                                         <div className={styles.field}>
-                                            <label>First Name</label>
+                                            <label htmlFor="firstName">First Name</label>
                                             <input
+                                                id="firstName"
                                                 type="text"
                                                 name="firstName"
                                                 value={formData.firstName}
@@ -316,8 +317,9 @@ const ContactToday = () => {
                                             {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
                                         </div>
                                         <div className={styles.field}>
-                                            <label>Last Name</label>
+                                            <label htmlFor="lastName">Last Name</label>
                                             <input
+                                                id="lastName"
                                                 type="text"
                                                 name="lastName"
                                                 value={formData.lastName}
@@ -329,8 +331,9 @@ const ContactToday = () => {
 
                                     <div className={styles.row}>
                                         <div className={styles.field}>
-                                            <label>Phone</label>
+                                            <label htmlFor="phone">Phone</label>
                                             <input
+                                                id="phone"
                                                 type="tel"
                                                 name="phone"
                                                 value={formData.phone}
@@ -339,8 +342,9 @@ const ContactToday = () => {
                                             {errors.phone && <span className={styles.error}>{errors.phone}</span>}
                                         </div>
                                         <div className={styles.field}>
-                                            <label>Email</label>
+                                            <label htmlFor="email">Email</label>
                                             <input
+                                                id="email"
                                                 type="email"
                                                 name="email"
                                                 value={formData.email}
@@ -351,8 +355,9 @@ const ContactToday = () => {
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>Address</label>
+                                        <label htmlFor="address">Address</label>
                                         <input
+                                            id="address"
                                             type="text"
                                             name="address"
                                             placeholder="Enter a location"
@@ -363,8 +368,9 @@ const ContactToday = () => {
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>Are you a new customer?</label>
+                                        <label htmlFor="isNewCustomer">Are you a new customer?</label>
                                         <select
+                                            id="isNewCustomer"
                                             name="isNewCustomer"
                                             value={formData.isNewCustomer}
                                             onChange={handleChange}
@@ -378,8 +384,9 @@ const ContactToday = () => {
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>How can we help you?</label>
+                                        <label htmlFor="message">How can we help you?</label>
                                         <textarea
+                                            id="message"
                                             name="message"
                                             rows={4}
                                             value={formData.message}
@@ -393,8 +400,9 @@ const ContactToday = () => {
                                             <span className={styles.captchaCode}>{captchaCode}</span>
                                             <button type="button" onClick={refreshCaptcha} className={styles.captchaRefresh}>↻</button>
                                         </div>
-                                        <label>Please enter the captcha code above:</label>
+                                        <label htmlFor="captchaInput">Please enter the captcha code above:</label>
                                         <input
+                                            id="captchaInput"
                                             type="text"
                                             name="captchaInput"
                                             value={formData.captchaInput}
@@ -414,7 +422,6 @@ const ContactToday = () => {
                                     <button type="submit" className={styles.submitBtn}>Send Message</button>
                                 </form>
                             </div>
-
                         </div>
                     </ScrollReveal>
 

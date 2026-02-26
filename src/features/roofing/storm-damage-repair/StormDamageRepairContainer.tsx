@@ -12,15 +12,15 @@ import {RoofWindDamage} from "@/features/roofing/storm-damage-repair/RoofWindDam
 export const StormDamageRepairContainer = () => {
     return (
         <div>
-            {/* Usamos el SharedBanner con la ciudad visible */}
             <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-4.jpg"}/>
 
-            {/* Contenido principal que respira debajo de la imagen */}
             <section>
                 <ChicagoStormDamage />
                 <ProductRecomendation/>
+
                 <ThoroughStorm/>
                 <RoofWindDamage/>
+
                 <ImageGalleryRow/>
             </section>
 

@@ -28,7 +28,6 @@ export default function AwardsBanner() {
             <div className={styles.container}>
                 <h2 className={styles.awardsTitle}>Award-Winning Business</h2>
 
-                {/* DESKTOP: grid normal */}
                 <div className={styles.awardsGrid}>
                     {awards.map((award, index) => (
                         <div key={index} className={styles.awardItem}>
@@ -43,7 +42,6 @@ export default function AwardsBanner() {
                     ))}
                 </div>
 
-                {/* TABLET: carrusel 3 visibles */}
                 <div className={styles.carouselTablet}>
                     <div className={styles.carouselTrack}
                          style={{ transform: `translateX(calc(-${current} * (100% / 3)))` }}>
@@ -65,7 +63,6 @@ export default function AwardsBanner() {
                     </div>
                 </div>
 
-                {/* MOBILE: carrusel 2 visibles */}
                 <div className={styles.carouselMobile}>
                     <div className={styles.carouselTrack}
                          style={{ transform: `translateX(calc(-${current} * (100% / 2)))` }}>

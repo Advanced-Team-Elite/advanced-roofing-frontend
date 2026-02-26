@@ -93,7 +93,7 @@ export const StepByStep = () => {
 
                             <Image
                                 src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
+                                alt="Roofing contractor installing shingles"
                                 fill
                                 className={styles.mainImage}
                                 priority
