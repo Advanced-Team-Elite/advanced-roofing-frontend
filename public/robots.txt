@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-
-Disallow: /api/
-Disallow: /admin/
-
-
-Sitemap: https://www.advancedroofingteam.com/site-map

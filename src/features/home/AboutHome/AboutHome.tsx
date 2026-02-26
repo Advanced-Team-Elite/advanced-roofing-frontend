@@ -61,7 +61,6 @@ export const AboutHome = () => {
                         </p>
                     </div>
 
-                    {/* Botón Continue Reading con línea superior como en image_2dd7d7.jpg */}
                     <div className={styles.readMoreWrapper}>
                         <button
                             className={styles.readMoreBtn}

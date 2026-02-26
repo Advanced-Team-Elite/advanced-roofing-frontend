@@ -36,7 +36,8 @@ export default function AwardsBanner() {
                                 alt={award.alt}
                                 width={220}
                                 height={160}
-                                style={{ objectFit: 'contain' }}
+                                style={{ objectFit: 'contain', height: 'auto' }}
+                                unoptimized
                             />
                         </div>
                     ))}
@@ -52,7 +53,8 @@ export default function AwardsBanner() {
                                     alt={award.alt}
                                     width={220}
                                     height={160}
-                                    style={{ objectFit: 'contain' }}
+                                    style={{ objectFit: 'contain', height: 'auto' }}
+                                    unoptimized
                                 />
                             </div>
                         ))}
@@ -73,7 +75,8 @@ export default function AwardsBanner() {
                                     alt={award.alt}
                                     width={160}
                                     height={120}
-                                    style={{ objectFit: 'contain' }}
+                                    style={{ objectFit: 'contain', height: 'auto' }}
+                                    unoptimized
                                 />
                             </div>
                         ))}
