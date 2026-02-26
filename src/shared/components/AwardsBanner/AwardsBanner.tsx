@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const awards = [
-    { src: '/assets/images/features/home/AngiesList.png', alt: 'Angies List Super Service Award 2015' },
-    { src: '/assets/images/features/home/Haag-Commercial-Logo.png', alt: 'Haag Certified Inspector' },
-    { src: '/assets/images/features/home/gaf-certified-logo.png', alt: 'GAF Certified Residential Roofing Contractor' },
-    { src: '/assets/images/features/home/PreferredContractor_OwensCorning.png', alt: 'Owens Corning Preferred Contractor' },
-    { src: '/assets/images/features/home/Haag-Commercial-Logo.png', alt: 'Haag Certified Inspector Commercial' },
-    { src: '/assets/images/features/home/AngiesList_2019.png', alt: 'Angies List Super Service Award 2019' },
+    { src: '/assets/images/features/home/AngiesList.webp', alt: 'Angies List Super Service Award 2015' },
+    { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Certified Inspector' },
+    { src: '/assets/images/features/home/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor' },
+    { src: '/assets/images/features/home/PreferredContractor_OwensCorning.webp', alt: 'Owens Corning Preferred Contractor' },
+    { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Certified Inspector Commercial' },
+    { src: '/assets/images/features/home/AngiesList_2019.webp', alt: 'Angies List Super Service Award 2019' },
 ];
 
 export default function AwardsBanner() {

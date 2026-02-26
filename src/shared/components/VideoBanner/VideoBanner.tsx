@@ -34,7 +34,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     loop
                     playsInline
                     className={styles.videoBg}
-                    poster="/assets/images/features/home/hero-mobile-bg.jpg"
+                    poster="/assets/images/features/home/hero-mobile-bg.webp"
                 >
                     <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
                 </video>

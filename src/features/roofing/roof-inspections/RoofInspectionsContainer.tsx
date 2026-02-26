@@ -18,7 +18,7 @@ export const RoofInspectionsContainer = () => {
     return (
         <div>
             {/* Usamos el SharedBanner con la ciudad visible */}
-            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1.jpg"}/>
+            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1.webp"}/>
 
             {/* Contenido principal que respira debajo de la imagen */}
             <section>

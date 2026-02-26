@@ -16,7 +16,7 @@ export const ChoosingRoof = () => {
                 <ScrollReveal direction="right" distance={30}>
                     <div className={styles.imageColumn}>
                         <img
-                            src="/assets/images/features/about-us/content-v11.png"
+                            src="/assets/images/features/about-us/content-v11.webp"
                             alt="Roofing Project Installation"
                             className={styles.mainImage}
                         />

@@ -12,7 +12,7 @@ import {RoofWindDamage} from "@/features/roofing/storm-damage-repair/RoofWindDam
 export const StormDamageRepairContainer = () => {
     return (
         <div>
-            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-4.jpg"}/>
+            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-4.webp"}/>
 
             <section>
                 <ChicagoStormDamage />

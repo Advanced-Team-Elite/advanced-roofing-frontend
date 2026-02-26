@@ -15,7 +15,7 @@ export const GetCompensation = () => {
                 <div className={styles.imageColumn}>
                     <ScrollReveal direction="right" distance={20}>
                         <img
-                            src="/assets/images/features/about-us/content-v11.png"
+                            src="/assets/images/features/about-us/content-v11.webp"
                             alt="Roofing Project Installation"
                             className={styles.mainImage}
                         />

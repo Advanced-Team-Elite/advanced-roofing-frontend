@@ -13,7 +13,7 @@ export const GuttersContainer = () => {
     return (
         <div>
             {/* Usamos el SharedBanner con la ciudad visible */}
-            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-alt.jpg"}/>
+            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-alt.webp"}/>
 
             {/* Contenido principal que respira debajo de la imagen */}
             <section>
