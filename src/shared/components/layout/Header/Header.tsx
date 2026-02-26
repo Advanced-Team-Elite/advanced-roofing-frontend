@@ -101,14 +101,14 @@ export const Header = () => {
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>
                     <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Roofing Insurance Claims</Link></li>
-                    <li><Link href="/contact-us" className={styles.navLink}>Contact Us</Link></li>
+                    <li><Link href="/contact-us" title="Go to our contact page" className={styles.navLink}>Contact Us</Link></li>
                     <li>
-                        <Link href="/contact-us/" className={styles.quoteBtnLink}>
+                        <Link href="/contact-us/" className={styles.quoteBtnLink} title="Go to our contact page">
                             <button className={styles.quoteBtn}>Request a Quote</button>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/site-search" className={styles.searchIcon}>
+                        <Link href="/site-search" className={styles.searchIcon} aria-label="Search our website">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                             </svg>
@@ -188,11 +188,11 @@ export const Header = () => {
                                     </li>
 
                                     <li><Link href="/reviews" onClick={closeDrawer}>Reviews</Link></li>
-                                    <li><Link href="/contact-us" onClick={closeDrawer}>Contact Us</Link></li>
+                                    <li><Link href="/contact-us" title="Go to our contact page" onClick={closeDrawer}>Contact Us</Link></li>
                                 </ul>
                                 <div className={styles.drawerFooter}>
                                     <div className={styles.buttonsWrapper}>
-                                        <Link href="/contact-us" onClick={closeDrawer} className={styles.mobileContactBtn}>Contact Us</Link>
+                                        <Link href="/contact-us" title="Go to our contact page" onClick={closeDrawer} className={styles.mobileContactBtn}>Contact Us</Link>
                                         <a href="tel:8472629774" className={styles.mobileCallBtn}>Call Us Today!</a>
                                     </div>
 

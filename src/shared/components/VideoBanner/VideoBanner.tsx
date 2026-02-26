@@ -55,7 +55,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                             Chicago&apos;s Trusted Roofing & Storm Recovery Team
                         </p>
                     )}
-                    <Link href="/contact-us" className={styles.contactBtn}>
+                    <Link href="/contact-us" className={styles.contactBtn} title="Go to our contact page">
                         Contact Us
                     </Link>
                 </div>
