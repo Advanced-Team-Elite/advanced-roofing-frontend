@@ -32,7 +32,7 @@ const OwensPreferred = () => {
                     <div className={styles.imageColumn}>
                         <div className={styles.imageFrame}>
                             <img
-                                src="/assets/images/features/about-us/content-v6.png"
+                                src="/assets/images/features/about-us/content-v6.webp"
                                 alt="Advanced Roofing Team Truck"
                                 className={styles.aboutImage}
                             />

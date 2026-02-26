@@ -3,9 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './ImageGalleryRow.module.css';
 
-import imgLeft from '@/../public/assets/images/features/roofing/content-v2.jpg';
-import imgCenter from '@/../public/assets/images/features/roofing/content-v3.jpg';
-import imgRight from '@/../public/assets/images/features/roofing/content-v4.jpg';
+import imgLeft from '@/../public/assets/images/features/roofing/content-v2.webp';
+import imgCenter from '@/../public/assets/images/features/roofing/content-v3.webp';
+import imgRight from '@/../public/assets/images/features/roofing/content-v4.webp';
 
 const ImageGalleryRow = () => {
     return (

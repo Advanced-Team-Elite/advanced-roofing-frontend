@@ -43,7 +43,7 @@ export default function HailDamageRoofBlogPage() {
 
                     <div className={styles.imageCol}>
                         <Image
-                            src="/assets/images/features/blog/r7daqr5l_1q.png"
+                            src="/assets/images/features/blog/r7daqr5l_1q.webp"
                             alt="Hail damage affecting a residential roof"
                             width={1000}
                             height={700}

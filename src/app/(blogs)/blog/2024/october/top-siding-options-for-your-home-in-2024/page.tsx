@@ -43,7 +43,7 @@ export default function TopSidingOptionsBlogPage() {
 
                     <div className={styles.imageCol}>
                         <Image
-                            src="/assets/images/features/blog/r7daqr5l_1q.png"
+                            src="/assets/images/features/blog/r7daqr5l_1q.webp"
                             alt="Home siding options in 2024"
                             width={1000}
                             height={700}

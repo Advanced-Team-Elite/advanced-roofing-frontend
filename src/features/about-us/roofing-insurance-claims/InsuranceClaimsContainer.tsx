@@ -20,7 +20,7 @@ const InsuranceClaimsContainer = () => {
                 title="Roofing Insurance Claims"
                 isCityVisible={false}
                 isIconVisible={true}
-                backgroundImage={"/assets/images/features/roofing/banner-v3.jpg"}
+                backgroundImage={"/assets/images/features/roofing/banner-v3.webp"}
             />
             <WorkWithInsurance/>
             <AboutOurServices/>

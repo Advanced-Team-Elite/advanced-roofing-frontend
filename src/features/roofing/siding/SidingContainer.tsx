@@ -18,7 +18,7 @@ export const SidingContainer = () => {
     return (
         <div>
             {/* Usamos el SharedBanner con la ciudad visible */}
-            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-3.jpg"}/>
+            <RoofingBanner imagePath={"/assets/images/features/roofing/banner-v1-3.webp"}/>
 
             {/* Contenido principal que respira debajo de la imagen */}
             <section>

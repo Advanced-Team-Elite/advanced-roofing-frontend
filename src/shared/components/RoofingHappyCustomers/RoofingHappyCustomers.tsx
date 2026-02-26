@@ -74,7 +74,7 @@ const RoofingHappyCustomers = () => {
                     {/* Imagen lateral solo visible en Desktop */}
                     <div className={styles.imageColumn}>
                         <img
-                            src="/assets/images/features/about-us/content-v12.png"
+                            src="/assets/images/features/about-us/content-v12.webp"
                             alt="Happy Customer"
                             className={styles.sideImage}
                         />

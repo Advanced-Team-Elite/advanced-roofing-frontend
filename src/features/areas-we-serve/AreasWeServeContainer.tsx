@@ -15,7 +15,7 @@ export const AreasWeServeContainer = () => {
             <SharedBanner
                 title="Proudly Serving Chicago"
                 isCityVisible={false}
-                backgroundImage={"/assets/images/features/areas-we-serve/banner-v2.jpg"}
+                backgroundImage={"/assets/images/features/areas-we-serve/banner-v2.webp"}
             />
 
             {/* Contenido principal que respira debajo de la imagen */}

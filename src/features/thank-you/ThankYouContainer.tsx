@@ -28,7 +28,7 @@ export default function ThankYouContainer() {
 
                     <div className={styles.imageContainer}>
                         <Image
-                            src="/assets/images/shared/23.jpg"
+                            src="/assets/images/shared/23.webp"
                             alt="Beautiful house with blue siding"
                             fill
                             className={styles.houseImage}

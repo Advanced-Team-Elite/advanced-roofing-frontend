@@ -70,7 +70,7 @@ export const GafPreferred = () => {
                 <ScrollReveal direction="right" className={styles.imageColumn}>
                     <div className={styles.imageWrapper}>
                         <img
-                            src="/assets/images/features/about-us/content-v6.png"
+                            src="/assets/images/features/about-us/content-v6.webp"
                             alt="Advanced Roofing Team Truck"
                             className={styles.mainImage}
                         />

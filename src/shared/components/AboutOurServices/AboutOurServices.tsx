@@ -5,10 +5,10 @@ import styles from './AboutOurServices.module.css';
 import {ArrowIcon} from "@/shared/Icons/Icons";
 
 const services = [
-    { title: "Commercial Roofing", img: "/assets/images/features/about-us/1.jpg", href: "/commercial-roofing" },
-    { title: "Insurance Claims", img: "/assets/images/features/about-us/2.jpg", href: "/roofing-insurance-claims" },
-    { title: "Shingle Roofing", img: "/assets/images/features/about-us/3.jpg", href: "/roof-types/shingle-roofing/" },
-    { title: "Roofing Services", img: "/assets/images/features/about-us/4.jpg", href: "/roofing" },
+    { title: "Commercial Roofing", img: "/assets/images/features/about-us/1.webp", href: "/commercial-roofing" },
+    { title: "Insurance Claims", img: "/assets/images/features/about-us/2.webp", href: "/roofing-insurance-claims" },
+    { title: "Shingle Roofing", img: "/assets/images/features/about-us/3.webp", href: "/roof-types/shingle-roofing/" },
+    { title: "Roofing Services", img: "/assets/images/features/about-us/4.webp", href: "/roofing" },
 ];
 
 const AboutOurServices = () => {

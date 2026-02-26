@@ -25,7 +25,7 @@ export const CommercialRoofingContainer = () => {
                 title="Commercial Roofing"
                 isCityVisible={false}
                 isIconVisible={true}
-                backgroundImage={"/assets/images/features/roofing/banner-v4.jpg"}
+                backgroundImage={"/assets/images/features/roofing/banner-v4.webp"}
             />
 
             <section className={styles.contentSection}>

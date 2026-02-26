@@ -112,7 +112,7 @@ export const ChicagoRoofingServices = () => {
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <img
-                                src="/assets/images/features/roofing/content-v16.png"
+                                src="/assets/images/features/roofing/content-v16.webp"
                                 alt="Chicago Roofing Services"
                                 className={styles.mainImage}
                             />
