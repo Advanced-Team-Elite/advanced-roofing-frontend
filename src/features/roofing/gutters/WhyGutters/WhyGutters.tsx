@@ -17,7 +17,7 @@ export const WhyGutters = () => {
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <Image
-                                src="/assets/images/features/roofing/content-v7.png"
+                                src="/assets/images/features/roofing/content-v7.webp"
                                 alt="Roofing contractor installing shingles"
                                 fill
                                 className={styles.mainImage}

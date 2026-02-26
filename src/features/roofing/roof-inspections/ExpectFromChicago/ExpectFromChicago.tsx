@@ -64,7 +64,7 @@ export const ExpectFromChicago = () => {
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <Image
-                                src="/assets/images/features/about-us/content-v6.png"
+                                src="/assets/images/features/about-us/content-v6.webp"
                                 alt="Advanced Roofing Team Truck"
                                 fill
                                 className={styles.mainImage}
