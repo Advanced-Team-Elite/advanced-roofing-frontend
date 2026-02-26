@@ -89,7 +89,7 @@ export const WhatToExpect = () => {
                         <div className={styles.imageWrapper}>
                             <Image
                                 src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
+                                alt="Advanced Roofing Team Truck"
                                 fill
                                 className={styles.mainImage}
                                 priority

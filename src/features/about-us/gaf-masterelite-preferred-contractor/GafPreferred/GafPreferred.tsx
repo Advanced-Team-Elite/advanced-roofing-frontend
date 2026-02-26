@@ -71,7 +71,7 @@ export const GafPreferred = () => {
                     <div className={styles.imageWrapper}>
                         <img
                             src="/assets/images/features/about-us/content-v6.png"
-                            alt="Owens Corning Materials"
+                            alt="Advanced Roofing Team Truck"
                             className={styles.mainImage}
                         />
                     </div>

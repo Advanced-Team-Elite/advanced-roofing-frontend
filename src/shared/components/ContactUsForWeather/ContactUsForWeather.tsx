@@ -1,11 +1,164 @@
 "use client";
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './ContactUsForWeather.module.css';
 import Link from "next/link";
 import {FlairIcon} from "@/shared/Icons/Icons";
 import {ScrollReveal} from "@/shared/animations/ScrollReveal";
+import {useRouter} from "next/navigation";
+
+const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+function generateCaptcha(length = 6): string {
+    return Array.from({ length }, () =>
+        CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)]
+    ).join('');
+}
+
+interface FormData {
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    address: string;
+    isNewCustomer: string;
+    message: string;
+    captchaInput: string;
+}
+
+interface FormErrors {
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    email?: string;
+    address?: string;
+    isNewCustomer?: string;
+    message?: string;
+    captchaInput?: string;
+}
 
 export const ContactUsForWeather = () => {
+    const router = useRouter();
+
+    const [formData, setFormData] = useState<FormData>({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        address: '',
+        isNewCustomer: '',
+        message: '',
+        captchaInput: '',
+    });
+
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [captchaCode, setCaptchaCode] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        setCaptchaCode(generateCaptcha());
+    }, []);
+
+    const refreshCaptcha = () => {
+        setCaptchaCode(generateCaptcha());
+        setFormData((prev) => ({ ...prev, captchaInput: '' }));
+        setErrors((prev) => ({ ...prev, captchaInput: undefined }));
+    };
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: undefined }));
+    };
+
+    const validate = (): FormErrors => {
+        const newErrors: FormErrors = {};
+
+        if (!formData.firstName.trim())
+            newErrors.firstName = 'First name is required.';
+
+        if (!formData.lastName.trim())
+            newErrors.lastName = 'Last name is required.';
+
+        if (!formData.phone.trim()) {
+            newErrors.phone = 'Phone is required.';
+        } else if (!/^\+?[\d\s\-().]{7,20}$/.test(formData.phone)) {
+            newErrors.phone = 'Enter a valid phone number.';
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = 'Enter a valid email address.';
+        }
+
+        if (!formData.address.trim())
+            newErrors.address = 'Address is required.';
+
+        if (!formData.isNewCustomer)
+            newErrors.isNewCustomer = 'Please select an option.';
+
+        if (!formData.message.trim())
+            newErrors.message = 'Please tell us how we can help you.';
+
+        if (!formData.captchaInput.trim()) {
+            newErrors.captchaInput = 'Please enter the captcha code.';
+        } else if (formData.captchaInput.toUpperCase() !== captchaCode) {
+            newErrors.captchaInput = 'Captcha code does not match. Try again.';
+        }
+
+        return newErrors;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const validationErrors = validate();
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            if (validationErrors.captchaInput) {
+                refreshCaptcha();
+            }
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        const { captchaInput, ...dataToSubmit } = formData;
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dataToSubmit),
+            });
+
+            if (!response.ok) throw new Error("Failed to submit form");
+
+            setFormData({
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: '',
+                address: '',
+                isNewCustomer: '',
+                message: '',
+                captchaInput: '',
+            });
+
+            setErrors({});
+            refreshCaptcha();
+            router.push('/contact-us/thank-you');
+
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <section className={styles.contactSection}>
@@ -20,53 +173,127 @@ export const ContactUsForWeather = () => {
                                     At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
                                 </p>
 
-                                <form className={styles.contactForm}>
+                                <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
                                     <div className={styles.row}>
                                         <div className={styles.field}>
-                                            <label>First Name</label>
-                                            <input type="text" />
+                                            <label htmlFor="firstName">First Name</label>
+                                            <input
+                                                id="firstName"
+                                                name="firstName"
+                                                type="text"
+                                                value={formData.firstName}
+                                                onChange={handleChange}
+                                                className={errors.firstName ? styles.inputError : ''}
+                                            />
+                                            {errors.firstName && <span className={styles.errorMsg}>{errors.firstName}</span>}
                                         </div>
                                         <div className={styles.field}>
-                                            <label>Last Name</label>
-                                            <input type="text" />
+                                            <label htmlFor="lastName">Last Name</label>
+                                            <input
+                                                id="lastName"
+                                                name="lastName"
+                                                type="text"
+                                                value={formData.lastName}
+                                                onChange={handleChange}
+                                                className={errors.lastName ? styles.inputError : ''}
+                                            />
+                                            {errors.lastName && <span className={styles.errorMsg}>{errors.lastName}</span>}
                                         </div>
                                     </div>
 
                                     <div className={styles.row}>
                                         <div className={styles.field}>
-                                            <label>Phone</label>
-                                            <input type="tel" />
+                                            <label htmlFor="phone">Phone</label>
+                                            <input
+                                                id="phone"
+                                                name="phone"
+                                                type="tel"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                className={errors.phone ? styles.inputError : ''}
+                                            />
+                                            {errors.phone && <span className={styles.errorMsg}>{errors.phone}</span>}
                                         </div>
                                         <div className={styles.field}>
-                                            <label>Email</label>
-                                            <input type="email" />
+                                            <label htmlFor="email">Email</label>
+                                            <input
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                className={errors.email ? styles.inputError : ''}
+                                            />
+                                            {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
                                         </div>
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>Address</label>
-                                        <input type="text" placeholder="Enter a location" />
+                                        <label htmlFor="address">Address</label>
+                                        <input
+                                            id="address"
+                                            name="address"
+                                            type="text"
+                                            placeholder="Enter a location"
+                                            value={formData.address}
+                                            onChange={handleChange}
+                                            className={errors.address ? styles.inputError : ''}
+                                        />
+                                        {errors.address && <span className={styles.errorMsg}>{errors.address}</span>}
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>Are you a new customer?</label>
-                                        <select>
-                                            <option>Select an option</option>
-                                            <option>Yes, I am a potential new customer</option>
-                                            <option>No, I'm a current existing customer</option>
-                                            <option>I'm neither.</option>
+                                        <label htmlFor="isNewCustomer">Are you a new customer?</label>
+                                        <select
+                                            id="isNewCustomer"
+                                            name="isNewCustomer"
+                                            value={formData.isNewCustomer}
+                                            onChange={handleChange}
+                                            className={errors.isNewCustomer ? styles.inputError : ''}
+                                        >
+                                            <option value="">Select an option</option>
+                                            <option value="Yes, I am a potential new customer">Yes, I am a potential new customer</option>
+                                            <option value="No, I'm a current existing customer">No, I'm a current existing customer</option>
+                                            <option value="I'm neither.">I'm neither.</option>
                                         </select>
+                                        {errors.isNewCustomer && <span className={styles.errorMsg}>{errors.isNewCustomer}</span>}
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label>How can we help you?</label>
-                                        <textarea rows={4}></textarea>
+                                        <label htmlFor="message">How can we help you?</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            rows={4}
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            className={errors.message ? styles.inputError : ''}
+                                        />
+                                        {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
                                     </div>
 
                                     <div className={styles.field}>
-                                        <span className={styles.captchaCode}>29G7VX</span>
-                                        <label>Please enter the captcha code above:</label>
-                                        <input type="email" />
+                                        <div className={styles.captchaRow}>
+                                            <span className={styles.captchaCode}>{captchaCode}</span>
+                                            <button
+                                                type="button"
+                                                className={styles.captchaRefresh}
+                                                onClick={refreshCaptcha}
+                                                aria-label="Refresh captcha"
+                                            >
+                                                ↻
+                                            </button>
+                                        </div>
+                                        <label htmlFor="captchaInput">Please enter the captcha code above:</label>
+                                        <input
+                                            id="captchaInput"
+                                            name="captchaInput"
+                                            type="text"
+                                            value={formData.captchaInput}
+                                            onChange={handleChange}
+                                            className={errors.captchaInput ? styles.inputError : ''}
+                                        />
+                                        {errors.captchaInput && <span className={styles.errorMsg}>{errors.captchaInput}</span>}
                                     </div>
 
                                     <p className={styles.disclaimer}>
@@ -78,7 +305,13 @@ export const ContactUsForWeather = () => {
                                     </p>
 
                                     <div className={styles.rowBtn}>
-                                        <button type="submit" className={styles.submitBtn}>Send Message</button>
+                                        <button
+                                            type="submit"
+                                            className={styles.submitBtn}
+                                            disabled={isSubmitting}
+                                        >
+                                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                                        </button>
                                     </div>
 
                                 </form>
@@ -92,22 +325,22 @@ export const ContactUsForWeather = () => {
                                 <FlairIcon size={160} />
                             </div>
 
-                            <h2 className={styles.title}>Commercial Roof Systems Built for Chicago’s Weather</h2>
+                            <h2 className={styles.title}>Commercial Roof Systems Built for Chicago's Weather</h2>
 
                             <p className={styles.paragraph}>
-                                In Chicago, commercial roofs face year-round weather challenges, from freezing winters to summer hailstorms. That’s why Advanced Roofing Team Construction installs roofing systems selected for long-term performance in the metro area’s climate.
+                                In Chicago, commercial roofs face year-round weather challenges, from freezing winters to summer hailstorms. That's why Advanced Roofing Team Construction installs roofing systems selected for long-term performance in the metro area's climate.
                             </p>
                             <p className={styles.paragraph}>
                                 We help businesses select materials that resist wind uplift, ponding water, and other common risks associated with flat or low-slope roofs. Our team is here to recommend options that meet building requirements, energy efficiency standards, and durability goals.
                             </p>
 
                             <p className={styles.paragraph}>
-                                Local conditions, such as lake-effect snow, freeze–thaw cycles, and strong winds off Lake Michigan, can significantly shorten the lifespan of a poorly chosen roofing system. When we evaluate options with you, we discuss how different assemblies handle these stresses, what kind of maintenance they will require, and how they may affect your building’s heating and cooling costs. This allows you to plan not only for installation but also for the total cost of ownership over the roof's lifetime.
+                                Local conditions, such as lake-effect snow, freeze–thaw cycles, and strong winds off Lake Michigan, can significantly shorten the lifespan of a poorly chosen roofing system. When we evaluate options with you, we discuss how different assemblies handle these stresses, what kind of maintenance they will require, and how they may affect your building's heating and cooling costs. This allows you to plan not only for installation but also for the total cost of ownership over the roof's lifetime.
                             </p>
 
                             <div className={styles.ctaBanner}>
                                 <p className={styles.ctaText}>
-                                    Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> or{' '}
+                                    Call <a href="tel:8472629774">(847) 262-9774</a> or{' '}
                                     <Link href="/contact" className={styles.blueLink}>
                                         contact us online
                                     </Link>{' '}
@@ -115,14 +348,11 @@ export const ContactUsForWeather = () => {
                                 </p>
                             </div>
 
-
                             <div className={styles.rowBtn}>
-                                <button type="submit" className={styles.contactUsBtn}>Contact Us</button>
+                                <button type="button" className={styles.contactUsBtn}>Contact Us</button>
                             </div>
 
                         </div>
-
-
                     </div>
 
                 </div>

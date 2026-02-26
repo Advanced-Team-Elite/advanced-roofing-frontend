@@ -7,7 +7,6 @@ import Link from "next/link";
 import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 export const RoofingMaterials = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section className={styles.aboutSection}>
@@ -73,7 +72,7 @@ export const RoofingMaterials = () => {
                         <div className={styles.imageWrapper}>
                             <Image
                                 src="/assets/images/features/about-us/content-v6.png"
-                                alt="Chicago Roofing"
+                                alt="Advanced Roofing Team Truck"
                                 fill
                                 className={styles.mainImage}
                                 priority

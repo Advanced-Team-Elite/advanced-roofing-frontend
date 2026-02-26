@@ -124,6 +124,7 @@
 
 .imageColumnWrapper {
     order: 2; /* por defecto en desktop no importa */
+    position: relative;
 }
 
 /* --- RESPONSIVE --- */

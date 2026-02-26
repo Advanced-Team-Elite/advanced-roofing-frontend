@@ -137,9 +137,7 @@ const ReviewModal = ({ onClose }: { onClose: () => void }) => {
             });
             setRating(0);
 
-            router.refresh();
-
-            onClose();
+            router.push('/contact-us/thank-you');
 
         } catch (error) {
             console.error(error);

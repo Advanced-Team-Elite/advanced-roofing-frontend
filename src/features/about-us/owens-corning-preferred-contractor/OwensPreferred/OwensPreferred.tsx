@@ -33,7 +33,7 @@ const OwensPreferred = () => {
                         <div className={styles.imageFrame}>
                             <img
                                 src="/assets/images/features/about-us/content-v6.png"
-                                alt="Owens Corning Materials"
+                                alt="Advanced Roofing Team Truck"
                                 className={styles.aboutImage}
                             />
                         </div>
