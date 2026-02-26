@@ -1,5 +1,6 @@
 import { AreasWeServeContainer } from "@/features/areas-we-serve/AreasWeServeContainer";
 import { Metadata } from "next";
+import {CommercialRoofingContainer} from "@/features/commercial-roofing/CommercialRoofingContainer";
 
 export const metadata: Metadata = {
     title: 'Areas We Serve | Roofing Services Across Chicago & Suburbs',
@@ -21,5 +22,9 @@ export const metadata: Metadata = {
 };
 
 export default function AreasWeServePage() {
-    return <AreasWeServeContainer />;
+    return (
+        <main>
+            <AreasWeServeContainer />
+        </main>
+    );
 }

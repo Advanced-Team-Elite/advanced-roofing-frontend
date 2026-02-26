@@ -9,7 +9,7 @@ import {ContactUsForWeather} from "@/shared/components/ContactUsForWeather/Conta
 const BlogContainer = () => {
     return (
         <div>
-            <main className={styles.mainWrapper}>
+            <div className={styles.mainWrapper}>
                 {/* Breadcrumb */}
                 <nav className={styles.breadcrumb}>
                     <Link href="/" className={styles.homeLink}>
@@ -39,7 +39,7 @@ const BlogContainer = () => {
                         </Link>
                     ))}
                 </div>
-            </main>
+            </div>
             <Footer/>
         </div>
 

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import OwensPreferredContainer from "@/features/about-us/owens-corning-preferred-contractor/OwensPreferredContainer";
+import {CommercialRoofingContainer} from "@/features/commercial-roofing/CommercialRoofingContainer";
 
 export const metadata: Metadata = {
     title: 'Owens Corning Preferred Contractor Chicago | Lifetime Warranties',
@@ -20,5 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function OwensPreferredPage() {
-    return <OwensPreferredContainer />;
+    return (
+        <main>
+            <OwensPreferredContainer />
+        </main>
+    );
 }

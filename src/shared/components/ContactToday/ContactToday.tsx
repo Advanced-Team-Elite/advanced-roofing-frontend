@@ -259,6 +259,7 @@ const ContactToday = () => {
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.444082237372!2d-87.90597921010837!3d42.0550997801243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fa526c3541823%3A0x49e5f78978a3d315!2sAdvanced%20Roofing%20Team!5e0!3m2!1sen!2spe!4v1770822451587!5m2!1sen!2spe"
                                     loading="lazy"
                                     className={styles.map}
+                                    title="Google Maps showing Advanced Roofing Team location"
                                     allowFullScreen></iframe>
                             </div>
 
