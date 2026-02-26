@@ -18,7 +18,7 @@ export const ServingHoffman = () => {
                         <div className={styles.imageWrapper}>
                             <ScrollReveal direction="right" distance={30}>
                                 <Image
-                                    src="/assets/images/features/home/content-v15.png"
+                                    src="/assets/images/features/home/content-v15.webp"
                                     alt="Roofing worker repairing storm damage"
                                     width={600}
                                     height={500}

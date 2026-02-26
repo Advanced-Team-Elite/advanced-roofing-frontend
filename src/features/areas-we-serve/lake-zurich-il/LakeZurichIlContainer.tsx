@@ -18,7 +18,7 @@ export default function LakeZurichIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="LAKE ZURICH ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="LAKE ZURICH ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Lake Zurich "}/>
 
             <WhyChooseUs />

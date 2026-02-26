@@ -18,7 +18,7 @@ export default function RollingMeadowsIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="ROLLING MEADOWS ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="ROLLING MEADOWS ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Rolling Meadows "}/>
 
             <WhyChooseUs />

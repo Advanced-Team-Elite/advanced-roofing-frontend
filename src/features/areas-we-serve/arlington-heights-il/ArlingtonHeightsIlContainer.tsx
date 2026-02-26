@@ -22,7 +22,7 @@ export default function ArlingtonHeightsIlContainer() {
             <OurServices />
             <HappyCustomers />
 
-            <RoofingServicesSection title="ARLINGTON HEIGHTS ROOFING SERVICES" imageSrc="/assets/images/features/about-us/content-v6.png" />
+            <RoofingServicesSection title="ARLINGTON HEIGHTS ROOFING SERVICES" imageSrc="/assets/images/features/about-us/content-v6.webp" />
             <HandleRoofingProjectSection city={"Arlington "}/>
 
             <ContactUs />
