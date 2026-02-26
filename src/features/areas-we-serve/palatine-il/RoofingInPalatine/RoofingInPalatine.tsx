@@ -36,7 +36,7 @@ export default function RoofingInPalatine() {
                         <div className={styles.imageWrapper}>
                             <ScrollReveal direction="right">
                                 <Image
-                                    src="/assets/images/features/about-us/content-v6.png"
+                                    src="/assets/images/features/about-us/content-v6.webp"
                                     alt="Chicago Roofing"
                                     width={1000}
                                     height={800}

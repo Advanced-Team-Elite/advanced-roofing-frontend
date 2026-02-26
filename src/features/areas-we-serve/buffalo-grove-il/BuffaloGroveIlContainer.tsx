@@ -18,7 +18,7 @@ export default function BuffaloGroveIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="BUFFALO ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="BUFFALO ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Buffalo "}/>
 
             <WhyChooseUs />

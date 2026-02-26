@@ -18,7 +18,7 @@ export default function NorthbrookIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="NORTHBROOK ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="NORTHBROOK ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Northbrook "}/>
 
             <WhyChooseUs />

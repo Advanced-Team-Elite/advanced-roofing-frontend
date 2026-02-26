@@ -19,7 +19,7 @@ export default function BarringtonIlContainer() {
             <AwardsBanner />
 
 
-            <RoofingServicesSection title="BOLINGBROOK ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="BOLINGBROOK ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Barrington "}/>
 
             <WhyChooseUs />

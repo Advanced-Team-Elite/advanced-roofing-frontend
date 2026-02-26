@@ -18,7 +18,7 @@ export default function EvanstonIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="EVANSTON ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="EVANSTON ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Evanston "}/>
 
             <WhyChooseUs />
