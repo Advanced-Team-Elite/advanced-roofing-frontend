@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
             {/* Background with Next Image for performance */}
             <div className={styles.bgContainer}>
                 <Image
-                    src="/assets/images/features/home/bg-1.jpg"
+                    src="/assets/images/features/home/bg-1.webp"
                     alt="Chicago City Background"
                     fill
                     className={styles.bgImage}
@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
                         <div className={styles.imageCol}>
                             <ScrollReveal direction="right" className={styles.imageWrapper}>
                                 <Image
-                                    src="/assets/images/features/home/content-v5.png"
+                                    src="/assets/images/features/home/content-v5.webp"
                                     alt="Our professional team"
                                     fill
                                     sizes="(max-width: 1280px) 100vw, 50vw"

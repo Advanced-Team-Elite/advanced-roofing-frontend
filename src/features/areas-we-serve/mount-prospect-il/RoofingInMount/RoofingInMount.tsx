@@ -40,7 +40,7 @@ export default function RoofingInMount() {
                         <div className={styles.imageWrapper}>
                             <ScrollReveal direction="right">
                                 <Image
-                                    src="/assets/images/features/home/content-v14.png"
+                                    src="/assets/images/features/home/content-v14.webp"
                                     alt="Chicago Roofing"
                                     width={1000}
                                     height={800}

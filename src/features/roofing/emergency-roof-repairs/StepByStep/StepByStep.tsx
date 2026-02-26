@@ -92,7 +92,7 @@ export const StepByStep = () => {
                         <div className={styles.imageWrapper}>
 
                             <Image
-                                src="/assets/images/features/about-us/content-v6.png"
+                                src="/assets/images/features/about-us/content-v6.webp"
                                 alt="Roofing contractor installing shingles"
                                 fill
                                 className={styles.mainImage}

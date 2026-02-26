@@ -18,7 +18,7 @@ export default function DownersGroveIlContainer() {
             <VideoBanner showSubtitle={true}/>
             <AwardsBanner />
 
-            <RoofingServicesSection title="DOWNERS GROVE ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.png" />
+            <RoofingServicesSection title="DOWNERS GROVE ROOFING SERVICES" imageSrc="/assets/images/features/home/content-v14.webp" />
             <HandleRoofingProjectSection city={"Downers Grove "}/>
 
             <WhyChooseUs />
