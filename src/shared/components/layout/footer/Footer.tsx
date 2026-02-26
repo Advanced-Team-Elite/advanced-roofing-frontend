@@ -91,6 +91,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     href="https://www.facebook.com/advancedroofingteam"
                                     className={styles.socialIcon}
                                     target="_blank"
+                                    aria-label="Visit our Facebook page"
                                     rel="noopener noreferrer"
                                 >
                                     <FacebookIcon />
@@ -101,6 +102,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Follow us on X (Twitter)"
                                 >
                                     <XIcon />
                                 </Link>
@@ -110,6 +112,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="View our profile on Yelp"
                                 >
                                     <YelpIcon />
                                 </Link>
@@ -119,6 +122,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Check our reviews on Houzz"
                                 >
                                     <HouzzIcon />
                                 </Link>
@@ -128,6 +132,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Find us on Google Business"
                                 >
                                     <GoogleBusinessIcon />
                                 </Link>

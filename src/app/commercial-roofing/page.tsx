@@ -21,5 +21,11 @@ export const metadata: Metadata = {
 };
 
 export default function CommercialRoofingPage() {
-    return <CommercialRoofingContainer />;
+    return (
+        <main>
+            <CommercialRoofingContainer />
+        </main>
+    );
+
+
 }

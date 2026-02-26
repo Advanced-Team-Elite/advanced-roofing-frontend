@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import RoofingContainer from "@/features/roofing/RoofingContainer";
+import AboutContainer from "@/features/about-us/AboutContainer";
 
 export const metadata: Metadata = {
     title: 'Roofing Services Chicago | Installation & Storm Repair | Advanced Roofing Team',
@@ -20,5 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function RoofingPage() {
-    return <RoofingContainer />;
+    return (
+        <main>
+            <RoofingContainer />
+        </main>
+    );
 }
