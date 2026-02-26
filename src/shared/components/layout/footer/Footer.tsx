@@ -20,7 +20,6 @@ export const Footer = ({ upperSection }: FooterProps) => {
 
     return (
         <footer className={styles.footerContainer}>
-            {/* SECCIÓN PRINCIPAL CON BACKGROUND IMAGE */}
             <div className={styles.footerMainBg}>
                 <div className={styles.footerContentWrapper}>
 
@@ -152,7 +151,6 @@ export const Footer = ({ upperSection }: FooterProps) => {
                 </div>
             </div>
 
-            {/* 3. LEGAL */}
             <section className={styles.footerLegal}>
                 <div className={styles.legalContent}>
                     <div className={styles.legalLeft}>

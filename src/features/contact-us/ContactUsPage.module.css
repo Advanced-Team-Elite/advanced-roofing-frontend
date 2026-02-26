@@ -275,10 +275,6 @@
     flex-shrink: 0;
 }
 
-.captchaRefresh:hover {
-    background: #e8e8e8;
-}
-
 .error {
     color: #cc0000;
     font-size: 13px;

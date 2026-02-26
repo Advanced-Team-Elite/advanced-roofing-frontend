@@ -1,5 +1,5 @@
 .mainWrapper {
-    min-height: calc(100vh - 100px);
+    min-height: calc(65vh - 100px);
     display: flex;
     align-items: stretch;
 }
@@ -7,41 +7,44 @@
 .contentSection {
     display: flex;
     width: 100%;
-    flex-direction: column; /* Móvil por defecto */
+    flex-direction: column;
     text-align: center;
-    padding: 40px 20px;
 }
 
 .textContent {
-    flex: 1;
     display: flex;
-    width: 100%;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    flex: 1;
+}
+
+.textContentWrapper {
+    padding: 0 60px;
+    max-width: 800px;
+    width: 100%;
 }
 
 .title {
-    font-size: 4rem;
+    font-size: 3rem;
     color: #00589e;
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    line-height: 1;
+    margin-bottom: 30px;
+    width: 100%;
 }
 
 .message {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #060606;
-    max-width: 450px;
-    margin-bottom: 30px;
+    max-width: 90%;
     line-height: 1.5;
+    margin: 0 auto 50px auto;
 }
 
 .backButton {
-    background-color: #00c4f0; /* El celeste del botón */
+    background-color: #00c4f0;
     color: white;
-    padding: 12px 35px;
+    padding: 20px 35px;
     text-decoration: none;
     font-weight: 700;
     transition: background-color 0.3s;
@@ -52,7 +55,7 @@
 }
 
 .imageContainer {
-    display: none; /* Oculto en móvil como en tu imagen */
+    display: none;
     position: relative;
     flex: 1;
     width: 100%;
@@ -62,22 +65,35 @@
     object-fit: cover;
 }
 
-/* Desktop: Lado a lado */
 @media (min-width: 1280px) {
+
+    .mainWrapper {
+        min-height: calc(100vh - 100px);
+    }
 
     .contentSection {
         flex-direction: row;
         align-items: stretch;
-        min-height: calc(100vh - 100px); /* Ajusta según tu header */
+        min-height: calc(100vh - 100px);
         text-align: left;
         padding: 0;
     }
 
+    .message{
+        margin: 0 0 50px 0;
+    }
+
     .textContent {
-        align-items: flex-start;
         flex: 1;
-        padding: 0 5% 0 10%;
-        text-align: left;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .textContentWrapper {
+        padding: 0 60px;
+        max-width: 700px;
+        width: 100%;
+        margin: 0;
     }
 
     .imageContainer {
@@ -85,11 +101,14 @@
         flex: 1;
         height: auto;
     }
-
 }
 
-/* Desktop: Lado a lado */
+
 @media (max-width: 768px) {
+    .textContentWrapper {
+        padding: 0 30px;
+    }
+
     .title {
         font-size: 2.2rem;
     }

@@ -80,12 +80,12 @@
 }
 
 .phoneLink {
-    color: #f7d000;
+    color: #00c3f8;
     text-decoration: none;
 }
 
 .blueLink {
-    color: #f7d000;
+    color: #00c3f8;
     font-weight: 700;
     transition: color 0.3s ease;
 }
@@ -235,6 +235,60 @@
     font-weight: 800;
     cursor: pointer;
     margin-top: 35px;
+}
+
+
+.inputError {
+    border-color: #e53e3e !important;
+    background-color: #fff5f5;
+}
+
+.errorMsg {
+    display: block;
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.captchaRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.captchaRefresh {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 2px 8px;
+    color: #555;
+    transition: background-color 0.2s;
+}
+
+.captchaRefresh:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estado disabled del botón submit */
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.field input,
+.field input[type="tel"],
+.field input[type="email"],
+.field input[type="text"],
+.field textarea,
+.field select {
+    color: #060606 !important;
+    -webkit-text-fill-color: #060606 !important;
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+    caret-color: #060606 !important;
 }
 
 /* Mobile */

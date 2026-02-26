@@ -59,7 +59,7 @@ export const RoofingServicesSection = ({ title, imageSrc }: RoofingServicesSecti
                             <ScrollReveal direction="right">
                                 <Image
                                     src={imageSrc}
-                                    alt="Chicago Roofing"
+                                    alt="Advanced Roofing Service"
                                     width={1000}
                                     height={800}
                                     className={styles.mainImage}
