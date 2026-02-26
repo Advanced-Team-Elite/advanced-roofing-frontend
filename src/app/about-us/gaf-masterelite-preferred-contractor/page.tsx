@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import GAFMastereliteContainer from "@/features/about-us/gaf-masterelite-preferred-contractor/GAFMastereliteContainer";
+import {CommercialRoofingContainer} from "@/features/commercial-roofing/CommercialRoofingContainer";
 
 export const metadata: Metadata = {
     title: 'GAF Master Elite Roofer Chicago | Golden Pledge® Warranty',
@@ -20,5 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function GAFMasterelitePage() {
-    return <GAFMastereliteContainer />;
+    return (
+        <main>
+            <GAFMastereliteContainer />
+        </main>
+    );
 }
