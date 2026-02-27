@@ -29,9 +29,40 @@ const AccessibilityIcon = ({ size = 28 }: IconProps) => (
 
 export const FloatingActions = () => {
     const [showTop, setShowTop] = useState(false);
-    const [showBubble, setShowBubble] = useState(false);       // <-- nuevo
-    const [mounted, setMounted] = useState(false);              // <-- nuevo
+    const [showBubble, setShowBubble] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para abrir la burbuja
+    const [isReading, setIsReading] = useState(false);   // Estado para saber si está leyendo
+    const [mounted, setMounted] = useState(false);
     const lastScrollY = useRef(0);
+
+    // Lógica para LEER el contenido
+    const handleToggleRead = () => {
+        console.log("RWEADINGGGGGG")
+        if (isReading) {
+            window.speechSynthesis.cancel();
+            setIsReading(false);
+        } else {
+            // Buscamos el contenido dentro de <main> para no leer el menú ni el footer
+            const mainContent = document.querySelector('main')?.innerText || document.body.innerText;
+            const utterance = new SpeechSynthesisUtterance(mainContent);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+
+            utterance.onend = () => setIsReading(false);
+
+            setIsReading(true);
+            window.speechSynthesis.speak(utterance);
+        }
+        setIsMenuOpen(false); // Cerramos el menú después de elegir
+    };
+
+    useEffect(() => {
+        return () => {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const mountTimer = setTimeout(() => setMounted(true), 50);
@@ -60,14 +91,34 @@ export const FloatingActions = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    if (!mounted) return null;
+
     return (
         <>
+
+            {/* Burbuja de opciones que sale del botón */}
+            {isMenuOpen && (
+                <div className={styles.accessibilityMenu} onClick={(e) => e.stopPropagation()}>
+                    <button
+                        onClick={() => {
+                            console.log("RWEADINGGGGGG"); // Ahora debería verse
+                            handleToggleRead();
+                        }}
+                        className={styles.menuItem}
+                    >
+                        {isReading ? '⏹ Stop Reading' : '🔊 Listen to this page'}
+                    </button>
+                </div>
+            )}
+
             {/* Accesibilidad */}
             <button
-                className={`${styles.accessibilityBtn} ${
-                    showBubble ? styles.withBubble : styles.withoutBubble
-                }`}
-                aria-label="Accessibility"
+                className={`${styles.accessibilityBtn} ${showBubble ? styles.withBubble : styles.withoutBubble}`}
+                aria-label="Accessibility Options"
+                onClick={(e) => {
+                    e.stopPropagation(); // Evita interferencias
+                    setIsMenuOpen(!isMenuOpen);
+                }}
             >
                 <AccessibilityIcon size={35} />
             </button>

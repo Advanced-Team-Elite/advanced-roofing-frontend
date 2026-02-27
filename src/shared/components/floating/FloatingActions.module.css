@@ -125,6 +125,54 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.floatingWrapper {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* O donde lo tengas posicionado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.accessibilityMenu {
+    position: fixed; /* Cambiado a fixed para asegurar posición */
+    bottom: 90px;    /* Ajusta según la altura de tu botón de accesibilidad */
+    left: 60px;
+    background: white;
+    border: 2px solid #f1c40f;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 200px;
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+}
+
+.menuItem {
+    background: #f1c40f;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.menuItem:hover {
+    background: #d4ac0d;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     .contactContainer {
