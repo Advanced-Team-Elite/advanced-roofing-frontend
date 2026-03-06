@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/api/', '/admin/'],
         },
-        sitemap: 'https://www.tu-dominio.com/sitemap.xml',
+        sitemap: 'https://www.advancedteamelite.com/sitemap.xml',
     };
 }

@@ -29,9 +29,59 @@ const AccessibilityIcon = ({ size = 28 }: IconProps) => (
 
 export const FloatingActions = () => {
     const [showTop, setShowTop] = useState(false);
-    const [showBubble, setShowBubble] = useState(false);       // <-- nuevo
-    const [mounted, setMounted] = useState(false);              // <-- nuevo
+    const [showBubble, setShowBubble] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isReading, setIsReading] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const lastScrollY = useRef(0);
+
+
+    useEffect(() => {
+        setMounted(true);
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+        }
+        setIsReading(false);
+        setIsMenuOpen(false);
+
+        const bubbleTimer = setTimeout(() => setShowBubble(true), 1000);
+        return () => {
+            clearTimeout(bubbleTimer);
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+        };
+    }, []);
+
+    const handleToggleRead = () => {
+        if (isReading) {
+            window.speechSynthesis.cancel();
+            setIsReading(false);
+            setIsMenuOpen(false);
+        } else {
+            const mainContent = document.querySelector('main')?.innerText || document.body.innerText;
+            const utterance = new SpeechSynthesisUtterance(mainContent);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            utterance.onend = () => setIsReading(false);
+            utterance.onerror = () => setIsReading(false);
+
+            setIsReading(true);
+            window.speechSynthesis.speak(utterance);
+        }
+    };
+
+    const toggleMenu = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (isReading) return;
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    useEffect(() => {
+        return () => {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const mountTimer = setTimeout(() => setMounted(true), 50);
@@ -60,14 +110,33 @@ export const FloatingActions = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    if (!mounted) return null;
+
     return (
         <>
+
+            {/* Menú de Accesibilidad */}
+            {isMenuOpen && (
+                <div
+                    className={`${styles.accessibilityMenu} ${
+                        showBubble ? styles.menuWithBubble : styles.menuWithoutBubble
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <button onClick={handleToggleRead} className={styles.menuItem}>
+                        {isReading ? '⏹ Stop Reading' : '🔊 Listen to this page'}
+                    </button>
+                    {isReading && <span className={styles.readingStatus}>Reading in progress...</span>}
+                </div>
+            )}
+
             {/* Accesibilidad */}
             <button
                 className={`${styles.accessibilityBtn} ${
                     showBubble ? styles.withBubble : styles.withoutBubble
-                }`}
-                aria-label="Accessibility"
+                } ${isReading ? styles.disabledBtn : ''}`}
+                aria-label="Accessibility Options"
+                onClick={toggleMenu}
             >
                 <AccessibilityIcon size={35} />
             </button>

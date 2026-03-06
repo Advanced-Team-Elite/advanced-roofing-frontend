@@ -4,7 +4,7 @@ import { getHierarchy, RouteNode } from '@/shared/utils/routeScanner';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const routes = getHierarchy();
-    const baseUrl = 'https://www.advancedroofingteam.com';
+    const baseUrl = 'https://www.advancedteamelite.com';
 
     const flattenRoutes = (nodes: RouteNode[]): MetadataRoute.Sitemap => {
         let flatList: MetadataRoute.Sitemap = [];
