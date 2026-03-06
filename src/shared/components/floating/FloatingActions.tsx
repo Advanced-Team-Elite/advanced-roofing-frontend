@@ -152,6 +152,7 @@ export const FloatingActions = () => {
             </button>
 
             {/* Contact widget */}
+            {/*
             <div className={`${styles.contactContainer} ${mounted ? styles.contactVisible : styles.contactHidden}`}>
                 <div className={styles.chatWrapper}>
                     {showBubble && (
@@ -183,6 +184,7 @@ export const FloatingActions = () => {
                     </div>
                 </div>
             </div>
+            */}
         </>
     );
 };
