@@ -7,6 +7,7 @@ import {FloatingActions} from "@/shared/components/floating/FloatingActions";
 import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
 import ContactToday from "@/shared/components/ContactToday/ContactToday";
 import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
+import StormAlert from "@/shared/components/StormAlert/StormAlert";
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <body className="antialiased">
+        <StormAlert />
         <Header />
         {children}
         <FloatingActions />

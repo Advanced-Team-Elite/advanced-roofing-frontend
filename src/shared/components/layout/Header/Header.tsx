@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
 import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
+import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ export const Header = () => {
             {/* TOP BAR - Desktop */}
             <div className={styles.topBar}>
                 <span>Serving the Des Plaines Community</span>
+                <InspectionBadge/>
                 <div className="flex items-center gap-6">
                     <Link href="/areas-we-serve" className={styles.topBarNavLink}>Areas We Serve</Link>
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>

@@ -1,0 +1,83 @@
+.section {
+    background-color: #043B67;
+    padding: 4rem 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease-out;
+    cursor: default;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Azul */
+.cardBlue {
+    background-color: #00589E;
+}
+
+/* Card Amarilla */
+.cardYellow {
+    background: linear-gradient(to bottom, #F7D000, #D9A90A);
+}
+
+.value {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Gradiente para el texto en card azul */
+.valueGradient {
+    background: #F7D000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.valueDark {
+    color: #00589E;
+}
+
+.label {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-size: 1.2rem;
+    width: 65%;
+}
+
+.labelLight {
+    color: #ffffff;
+}
+
+.labelDark {
+    color: rgba(4, 59, 103, 0.8);
+}
