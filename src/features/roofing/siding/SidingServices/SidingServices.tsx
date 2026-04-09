@@ -62,8 +62,8 @@ export const SidingServices = () => {
                             <p>
                                 Protect your home from lake-effect moisture and rising heating costs with our high-performance insulated siding systems.
                                 Contact us at{' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    (847) 262-9774
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    (877) 945-6565
                                 </a>{' '}
                                 or{' '}
                                 <Link href="/contact-us/" className={styles.inlineLink}>

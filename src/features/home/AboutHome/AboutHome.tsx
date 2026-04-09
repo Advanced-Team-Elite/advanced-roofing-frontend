@@ -38,7 +38,7 @@ export const AboutHome = () => {
 
                     <div className={styles.ctaBanner}>
                         <p>
-                            Call <strong>(847) 262-9774</strong> today or{' '}
+                            Call <strong>(877) 945-6565</strong> today or{' '}
                             <Link href="/contact-us" className={styles.yellowLink} title="Go to our contact page">
                                 contact us online
                             </Link>{' '}

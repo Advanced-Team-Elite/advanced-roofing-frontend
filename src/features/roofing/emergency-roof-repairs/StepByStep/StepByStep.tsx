@@ -63,8 +63,8 @@ export const StepByStep = () => {
                             <p>
                                 Stop active roof leaks immediately to prevent severe interior damage.
                                 Contact us at {' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </a>{' '} or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form

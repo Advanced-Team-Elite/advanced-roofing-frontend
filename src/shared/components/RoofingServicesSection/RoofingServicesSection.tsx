@@ -48,7 +48,7 @@ export const RoofingServicesSection = ({ title, imageSrc }: RoofingServicesSecti
                             <Link href="/contact-us" className={styles.yellowLink} title="Contact our Chicago office today">
                                 Contact our office today
                             </Link>{' '}
-                            at <strong>(847) 262-9774</strong> and schedule a service.
+                            at <strong>(877) 945-6565</strong> and schedule a service.
                         </p>
                     </div>
                 </div>

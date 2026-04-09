@@ -93,7 +93,7 @@ const FrequentlyQuestions = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Don't wait until morning to fix a crisis; your home needs protection now.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

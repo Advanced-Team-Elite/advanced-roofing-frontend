@@ -63,7 +63,7 @@ export const WhatToExpect = () => {
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
                         <div className={styles.ctaBanner}>
                             <p>
-                                Protect your property and inventory from costly water damage. Contact us <strong>(847) 262-9774</strong> or{' '}
+                                Protect your property and inventory from costly water damage. Contact us <strong>(877) 945-6565</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

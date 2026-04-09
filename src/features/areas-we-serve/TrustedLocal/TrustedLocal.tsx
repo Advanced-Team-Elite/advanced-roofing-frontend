@@ -47,7 +47,7 @@ export const TrustedLocal = () => {
                         {/* Bloque CTA Azul */}
                         <div className={styles.ctaBox}>
                             <p className={styles.ctaText}>
-                                Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> or <a href="/contact" className={styles.contactLink}>contact us online</a> for a free estimate and learn how we can help protect your home or business across Chicagoland.
+                                Call <a href="tel:8779456565" className={styles.phoneLink}>(877) 945-6565</a> or <a href="/contact" className={styles.contactLink}>contact us online</a> for a free estimate and learn how we can help protect your home or business across Chicagoland.
                             </p>
                         </div>
                     </div>

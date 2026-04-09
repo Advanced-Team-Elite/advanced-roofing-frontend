@@ -301,7 +301,7 @@ const ContactToday = () => {
                             <div className={styles.formColumnContainer}>
                                 <h2 className={styles.formTitle}>Contact Scorpion Makes Today!</h2>
                                 <p className={styles.formSubtitle}>
-                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
+                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (877) 945-6565 or fill out the form below to contact one of our team members.
                                 </p>
 
                                 <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>

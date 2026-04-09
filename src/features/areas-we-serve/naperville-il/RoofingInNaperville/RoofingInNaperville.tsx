@@ -39,7 +39,7 @@ export default function RoofingInNaperville() {
                     <div className={styles.ctaBanner}>
                         <p style={{ textAlign: 'center' }}>
                             Don&apos;t wait for the next storm to discover a hidden leak in your roofing system.
-                            Contact us at <strong>(847) 262-9774</strong> or {' '}
+                            Contact us at <strong>(877) 945-6565</strong> or {' '}
                             <Link href="/contact-us" className={styles.yellowLink}>fill out our online form.</Link>
                         </p>
                     </div>

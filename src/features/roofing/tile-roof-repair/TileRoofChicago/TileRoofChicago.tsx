@@ -45,8 +45,8 @@ export const TileRoofChicago = () => {
                             <p>
                                 Spot a cracked tile or suspect a leak compromising your roof integrity? Get prompt, specialized repair from our experienced tile roofers today.
                                 Contact us at{' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </a>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.blueLink}>

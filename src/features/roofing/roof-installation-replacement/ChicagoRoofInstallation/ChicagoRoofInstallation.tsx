@@ -44,7 +44,7 @@ const ChicagoRoofInstallation = () => {
                         {/* Banner de contacto interno (Gris) */}
                         <div className={styles.innerCta}>
                             <p>
-                                Call (847) 262-9774 or{' '}
+                                Call (877) 945-6565 or{' '}
                                 <Link href="/contact-us/" className={styles.inlineLink}>
                                     contact us online
                                 </Link>{' '}

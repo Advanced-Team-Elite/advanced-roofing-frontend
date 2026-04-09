@@ -55,7 +55,7 @@ export const WhyGutters = () => {
 
                     <div className={styles.ctaBanner}>
                         <p>
-                            Call <strong>(847) 262-9774</strong> or{' '}
+                            Call <strong>(877) 945-6565</strong> or{' '}
                             <Link href="/contact-us" className={styles.yellowLink}>
                                 contact us online
                             </Link>{' '}

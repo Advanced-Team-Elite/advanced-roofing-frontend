@@ -82,7 +82,7 @@ export const FrequentlyQuestionsTileRoof = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Protect your home from water damage with meticulous tile repair and flashing restoration. Request a free repair estimate and secure your roof's future.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

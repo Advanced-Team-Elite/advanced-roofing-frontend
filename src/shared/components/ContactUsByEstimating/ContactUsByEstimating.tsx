@@ -170,7 +170,7 @@ const ContactUsByEstimating = () => {
                             <div className={styles.formColumnContainer}>
                                 <h2 className={styles.formTitle}>Contact Us</h2>
                                 <p className={styles.formSubtitle}>
-                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
+                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (877) 945-6565 or fill out the form below to contact one of our team members.
                                 </p>
 
                                 <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
@@ -336,7 +336,7 @@ const ContactUsByEstimating = () => {
 
                             <div className={styles.ctaBanner}>
                                 <p className={styles.ctaText}>
-                                    Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> today or{' '}
+                                    Call <a href="tel:8779456565" className={styles.phoneLink}>(877) 945-6565</a> today or{' '}
                                     <Link href="/contact" className={styles.blueLink}>
                                         contact us online
                                     </Link>{' '}

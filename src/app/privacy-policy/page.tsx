@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
                         <p>By using this Website, you consent to the collection and use of information as specified above. If we make changes to our Privacy Policy, we will post those changes on this page. Please review this page frequently to remain up-to-date with the information we collect, how we use it, and under what circumstances we disclose it. You must review the new Privacy Policy carefully to make sure you understand our practices and procedures.</p>
                         <p>
                             <strong>
-                                If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> or via mail Attn: Privacy Officer, 975 Rand Rd, Des Plaines, IL 60016.
+                                If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at <a href="tel:8779456565" className={styles.phoneLink}>(877) 945-6565</a> or via mail Attn: Privacy Officer, 975 Rand Rd, Des Plaines, IL 60016.
                             </strong>
                         </p>
                     </section>

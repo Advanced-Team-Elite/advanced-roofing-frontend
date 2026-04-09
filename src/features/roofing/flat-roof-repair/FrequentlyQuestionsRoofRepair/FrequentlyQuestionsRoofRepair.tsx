@@ -84,7 +84,7 @@ const FrequentlyQuestions = () => {
                         {/* BANNER NEGRO */}
                         <div className={styles.blackBanner}>
                             <p>
-                                Ensure your flat roof meets all necessary Chicago building codes and comes with a reliable warranty on both the materials and the repair workmanship. Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Ensure your flat roof meets all necessary Chicago building codes and comes with a reliable warranty on both the materials and the repair workmanship. Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

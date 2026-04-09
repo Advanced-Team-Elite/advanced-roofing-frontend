@@ -34,7 +34,7 @@ export default function RoofingInOrland() {
 
                     <div className={styles.ctaBanner}>
                         <p style={{ textAlign: 'center' }}>
-                            If you are facing major repairs or roofing needs, don’t wait! <Link href="/contact" className={styles.yellowLink}>Contact our office today</Link> at <strong>(847) 262-9774</strong> and schedule a service.
+                            If you are facing major repairs or roofing needs, don’t wait! <Link href="/contact" className={styles.yellowLink}>Contact our office today</Link> at <strong>(877) 945-6565</strong> and schedule a service.
                         </p>
                     </div>
 

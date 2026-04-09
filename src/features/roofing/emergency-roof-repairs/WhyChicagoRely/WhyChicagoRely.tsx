@@ -64,7 +64,7 @@ export const WhyChicagoRely = () => {
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
                         <div className={styles.ctaBanner}>
                             <p>
-                                Need an urgent repair with full insurance documentation? Contact us at <strong>(847) 262-9774</strong> or{' '}
+                                Need an urgent repair with full insurance documentation? Contact us at <strong>(877) 945-6565</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

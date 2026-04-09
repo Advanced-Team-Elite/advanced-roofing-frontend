@@ -63,8 +63,8 @@ export const ServingOrland = () => {
                         <div className={styles.ctaBanner} style={{ marginTop: '30px' }}>
                             <p style={{ textAlign: 'center', margin: 0 }}>
                                 Our local roofing specialists provide high-performance materials and meticulous installations to ensure your property remains leak-free. Contact us at {' '}
-                                <Link href="tel:(847) 262-9774" className={styles.yellowLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <Link href="tel:(877) 945-6565" className={styles.yellowLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </Link>
                                 {' '} or {' '}
                                 <Link href="/contact" className={styles.yellowLink}>

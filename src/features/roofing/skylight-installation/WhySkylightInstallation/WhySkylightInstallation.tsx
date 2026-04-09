@@ -68,8 +68,8 @@ export const WhySkylightInstallation = () => {
                             <p>
                                 Ready to enhance your home's appeal and energy efficiency with modern, insulated skylights?
                                 Contact us at{' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </a>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>

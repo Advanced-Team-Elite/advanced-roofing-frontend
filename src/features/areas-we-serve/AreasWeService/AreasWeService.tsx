@@ -50,8 +50,8 @@ export const AreasWeService = () => {
                     <div className={styles.ctaBanner}>
                         <p>
                             Contact us at {' '}
-                            <a href="tel:8472629774" className={styles.inlineLink}>
-                                <strong>(847) 262-9774</strong>
+                            <a href="tel:8779456565" className={styles.inlineLink}>
+                                <strong>(877) 945-6565</strong>
                             </a>{' '}  for a free roofing estimate anywhere in Chicago or the surrounding suburbs.
                         </p>
                     </div>

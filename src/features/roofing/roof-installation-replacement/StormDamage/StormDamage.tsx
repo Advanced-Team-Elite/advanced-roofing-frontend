@@ -44,7 +44,7 @@ const StormDamage = () => {
                 {/* BANNER AZUL FINAL */}
                 <div className={styles.blueBanner}>
                     <p>
-                        Call <span className={styles.whiteText}>(847) 262-9774</span> today or{' '}
+                        Call <span className={styles.whiteText}>(877) 945-6565</span> today or{' '}
                         <Link href="/contact-us/" className={styles.yellowLink}>
                             contact us online
                         </Link>{' '}

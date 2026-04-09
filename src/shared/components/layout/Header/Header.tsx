@@ -36,7 +36,7 @@ export const Header = () => {
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
-                    <span className={styles.telf} >847-262-9774</span>
+                    <span className={styles.telf} >877-945-6565</span>
                 </div>
             </div>
 
@@ -117,7 +117,7 @@ export const Header = () => {
                 </ul>
 
                 {/* Icon phone - Tablet/Mobile */}
-                <a href="tel:8472629774" className={styles.phoneToggle} aria-label="Call Advanced Roofing Team at 847-262-9774">
+                <a href="tel:8779456565" className={styles.phoneToggle} aria-label="Call Advanced Roofing Team at 877-945-6565">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/>
                     </svg>
@@ -193,7 +193,7 @@ export const Header = () => {
                                 <div className={styles.drawerFooter}>
                                     <div className={styles.buttonsWrapper}>
                                         <Link href="/contact-us" title="Go to our contact page" onClick={closeDrawer} className={styles.mobileContactBtn}>Contact Us</Link>
-                                        <a href="tel:8472629774" className={styles.mobileCallBtn}>Call Us Today!</a>
+                                        <a href="tel:8779456565" className={styles.mobileCallBtn}>Call Us Today!</a>
                                     </div>
 
                                     <div className={styles.footerColumn}>
