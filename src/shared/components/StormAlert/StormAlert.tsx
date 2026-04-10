@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import styles from './StormAlert.module.css';
 
-const KEYWORDS = ["hail", "large hail", "severe wind", "severe storm", "tornado", "flood"];
+const KEYWORDS = ["hail", "large hail", "severe wind", "severe storm", "tornado"];
 const CHICAGO_COUNTIES = ["cook", "dupage", "will", "kane", "lake"];
 
 export default function StormAlert() {
@@ -31,7 +31,7 @@ export default function StormAlert() {
                     const isChicago = CHICAGO_COUNTIES.some(county =>
                         areaDesc.includes(county) || descText.includes(county)
                     );
-                    return hasKeyword && isChicago;
+                    return true; //hasKeyword && isChicago
                 });
 
                 if (activeAlert) {

@@ -78,7 +78,7 @@
     display: flex;
     align-items: center; /* Alinea verticalmente los iconos con el badge */
     gap: 25px;
-    z-index: 999;
+    z-index: 2;
 }
 
 .pushRight {

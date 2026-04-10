@@ -47,7 +47,7 @@
 }
 
 @media (min-width: 768px) {
-    .text { font-size: 1rem; }
+    .text { font-size: 1.2rem; }
 }
 
 .bold { font-weight: 700; }
