@@ -1,0 +1,52 @@
+/* AdvancedIsHere.module.css */
+
+.mapWrapper {
+    height: 110%;
+    display: flex;
+    align-items: center;
+}
+
+/* Así es como afectas al SVG y sus paths dentro de un CSS Module */
+.svgMap {
+    height: 95%;
+    width: auto;
+    pointer-events: auto !important;
+}
+
+.svgMap path {
+    fill: #E6D9D9 !important;
+    stroke: #ffffff !important;
+    stroke-width: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    vector-effect: non-scaling-stroke;
+}
+
+.svgMap path:hover {
+    fill: #FFAF01 !important;
+}
+
+.tooltip {
+    opacity: 1;
+    padding: 16px 22px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(180%);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    pointer-events: none;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.tooltipNumber {
+    font-weight: 800;
+    font-size: 24px;
+    color: #000;
+}
+
+.tooltipLabel {
+    font-size: 11px;
+    color: #292929;
+    font-weight: 600;
+    text-transform: uppercase;
+}

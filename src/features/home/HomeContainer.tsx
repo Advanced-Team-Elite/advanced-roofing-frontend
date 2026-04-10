@@ -13,6 +13,7 @@ import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import StatsBar from "@/features/home/StatsBar/StatsBar";
 import {Header} from "@/shared/components/layout/Header/Header";
 import StormAlert from "@/shared/components/StormAlert/StormAlert";
+import AdvancedIsHere from "@/features/home/AdvancedIsHere/AdvancedIsHere";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -26,6 +27,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <StormRecovery />
             <AwardsBanner />
             <WhyChooseUs />
+            <AdvancedIsHere/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
