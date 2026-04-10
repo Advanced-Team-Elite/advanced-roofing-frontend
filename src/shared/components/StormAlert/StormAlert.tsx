@@ -11,13 +11,18 @@ interface WeatherFeature {
     };
 }
 
+interface AlertInfo {
+    event: string;
+    area: string;
+}
+
 const KEYWORDS = ["hail", "large hail", "severe wind", "severe storm", "tornado"];
 const CHICAGO_COUNTIES = ["cook", "dupage", "will", "kane", "lake"];
 const LOCATION_CACHE_KEY = 'user_geo_location';
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
 
 export default function StormAlert() {
-    const [alertData, setAlertData] = useState(null);
+    const [alertData, setAlertData] = useState<AlertInfo | null>(null);
     const [isVisible, setIsVisible] = useState(true);
     const [loading, setLoading] = useState(true);
 
@@ -83,10 +88,11 @@ export default function StormAlert() {
                     return true;//hasKeyword && isChicagoArea
                 });
 
-                if (activeAlert) {
+                if (activeAlert && activeAlert.properties.event) {
+                    // 3. Ahora setAlertData aceptará el objeto sin quejas
                     setAlertData({
                         event: activeAlert.properties.event,
-                        area: userLocation.city
+                        area: userLocation?.city || "Not Found"
                     });
                 }
             } catch (e) {
