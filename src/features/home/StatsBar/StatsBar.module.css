@@ -1,9 +1,19 @@
 .section {
-    background-color: #043B67;
+    background-color: white;
     padding: 4rem 0;
 }
 
+.mainTitle {
+    font-size: 3rem;
+    color: #0056b3;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
 .grid {
+    max-width: 1600px;
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1rem;
@@ -27,7 +37,6 @@
     justify-content: center;
     align-items: flex-start;
     padding: 1.5rem 2rem;
-    border-radius: 1rem;
     transition: all 0.3s ease-out;
     cursor: default;
     font-family: 'Montserrat', sans-serif;
@@ -35,7 +44,6 @@
 
 .card:hover {
     transform: translateY(-12px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Card Azul */
@@ -45,10 +53,11 @@
 
 /* Card Amarilla */
 .cardYellow {
-    background: linear-gradient(to bottom, #F7D000, #D9A90A);
+    background: #F7D000;
 }
 
 .value {
+    color: #F7D000;
     font-size: 2rem;
     line-height: 2.5rem;
     font-weight: 600;

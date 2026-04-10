@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import styles from './VideoBanner.module.css';
 import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
 import Link from 'next/link';
+import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
 
 interface VideoBannerProps {
     showSubtitle?: boolean;
@@ -55,12 +56,15 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                             Chicago&apos;s Trusted Roofing & Storm Recovery Team
                         </p>
                     )}
+
+
                     <Link href="/contact-us" className={styles.contactBtn} title="Go to our contact page">
                         Contact Us
                     </Link>
                 </div>
 
                 <div className={styles.videoControls}>
+                    {/* Botones de la izquierda */}
                     <button className={styles.controlBtn} aria-label="Play/Pause" onClick={togglePlay}>
                         <span className="material-icons">
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -73,6 +77,11 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     >
                         <span className="material-icons"><DescriptionIcon /></span>
                     </button>
+
+                    {/* El Badge con la clase que lo empuja a la derecha */}
+                    <div className={styles.pushRight}>
+                        <InspectionBadge/>
+                    </div>
                 </div>
             </section>
 

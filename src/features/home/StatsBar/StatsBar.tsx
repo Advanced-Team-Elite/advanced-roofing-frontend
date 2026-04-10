@@ -1,36 +1,51 @@
 import styles from './StatsBar.module.css';
-import { COMPANY_STATS } from '@/shared/utils/constants';
 
 const StatsBar = () => {
-    const stats = [
-        { label: 'Years of Experience', value: `${COMPANY_STATS.yearsExperience}+` },
-        { label: 'Roofs Completed', value: COMPANY_STATS.roofsCompleted },
-        { label: 'Serving Property Owners', value: `Since ${COMPANY_STATS.servingSince}` },
-        { label: 'Local Expertise', value: COMPANY_STATS.location },
-    ];
-
     return (
         <section className={styles.section}>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto">
+                <h2 className={styles.mainTitle}>Our Impact</h2>
+
                 <div className={styles.grid}>
-                    {stats.map((stat, index) => {
-                        const isEven = index % 2 === 0;
+                    {/* Card 1 - Azul */}
+                    <div className={`${styles.card} ${styles.cardBlue}`}>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>
+                            20+
+                        </span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>
+                            Years of Experience
+                        </span>
+                    </div>
 
-                        return (
-                            <div
-                                key={index}
-                                className={`${styles.card} ${isEven ? styles.cardBlue : styles.cardYellow}`}
-                            >
-                                <span className={`${styles.value} ${isEven ? styles.valueGradient : styles.valueDark}`}>
-                                    {stat.value}
-                                </span>
+                    {/* Card 2 - Amarilla */}
+                    <div className={`${styles.card} ${styles.cardYellow}`}>
+                        <span className={`${styles.value} ${styles.valueDark}`}>
+                            Thousands
+                        </span>
+                        <span className={`${styles.label} ${styles.labelDark}`}>
+                            Roofs Completed
+                        </span>
+                    </div>
 
-                                <span className={`${styles.label} ${isEven ? styles.labelLight : styles.labelDark}`}>
-                                    {stat.label}
-                                </span>
-                            </div>
-                        );
-                    })}
+                    {/* Card 3 - Azul */}
+                    <div className={`${styles.card} ${styles.cardBlue}`}>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>
+                            Since 2004
+                        </span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>
+                            Serving Property Owners
+                        </span>
+                    </div>
+
+                    {/* Card 4 - Amarilla */}
+                    <div className={`${styles.card} ${styles.cardYellow}`}>
+                        <span className={`${styles.value} ${styles.valueDark}`}>
+                            Chicagoland
+                        </span>
+                        <span className={`${styles.label} ${styles.labelDark}`}>
+                            Local Expertise
+                        </span>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,0 +1,78 @@
+/* InspectionBadge.module.css */
+
+.badgeContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    max-width: fit-content;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro para contraste */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease; /* Hover suave */
+    /* Eliminado el pulseEffect aquí */
+}
+
+/* Opcional: Un ligero efecto de elevación al pasar el mouse */
+.badgeContainer:hover {
+    transform: translateY(-3px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.iconContainer {
+    background-color: rgba(0, 209, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: #00D1FF;
+    /* Mantenemos 3s para que la pausa sea corta */
+    animation: shakeClock 3s infinite ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes shakeClock {
+    /* Pausa del 0% al 60% (Casi 2 segundos de calma) */
+    0%, 60% { transform: rotate(0deg); }
+
+    /* La animación ahora ocurre más lento entre estos puntos */
+    65% { transform: rotate(15deg); }
+    70% { transform: rotate(-15deg); }
+    75% { transform: rotate(10deg); }
+    80% { transform: rotate(-10deg); }
+    85% { transform: rotate(5deg); }
+    90% { transform: rotate(0deg); }
+
+    /* Pequeña pausa final antes de reiniciar */
+    100% { transform: rotate(0deg); }
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.25;
+}
+
+.subtitle {
+    color: #00D1FF;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.125rem;
+}
