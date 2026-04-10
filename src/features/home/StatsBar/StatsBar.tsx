@@ -5,7 +5,7 @@ const StatsBar = () => {
         <section className={styles.section}>
             <div className={`${styles.container} container mx-auto`}>
 
-                {/* Lado Izquierdo: Header y Botones opcionales */}
+                {/* Lado Izquierdo: Header y Botones */}
                 <div className={styles.headerSide}>
                     <h2 className={styles.mainTitle}>We only provide quality.</h2>
                     <p className={styles.description}>
@@ -16,27 +16,23 @@ const StatsBar = () => {
                     </div>
                 </div>
 
-                {/* Lado Derecho: Grid de Stats */}
+                {/* Lado Derecho: Grid de Stats con anchos equitativos */}
                 <div className={styles.gridSide}>
-                    {/* Card 1 - Azul */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
                         <span className={`${styles.value} ${styles.valueYellow}`}>20+</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Years of Experience</span>
                     </div>
 
-                    {/* Card 2 - Amarilla */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
                         <span className={`${styles.value} ${styles.valueYellow}`}>Thousands</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Roofs Completed</span>
                     </div>
 
-                    {/* Card 3 - Azul */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
                         <span className={`${styles.value} ${styles.valueYellow}`}>Since 2004</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Serving Property Owners</span>
                     </div>
 
-                    {/* Card 4 - Amarilla */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
                         <span className={`${styles.value} ${styles.valueYellow}`}>Chicagoland</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Local Expertise</span>

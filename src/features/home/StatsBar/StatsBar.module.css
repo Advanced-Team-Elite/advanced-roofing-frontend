@@ -1,33 +1,28 @@
+/* --- ESTILOS BASE (Desktop / Pantallas Grandes) --- */
+
 .section {
     background-color: white;
-    padding: 6rem 0;
+    padding: 6rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Desktop: Lado a lado */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
     gap: 3rem;
 }
 
-/* Layout Desktop: Lado a Lado */
-@media (min-width: 1024px) {
-    .container {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .headerSide {
-        flex: 1;
-        max-width: 450px;
-    }
-
-    .gridSide {
-        flex: 1.2;
-    }
+.headerSide {
+    flex: 1;
+    max-width: 450px;
 }
 
-/* Tipografía del Header */
 .mainTitle {
     font-size: 3rem;
     color: #0056b3;
@@ -43,67 +38,48 @@
     margin-bottom: 2rem;
 }
 
-/* Botones estilo mockup */
-.actions {
-    display: flex;
-    gap: 1rem;
-}
-
 .btnPrimary {
     background-color: #00ccff;
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     font-weight: 600;
+    border: none;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: background 0.3s ease;
 }
 
-.btnPrimary:hover {
-    background-color: #009ec8;
-}
-
-/* Grid de Cards 2x2 */
+/* Grid de Stats Equitativo */
 .gridSide {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-}
-
-@media (min-width: 640px) {
-    .gridSide {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    flex: 1.5;
+    /* repeat(2, minmax(0, 1fr)) obliga a que las 2 columnas midan exactamente lo mismo */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .card {
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    background-color: #00589E; /* Azul por defecto */
     transition: transform 0.3s ease;
+    min-width: 0; /* Permite que el contenido se encoja correctamente */
 }
 
 .card:hover {
     transform: translateY(-8px);
 }
 
-.cardBlue {
-    background-color: #00589E;
-}
-
-.cardYellow {
-    background: #F7D000;
-}
-
-/* Estilos de Stats */
 .value {
     font-size: 2.5rem;
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.1;
     margin-bottom: 0.5rem;
+    word-wrap: break-word; /* Rompe palabras largas si es necesario */
+    overflow-wrap: break-word;
 }
-
-.valueYellow { color: #F7D000; }
-.valueDark { color: #043B67; }
 
 .label {
     font-size: 1rem;
@@ -111,5 +87,62 @@
     line-height: 1.2;
 }
 
+/* Colores */
+.cardBlue { background-color: #00589E; }
+.valueYellow { color: #F7D000; }
 .labelLight { color: white; }
-.labelDark { color: #043B67; }
+
+/* --- MEDIA QUERIES (Desktop-First) --- */
+
+/* Tablet y Laptops pequeñas */
+@media (max-width: 1280px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 4rem;
+    }
+
+    .headerSide {
+        max-width: 100%;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    .gridSide {
+        margin: 0 auto;
+    }
+}
+
+/* Smartphones y Tablets pequeñas */
+@media (max-width: 1280px) {
+    .section {
+        padding: 4rem 120px;
+    }
+
+    .value {
+        font-size: 2rem; /* Reducimos un poco el número para que quepa */
+    }
+}
+
+/* Móviles muy estrechos (Evita el error de tu imagen 2) */
+@media (max-width: 768px) {
+    .gridSide {
+        /* Pasamos a 1 sola columna para que "Chicagoland" tenga espacio total */
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .section {
+        padding: 40px 40px;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+    }
+}

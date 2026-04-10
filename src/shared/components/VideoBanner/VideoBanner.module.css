@@ -83,6 +83,7 @@
 
 .pushRight {
     margin-left: auto; /* Esta es la magia que lo manda al rincón derecho */
+    z-index: 2 !important;
 }
 
 .controlBtn {
