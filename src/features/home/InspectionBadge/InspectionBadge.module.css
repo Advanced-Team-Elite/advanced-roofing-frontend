@@ -4,19 +4,36 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.8rem;
     max-width: fit-content;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro para contraste */
+    background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease; /* Hover suave */
-    /* Eliminado el pulseEffect aquí */
+
+    /* Animación de entrada */
+    animation: slideIn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+    /* Importante: empezamos fuera de vista para que la animación se note */
+    opacity: 0;
+    transition: transform 0.5s ease, background-color 0.5s ease;
 }
 
 /* Opcional: Un ligero efecto de elevación al pasar el mouse */
+@keyframes slideIn {
+    0% {
+        opacity: 1;
+        transform: translateX(200px); /* Empieza 100px a la derecha */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Termina en su posición original */
+    }
+}
+
 .badgeContainer:hover {
+    /* Mantenemos el hover pero ojo: como ya hay un transform en la entrada,
+       el hover debe ser relativo a la posición final */
     transform: translateY(-3px);
     background-color: rgba(0, 0, 0, 0.5);
 }

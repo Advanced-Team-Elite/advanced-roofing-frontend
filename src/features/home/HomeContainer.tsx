@@ -11,12 +11,15 @@ import FinancingSection from "@/shared/components/FinancingSection/FinancingSect
 import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import StatsBar from "@/features/home/StatsBar/StatsBar";
+import {Header} from "@/shared/components/layout/Header/Header";
+import StormAlert from "@/shared/components/StormAlert/StormAlert";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
+            <StormAlert />
             <StatsBar/>
             <OurServices />
             <AboutHome />

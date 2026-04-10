@@ -3,50 +3,46 @@ import styles from './StatsBar.module.css';
 const StatsBar = () => {
     return (
         <section className={styles.section}>
-            <div className="container mx-auto">
-                <h2 className={styles.mainTitle}>Our Impact</h2>
+            <div className={`${styles.container} container mx-auto`}>
 
-                <div className={styles.grid}>
+                {/* Lado Izquierdo: Header y Botones opcionales */}
+                <div className={styles.headerSide}>
+                    <h2 className={styles.mainTitle}>We only provide quality.</h2>
+                    <p className={styles.description}>
+                        Providing top-tier roofing solutions and storm recovery with the reliability your property deserves.
+                    </p>
+                    <div className={styles.actions}>
+                        <button className={styles.btnPrimary}>View More</button>
+                    </div>
+                </div>
+
+                {/* Lado Derecho: Grid de Stats */}
+                <div className={styles.gridSide}>
                     {/* Card 1 - Azul */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
-                        <span className={`${styles.value} ${styles.valueYellow}`}>
-                            20+
-                        </span>
-                        <span className={`${styles.label} ${styles.labelLight}`}>
-                            Years of Experience
-                        </span>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>20+</span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>Years of Experience</span>
                     </div>
 
                     {/* Card 2 - Amarilla */}
-                    <div className={`${styles.card} ${styles.cardYellow}`}>
-                        <span className={`${styles.value} ${styles.valueDark}`}>
-                            Thousands
-                        </span>
-                        <span className={`${styles.label} ${styles.labelDark}`}>
-                            Roofs Completed
-                        </span>
+                    <div className={`${styles.card} ${styles.cardBlue}`}>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>Thousands</span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>Roofs Completed</span>
                     </div>
 
                     {/* Card 3 - Azul */}
                     <div className={`${styles.card} ${styles.cardBlue}`}>
-                        <span className={`${styles.value} ${styles.valueYellow}`}>
-                            Since 2004
-                        </span>
-                        <span className={`${styles.label} ${styles.labelLight}`}>
-                            Serving Property Owners
-                        </span>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>Since 2004</span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>Serving Property Owners</span>
                     </div>
 
                     {/* Card 4 - Amarilla */}
-                    <div className={`${styles.card} ${styles.cardYellow}`}>
-                        <span className={`${styles.value} ${styles.valueDark}`}>
-                            Chicagoland
-                        </span>
-                        <span className={`${styles.label} ${styles.labelDark}`}>
-                            Local Expertise
-                        </span>
+                    <div className={`${styles.card} ${styles.cardBlue}`}>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>Chicagoland</span>
+                        <span className={`${styles.label} ${styles.labelLight}`}>Local Expertise</span>
                     </div>
                 </div>
+
             </div>
         </section>
     );

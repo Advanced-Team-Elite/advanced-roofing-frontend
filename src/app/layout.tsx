@@ -30,7 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <body className="antialiased">
-        <StormAlert />
         <Header />
         {children}
         <FloatingActions />

@@ -1,92 +1,115 @@
 .section {
     background-color: white;
-    padding: 4rem 0;
+    padding: 6rem 0;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Layout Desktop: Lado a Lado */
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .headerSide {
+        flex: 1;
+        max-width: 450px;
+    }
+
+    .gridSide {
+        flex: 1.2;
+    }
+}
+
+/* Tipografía del Header */
 .mainTitle {
     font-size: 3rem;
     color: #0056b3;
     font-weight: 800;
-    text-align: center;
-    margin-bottom: 50px;
-    width: 100%;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
 }
 
-.grid {
-    max-width: 1600px;
+.description {
+    font-size: 1.125rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Botones estilo mockup */
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btnPrimary {
+    background-color: #00ccff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.btnPrimary:hover {
+    background-color: #009ec8;
+}
+
+/* Grid de Cards 2x2 */
+.gridSide {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
 }
 
 @media (min-width: 640px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+    .gridSide {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 .card {
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 1.5rem 2rem;
-    transition: all 0.3s ease-out;
-    cursor: default;
-    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
 }
 
-/* Card Azul */
 .cardBlue {
     background-color: #00589E;
 }
 
-/* Card Amarilla */
 .cardYellow {
     background: #F7D000;
 }
 
+/* Estilos de Stats */
 .value {
-    color: #F7D000;
-    font-size: 2rem;
-    line-height: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
 }
 
-/* Gradiente para el texto en card azul */
-.valueGradient {
-    background: #F7D000;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.valueDark {
-    color: #00589E;
-}
+.valueYellow { color: #F7D000; }
+.valueDark { color: #043B67; }
 
 .label {
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    font-size: 1.2rem;
-    width: 65%;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
-.labelLight {
-    color: #ffffff;
-}
-
-.labelDark {
-    color: rgba(4, 59, 103, 0.8);
-}
+.labelLight { color: white; }
+.labelDark { color: #043B67; }
