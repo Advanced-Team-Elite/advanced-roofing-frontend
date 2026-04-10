@@ -3,6 +3,14 @@
 import { useState, useEffect } from 'react';
 import styles from './StormAlert.module.css';
 
+interface WeatherFeature {
+    properties: {
+        event?: string;
+        description?: string;
+        areaDesc?: string;
+    };
+}
+
 const KEYWORDS = ["hail", "large hail", "severe wind", "severe storm", "tornado"];
 const CHICAGO_COUNTIES = ["cook", "dupage", "will", "kane", "lake"];
 const LOCATION_CACHE_KEY = 'user_geo_location';
@@ -61,7 +69,7 @@ export default function StormAlert() {
                 const weatherRes = await fetch('https://api.weather.gov/alerts/active?area=IL');
                 const weatherData = await weatherRes.json();
 
-                const activeAlert = weatherData.features.find((feature) => {
+                const activeAlert = weatherData.features.find((feature: WeatherFeature) => {
                     const props = feature.properties;
                     const eventText = (props.event || "").toLowerCase();
                     const descText = (props.description || "").toLowerCase();
