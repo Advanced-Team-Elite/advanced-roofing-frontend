@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './AdvancedIsHere.module.css';
 import { FlairIcon } from '@/shared/Icons/Icons';
 import { IllinoisMap } from './IllinoisMap'; // El componente que creamos arriba
@@ -71,6 +71,30 @@ export default function AdvancedIsHere() {
         visible: false, x: 0, y: 0, county: '', projects: 0,
     });
 
+    const getActiveCounty = () => {
+        const query = searchQuery.toLowerCase().trim();
+        if (!query) return null;
+
+        // Buscamos si el texto ingresado coincide con alguna llave de countyData
+        return Object.keys(countyData).find(name =>
+            name.toLowerCase().replace(/_/g, ' ') === query ||
+            name.toLowerCase() === query
+        );
+    };
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const activeSearchId = getActiveCounty();
+
+    useEffect(() => {
+        if (activeSearchId) {
+            const projects = countyData[activeSearchId];
+            // Nota: Para posicionar el tooltip en la búsqueda necesitarías
+            // las coordenadas del path, lo cual es complejo.
+            // Es mejor solo iluminar el mapa como feedback visual.
+        }
+    }, [activeSearchId]);
+
+
     const handleMouseOver = (e: React.MouseEvent) => {
         const target = e.target as SVGPathElement;
         if (target.tagName !== 'path') return;
@@ -105,7 +129,13 @@ export default function AdvancedIsHere() {
                 <div className={styles.cardContent}>
                     <div className={styles.infoSide}>
                         <div className={styles.searchContainer}>
-                            <input type="text" placeholder="Search your location" className={styles.mapSearch} />
+                            <input
+                                type="text"
+                                placeholder="Search your location (e.g. Cook)"
+                                className={styles.mapSearch}
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
                             <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -131,7 +161,10 @@ export default function AdvancedIsHere() {
                     >
                         {/* Inyectamos el SVG como componente para que el CSS de abajo funcione */}
                         <div className={styles.mapWrapper}>
-                            <IllinoisMap className={styles.svgMap} />
+                            <IllinoisMap
+                                className={styles.svgMap}
+                                activeId={activeSearchId} // Pasamos el ID encontrado
+                            />
                         </div>
                     </div>
                 </div>

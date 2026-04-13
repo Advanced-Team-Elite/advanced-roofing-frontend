@@ -168,6 +168,24 @@
     fill: #00589e;
 }
 
+.svgMap path {
+    fill: #dfdada;
+    /* ... rest ... */
+}
+
+/* Esta clase se activa mediante la búsqueda */
+.svgMap path.pathActive {
+    fill: #00589e !important; /* El color azul de Advanced */
+    filter: drop-shadow(0 0 8px rgba(0, 88, 158, 0.5));
+    stroke: #ffffff;
+    stroke-width: 2px;
+}
+
+/* Mantenemos el hover para que funcione igual */
+.svgMap path:hover {
+    fill: #00589e;
+}
+
 /* TOOLTIP */
 .tooltip {
     position: fixed;

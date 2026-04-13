@@ -27,7 +27,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <StormRecovery />
             <AwardsBanner />
             <WhyChooseUs />
-                <AdvancedIsHere/>
+            <AdvancedIsHere/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
