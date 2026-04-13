@@ -1,52 +1,230 @@
-/* AdvancedIsHere.module.css */
+.outerContainer {
+    padding: 80px 2rem;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mapCard {
+    background: rgba(113, 113, 113, 0.09);
+    width: 100%;
+    max-width: 1200px;
+    height: 570px;
+    border-radius: 32px;
+    padding: 60px 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* FLAIR de fondo */
+.flairBg {
+    position: absolute;
+    top: 34%;
+    left: -50%; /* Lo sacamos un poco a la izquierda para que el pico del Flair luzca mejor */
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0.25; /* Bajamos un poco más para estilo "watermark" */
+    z-index: 0;
+    overflow: visible; /* CRITICO: Permite que el contenido desborde el contenedor */
+}
+
+.flairBg svg {
+    /* En lugar de px fijos, usemos VW (View Width) para que sea relativo a la pantalla */
+    width: 110vw !important;
+    max-width: none !important; /* Elimina cualquier restricción heredada */
+    height: auto !important;
+    flex-shrink: 0; /* Evita que el contenedor flex lo comprima */
+}
+
+.flairBg svg path {
+    fill: #00589E !important;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    gap: 40px;
+}
+
+/* LADO IZQUIERDO */
+.infoSide {
+    flex: 0 0 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    gap: 16px;
+}
+
+.searchContainer {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 40px;
+}
+
+.mapSearch {
+    width: 100%;
+    padding: 12px 44px 12px 18px;
+    border-radius: 50px;
+    border: none;
+    background: white;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    outline: none;
+}
+
+.mapSearch::placeholder { color: #aaa; }
+
+.searchIcon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    pointer-events: none;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 500;
+    margin: 0;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 0.95;
+    color: #1a1a2e;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.highlight { color: #00589e; }
+
+.description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 300px;
+    margin: 0;
+}
+
+.description strong { color: #1a1a2e; }
+
+/* LADO DERECHO — MAPA */
+.mapSide {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
 
 .mapWrapper {
-    height: 110%;
+    height: 108%;
     display: flex;
     align-items: center;
 }
 
-/* Así es como afectas al SVG y sus paths dentro de un CSS Module */
 .svgMap {
-    height: 95%;
+    height: 100%;
     width: auto;
-    pointer-events: auto !important;
+    pointer-events: auto;
 }
 
+/* Estilos de paths del mapa */
 .svgMap path {
-    fill: #E6D9D9 !important;
-    stroke: #ffffff !important;
-    stroke-width: 0.5px;
-    transition: all 0.3s ease;
+    fill: #dfdada;
+    stroke: #ffffff;
+    stroke-width: 0.9px;
+    transition: fill 0.25s ease;
     cursor: pointer;
     vector-effect: non-scaling-stroke;
 }
 
 .svgMap path:hover {
-    fill: #FFAF01 !important;
+    fill: #00589e;
 }
 
+/* TOOLTIP */
 .tooltip {
-    opacity: 1;
-    padding: 16px 22px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px) saturate(180%);
+    position: fixed;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    backdrop-filter: blur(14px) saturate(180%);
     box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
     pointer-events: none;
-    z-index: 1000;
-    border: 1px solid rgba(255, 255, 255, 0.26);
+    z-index: 10000;
 }
 
 .tooltipNumber {
-    font-weight: 800;
-    font-size: 24px;
-    color: #000;
+    font-size: 26px;
+    font-weight: 900;
+    color: #1a1a2e;
+    line-height: 1;
+    margin-bottom: 4px;
 }
 
 .tooltipLabel {
     font-size: 11px;
-    color: #292929;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .mapCard {
+        height: auto;
+        padding: 50px 40px;
+    }
+    .cardContent {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .infoSide {
+        flex: none;
+        width: 100%;
+        height: auto;
+        justify-content: flex-start;
+    }
+    .mapSide {
+        width: 100%;
+        height: 350px;
+        justify-content: center;
+    }
+    .title { font-size: 44px; }
+}
+
+@media (max-width: 640px) {
+    .outerContainer { padding: 40px 16px; }
+    .mapCard { padding: 36px 24px; border-radius: 20px; }
+    .title { font-size: 36px; }
+    .mapSide { height: 260px; }
 }
