@@ -4,6 +4,111 @@ import styles from './AdvancedIsHere.module.css';
 import { FlairIcon } from '@/shared/Icons/Icons';
 import { IllinoisMap } from './IllinoisMap'; // El componente que creamos arriba
 
+const ALL_COUNTY_IDS = [
+    "Vermilion",
+    "Iroquois",
+    "Alexander",
+    "Pulaski",
+    "Massac",
+    "Hardin",
+    "Pope",
+    "Johnson",
+    "Union",
+    "Gallatin",
+    "Saline",
+    "Williamson",
+    "Jackson",
+    "Monroe",
+    "Randolph",
+    "Perry",
+    "Franklin",
+    "Hamilton",
+    "White",
+    "Jefferson",
+    "Washington",
+    "Clinton",
+    "St._Clair",
+    "Madison",
+    "Bond",
+    "Marion",
+    "Wayne",
+    "Wabash",
+    "Edwards",
+    "Lawrence",
+    "Richland",
+    "Clay",
+    "Jasper",
+    "Crawford",
+    "Clark",
+    "Cumberland",
+    "Effingham",
+    "Fayette",
+    "Shelby",
+    "Montgomery",
+    "Jersey",
+    "Macoupin",
+    "Calhoun",
+    "Greene",
+    "Christian",
+    "Coles",
+    "Edgar",
+    "Douglas",
+    "Moultrie",
+    "Macon",
+    "Sangamon",
+    "Morgan",
+    "Scott",
+    "Pike",
+    "Brown",
+    "Adams",
+    "Hancock",
+    "Donough",
+    "Schuyler",
+    "Cass",
+    "Menard",
+    "Mason",
+    "Logan",
+    "De_Witt",
+    "Piatt",
+    "Champaign",
+    "Ford",
+    "McLean",
+    "Tazewell",
+    "Woodford",
+    "Peoria",
+    "Fulton",
+    "Warren",
+    "Henderson",
+    "Mercer",
+    "Knox",
+    "Stark",
+    "Marshall",
+    "Putnam",
+    "Livingston",
+    "Kankakee",
+    "Grundy",
+    "Will",
+    "Kendall",
+    "La_Salle",
+    "Bureau",
+    "Henry",
+    "Rock_Island",
+    "Lee",
+    "Whiteside",
+    "Carroll",
+    "Ogle",
+    "DeKalb",
+    "Kane",
+    "DuPage",
+    "Cook",
+    "Lake",
+    "McHenry",
+    "Boone",
+    "Winnebago",
+    "Stephenson",
+    "Jo_Daviess"
+];
+
 const countyData: Record<string, number> = {
     "Cook": 7827,
     "Kankakee": 1070,
@@ -63,7 +168,8 @@ const countyData: Record<string, number> = {
     "Edgar": 24,
     "Douglas": 36,
     "Moultrie": 21,
-    "Macon": 184
+    "Macon": 184,
+    "Morgan": 748,
 };
 
 export default function AdvancedIsHere() {
@@ -72,14 +178,14 @@ export default function AdvancedIsHere() {
     });
 
     const getActiveCounty = () => {
-        const query = searchQuery.toLowerCase().trim();
+        const query = searchQuery.toLowerCase().trim().replace(/\s+/g, '_');
         if (!query) return null;
 
-        // Buscamos si el texto ingresado coincide con alguna llave de countyData
-        return Object.keys(countyData).find(name =>
-            name.toLowerCase().replace(/_/g, ' ') === query ||
-            name.toLowerCase() === query
-        );
+        // Buscamos en la lista de IDs reales del mapa
+        return ALL_COUNTY_IDS.find(id => {
+            const normalizedId = id.toLowerCase();
+            return normalizedId === query || normalizedId.replace(/_/g, '') === query.replace(/_/g, '');
+        });
     };
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -88,11 +194,16 @@ export default function AdvancedIsHere() {
     useEffect(() => {
         if (activeSearchId) {
             const projects = countyData[activeSearchId];
-            // Nota: Para posicionar el tooltip en la búsqueda necesitarías
-            // las coordenadas del path, lo cual es complejo.
-            // Es mejor solo iluminar el mapa como feedback visual.
         }
     }, [activeSearchId]);
+
+    const formatCountyName = (id: string) => id.replace(/_/g, ' ');
+
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const filteredCounties = ALL_COUNTY_IDS.filter(id =>
+        formatCountyName(id).toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 5); // Limitamos a 5 resultados para no saturar la pantalla
 
 
     const handleMouseOver = (e: React.MouseEvent) => {
@@ -123,7 +234,7 @@ export default function AdvancedIsHere() {
         <section className={styles.outerContainer}>
             <div className={styles.mapCard}>
                 <div className={styles.flairBg}>
-                    <FlairIcon size={2000} />
+                    <FlairIcon size={2100} />
                 </div>
 
                 <div className={styles.cardContent}>
@@ -131,21 +242,45 @@ export default function AdvancedIsHere() {
                         <div className={styles.searchContainer}>
                             <input
                                 type="text"
-                                placeholder="Search your location (e.g. Cook)"
+                                placeholder="Search your county (e.g. Cook)"
                                 className={styles.mapSearch}
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onFocus={() => setShowDropdown(true)}
+                                onChange={(e) => {
+                                    setSearchQuery(e.target.value);
+                                    setShowDropdown(true);
+                                }}
                             />
                             <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
+                            {/* Desplegable de sugerencias */}
+                            {showDropdown && searchQuery.trim() !== "" && (
+                                <ul className={styles.suggestionsList}>
+                                    {filteredCounties.length > 0 ? (
+                                        filteredCounties.map((id) => (
+                                            <li
+                                                key={id}
+                                                onClick={() => {
+                                                    setSearchQuery(formatCountyName(id));
+                                                    setShowDropdown(false);
+                                                }}
+                                            >
+                                                {formatCountyName(id)}
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li className={styles.noResult}>No counties found</li>
+                                    )}
+                                </ul>
+                            )}
                         </div>
 
                         <div className={styles.textContent}>
                             <p className={styles.label}>Counties</p>
                             <h2 className={styles.title}>
-                                ADVANCED <br /><span className={styles.highlight}>IS HERE</span>
+                                Advanced <br /><span className={styles.highlight}>Is Here</span>
                             </h2>
                             <p className={styles.description}>
                                 From multiple counties to entire regions, our presence reflects where we’ve delivered results—bringing precision, reliability, and <strong>proven roofing solutions to every project we take on.</strong>
