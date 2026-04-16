@@ -1,4 +1,5 @@
 import styles from './StatsBar.module.css';
+import Link from "next/link";
 
 const StatsBar = () => {
     return (
@@ -12,7 +13,9 @@ const StatsBar = () => {
                         Providing top-tier roofing solutions and storm recovery with the reliability your property deserves.
                     </p>
                     <div className={styles.actions}>
-                        <button className={styles.btnPrimary}>View More</button>
+                        <Link href="/our-services" className={styles.servicesLink}>
+                            <button className={styles.btnPrimary}>View More</button>
+                        </Link>
                     </div>
                 </div>
 

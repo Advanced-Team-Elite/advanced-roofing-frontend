@@ -166,17 +166,23 @@
 }
 
 .moreBtn:hover {
-    background: #02bae8;
+    background: #00b1dc;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 1200px) { /* Tablet Landscape */
+@media (max-width: 1280px) { /* Tablet Landscape */
+    .container {
+        padding: 80px 100px;
+    }
     .grid { grid-template-columns: repeat(2, 1fr); }
     .title { font-size: 48px; }
 }
 
 @media (max-width: 768px) { /* Tablet Portrait / Mobile */
+    .container {
+        padding: 80px 40px;
+    }
     .header {
         flex-direction: column;
         text-align: center;

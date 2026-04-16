@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './OurProjects.module.css';
 import { Clock, Home, Camera } from 'lucide-react';
+import Link from "next/link";
 
 const projects = [
     {
@@ -127,7 +128,11 @@ const OurProjects = () => {
                 ))}
             </div>
 
-            <button className={styles.moreBtn}>View All Projects</button>
+            <Link href="/our-services" className={styles.servicesLink}>
+                <button className={styles.moreBtn}>View All Projects</button>
+            </Link>
+
+
         </section>
     );
 };

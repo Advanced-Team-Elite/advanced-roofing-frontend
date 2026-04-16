@@ -136,12 +136,18 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .title { font-size: 48px; }
     .contentWrapper { gap: 40px; }
+    .mainContainer {
+        padding: 100px 100px 50px 100px ;
+    }
 }
 
 @media (max-width: 768px) {
+    .mainContainer {
+        padding: 100px 40px 50px 40px ;
+    }
     .contentWrapper {
         grid-template-columns: 1fr;
         gap: 50px;

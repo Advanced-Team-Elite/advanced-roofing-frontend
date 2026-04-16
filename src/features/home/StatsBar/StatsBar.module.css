@@ -48,6 +48,11 @@
     transition: background 0.3s ease;
 }
 
+.btnPrimary:hover {
+    background-color: #00abd5;
+
+}
+
 /* Grid de Stats Equitativo */
 .gridSide {
     display: grid;

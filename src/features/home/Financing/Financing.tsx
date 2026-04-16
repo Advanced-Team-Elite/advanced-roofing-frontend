@@ -29,11 +29,13 @@ const Financing = () => {
     const monthlyPayment = isFinite(rawPayment) ? rawPayment : 0;
 
     return (
-        <section className="bg-[#f0f0f0] py-12 px-6 md:px-12 lg:px-24 font-sans">
-            <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="bg-[#f0f0f0] py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans">
+            {/* Usamos un grid de 10 columnas en tablet y superior */}
+            <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-center">
 
-                {/* Lado Izquierdo: Resultados */}
-                <div className="space-y-8">
+                {/* Lado Izquierdo: Resultados (60%) */}
+                {/* md:col-span-6 equivale al 60% del contenedor */}
+                <div className="space-y-8 md:col-span-6">
                     <div className="max-w-md">
                         <h2 className="text-[#005596] text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4">
                             We offer easy financing options for your project
@@ -49,8 +51,8 @@ const Financing = () => {
                                 Estimated min.<br />monthly payment
                             </p>
                             <span className="text-3xl md:text-4xl font-bold">
-                ${monthlyPayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </span>
+                            ${monthlyPayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        </span>
                         </div>
                         <div className="p-6 flex items-center justify-around flex-1 text-[#005596] font-bold">
                             <div className="text-center">
@@ -66,8 +68,9 @@ const Financing = () => {
                     </div>
                 </div>
 
-                {/* Lado Derecho: Sliders */}
-                <div className="space-y-8">
+                {/* Lado Derecho: Sliders (40%) */}
+                {/* md:col-span-4 equivale al 40% del contenedor */}
+                <div className="space-y-8 md:col-span-4">
                     <SliderInput
                         label="Amount"
                         subLabel="Move slider to select amount"
@@ -91,7 +94,7 @@ const Financing = () => {
                     />
 
                     <Link href="/contact-us" className="w-full">
-                        <button className="w-full bg-[#005596] text-white py-4 text-xl font-semibold hover:bg-[#00447a] transition-colors">
+                        <button className="w-full cursor-pointer bg-[#005596] text-white py-4 text-xl font-semibold hover:bg-[#00447a] transition-colors">
                             Contact Us
                         </button>
                     </Link>
