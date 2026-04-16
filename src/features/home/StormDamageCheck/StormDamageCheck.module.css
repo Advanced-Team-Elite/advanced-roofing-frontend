@@ -1,0 +1,159 @@
+.mainContainer {
+    width: 100%;
+    padding: 100px 2rem 50px 2rem ;
+    display: flex;
+    justify-content: center;
+}
+
+.contentWrapper {
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    /* CAMBIO: Alinea ambos bloques al tope en lugar del centro */
+    align-items: start;
+}
+
+/* TEXTOS (BLOQUE A LA DERECHA, TEXTO INTERNO A LA IZQUIERDA) */
+.textSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 900;
+    color: #00589e;
+    line-height: 1.0;
+    margin: 0;
+    letter-spacing: -1px;
+    /* CAMBIO: Texto alineado a la izquierda */
+    text-align: left;
+    /* Asegura que el ancho sea el mismo que la descripción para que el 'text-align' se note */
+    width: 100%;
+    max-width: 400px;
+}
+
+.description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.4;
+    margin-top: 20px;
+    /* CAMBIO: Texto alineado a la izquierda */
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* INTERACTIVO (ORIENTADO AL CENTRO -> IZQUIERDA) */
+.interactiveSide {
+    display: flex;
+    flex-direction: column;
+    /* Alinea hacia la izquierda de su columna */
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.optionsGrid {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.optionItem {
+    display: flex;
+    align-items: center;
+    background: #e8e8e8;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Cuando el item está activo, el fondo cambia a azul */
+.optionItem.active {
+    background: #00589e;
+}
+
+/* ESTA ES LA REGLA CLAVE: Cambia el texto a blanco cuando el padre está activo */
+.optionItem.active .optionLabel {
+    color: #ffffff;
+}
+
+.optionLabel {
+    flex: 1;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #00589e; /* Color azul por defecto */
+    margin-right: 26px; /* Para compensar el espacio del círculo a la izquierda */
+    transition: color 0.3s ease;
+}
+
+.checkboxCircle {
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.innerDot {
+    width: 12px;
+    height: 12px;
+    background: #00589e;
+    border-radius: 50%;
+}
+/* BOTÓN DE CONTACTO */
+.contactBtn {
+    padding: 16px 60px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    /* Centrado respecto a su columna de opciones */
+    margin: 24px auto 0 auto;
+}
+
+.contactBtn.disabled {
+    background-color: #a5c0d6;
+    color: white;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contactBtn.enabled {
+    background-color: #00589e;
+    color: white;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .title { font-size: 48px; }
+    .contentWrapper { gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        align-items: center; /* En mobile volvemos a centrar */
+    }
+    .textSide {
+        align-items: center;
+    }
+    .title, .description {
+        text-align: center;
+    }
+    .interactiveSide {
+        align-items: center;
+    }
+}

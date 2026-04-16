@@ -14,6 +14,10 @@ import StatsBar from "@/features/home/StatsBar/StatsBar";
 import {Header} from "@/shared/components/layout/Header/Header";
 import StormAlert from "@/shared/components/StormAlert/StormAlert";
 import AdvancedIsHere from "@/features/home/AdvancedIsHere/AdvancedIsHere";
+import BeforeAndAfter from "@/features/home/BeforeAndAfter/BeforeAndAfter";
+import StormDamageCheck from "@/features/home/StormDamageCheck/StormDamageCheck";
+import OurProjects from "@/features/home/OurProjects/OurProjects";
+import Financing from "@/features/home/Financing/Financing";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -21,13 +25,17 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
-            <StatsBar/>
             <OurServices />
+            <StatsBar/>
             <AboutHome />
             <StormRecovery />
             <AwardsBanner />
             <WhyChooseUs />
             <AdvancedIsHere/>
+            <BeforeAndAfter/>
+            <StormDamageCheck/>
+            <OurProjects/>
+            <Financing/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
