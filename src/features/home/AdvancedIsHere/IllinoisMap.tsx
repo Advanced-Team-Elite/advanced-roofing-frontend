@@ -1,12 +1,13 @@
 // components/IllinoisMap.tsx
 import React from 'react';
-import styles from './AdvancedIsHere.module.css'; // Asegúrate de que la ruta sea correcta
+import styles from './AdvancedIsHere.module.css';
 
 interface IllinoisMapProps extends React.SVGProps<SVGSVGElement> {
-    activeId?: string | null; // Agregamos la prop personalizada
+    activeId?: string | null;
+    highlightedIds?: Set<string>; // Agregamos esta prop
 }
 
-export const IllinoisMap = ({ activeId, ...props }: IllinoisMapProps) => (
+export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapProps) => (
     <svg
         viewBox="0 0 42 76" // Asegúrate de usar el viewBox original de tu SVG
         {...props}
