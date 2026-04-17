@@ -191,17 +191,18 @@
 }
 
 .quoteWrapper {
+    --drawer-width: 950px;
     position: fixed;
     top: 0;
-    right: -950px; /* Ancho del drawer */
+    right: calc(var(--drawer-width) * -1);
     height: 100vh;
     display: flex;
-    align-items: center; /* Centra el botón verticalmente */
+    align-items: center;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 10001;
+    width: var(--drawer-width); /* Definimos el ancho del contenedor */
 }
 
-/* Estado abierto: movemos todo el conjunto hacia la izquierda */
 .wrapperOpen {
     right: 0;
 }
@@ -234,7 +235,7 @@
 
 /* El Drawer con más Width */
 .quoteDrawer {
-    width: 950px; /* Ancho ampliado según tu corrección */
+    width: 100%; /* Ocupa todo el wrapper */
     height: 100%;
     background: white;
     display: flex;
@@ -358,18 +359,28 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 1024px) {
+    .quoteWrapper {
+        --drawer-width: 80%; /* En tablets no ocupa todo, pero sí la gran mayoría */
+    }
+}
+
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
 
     .quoteWrapper {
+        --drawer-width: 100%;
         right: -100%;
-        width: 100%;
     }
-    .quoteDrawer {
-        width: 100%;
+
+    .wrapperOpen {
+        right: 0;
     }
+
     .quoteSideBtn {
-        left: -46px;
+        left: -44px; /* Un poco más pequeño en móvil */
+        padding: 25px 8px;
+        font-size: 0.9rem;
     }
 
     .contactContainer {
@@ -377,7 +388,8 @@
     }
 
     .menuWithBubble {
-        bottom: 190px;
+        bottom: 180px;
+        right: 20px;
     }
 
     .menuWithoutBubble {

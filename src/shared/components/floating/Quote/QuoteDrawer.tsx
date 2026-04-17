@@ -82,7 +82,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
                         <div className={styles.drawerContent}>
                             {step === "search" ? (
-                                <div className="flex flex-col flex-1 px-12 pb-10">
+                                <div className="flex flex-col flex-1 px-4 sm:px-8 md:px-12 pb-10">
                                     <div className="text-center mb-8">
                                         <h1 className="text-4xl font-black text-[#00589e] mb-2 tracking-tight">
                                             What Will My Roof Cost?
@@ -128,7 +128,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                 </div>
                             ) : (
                                 /* ── STEP 2: CALCULADORA Y COTIZACIÓN ─────────────────────────────── */
-                                <div className="flex flex-col flex-1 px-12 pb-10 animate-in fade-in duration-500">
+                                <div className="flex flex-col flex-1 px-4 sm:px-8 md:px-12 pb-10 animate-in fade-in duration-500">
                                     {/* Cabecera del Step 2 con botón de retorno */}
                                     <div className="mb-8">
                                         <button

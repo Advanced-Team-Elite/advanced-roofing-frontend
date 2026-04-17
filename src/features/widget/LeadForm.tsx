@@ -219,7 +219,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                     {/* Error */}
                     {error && (
                         <p className="text-xs font-bold text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2.5 flex items-center gap-2">
-                            <span>⚠️</span> {error}
+                            {error}
                         </p>
                     )}
                 </div>
