@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import styles from './FloatingActions.module.css';
+import { QuoteDrawer } from './Quote/QuoteDrawer';
 
 interface IconProps {
     size?: number;
@@ -34,6 +35,7 @@ export const FloatingActions = () => {
     const [isReading, setIsReading] = useState(false);
     const [mounted, setMounted] = useState(false);
     const lastScrollY = useRef(0);
+    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
 
     useEffect(() => {
@@ -114,6 +116,14 @@ export const FloatingActions = () => {
 
     return (
         <>
+
+            {/* Componente Modularizado */}
+            <QuoteDrawer isOpen={isQuoteOpen} setIsOpen={setIsQuoteOpen} />
+
+            {/* Overlay sutil */}
+            {isQuoteOpen && <div className={styles.drawerOverlay} onClick={() => setIsQuoteOpen(false)} />}
+
+
 
             {/* Menú de Accesibilidad */}
             {isMenuOpen && (

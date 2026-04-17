@@ -190,6 +190,168 @@
     background: #d4ac0d;
 }
 
+.quoteWrapper {
+    position: fixed;
+    top: 0;
+    right: -950px; /* Ancho del drawer */
+    height: 100vh;
+    display: flex;
+    align-items: center; /* Centra el botón verticalmente */
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10001;
+}
+
+/* Estado abierto: movemos todo el conjunto hacia la izquierda */
+.wrapperOpen {
+    right: 0;
+}
+
+/* Botón: Ahora su posición es relativa al contenedor quoteWrapper */
+.quoteSideBtn {
+    position: absolute;
+    left: -48px; /* Lo sacamos hacia afuera para que siempre sea visible */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #00ccff;
+    color: white;
+    border: none;
+    padding: 35px 10px;
+    border-radius: 12px 0 0 12px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.quoteText {
+    font-size: 1.1rem;
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+/* El Drawer con más Width */
+.quoteDrawer {
+    width: 950px; /* Ancho ampliado según tu corrección */
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+.drawerTitle {
+    margin: 0;
+    color: #00589e;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: var(--font-prompt);
+}
+
+/* Overlay sutil para el resto de la página */
+.drawerOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 10000;
+}
+
+.brandSubtitle {
+    color: #00589e;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.stepContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.mapContainer {
+    flex: 1;
+    min-height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.mapLoading {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.mainActionBtn {
+    background: #00589e;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mainActionBtn:hover {
+    transform: scale(1.02);
+    background: #004277;
+}
+
+.backBtn {
+    background: none;
+    border: none;
+    color: #666;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    width: fit-content;
+}
+
+.addressBadge {
+    background: #f4f7f9;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border-left: 4px solid #00589e;
+}
+
+.errorBox {
+    background: #fff5f5;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #feb2b2;
+}
+
+:global(.pac-container) {
+    z-index: 100000 !important;
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: none;
+    font-family: var(--font-open-sans);
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -197,6 +359,18 @@
 
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
+
+    .quoteWrapper {
+        right: -100%;
+        width: 100%;
+    }
+    .quoteDrawer {
+        width: 100%;
+    }
+    .quoteSideBtn {
+        left: -46px;
+    }
+
     .contactContainer {
         width: 100%;
     }
