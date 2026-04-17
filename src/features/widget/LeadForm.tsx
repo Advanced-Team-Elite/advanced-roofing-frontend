@@ -111,18 +111,20 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
 
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-5 sm:p-8 rounded-2xl shadow-2xl border border-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-5 sm:p-8 rounded-2xl shadow-sm border border-gray-100">
 
                 {/* ── Columna izquierda: formulario ─────────────────────────── */}
                 <div className="space-y-5">
                     <div>
                         <button
                             onClick={onBack}
-                            className="text-sm text-gray-500 hover:text-black font-bold flex items-center gap-1 mb-4 transition-colors"
+                            className="text-sm text-gray-500 hover:text-[#00589e] font-bold flex items-center gap-1 mb-4 transition-colors group"
                         >
-                            ← Back to estimate
+                            <span className="transition-transform group-hover:-translate-x-1">←</span> Back to estimate
                         </button>
-                        <h3 className="text-2xl font-black text-gray-900 tracking-tight">Get Your Free Quote</h3>
+                        <h3 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+                            Get Your Free Quote
+                        </h3>
                         <p className="text-sm text-gray-500 mt-1">
                             A specialist will contact you within 24 hours.
                         </p>
@@ -139,7 +141,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                 value={form.firstName}
                                 onChange={handleChange}
                                 placeholder="John"
-                                className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all shadow-sm"
+                                className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-[#00589e] focus:ring-1 focus:ring-[#00589e] transition-all shadow-sm"
                             />
                         </div>
                         <div>
@@ -151,7 +153,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                 value={form.lastName}
                                 onChange={handleChange}
                                 placeholder="Smith"
-                                className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all shadow-sm"
+                                className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-[#00589e] focus:ring-1 focus:ring-[#00589e] transition-all shadow-sm"
                             />
                         </div>
                     </div>
@@ -167,7 +169,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                             value={form.email}
                             onChange={handleChange}
                             placeholder="john@email.com"
-                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all shadow-sm"
+                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-[#00589e] focus:ring-1 focus:ring-[#00589e] transition-all shadow-sm"
                         />
                     </div>
 
@@ -182,7 +184,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                             value={form.phone}
                             onChange={handleChange}
                             placeholder="(312) 555-0000"
-                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all shadow-sm"
+                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-[#00589e] focus:ring-1 focus:ring-[#00589e] transition-all shadow-sm"
                         />
                     </div>
 
@@ -196,22 +198,22 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                             value={form.address}
                             onChange={handleChange}
                             placeholder="123 Main St, Chicago, IL"
-                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all shadow-sm"
+                            className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm text-black outline-none bg-gray-50 focus:bg-white focus:border-[#00589e] focus:ring-1 focus:ring-[#00589e] transition-all shadow-sm"
                         />
                     </div>
 
-                    {/* Checkbox PDF */}
-                    <label className="flex items-center gap-3 cursor-pointer group bg-gray-50 p-3 rounded-lg border border-gray-100 hover:border-gray-300 transition-all">
+                    {/* Checkbox PDF con acento azul */}
+                    <label className="flex items-center gap-3 cursor-pointer group bg-blue-50/30 p-3 rounded-lg border border-blue-100/50 hover:border-[#00589e] transition-all">
                         <input
                             type="checkbox"
                             name="sendPdf"
                             checked={form.sendPdf}
                             onChange={handleChange}
-                            className="w-4 h-4 accent-black cursor-pointer"
+                            className="w-4 h-4 accent-[#00589e] cursor-pointer"
                         />
                         <span className="text-sm text-gray-600 group-hover:text-black font-medium transition-colors">
-            Send me a PDF copy of this estimate to my email
-        </span>
+                        Send me a copy of this estimate to my email
+                    </span>
                     </label>
 
                     {/* Error */}
@@ -223,10 +225,12 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                 </div>
 
                 {/* ── Columna derecha: resumen del presupuesto ──────────────── */}
-                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col justify-between shadow-sm">
+                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col justify-between shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#00589e]" />
+
                     <div>
                         <h3 className="text-lg font-black text-gray-900 mb-1 uppercase tracking-tight">Your Estimate Summary</h3>
-                        <div className="flex items-center gap-1.5 text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-6">
+                        <div className="flex items-center gap-1.5 text-[10px] text-[#00589e] font-bold uppercase tracking-widest mb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
                                 <circle cx="12" cy="9" r="2.5" fill="currentColor" stroke="none"/>
@@ -246,41 +250,41 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                             <div className="flex justify-between text-gray-500">
                                 <span className="font-medium">Pitch:</span>
                                 <span className="font-bold text-gray-900">
-                                    {PITCH_LABELS[quote.pitch] ?? quote.pitch.replace('_', ' ')}
-                                </span>
+                                {PITCH_LABELS[quote.pitch] ?? quote.pitch.replace('_', ' ')}
+                            </span>
                             </div>
 
                             {/* Desglose de costos con línea punteada */}
                             <div className="border-t border-dashed border-gray-300 pt-4 mt-4 space-y-2.5">
                                 <div className="flex justify-between text-gray-500">
                                     <span>Materials</span>
-                                    <span className="font-bold text-gray-500">xxx</span>
+                                    <span className="font-bold text-gray-700">xxx</span>
                                 </div>
                                 <div className="flex justify-between text-gray-500">
                                     <span>Labor</span>
-                                    <span className="font-bold text-gray-500">xxx</span>
+                                    <span className="font-bold text-gray-700">xxx</span>
                                 </div>
                                 <div className="flex justify-between text-gray-500">
                                     <span>Tear-off</span>
-                                    <span className="font-bold text-gray-500">xxx</span>
+                                    <span className="font-bold text-gray-700">xxx</span>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Total con tipografía impactante */}
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-t-2 border-gray-900 pt-5 gap-1">
-                            <span className="text-gray-500 font-black text-xs uppercase tracking-widest">Total Estimate</span>
-                            <span className="text-4xl font-black text-gray-900 tracking-tighter">
-                ${quote.total.toLocaleString()}
-            </span>
+                        {/* Total con tipografía impactante en Azul */}
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-t-2 border-[#00589e] pt-5 gap-1">
+                            <span className="text-gray-400 font-black text-xs uppercase tracking-widest">Total Estimate</span>
+                            <span className="text-4xl font-black text-[#00589e] tracking-tighter">
+                            ${quote.total.toLocaleString()}
+                        </span>
                         </div>
                     </div>
 
-                    {/* CTA Final en Negro Sólido */}
+                    {/* CTA Final en Azul Institucional */}
                     <button
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="mt-8 w-full bg-gray-900 hover:bg-black disabled:bg-gray-300 text-white font-black text-lg py-4 rounded-xl shadow-xl transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2 group"
+                        className="mt-8 w-full bg-[#00589e] hover:bg-[#004a85] disabled:bg-gray-300 text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2 group"
                     >
                         {loading ? (
                             <>

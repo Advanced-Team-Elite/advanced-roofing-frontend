@@ -6,6 +6,62 @@
   --font-prompt: var(--font-prompt), sans-serif;
 }
 
+/* 1. Contenedor principal de sugerencias */
+.pac-container {
+  border-radius: 0 0 12px 12px !important;
+  /* Usamos un gris suave en lugar de negro/azul fuerte */
+  border: 1px solid #e5e7eb !important;
+  border-top: none !important; /* Mantenemos esto para que no se duplique con el borde del input */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+  font-family: inherit !important;
+  padding: 0 !important;
+  padding-bottom: 4px !important; /* Un pequeño respiro al final */
+  /* Ajustamos para que encaje perfecto sin "cortar" la línea del input */
+  margin-top: 0px !important;
+  z-index: 999999 !important;
+}
+
+/* 2. Cada item de la lista */
+.pac-item {
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  color: #6b7280 !important; /* Gris suave para el texto secundario */
+  cursor: pointer !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1.5 !important;
+}
+
+.pac-item:last-child {
+  border-bottom: none !important;
+}
+
+/* 3. El texto principal que coincide con la búsqueda */
+.pac-item-query {
+  font-size: 15px !important;
+  color: #1f2937 !important; /* Gris oscuro para el nombre de la calle */
+  padding-right: 4px !important;
+  font-weight: 600 !important;
+}
+
+/* 4. El icono de PIN a la izquierda de cada sugerencia */
+.pac-icon {
+  margin-top: 2px !important;
+  /* Si quieres ocultar el icono de Google por defecto y usar uno más minimalista */
+  filter: grayscale(100%) opacity(0.5) !important;
+}
+
+.pac-item:hover {
+  background-color: #f9fafb !important;
+}
+
+/* 5. Link de "I can't find my address" al final
+/* Ocultar el logo de Google al final */
+.hdpi.pac-logo:after {
+  display: none !important;
+}
+
 /* Estilos base usando la sintaxis moderna */
 @layer base {
   body {

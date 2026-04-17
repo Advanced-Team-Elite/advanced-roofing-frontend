@@ -104,11 +104,20 @@ export const AddressSearch = ({
             onPlaceChanged={handlePlaceChanged}
             options={{ componentRestrictions: { country: "us" }, types: ["address"] }}
         >
-            <input
-                type="text"
-                placeholder={defaultPlaceholder}
-                className="w-full px-4 py-3 text-sm text-gray-800 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-black bg-white shadow-sm"
-            />
+            <div className="relative flex items-center group">
+                <div className="absolute left-4 text-gray-400 group-focus-within:text-gray-600/10 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <input
+                    type="text"
+                    placeholder={defaultPlaceholder}
+                    className="w-full pl-12 pr-4 py-4 text-lg text-gray-700 border-2 border-gray-200 rounded-xl outline-none focus:border-gray-300 focus:ring-0 bg-white transition-all
+               "
+                />
+            </div>
         </Autocomplete>
     );
 };
