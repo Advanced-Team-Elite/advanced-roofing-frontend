@@ -119,36 +119,28 @@ export default function AdvancedIsHere() {
                         </div>
 
                         {/* Reemplaza el <ul className={styles.countyList}> completo por esto */}
-                        <div className={styles.accordion}>
-                            <div className={styles.accordionLabel}>Our Offices</div>
-                            {COUNTIES_DATA.map(({ county, label, cities }) => (
-                                <div key={county} className={styles.accordionItem}>
-                                    <button
-                                        className={`${styles.accordionHeader} ${selectedCounty === county ? styles.accordionHeaderActive : ''}`}
-                                        onClick={() => handleCountyClick(county)}
-                                    >
-                                        <span className={styles.accordionDot} />
-                                        <span className={styles.accordionName}>{label}</span>
-                                        <svg
-                                            className={`${styles.accordionChevron} ${selectedCounty === county ? styles.accordionChevronOpen : ''}`}
-                                            width="14" height="14" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" strokeWidth="2.5"
-                                        >
-                                            <polyline points="6 9 12 15 18 9" />
-                                        </svg>
-                                    </button>
-                                    {selectedCounty === county && (
-                                        <div className={styles.accordionBody}>
-                                            {cities.map(c => (
-                                                <span key={c} className={styles.accordionCity}>
-                            <span className={styles.accordionCityDot} />
-                                                    {c}
-                        </span>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                        <div className={styles.selectWrapper}>
+                            <select
+                                className={styles.countySelect}
+                                value={selectedCounty ?? ''}
+                                onChange={(e) => setSelectedCounty(e.target.value || null)}
+                            >
+                                <option value="">Our Offices</option>
+                                {COUNTIES_DATA.map(({ county, label }) => (
+                                    <option key={county} value={county}>{label}</option>
+                                ))}
+                            </select>
+
+                            {selectedCounty && (
+                                <ul className={styles.cityList}>
+                                    {COUNTIES_DATA.find(c => c.county === selectedCounty)?.cities.map(city => (
+                                        <li key={city} className={styles.cityItem}>
+                                            <span className={styles.cityDot} />
+                                            {city}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                     </div>
 

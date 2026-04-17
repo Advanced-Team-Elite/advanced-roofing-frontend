@@ -280,108 +280,50 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
-
-.accordion {
-    background: white;
-    border-radius: 14px;
-    border: 1px solid rgba(0,0,0,0.08);
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-
-.accordionLabel {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #999;
-    padding: 14px 16px 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.accordionItem {
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.accordionItem:last-child {
-    border-bottom: none;
-}
-
-.accordionHeader {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    transition: background 0.15s ease;
-}
-
-.accordionHeader:hover {
-    background: rgba(0, 88, 158, 0.04);
-}
-
-.accordionHeaderActive {
-    background: rgba(0, 88, 158, 0.07) !important;
-}
-
-.accordionDot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #00589e;
-    opacity: 0.45;
-    flex-shrink: 0;
-    transition: opacity 0.2s;
-}
-
-.accordionHeaderActive .accordionDot {
-    opacity: 1;
-}
-
-.accordionName {
-    flex: 1;
-    font-size: 13px;
-    font-weight: 600;
-    color: #1a1a2e;
-}
-
-.accordionChevron {
-    color: #bbb;
-    flex-shrink: 0;
-    transition: transform 0.25s ease, color 0.2s;
-}
-
-.accordionChevronOpen {
-    transform: rotate(180deg);
-    color: #00589e;
-}
-
-.accordionBody {
-    padding: 6px 16px 14px 34px;
+.selectWrapper {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 14px;
 }
 
-.accordionCity {
+.countySelect {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    appearance: auto;
+}
+
+.cityList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cityItem {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
-    color: #00589e;
+    font-size: 13px;
     font-weight: 500;
+    color: #1a1a2e;
 }
 
-.accordionCityDot {
-    width: 4px;
-    height: 4px;
+.cityDot {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: #00589e;
-    opacity: 0.6;
     flex-shrink: 0;
 }
 
