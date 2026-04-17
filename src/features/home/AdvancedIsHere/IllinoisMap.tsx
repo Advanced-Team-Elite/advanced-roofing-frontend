@@ -5,11 +5,20 @@ import styles from './AdvancedIsHere.module.css';
 interface IllinoisMapProps extends React.SVGProps<SVGSVGElement> {
     activeId?: string | null;
     highlightedIds?: Set<string>; // Agregamos esta prop
+    onCountyClick?: (countyId: string) => void;
 }
 
-export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapProps) => (
+export const IllinoisMap = ({ activeId, highlightedIds, onCountyClick, ...props }: IllinoisMapProps) => (
     <svg
-        viewBox="0 0 42 76" // Asegúrate de usar el viewBox original de tu SVG
+        viewBox="0 0 42 76"
+
+        onClick={(e) => {
+            const target = e.target as SVGPathElement;
+            if (target.tagName === 'path' && target.id && highlightedIds?.has(target.id)) {
+                onCountyClick?.(target.id);
+            }
+        }}
+
         {...props}
     >
         <path
@@ -338,7 +347,9 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Piatt"
         />
         <path
-            className={activeId === "Champaign" ? styles.pathActive : ""}
+            className={activeId === "Champaign" ? styles.pathActive
+                : highlightedIds?.has("Champaign") ? styles.pathHighlighted
+                    : ""}
             d="m 30.849866,30.035068 5.146762,-0.06418 0.06762,2.259618 -0.1316,0.0034 0.108235,4.490229 -5.160727,0.0632 -0.01322,-5.228327 -0.01704,-1.524121"
             id="Champaign"
         />
@@ -408,7 +419,9 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Putnam"
         />
         <path
-            className={activeId === "Livingston" ? styles.pathActive : ""}
+            className={activeId === "Livingston" ? styles.pathActive
+                : highlightedIds?.has("Livingston") ? styles.pathHighlighted
+                    : ""}
             d="m 29.562461,20.833473 3.232647,-0.103139 0.05562,1.545934 0.169693,4.891648 -2.183585,0.02791 -1.118229,0.01908 -0.08511,-0.70088 -0.02217,-1.131478 -3.354615,0.07033 -0.02718,-2.264735 -0.0015,-2.315029 3.334373,-0.03969"
             id="Livingston"
         />
@@ -424,7 +437,9 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Grundy"
         />
         <path
-            className={activeId === "Will" ? styles.pathActive : ""}
+            className={activeId === "Will" ? styles.pathActive
+                : highlightedIds?.has("Will") ? styles.pathHighlighted
+                    : ""}
             d="m 32.617629,12.800349 2.234328,0.480981 0.02215,0.572046 2.305715,2.198481 2.545598,-0.04308 0.03071,2.2289 -4.696573,0.147586 0.01533,0.429199 -0.539234,0.711267 -1.68202,0.0659 -0.108727,-3.392454 -0.127318,-3.398801"
             id="Will"
         />
@@ -474,7 +489,9 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Ogle"
         />
         <path
-            className={activeId === "DeKalb" ? styles.pathActive : ""}
+            className={activeId === "DeKalb" ? styles.pathActive
+                : highlightedIds?.has("DeKalb") ? styles.pathHighlighted
+                    : ""}
             d="m 29.450664,7.2597417 -0.09201,5.6328373 0.0033,1.14316 -3.225441,0.05856 -0.03532,-3.423286 0.0067,-3.3801735 2.230467,-0.024591 1.112308,-0.00649"
             id="DeKalb"
         />
@@ -484,18 +501,26 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Kane"
         />
         <path
-            className={activeId === "DuPage" ? styles.pathActive : ""}
+            className={activeId === "DuPage" ? styles.pathActive
+                : highlightedIds?.has("DuPage") ? styles.pathHighlighted
+                    : "" }
             d="m 32.613638,12.800063 -0.0416,-3.391652 2.212319,-0.1070963 0.955356,-0.026763 0.107111,0.4638452 0.101888,3.1242804 -1.096742,0.418657 -2.234327,-0.480982 -0.0041,-2.78e-4"
             id="DuPage"
         />
         <path
-            className={activeId === "Cook" ? styles.pathActive : ""}
+            className={
+                activeId === "Cook" ? styles.pathActive
+                    : highlightedIds?.has("Cook") ? styles.pathHighlighted
+                        : ""
+            }
             d="m 33.157801,7.2226987 4.187124,-0.033718 0.857049,1.3447169 0.412931,1.4843228 0.08467,0.400061 0.06853,0.428991 0.07319,0.307032 0.0301,0.08338 0.05719,0.153481 0.242107,0.524652 0.515937,0.998442 0.03882,3.094698 -2.545597,0.0431 -2.305718,-2.198482 -0.02215,-0.572048 1.096742,-0.418656 -0.101889,-3.1242844 -0.10712,-0.4638439 -0.955357,0.026763 -2.212318,0.1070965 0.215416,-2.1801787 0.370342,-0.00554"
             id="Cook"
             data-projects="7827"
         />
         <path
-            className={activeId === "Lake" ? styles.pathActive : ""}
+            className={activeId === "Lake" ? styles.pathActive
+                : highlightedIds?.has("Lake") ? styles.pathHighlighted
+                    : ""}
             d="m 33.100848,2.7862735 3.786992,0.00979 0.0041,2.682e-4 0.0266,0.2585603 -0.05394,1.1300368 -0.104877,0.260168 -0.03915,0.042311 -0.09207,0.4034496 -0.0272,0.3790257 0.06106,0.4064136 0.164389,0.4900069 0.121326,0.3074615 0.39688,0.7152062 -4.187125,0.033718 -0.05694,-4.4364249"
             id="Lake"
         />
@@ -510,7 +535,9 @@ export const IllinoisMap = ({ activeId, highlightedIds, ...props }: IllinoisMapP
             id="Boone"
         />
         <path
-            className={activeId === "Winnebago" ? styles.pathActive : ""}
+            className={activeId === "Winnebago" ? styles.pathActive
+                : highlightedIds?.has("Winnebago") ? styles.pathHighlighted
+                    : ""}
             d="m 26.088483,2.8480654 0.01939,4.4427558 -2.219848,0.030361 8.39e-4,-0.6987192 -2.126159,0.024049 -0.0445,-3.8690804 0.338638,0.00321 4.031496,0.067409"
             id="Winnebago"
         />

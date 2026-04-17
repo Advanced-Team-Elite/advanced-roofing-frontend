@@ -22,23 +22,22 @@
 .flairBg {
     position: absolute;
     top: 34%;
-    left: -20%; /* Lo sacamos un poco a la izquierda para que el pico del Flair luzca mejor */
+    left: -20%;
     transform: translateY(-50%);
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    opacity: 0.25; /* Bajamos un poco más para estilo "watermark" */
+    opacity: 0.25;
     z-index: 0;
-    overflow: visible; /* CRITICO: Permite que el contenido desborde el contenedor */
+    overflow: visible;
 }
 
 .flairBg svg {
-    /* En lugar de px fijos, usemos VW (View Width) para que sea relativo a la pantalla */
     width: 110vw !important;
-    max-width: none !important; /* Elimina cualquier restricción heredada */
+    max-width: none !important;
     height: auto !important;
-    flex-shrink: 0; /* Evita que el contenedor flex lo comprima */
+    flex-shrink: 0;
 }
 
 .flairBg svg path {
@@ -61,71 +60,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     padding-bottom: 10px;
-    gap: 16px;
-}
-
-.searchContainer {
-    position: relative;
-    width: 100%;
-    max-width: 680px;
-    margin-bottom: 40px;
-}
-
-.suggestionsList {
-    position: absolute;
-    top: 100%; /* Justo debajo del input */
-    left: 0;
-    right: 0;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 5px;
-    padding: 0;
-    list-style: none;
-    z-index: 100; /* Por encima del SVG */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.suggestionsList li {
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
-}
-
-.suggestionsList li:hover {
-    background-color: #f5f5f5;
-    color: #007bff; /* O tu color de acento */
-}
-
-.noResult {
-    color: #999 !important;
-    font-style: italic;
-}
-
-.mapSearch {
-    width: 100%;
-    padding: 12px 44px 12px 18px;
-    border-radius: 50px;
-    border: none;
-    background: white;
-    font-size: 14px;
-    color: #333;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    outline: none;
-}
-
-.mapSearch::placeholder { color: #aaa; }
-
-.searchIcon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #555;
-    pointer-events: none;
+    gap: 32px;
 }
 
 .textContent {
@@ -155,13 +92,87 @@
 .highlight { color: #00589e; }
 
 .description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #555;
     line-height: 1.65;
     margin: 0;
 }
 
 .description strong { color: #1a1a2e; }
+
+/* LISTA DE COUNTIES */
+.countyList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.countyItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.countyItem:hover {
+    background: rgba(0, 88, 158, 0.06);
+    border-color: rgba(0, 88, 158, 0.15);
+}
+
+.countyItemActive {
+    background: rgba(0, 88, 158, 0.1) !important;
+    border-color: rgba(0, 88, 158, 0.3) !important;
+}
+
+.countyDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00589e;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.countyItemActive .countyDot {
+    opacity: 1;
+}
+
+.countyInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.countyName {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.countyCities {
+    font-size: 11px;
+    color: #00589e;
+    font-weight: 500;
+}
+
+.countyChevron {
+    color: #aaa;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.countyItemActive .countyChevron {
+    color: #00589e;
+}
 
 /* LADO DERECHO — MAPA */
 .mapSide {
@@ -176,79 +187,204 @@
 .mapWrapper {
     height: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 100px;
+    padding: 0 60px;
+}
+
+/* Contenedor relativo para superponer pins sobre el SVG */
+.mapRelative {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .svgMap {
     height: 100%;
     width: auto;
     pointer-events: auto;
+    display: block;
 }
 
-/* Estilos de paths del mapa */
+/* Overlay de pins: mismo tamaño y posición que el SVG */
+.pinOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.pinGroup {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+/* Paths del mapa base */
 .svgMap path {
     fill: #dfdada;
     stroke: #ffffff;
     stroke-width: 0.9px;
-    transition: fill 0.25s ease;
-    cursor: pointer;
+    transition: fill 0.25s ease, opacity 0.25s ease;
+    cursor: default;
     vector-effect: non-scaling-stroke;
 }
 
-.svgMap path:hover {
+/* Counties activos: azul con opacidad por defecto */
+.svgMap path.pathHighlighted {
     fill: #00589e;
+    opacity: 0.4;
+    cursor: pointer;
 }
 
-.svgMap path {
-    fill: #dfdada;
-    /* ... rest ... */
+/* Hover sobre county activo */
+.svgMap path.pathHighlighted:hover {
+    opacity: 0.75;
 }
 
-/* Esta clase se activa mediante la búsqueda */
+/* County seleccionado: azul sólido */
 .svgMap path.pathActive {
-    fill: #00589e !important; /* El color azul de Advanced */
-    filter: drop-shadow(0 0 8px rgba(0, 88, 158, 0.5));
-    stroke: #ffffff;
-    stroke-width: 2px;
+    fill: #00589e !important;
+    opacity: 1 !important;
+    cursor: pointer;
 }
 
-/* Mantenemos el hover para que funcione igual */
-.svgMap path:hover {
-    fill: #00589e;
-}
-
-/* TOOLTIP */
-.tooltip {
+/* PIN TOOLTIP */
+.pinTooltip {
     position: fixed;
-    padding: 14px 20px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.2);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    backdrop-filter: blur(14px) saturate(180%);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-    border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0, 88, 158, 0.15);
     pointer-events: none;
     z-index: 10000;
 }
 
-.tooltipNumber {
-    font-size: 26px;
-    font-weight: 900;
+.pinTooltipCity {
+    font-size: 13px;
+    font-weight: 700;
     color: #1a1a2e;
-    line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
-.tooltipLabel {
+.pinTooltipCounty {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
+    color: #00589e;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #444;
+    letter-spacing: 0.06em;
 }
+
+.accordion {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.accordionLabel {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #999;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.accordionItem {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.accordionItem:last-child {
+    border-bottom: none;
+}
+
+.accordionHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease;
+}
+
+.accordionHeader:hover {
+    background: rgba(0, 88, 158, 0.04);
+}
+
+.accordionHeaderActive {
+    background: rgba(0, 88, 158, 0.07) !important;
+}
+
+.accordionDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00589e;
+    opacity: 0.45;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+
+.accordionHeaderActive .accordionDot {
+    opacity: 1;
+}
+
+.accordionName {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.accordionChevron {
+    color: #bbb;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.2s;
+}
+
+.accordionChevronOpen {
+    transform: rotate(180deg);
+    color: #00589e;
+}
+
+.accordionBody {
+    padding: 6px 16px 14px 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.accordionCity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #00589e;
+    font-weight: 500;
+}
+
+.accordionCityDot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00589e;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 1280px) {
@@ -260,15 +396,10 @@
         flex-direction: column;
         gap: 30px;
     }
-
     .flairBg {
-        position: absolute;
         top: 14%;
         left: -8%;
-        transform: translateY(-50%);
-        pointer-events: none;
     }
-
     .infoSide {
         flex: none;
         width: 100%;
@@ -284,19 +415,16 @@
 }
 
 @media (max-width: 640px) {
-    .outerContainer { padding: 40px 16px;  }
-    .mapCard { padding: 36px 24px; border-radius: 20px;  }
+    .outerContainer { padding: 40px 16px; }
+    .mapCard { padding: 36px 24px; border-radius: 20px; }
     .title { font-size: 36px; }
     .mapSide {
-        height: 450px; /* Alto generoso para que el mapa respire en móvil */
+        height: 450px;
         margin-top: 20px;
     }
-    .mapWrapper {
-        padding: 0; /* Aseguramos que use todo el ancho */
-    }
-
+    .mapWrapper { padding: 0; }
     .svgMap {
-        height: 100%; /* Que ocupe los 450px de alto */
+        height: 100%;
         width: auto;
     }
 }
