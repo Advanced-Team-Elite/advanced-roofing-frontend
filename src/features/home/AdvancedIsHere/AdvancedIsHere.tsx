@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './AdvancedIsHere.module.css';
 import { FlairIcon } from '@/shared/Icons/Icons';
 import { IllinoisMap } from './IllinoisMap';
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 interface Office {
     city: string;
@@ -99,7 +100,7 @@ export default function AdvancedIsHere() {
     };
 
     return (
-        <section className={styles.outerContainer}>
+        <ScrollReveal className={styles.outerContainer} direction="right">
             <div className={styles.mapCard}>
                 <div className={styles.flairBg}>
                     <FlairIcon size={2100} />
@@ -219,6 +220,6 @@ export default function AdvancedIsHere() {
                     <div className={styles.pinTooltipCounty}>{pinTooltip.county} County</div>
                 </div>
             )}
-        </section>
+        </ScrollReveal>
     );
 }

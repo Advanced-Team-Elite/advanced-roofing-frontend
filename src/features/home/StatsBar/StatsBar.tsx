@@ -1,5 +1,6 @@
 import styles from './StatsBar.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const StatsBar = () => {
     return (
@@ -20,7 +21,7 @@ const StatsBar = () => {
                 </div>
 
                 {/* Lado Derecho: Grid de Stats con anchos equitativos */}
-                <div className={styles.gridSide}>
+                <ScrollReveal className={styles.gridSide} direction="zoom" initialOpacity={20} distance={90} >
                     <div className={`${styles.card} ${styles.cardBlue}`}>
                         <span className={`${styles.value} ${styles.valueYellow}`}>20+</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Years of Experience</span>
@@ -40,7 +41,8 @@ const StatsBar = () => {
                         <span className={`${styles.value} ${styles.valueYellow}`}>Chicagoland</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Local Expertise</span>
                     </div>
-                </div>
+                </ScrollReveal>
+
 
             </div>
         </section>

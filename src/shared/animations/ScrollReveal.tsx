@@ -29,7 +29,7 @@ export const ScrollReveal = ({
 
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 95%", "start 30%"]
+        offset: ["start 91%", "start 30%"]
     });
 
     const isNoMovement = ['center', 'fade', 'zoom'].includes(direction);

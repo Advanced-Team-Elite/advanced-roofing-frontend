@@ -6,6 +6,7 @@ import styles from './BeforeAndAfter.module.css';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 // --- Componentes de Flechas Personalizadas ---
 const NextArrow = (props: any) => {
@@ -68,7 +69,7 @@ const BeforeAndAfter = () => {
     };
 
     return (
-        <section className={styles.mainContainer}>
+        <ScrollReveal className={styles.mainContainer} direction="left">
             <div className={styles.contentWrapper}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>Before & After</h2>
@@ -92,7 +93,7 @@ const BeforeAndAfter = () => {
                     </Slider>
                 </div>
             </div>
-        </section>
+        </ScrollReveal>
     );
 };
 

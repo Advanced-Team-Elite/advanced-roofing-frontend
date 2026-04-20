@@ -76,4 +76,18 @@
     font-weight: 700;
     line-height: 1.2;
   }
+
+  button,
+  a {
+    transition: transform 0.2s ease-in-out !important;
+    display: inline-block; /* Necesario para que transform funcione correctamente */
+    will-change: transform; /* Optimización para animaciones más fluidas */
+  }
+
+  /* Estado al hacer clic */
+  button:active,
+  a:active {
+    transform: scale(1.05) !important; /* Recomendado 1.05 en lugar de 1.5 para no romper el layout */
+  }
+
 }

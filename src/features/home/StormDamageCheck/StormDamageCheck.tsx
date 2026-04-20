@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from './StormDamageCheck.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const damageOptions = [
     { id: 'shingles', label: 'Missing or lifted shingles' },
@@ -23,7 +24,8 @@ const StormDamageCheck = () => {
     const isButtonEnabled = selectedOptions.length > 0;
 
     return (
-        <section className={styles.mainContainer}>
+
+        <ScrollReveal className={styles.mainContainer} direction="zoom">
             <div className={styles.contentWrapper}>
                 {/* Lado Izquierdo: Textos */}
                 <div className={styles.textSide}>
@@ -83,7 +85,7 @@ const StormDamageCheck = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </ScrollReveal>
     );
 };
 

@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Open_Sans, Prompt } from "next/font/google"; // Importamos las fuentes
 import { Header } from "@/shared/components/layout/Header/Header";
-import { Footer } from "@/shared/components/layout/footer/Footer";
 import {FloatingActions} from "@/shared/components/floating/FloatingActions";
-import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
-import ContactToday from "@/shared/components/ContactToday/ContactToday";
-import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
-import StormAlert from "@/shared/components/StormAlert/StormAlert";
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",

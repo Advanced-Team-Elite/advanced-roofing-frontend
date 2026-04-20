@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './OurProjects.module.css';
 import { Clock, Home, Camera } from 'lucide-react';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const projects = [
     {
@@ -50,7 +51,7 @@ const OurProjects = () => {
     const [hoveredIcon, setHoveredIcon] = useState<{projectId: number, iconType: string} | null>(null);
 
     return (
-        <section className={styles.container}>
+        <ScrollReveal className={styles.container} direction="right">
             <header className={styles.header}>
                 <h2 className={styles.title}>Our projects</h2>
                 <p className={styles.description}>
@@ -133,7 +134,7 @@ const OurProjects = () => {
             </Link>
 
 
-        </section>
+        </ScrollReveal>
     );
 };
 

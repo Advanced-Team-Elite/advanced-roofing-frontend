@@ -2,15 +2,15 @@ import Link from 'next/link';
 import styles from './ServicesList.module.css';
 
 const services = [
-    { name: 'Storm Damage Repair', href: '/services/storm-damage-repair' },
-    { name: 'Roof Installation & Replacement', href: '/services/roof-installation-replacement' },
-    { name: 'Roofing Services', href: '/services/roofing-services' },
-    { name: 'Shingle Roofing', href: '/services/shingle-roofing' },
-    { name: 'Insurance Claims', href: '/services/insurance-claims' },
-    { name: 'Commercial Roofing', href: '/services/commercial-roofing' },
-    { name: 'Roof Types', href: '/services/roof-types' },
-    { name: 'Gutters', href: '/services/gutters' },
-    { name: 'Siding', href: '/services/siding', full: true },
+    { name: 'Storm Damage Repair', href: '/roofing/storm-damage-repair' },
+    { name: 'Roof Installation & Replacement', href: '/roofing/roof-installation-replacement' },
+    { name: 'Roofing Services', href: '/roofing' },
+    { name: 'Shingle Roofing', href: '/roof-types/shingle-roofing' },
+    { name: 'Insurance Claims', href: '/roofing-insurance-claims' },
+    { name: 'Commercial Roofing', href: '/commercial-roofing' },
+    { name: 'Roof Types', href: '/roof-types' },
+    { name: 'Gutters', href: '/roofing/gutters' },
+    { name: 'Siding', href: '/roofing/siding', full: true },
 ];
 
 
