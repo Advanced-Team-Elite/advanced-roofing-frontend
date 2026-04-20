@@ -34,18 +34,18 @@ const PrevArrow = (props: any) => {
 const comparisonSlides = [
     {
         id: 1,
-        before: '/assets/images/slider/roof1-before.png',
-        after: '/assets/images/slider/roof1-after.png',
+        before: '/assets/images/slider/roof1-before.webp',
+        after: '/assets/images/slider/roof1-after.webp',
     },
     {
         id: 2,
-        before: '/assets/images/slider/roof2-before.png',
-        after: '/assets/images/slider/roof2-after.png',
+        before: '/assets/images/slider/roof2-before.webp',
+        after: '/assets/images/slider/roof2-after.webp',
     },
     {
         id: 3,
-        before: '/assets/images/slider/roof3-before.png',
-        after: '/assets/images/slider/roof3-after.png',
+        before: '/assets/images/slider/roof3-before.webp',
+        after: '/assets/images/slider/roof3-after.webp',
     },
 ];
 

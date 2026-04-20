@@ -13,7 +13,7 @@ const projects = [
         type: 'Warehouse',
         size: '85,000 sq. ft.',
         time: '3 weeks',
-        image: '/assets/images/slider/roof1-after.png',
+        image: '/assets/images/slider/roof1-after.webp',
         system: 'EPDM Roofing System',
     },
     {
@@ -22,7 +22,7 @@ const projects = [
         type: 'Office Building',
         size: '52,000 sq. ft.',
         time: '3 weeks',
-        image: '/assets/images/slider/roof2-before.png',
+        image: '/assets/images/slider/roof2-before.webp',
         system: 'EPDM Roofing System',
     },
     {
@@ -31,7 +31,7 @@ const projects = [
         type: 'Retail Complex',
         size: '40,500 sq. ft.',
         time: '3 weeks',
-        image: '/assets/images/slider/roof3-after.png',
+        image: '/assets/images/slider/roof3-after.webp',
         system: 'EPDM Roofing System',
     },
     {
@@ -40,7 +40,7 @@ const projects = [
         type: 'Residential Complex',
         size: '68,000 sq. ft.',
         time: '3 weeks',
-        image: '/assets/images/slider/roof1-before.png',
+        image: '/assets/images/slider/roof1-before.webp',
         system: 'EPDM Roofing System',
     },
 ];

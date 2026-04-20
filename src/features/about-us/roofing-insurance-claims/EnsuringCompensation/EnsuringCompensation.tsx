@@ -13,7 +13,7 @@ export const EnsuringCompensation = () => {
                 <div className={styles.imageColumn}>
                     <div className={styles.imageWrapper}>
                         <img
-                            src="/assets/images/features/about-us/content-v11.png"
+                            src="/assets/images/features/about-us/content-v11.webp"
                             alt="Owens Corning Materials"
                             className={styles.mainImage}
                         />
