@@ -21,8 +21,6 @@ const Financing = () => {
     const [apr, setApr] = useState(12.4);
     const [term, setTerm] = useState(5);
 
-    // --- SOLUCIÓN ESLINT: Cálculo derivado durante el render ---
-    // No necesitamos useEffect ni setMonthlyPayment
     const r = (apr / 100) / 12;
     const n = term * 12;
     const rawPayment = (amount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
@@ -30,13 +28,10 @@ const Financing = () => {
 
     return (
         <section className="bg-[#f0f0f0] py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans">
-            {/* Usamos un grid de 10 columnas en tablet y superior */}
             <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-center">
 
-                {/* Lado Izquierdo: Resultados (60%) */}
-                {/* md:col-span-6 equivale al 60% del contenedor */}
                 <div className="space-y-8 md:col-span-6">
-                    <div className="max-w-md mx-auto md:mx-0"> {/* mx-auto centra el contenedor en mobile */}
+                    <div className="max-w-md mx-auto md:mx-0">
                         <h2 className="text-[#005596] text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 text-center md:text-left">
                             We offer easy financing options for your project
                         </h2>
@@ -68,8 +63,6 @@ const Financing = () => {
                     </div>
                 </div>
 
-                {/* Lado Derecho: Sliders (40%) */}
-                {/* md:col-span-4 equivale al 40% del contenedor */}
                 <div className="space-y-8 md:col-span-4">
                     <SliderInput
                         label="Amount"
@@ -98,6 +91,11 @@ const Financing = () => {
                             Contact Us
                         </button>
                     </Link>
+                    <p className="text-xs text-gray-400 leading-relaxed mt-4">
+                        * Estimated payments based on credit approval. Final pricing depends on individual
+                        creditworthiness and a physical inspection of project scope and materials.
+                        Financing provided by third-party lenders.
+                    </p>
                 </div>
 
             </div>
