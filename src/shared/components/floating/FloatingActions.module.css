@@ -210,7 +210,7 @@
 /* Botón: Ahora su posición es relativa al contenedor quoteWrapper */
 .quoteSideBtn {
     position: absolute;
-    left: -48px; /* Lo sacamos hacia afuera para que siempre sea visible */
+    left: -48px;
     top: 50%;
     transform: translateY(-50%);
     background-color: #00ccff;
@@ -225,6 +225,25 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    /* Sin transition ni will-change aquí */
+}
+
+.quoteWrapper .quoteSideBtn,
+.quoteWrapper .quoteSideBtn:active,
+.quoteWrapper .quoteSideBtn:focus,
+.quoteWrapper .quoteSideBtn:hover {
+    transform: translateY(-50%) scale(1) !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Si el efecto Ripple que agregamos al global sigue molestando,
+   lo desactivamos para este botón eliminando el pseudo-elemento.
+*/
+.quoteSideBtn::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
 }
 
 .quoteText {

@@ -77,15 +77,15 @@
     position: absolute;
     bottom: 40px;
     left: 40px;
-    right: 40px; /* IMPORTANTE: Añade esto para que el contenedor llegue hasta la derecha */
+    right: 40px;
     display: flex;
-    align-items: center; /* Alinea verticalmente los iconos con el badge */
+    align-items: center;
     gap: 25px;
     z-index: 2;
 }
 
 .pushRight {
-    margin-left: auto; /* Esta es la magia que lo manda al rincón derecho */
+    margin-left: auto;
     z-index: 2 !important;
 }
 

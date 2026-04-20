@@ -66,7 +66,11 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
     return (
         <div className={`${styles.quoteWrapper} ${isOpen ? styles.wrapperOpen : ''}`}>
-            <button className={styles.quoteSideBtn} onClick={() => setIsOpen(!isOpen)}>
+            <button
+                className={styles.quoteSideBtn}
+                onClick={() => setIsOpen(!isOpen)}
+                data-no-scale
+            >
                 <span className={styles.quoteText}>Instant Roof Quote</span>
             </button>
 

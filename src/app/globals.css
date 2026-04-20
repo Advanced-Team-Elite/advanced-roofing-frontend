@@ -85,9 +85,9 @@
   }
 
   /* Estado al hacer clic */
-  button:active,
+  button:not([data-no-scale]):active,
   a:active {
-    transform: scale(1.05) !important; /* Recomendado 1.05 en lugar de 1.5 para no romper el layout */
+    transform: scale(1.05) !important;
   }
 
 }

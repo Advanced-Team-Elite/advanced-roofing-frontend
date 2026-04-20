@@ -52,7 +52,8 @@ export const ScrollReveal = ({
                 x: isMobile ? 0 : xAnim,
                 y: isMobile ? 0 : yAnim,
                 scale: isMobile ? 1 : scaleAnim,
-                willChange: isMobile ? "auto" : "transform, opacity"
+                // CAMBIO AQUÍ: Solo aplicar willChange si no es mobile Y el scroll está en rango
+                willChange: isMobile ? "auto" : "opacity, transform"
             }}
         >
             {children}
