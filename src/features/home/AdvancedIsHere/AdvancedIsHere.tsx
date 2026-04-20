@@ -197,7 +197,7 @@ export default function AdvancedIsHere() {
                                         >
                                             <path
                                                 d="M 0,-1.2 C -0.6,-1.2 -0.9,-0.7 -0.9,-0.2 C -0.9,0.5 0,1.3 0,1.3 C 0,1.3 0.9,0.5 0.9,-0.2 C 0.9,-0.7 0.6,-1.2 0,-1.2 Z"
-                                                fill="#f5a623"
+                                                fill="#f7d000"
                                             />
                                             <circle cx="0" cy="-0.2" r="0.32" fill="#00589e" />
                                         </g>

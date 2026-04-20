@@ -129,7 +129,7 @@ const OurProjects = () => {
             </div>
 
             <Link href="/our-services" className={styles.servicesLink}>
-                <button className={styles.moreBtn}>View All Projects</button>
+                <button className={styles.moreBtn}>View All Services</button>
             </Link>
 
 
