@@ -43,6 +43,15 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    const [showFinancing, setShowFinancing] = useState(false);
+    const [finApr, setFinApr] = useState(12.4);
+    const [finTerm, setFinTerm] = useState(5);
+
+    const finR = (finApr / 100) / 12;
+    const finN = finTerm * 12;
+    const rawFinMonthly = (quote.total * finR * Math.pow(1 + finR, finN)) / (Math.pow(1 + finR, finN) - 1);
+    const finMonthly = isFinite(rawFinMonthly) ? rawFinMonthly : 0;
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
         if (name === "phone") {
@@ -255,19 +264,79 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                             </div>
 
                             {/* Desglose de costos con línea punteada */}
-                            <div className="border-t border-dashed border-gray-300 pt-4 mt-4 space-y-2.5">
-                                <div className="flex justify-between text-gray-500">
-                                    <span>Materials</span>
-                                    <span className="font-bold text-gray-700">xxx</span>
-                                </div>
-                                <div className="flex justify-between text-gray-500">
-                                    <span>Labor</span>
-                                    <span className="font-bold text-gray-700">xxx</span>
-                                </div>
-                                <div className="flex justify-between text-gray-500">
-                                    <span>Tear-off</span>
-                                    <span className="font-bold text-gray-700">xxx</span>
-                                </div>
+                            {/* Financing accordion — reemplaza el bloque de Materials/Labor/Tear-off */}
+                            <div className="border-t border-dashed border-gray-300 pt-4 mt-4">
+                                <button
+                                    onClick={() => setShowFinancing(prev => !prev)}
+                                    className="w-full cursor-pointer flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-widest hover:text-[#00589e] transition-colors group"
+                                >
+                                    <span>💳 Financing Options</span>
+                                    <svg
+                                        className={`w-3.5 h-3.5 transition-transform ${showFinancing ? 'rotate-180' : ''}`}
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"
+                                    >
+                                        <polyline points="6 9 12 15 18 9" />
+                                    </svg>
+                                </button>
+
+                                {showFinancing && (
+                                    <div className="mt-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+                                        {/* APR mini slider */}
+                                        <div>
+                                            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+                                                <span className="font-bold uppercase tracking-wider">APR</span>
+                                                <span className="font-bold text-[#00589e]">{finApr.toFixed(1)}%</span>
+                                            </div>
+                                            <input type="range" min={0} max={39} step={0.1}
+                                                   value={finApr} onChange={e => setFinApr(Number(e.target.value))}
+                                                   style={{
+                                                       width: '100%',
+                                                       height: '4px',
+                                                       borderRadius: '2px',
+                                                       background: `linear-gradient(to right, #00589e ${(finApr/39)*100}%, #d1d5db ${(finApr/39)*100}%)`,
+                                                       outline: 'none',
+                                                       appearance: 'none',
+                                                       cursor: 'pointer',
+                                                   }}
+                                            />
+                                        </div>
+
+                                        {/* Term mini slider */}
+                                        <div>
+                                            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+                                                <span className="font-bold uppercase tracking-wider">Term</span>
+                                                <span className="font-bold text-[#00589e]">{finTerm} yrs</span>
+                                            </div>
+                                            <input type="range" min={1} max={12} step={1}
+                                                   value={finTerm} onChange={e => setFinTerm(Number(e.target.value))}
+                                                   style={{
+                                                       width: '100%',
+                                                       height: '4px',
+                                                       borderRadius: '2px',
+                                                       background: `linear-gradient(to right, #00589e ${((finTerm-1)/11)*100}%, #d1d5db ${((finTerm-1)/11)*100}%)`,
+                                                       outline: 'none',
+                                                       appearance: 'none',
+                                                       cursor: 'pointer',
+                                                   }}
+                                            />
+                                            <div className="flex justify-between text-[9px] text-gray-400 mt-1">
+                                                <span>1 yr</span><span>12 yrs</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Monthly result */}
+                                        <div className="bg-[#00589e]/5 border border-[#00589e]/20 rounded-lg px-3 py-2 flex justify-between items-center">
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Est. monthly</span>
+                                            <span className="text-lg font-black text-[#00589e]">
+                    ${finMonthly.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo
+                </span>
+                                        </div>
+
+                                        <p className="text-[9px] text-gray-400 italic leading-tight">
+                                            * Based on credit approval. Final pricing may vary after inspection.
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
