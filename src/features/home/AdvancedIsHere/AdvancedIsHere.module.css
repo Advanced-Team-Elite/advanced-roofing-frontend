@@ -472,11 +472,15 @@
     .svgMap {
         width: auto !important;
         height: 100% !important; /* El mapa se escala según los 450px del padre */
-        max-width: 100%;
+        max-width: 70%;
         display: block;
     }
 
     .title { font-size: 40px; }
+
+    .customSelectContainer{
+        text-align: start;
+    }
 }
 
 @media (max-width: 640px) {
@@ -485,6 +489,10 @@
     }
 
     .title { font-size: 32px; }
+
+    .svgMap {
+        max-width: 100%;
+    }
 
     /* Ajuste del Flair para que no empuje el contenido */
     .flairBg {
