@@ -56,7 +56,7 @@
 
 /* LADO IZQUIERDO */
 .infoSide {
-    flex: 0 0 360px;
+    flex: 0 0 460px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -226,7 +226,7 @@
 
 /* Paths del mapa base */
 .svgMap path {
-    fill: #dfdada;
+    fill: #DDDDDD;
     stroke: #ffffff;
     stroke-width: 0.9px;
     transition: fill 0.25s ease, opacity 0.25s ease;
@@ -283,40 +283,134 @@
 .selectWrapper {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-}
-
-.countySelect {
+    gap: 16px;
     width: 100%;
-    padding: 12px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.12);
-    background: white;
-    font-size: 14px;
-    font-weight: 600;
-    color: #1a1a2e;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    appearance: auto;
+    max-width: 400px; /* Ajusta según tu diseño */
+    position: relative;
 }
 
+.customSelectContainer {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+.selectHeader {
+    width: 100%;
+    padding: 14px 20px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.selectHeader.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+    color: #1a1a2e;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* LIMITAR A 6 ELEMENTOS Y HABILITAR SCROLL */
+    max-height: 250px; /* Ajusta este valor según el alto de tus filas */
+    overflow-y: auto;  /* Habilita el scroll vertical si sobrepasa el max-height */
+    overflow-x: hidden; /* Evita scroll horizontal innecesario */
+
+    animation: slideDown 0.2s ease-out;
+    z-index: 110;
+}
+
+/* Opcional: Estilo para que el scrollbar se vea más limpio (Chrome/Safari) */
+.optionsList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-bottom-right-radius: 12px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+    background: #00589e;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.optionItem {
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-top: 1px solid rgba(0,0,0,0.03);
+    /* Asegura que el texto no se corte */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.optionItem:hover {
+    background: #f8f9fa;
+    color: #00589e;
+}
+
+.selectedOption {
+    background: #f0f7ff;
+    color: #00589e;
+    font-weight: 600;
+}
+
+/* Estilos de la lista de ciudades debajo */
 .cityList {
     list-style: none;
-    margin: 0;
+    margin: 10px 0 0 10px;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .cityItem {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
+    gap: 10px;
+    font-size: 14px;
     font-weight: 500;
-    color: #1a1a2e;
+    color: #444;
 }
 
 .cityDot {
@@ -324,49 +418,78 @@
     height: 6px;
     border-radius: 50%;
     background: #00589e;
-    flex-shrink: 0;
 }
-
 
 /* RESPONSIVE */
 @media (max-width: 1280px) {
     .mapCard {
-        height: auto;
-        padding: 50px 40px;
+        height: auto !important; /* Permitimos que crezca verticalmente */
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
     }
+
     .cardContent {
         flex-direction: column;
-        gap: 30px;
+        height: auto;
+        gap: 40px;
     }
-    .flairBg {
-        top: 14%;
-        left: -8%;
-    }
+
     .infoSide {
         flex: none;
         width: 100%;
-        height: auto;
-        justify-content: flex-start;
+        text-align: center;
+        align-items: center;
     }
+
+    /* FORZAR VISIBILIDAD DEL MAPA */
     .mapSide {
+        display: flex !important; /* Aseguramos que no esté oculto */
         width: 100%;
-        height: 350px;
+        height: 450px; /* Altura fija necesaria para que el SVG respire */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: visible;
+    }
+
+    .mapWrapper {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mapRelative {
+        width: 100%;
+        height: 100%;
+        display: flex;
         justify-content: center;
     }
-    .title { font-size: 44px; }
+
+    .svgMap {
+        width: auto !important;
+        height: 100% !important; /* El mapa se escala según los 450px del padre */
+        max-width: 100%;
+        display: block;
+    }
+
+    .title { font-size: 40px; }
 }
 
 @media (max-width: 640px) {
-    .outerContainer { padding: 40px 16px; }
-    .mapCard { padding: 36px 24px; border-radius: 20px; }
-    .title { font-size: 36px; }
     .mapSide {
-        height: 450px;
-        margin-top: 20px;
+        height: 350px; /* Un poco más pequeño en móviles */
     }
-    .mapWrapper { padding: 0; }
-    .svgMap {
-        height: 100%;
-        width: auto;
+
+    .title { font-size: 32px; }
+
+    /* Ajuste del Flair para que no empuje el contenido */
+    .flairBg {
+        top: 5%;
+        left: -10%;
+        opacity: 0.1;
     }
 }

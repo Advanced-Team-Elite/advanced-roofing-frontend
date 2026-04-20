@@ -21,42 +21,42 @@ interface CountyData {
 export const COUNTIES_DATA: CountyData[] = [
     {
         county: "Cook",
-        label: "Cook County",
+        label: "Cook",
         cities: ["Calumet City", "Chicago", "Evanston"],
     },
     {
         county: "DuPage",
-        label: "DuPage County",
+        label: "DuPage",
         cities: ["Naperville"],
     },
     {
         county: "Will",
-        label: "Will County",
+        label: "Will",
         cities: ["Naperville"],
     },
     {
         county: "Lake",
-        label: "Lake County",
+        label: "Lake",
         cities: ["Hammond", "Gurnee"],
     },
     {
         county: "DeKalb",
-        label: "DeKalb County",
+        label: "DeKalb",
         cities: ["DeKalb"],
     },
     {
         county: "Winnebago",
-        label: "Winnebago County",
+        label: "Winnebago",
         cities: ["Rockford"],
     },
     {
         county: "Champaign",
-        label: "Champaign County",
+        label: "Champaign",
         cities: ["Champaign"],
     },
     {
         county: "Livingston",
-        label: "Livingston County",
+        label: "Livingston",
         cities: ["Pontiac"],
     },
 ];
@@ -67,15 +67,15 @@ export const ACTIVE_COUNTY_IDS = new Set(COUNTIES_DATA.map(c => c.county));
 // Pins estimados en el viewBox "0 0 42 76"
 // Illinois ocupa aprox x: 18-42, y: 0-76
 const OFFICES: Office[] = [
-    { city: "Chicago",      county: "Cook",       pinX: 36.8, pinY: 9.2  },
-    { city: "Evanston",     county: "Cook",       pinX: 36.5, pinY: 7.8  },
-    { city: "Calumet City", county: "Cook",       pinX: 36.2, pinY: 11.0 },
-    { city: "Naperville",   county: "DuPage",     pinX: 34.0, pinY: 11.2 },
-    { city: "Naperville",   county: "Will",       pinX: 35.2, pinY: 15.2 },
-    { city: "Hammond",      county: "Lake",       pinX: 36.8, pinY: 6.2  },
-    { city: "Gurnee",       county: "Lake",       pinX: 35.8, pinY: 4.5  },
-    { city: "DeKalb",       county: "DeKalb",     pinX: 28.3, pinY: 10.2 },
-    { city: "Rockford",     county: "Winnebago",  pinX: 25.2, pinY: 4.8  },
+    { city: "Chicago",      county: "Cook",       pinX: 37.9, pinY: 9.2  },
+    { city: "Evanston",     county: "Cook",       pinX: 34.5, pinY: 7.2  },
+    { city: "Calumet City", county: "Cook",       pinX: 37.2, pinY: 13.0 },
+    { city: "Naperville",   county: "DuPage",     pinX: 34.0, pinY: 10.7 },
+    { city: "Naperville",   county: "Will",       pinX: 34.2, pinY: 15.9 },
+    { city: "Hammond",      county: "Lake",       pinX: 35.8, pinY: 5.2  },
+    { city: "Gurnee",       county: "Lake",       pinX: 34.3, pinY: 3.5  },
+    { city: "DeKalb",       county: "DeKalb",     pinX: 27.9, pinY: 10.2 },
+    { city: "Rockford",     county: "Winnebago",  pinX: 24.2, pinY: 3.8  },
     { city: "Champaign",    county: "Champaign",  pinX: 33.2, pinY: 33.0 },
     { city: "Pontiac",      county: "Livingston", pinX: 30.8, pinY: 23.5 },
 ];
@@ -87,6 +87,7 @@ export default function AdvancedIsHere() {
     }>({ visible: false, x: 0, y: 0, city: '', county: '' });
 
     const selectedData = COUNTIES_DATA.find(c => c.county === selectedCounty) ?? null;
+    const [isOpen, setIsOpen] = useState(false); // Nuevo estado para el dropdown
 
     // Pins visibles: solo los del county seleccionado
     const visiblePins = selectedCounty
@@ -118,19 +119,42 @@ export default function AdvancedIsHere() {
                             </p>
                         </div>
 
-                        {/* Reemplaza el <ul className={styles.countyList}> completo por esto */}
                         <div className={styles.selectWrapper}>
-                            <select
-                                className={styles.countySelect}
-                                value={selectedCounty ?? ''}
-                                onChange={(e) => setSelectedCounty(e.target.value || null)}
-                            >
-                                <option value="">Our Offices</option>
-                                {COUNTIES_DATA.map(({ county, label }) => (
-                                    <option key={county} value={county}>{label}</option>
-                                ))}
-                            </select>
+                            {/* Dropdown Personalizado */}
+                            <div className={styles.customSelectContainer}>
+                                <div
+                                    className={`${styles.selectHeader} ${isOpen ? styles.active : ''}`}
+                                    onClick={() => setIsOpen(!isOpen)}
+                                >
+                                    <span>{selectedCounty ? COUNTIES_DATA.find(c => c.county === selectedCounty)?.label : "Our Offices"}</span>
+                                    <span className={`${styles.arrow} ${isOpen ? styles.arrowUp : ''}`}>▲</span>
+                                </div>
 
+                                {isOpen && (
+                                    <div className={styles.optionsList}>
+                                        <div
+                                            className={styles.optionItem}
+                                            onClick={() => { setSelectedCounty(null); setIsOpen(false); }}
+                                        >
+                                            Our Offices
+                                        </div>
+                                        {COUNTIES_DATA.map(({ county, label }) => (
+                                            <div
+                                                key={county}
+                                                className={`${styles.optionItem} ${selectedCounty === county ? styles.selectedOption : ''}`}
+                                                onClick={() => {
+                                                    setSelectedCounty(county);
+                                                    setIsOpen(false);
+                                                }}
+                                            >
+                                                {county}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Lista de ciudades (se mantiene igual)
                             {selectedCounty && (
                                 <ul className={styles.cityList}>
                                     {COUNTIES_DATA.find(c => c.county === selectedCounty)?.cities.map(city => (
@@ -140,7 +164,7 @@ export default function AdvancedIsHere() {
                                         </li>
                                     ))}
                                 </ul>
-                            )}
+                            )}*/}
                         </div>
                     </div>
 
