@@ -481,6 +481,17 @@
     .customSelectContainer{
         text-align: start;
     }
+
+    .flairBg svg {
+        width: 180vw !important;
+    }
+
+    /* Ajuste del Flair para que no empuje el contenido */
+    .flairBg {
+        top: 10%;
+        left: -30%;
+        opacity: 0.1;
+    }
 }
 
 @media (max-width: 640px) {
@@ -494,10 +505,14 @@
         max-width: 100%;
     }
 
+    .flairBg svg {
+        width: 180vw !important;
+    }
+
     /* Ajuste del Flair para que no empuje el contenido */
     .flairBg {
-        top: 5%;
-        left: -10%;
+        top: 10%;
+        left: -30%;
         opacity: 0.1;
     }
 }
