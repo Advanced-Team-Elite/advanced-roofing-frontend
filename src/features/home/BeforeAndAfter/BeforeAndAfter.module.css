@@ -171,7 +171,12 @@
 
 @media (max-width: 1024px) {
     .mainContainer { padding: 80px 2rem; }
+    .header {
+        margin-left: 0;
+    }
+
     .title { font-size: 48px; }
+
 
     /* Cambiamos la proporción en tablet */
     .compareWrapper { aspect-ratio: 1.8 / 1; }

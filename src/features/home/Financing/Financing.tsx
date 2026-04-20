@@ -36,11 +36,11 @@ const Financing = () => {
                 {/* Lado Izquierdo: Resultados (60%) */}
                 {/* md:col-span-6 equivale al 60% del contenedor */}
                 <div className="space-y-8 md:col-span-6">
-                    <div className="max-w-md">
-                        <h2 className="text-[#005596] text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4">
+                    <div className="max-w-md mx-auto md:mx-0"> {/* mx-auto centra el contenedor en mobile */}
+                        <h2 className="text-[#005596] text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 text-center md:text-left">
                             We offer easy financing options for your project
                         </h2>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-lg text-center md:text-left">
                             Estimate what your monthly payment will be:
                         </p>
                     </div>

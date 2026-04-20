@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import styles from './StormDamageCheck.module.css';
+import Link from "next/link";
 
 const damageOptions = [
     { id: 'shingles', label: 'Missing or lifted shingles' },
@@ -24,18 +25,19 @@ const StormDamageCheck = () => {
     return (
         <section className={styles.mainContainer}>
             <div className={styles.contentWrapper}>
-                {/* Lado Izquierdo: Textos alineados a la derecha (hacia el centro) */}
+                {/* Lado Izquierdo: Textos */}
                 <div className={styles.textSide}>
+                    <p className={styles.toolLabel}>Storm Damage Checker</p>
                     <h2 className={styles.title}>
-                        You Might <br /> Have Storm <br /> Damage?
+                        Think you might <br /> have storm <br /> damage?
                     </h2>
                     <p className={styles.description}>
-                        Not all storm damage is obvious right away. Use this quick visual check
-                        to spot common warning signs before small issues turn into costly repairs.
+                        Not all storm damage is obvious right away. Check these 5 common
+                        signs to spot issues before they turn into costly repairs.
                     </p>
                 </div>
 
-                {/* Lado Derecho: Checklist alineado a la izquierda (hacia el centro) */}
+                {/* Lado Derecho: Interactivo */}
                 <div className={styles.interactiveSide}>
                     <div className={styles.optionsGrid}>
                         {damageOptions.map((option) => (
@@ -50,15 +52,35 @@ const StormDamageCheck = () => {
                                 <span className={styles.optionLabel}>{option.label}</span>
                             </div>
                         ))}
-                        <button
-                            className={`${styles.contactBtn} ${isButtonEnabled ? styles.enabled : styles.disabled}`}
-                            disabled={!isButtonEnabled}
-                        >
-                            Contact Us
-                        </button>
+
+                        <div className={styles.ctaWrapper}>
+                            {/* Redirige a la página completa de contacto */}
+                            <Link href="/contact-us" className={styles.linkWrapper}>
+                                <button
+                                    className={`${styles.contactBtn} ${isButtonEnabled ? styles.enabled : styles.disabled}`}
+                                    disabled={!isButtonEnabled}
+                                >
+                                    Report Damage
+                                </button>
+                            </Link>
+
+                            {/* Vía de escape: Scroll suave al formulario en la misma página */}
+                            <div className={styles.notSureWrapper}>
+                                <p>
+                                    Not sure? {" "}
+                                    <button
+                                        className={styles.linkBtn}
+                                        onClick={() => {
+                                            const formElement = document.getElementById('contact-form-section');
+                                            formElement?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                    >
+                                        Schedule a free inspection
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </section>

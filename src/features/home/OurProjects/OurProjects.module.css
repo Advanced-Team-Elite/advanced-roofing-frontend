@@ -188,6 +188,10 @@
         text-align: center;
         gap: 20px;
     }
+
+    .title {
+        margin: auto;
+    }
     .description { max-width: 100%; }
     .grid { grid-template-columns: 1fr; }
     .title { font-size: 40px; }

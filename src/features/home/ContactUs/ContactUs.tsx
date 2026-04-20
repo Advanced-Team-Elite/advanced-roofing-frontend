@@ -162,7 +162,7 @@ const ContactUs = () => {
 
     return (
 
-        <section className={styles.section}>
+        <section className={styles.section} id="contact-form-section">
             <div className={styles.container}>
                 {/* Contenedor Blanco del Formulario */}
                 <ScrollReveal direction="center">

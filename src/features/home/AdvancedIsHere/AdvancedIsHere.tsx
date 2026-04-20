@@ -114,8 +114,8 @@ export default function AdvancedIsHere() {
                                 Advanced <br /><span className={styles.highlight}>Is Here</span>
                             </h2>
                             <p className={styles.description}>
-                                From multiple counties to entire regions, our presence reflects where we've delivered results—bringing precision, reliability, and{' '}
-                                <strong>proven roofing solutions to every project we take on.</strong>
+                                From local neighborhoods to entire regions, our office network brings {" "}
+                                <strong>proven roofing solutions closer to your community than ever before.</strong>
                             </p>
                         </div>
 
