@@ -127,9 +127,9 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                     <div>
                         <button
                             onClick={onBack}
-                            className="text-sm text-gray-500 hover:text-[#00589e] font-bold flex items-center gap-1 mb-4 transition-colors group"
+                            className="text-sm text-gray-500 cursor-pointer hover:text-[#00589e] font-bold flex items-center gap-1 mb-4 transition-colors group"
                         >
-                            <span className="transition-transform group-hover:-translate-x-1">←</span> Back to estimate
+                            <span className="transition-transform  group-hover:-translate-x-1">←</span> Back to estimate
                         </button>
                         <h3 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
                             Get Your Free Quote
@@ -353,7 +353,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                     <button
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="mt-8 w-full bg-[#00589e] hover:bg-[#004a85] disabled:bg-gray-300 text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2 group"
+                        className="mt-8 w-full cursor-pointer bg-[#00589e] hover:bg-[#004a85] disabled:bg-gray-300 text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2 group"
                     >
                         {loading ? (
                             <>

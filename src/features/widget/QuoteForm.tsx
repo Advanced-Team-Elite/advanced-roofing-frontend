@@ -278,7 +278,7 @@ export const QuoteForm = ({ initialArea, initialPitch, liveArea, address = "" }:
                     {/* Botón Principal: Azul Institucional con hover dinámico */}
                     <button
                         onClick={() => setStep("lead")}
-                        className="w-full bg-[#00589e] hover:bg-[#004a85] text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2"
+                        className="w-full cursor-pointer bg-[#00589e] hover:bg-[#004a85] text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] uppercase tracking-wider flex items-center justify-center gap-2"
                     >
                         Get My Quote
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
