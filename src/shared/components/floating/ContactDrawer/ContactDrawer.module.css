@@ -62,7 +62,7 @@
 .infoPanel.visible {
     width: 360px;
     opacity: 1;
-    padding: 50px 40px;
+    padding: 50px 25px;
 }
 
 .brand h3 {
@@ -83,11 +83,44 @@
     gap: 10px;
 }
 
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.blueIcon {
+    width: 20px;
+    height: 20px;
+    color: #4680e1; /* El azul de tu botón 'Send' */
+    flex-shrink: 0;
+}
+
+.infoItem p, .infoItem h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    white-space: normal; /* Permite que la dirección haga wrap si es larga */
+}
+
+.hoursDetail {
+    padding-left: 32px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6; /* Añade esto para dar espacio entre las dos líneas */
+}
+
+.hoursDetail strong {
+    font-weight: 700;
+    color: #434343; /* Un tono un poco más oscuro para que resalte del resto */
+}
+
 /* Panel de Formulario Derecho */
 .formPanel {
     flex: 1;
     min-width: 375px;
-    padding: 5px 20px 5px 20px;
+    padding: 20px 20px 5px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -246,7 +279,6 @@ textarea.floatingInput {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px 20px 0 20px; /* Pequeño ajuste para no pegar al borde del contenedor */
 }
 
 .headerLogo {
@@ -254,6 +286,13 @@ textarea.floatingInput {
     width: auto;
     object-fit: contain;
     transition: opacity 0.3s ease;
+}
+
+.headerLogo.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Para que no se pueda clickear lo invisible */
+    height: 0;
 }
 
 .controls {
@@ -342,6 +381,13 @@ textarea.floatingInput {
         border-radius: 0;
     }
     .infoPanel { display: none !important; }
-    .formPanel { min-width: 100%; padding: 0; }
+    .formPanel {
+        min-width: 100%;
+        justify-content: start;
+        padding: 20px 20px;
+    }
+    .mainForm{
+        margin-bottom: auto;
+    }
     .iconBtn:first-child { display: none; } /* Ocultar botón expandir en móvil */
 }
