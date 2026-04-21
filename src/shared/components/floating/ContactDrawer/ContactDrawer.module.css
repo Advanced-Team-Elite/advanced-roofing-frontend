@@ -189,8 +189,9 @@
 /* INPUT BASE */
 .floatingInput {
     width: 100%;
-    min-height: 54px; /* Forzamos altura para que no se vea pegado */
-    padding: 26px 16px 10px 16px !important; /* 🔥 más espacio arriba */
+    min-height: 58px;
+    /* Padding inicial equilibrado para que el texto/placeholder esté centrado */
+    padding: 16px !important;
     border: 1px solid #d1d5db;
     border-radius: 12px;
     background: #ffffff;
@@ -201,30 +202,61 @@
     box-sizing: border-box;
 }
 
-.floatingInput:focus {
-    border-color: #00589e;
-    background: #fff;
+/* 🔥 CUANDO EL LABEL ESTÁ ARRIBA: Empujamos el texto del input hacia abajo */
+.floatingInput:focus,
+.floatingInput:not(:placeholder-shown),
+.selectInput:valid {
+    padding-top: 28px !important; /* Espacio para la etiqueta arriba */
+    padding-bottom: 10px !important;
 }
 
 .floatingLabel {
     position: absolute;
-    left: 13px;
-    top: 22px;
+    left: 16px;
+    /* Centrado vertical perfecto usando transform */
+    top: 50%;
+    transform: translateY(-50%);
     color: #9ca3af !important;
     font-size: 15px;
     pointer-events: none;
     transition: all 0.2s ease;
     background: transparent;
-    padding: 0 4px;
 }
+
+
 .floatingInput:focus + .floatingLabel,
-.floatingInput:not(:placeholder-shown) + .floatingLabel {
-    top: 6px;
+.floatingInput:not(:placeholder-shown) + .floatingLabel,
+.selectInput:valid ~ .floatingLabel {
+    top: 8px; /* Posición fija arriba */
+    transform: translateY(0); /* Quitamos el centrado vertical */
     font-size: 11px;
     font-weight: 600;
     color: #00589e;
 }
 
+/* Sobrescribimos el comportamiento solo cuando el label sigue a un textarea */
+textarea.floatingInput ~ .floatingLabel {
+    top: 26px; /* Lo bajamos un poco para que no choque con el borde superior */
+    transform: translateY(-50%); /* Lo centramos respecto a esa línea de inicio */
+}
+
+/* Cuando el textarea tiene foco o texto, el label sube a la posición estándar */
+textarea.floatingInput:focus + .floatingLabel,
+textarea.floatingInput:not(:placeholder-shown) + .floatingLabel {
+    top: 8px;
+    transform: translateY(0);
+}
+
+/* Ajuste del padding interno del textarea para que el cursor no pise al label */
+textarea.floatingInput {
+    padding-top: 20px !important; /* Padding inicial equilibrado */
+    resize: none; /* Opcional: para mantener la estética del drawer */
+}
+
+textarea.floatingInput:focus,
+textarea.floatingInput:not(:placeholder-shown) {
+    padding-top: 32px !important; /* Espacio extra para que el texto empiece debajo del label */
+}
 /* Estilo específico para el select para alinear la flecha nativa */
 .selectInput {
     cursor: pointer;
@@ -235,11 +267,6 @@
 .selectInput:valid ~ .floatingLabel {
     top: 8px;
     font-size: 12px;
-}
-
-textarea.floatingInput {
-    padding-top: 32px;
-    min-height: 140px;
 }
 
 .actionsFooter {
