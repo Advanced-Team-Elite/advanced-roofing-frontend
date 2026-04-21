@@ -4,6 +4,8 @@ import styles from './AdvancedIsHere.module.css';
 import { FlairIcon } from '@/shared/Icons/Icons';
 import { IllinoisMap } from './IllinoisMap';
 import {ScrollReveal} from "@/shared/animations/ScrollReveal";
+import { createPortal } from 'react-dom';
+
 
 interface Office {
     city: string;
@@ -100,126 +102,150 @@ export default function AdvancedIsHere() {
     };
 
     return (
-        <ScrollReveal className={styles.outerContainer} direction="right">
-            <div className={styles.mapCard}>
-                <div className={styles.flairBg}>
-                    <FlairIcon size={2100} />
-                </div>
+        <>
+            <ScrollReveal className={styles.outerContainer} direction="right">
+                <div className={styles.mapCard}>
+                    <div className={styles.flairBg}>
+                        <FlairIcon size={2100} />
+                    </div>
 
-                <div className={styles.cardContent}>
-                    {/* LADO IZQUIERDO */}
-                    <div className={styles.infoSide}>
-                        <div className={styles.textContent}>
-                            <p className={styles.label}>Our Offices</p>
-                            <h2 className={styles.title}>
-                                Advanced <br /><span className={styles.highlight}>Is Here</span>
-                            </h2>
-                            <p className={styles.description}>
-                                From local neighborhoods to entire regions, our office network brings {" "}
-                                <strong>proven roofing solutions closer to your community than ever before.</strong>
-                            </p>
-                        </div>
+                    <div className={styles.cardContent}>
+                        {/* LADO IZQUIERDO */}
+                        <div className={styles.infoSide}>
+                            <div className={styles.textContent}>
+                                <p className={styles.label}>Our Offices</p>
+                                <h2 className={styles.title}>
+                                    Advanced <br /><span className={styles.highlight}>Is Here</span>
+                                </h2>
+                                <p className={styles.description}>
+                                    From local neighborhoods to entire regions, our office network brings{" "}
+                                    <strong>proven roofing solutions closer to your community than ever before.</strong>
+                                </p>
+                            </div>
 
-                        <div className={styles.selectWrapper}>
-                            {/* Dropdown Personalizado */}
-                            <div className={styles.customSelectContainer}>
-                                <div
-                                    className={`${styles.selectHeader} ${isOpen ? styles.active : ''}`}
-                                    onClick={() => setIsOpen(!isOpen)}
-                                >
-                                    <span>{selectedCounty ? COUNTIES_DATA.find(c => c.county === selectedCounty)?.label : "Our Offices"}</span>
-                                    <span className={`${styles.arrow} ${isOpen ? styles.arrowUp : ''}`}>▲</span>
-                                </div>
+                            <div className={styles.selectWrapper}>
+                                <div className={styles.customSelectContainer}>
+                                    <div
+                                        className={`${styles.selectHeader} ${isOpen ? styles.active : ''}`}
+                                        onClick={() => setIsOpen(!isOpen)}
+                                    >
+                                    <span>
+                                        {selectedCounty
+                                            ? COUNTIES_DATA.find(c => c.county === selectedCounty)?.label
+                                            : "Our Offices"}
+                                    </span>
+                                        <span className={`${styles.arrow} ${isOpen ? styles.arrowUp : ''}`}>▲</span>
+                                    </div>
 
-                                {isOpen && (
-                                    <div className={styles.optionsList}>
-                                        <div
-                                            className={styles.optionItem}
-                                            onClick={() => { setSelectedCounty(null); setIsOpen(false); }}
-                                        >
-                                            Our Offices
-                                        </div>
-                                        {COUNTIES_DATA.map(({ county, label }) => (
+                                    {isOpen && (
+                                        <div className={styles.optionsList}>
                                             <div
-                                                key={county}
-                                                className={`${styles.optionItem} ${selectedCounty === county ? styles.selectedOption : ''}`}
+                                                className={styles.optionItem}
                                                 onClick={() => {
-                                                    setSelectedCounty(county);
+                                                    setSelectedCounty(null);
                                                     setIsOpen(false);
                                                 }}
                                             >
-                                                {county}
+                                                Our Offices
                                             </div>
+
+                                            {COUNTIES_DATA.map(({ county }) => (
+                                                <div
+                                                    key={county}
+                                                    className={`${styles.optionItem} ${
+                                                        selectedCounty === county ? styles.selectedOption : ''
+                                                    }`}
+                                                    onClick={() => {
+                                                        setSelectedCounty(county);
+                                                        setIsOpen(false);
+                                                    }}
+                                                >
+                                                    {county}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* LADO DERECHO — MAPA */}
+                        <div className={styles.mapSide}>
+                            <div className={styles.mapWrapper}>
+                                <div className={styles.mapRelative}>
+                                    <IllinoisMap
+                                        className={styles.svgMap}
+                                        activeId={selectedCounty}
+                                        highlightedIds={ACTIVE_COUNTY_IDS}
+                                        onCountyClick={handleCountyClick}
+                                    />
+
+                                    {/* Pins */}
+                                    <svg
+                                        className={styles.pinOverlay}
+                                        viewBox="0 0 42 76"
+                                        preserveAspectRatio="xMidYMid meet"
+                                    >
+                                        {visiblePins.map((pin, i) => (
+                                            <g
+                                                key={`${pin.city}-${i}`}
+                                                transform={`translate(${pin.pinX}, ${pin.pinY})`}
+                                                className={styles.pinGroup}
+                                                onMouseEnter={(e) =>
+                                                    setPinTooltip({
+                                                        visible: true,
+                                                        x: e.clientX,
+                                                        y: e.clientY,
+                                                        city: pin.city,
+                                                        county: pin.county
+                                                    })
+                                                }
+                                                onMouseLeave={() =>
+                                                    setPinTooltip(prev => ({ ...prev, visible: false }))
+                                                }
+                                                onMouseMove={(e) =>
+                                                    setPinTooltip(prev => ({
+                                                        ...prev,
+                                                        x: e.clientX,
+                                                        y: e.clientY
+                                                    }))
+                                                }
+                                            >
+                                                <path
+                                                    d="M 0,-1.2 C -0.6,-1.2 -0.9,-0.7 -0.9,-0.2 C -0.9,0.5 0,1.3 0,1.3 C 0,1.3 0.9,0.5 0.9,-0.2 C 0.9,-0.7 0.6,-1.2 0,-1.2 Z"
+                                                    fill="#f7d000"
+                                                />
+                                                <circle cx="0" cy="-0.2" r="0.32" fill="#00589e" />
+                                            </g>
                                         ))}
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Lista de ciudades (se mantiene igual)
-                            {selectedCounty && (
-                                <ul className={styles.cityList}>
-                                    {COUNTIES_DATA.find(c => c.county === selectedCounty)?.cities.map(city => (
-                                        <li key={city} className={styles.cityItem}>
-                                            <span className={styles.cityDot} />
-                                            {city}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}*/}
-                        </div>
-                    </div>
-
-                    {/* LADO DERECHO — MAPA */}
-                    <div className={styles.mapSide}>
-                        <div className={styles.mapWrapper}>
-                            {/* SVG del mapa */}
-                            <div className={styles.mapRelative}>
-                                <IllinoisMap
-                                    className={styles.svgMap}
-                                    activeId={selectedCounty}
-                                    highlightedIds={ACTIVE_COUNTY_IDS}
-                                    onCountyClick={handleCountyClick}
-                                />
-
-                                {/* Pins superpuestos usando SVG overlay */}
-                                <svg
-                                    className={styles.pinOverlay}
-                                    viewBox="0 0 42 76"
-                                    preserveAspectRatio="xMidYMid meet"
-                                >
-                                    {visiblePins.map((pin, i) => (
-                                        <g
-                                            key={`${pin.city}-${i}`}
-                                            transform={`translate(${pin.pinX}, ${pin.pinY})`}
-                                            className={styles.pinGroup}
-                                            onMouseEnter={(e) => setPinTooltip({ visible: true, x: e.clientX, y: e.clientY, city: pin.city, county: pin.county })}
-                                            onMouseLeave={() => setPinTooltip(prev => ({ ...prev, visible: false }))}
-                                            onMouseMove={(e) => setPinTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
-                                        >
-                                            <path
-                                                d="M 0,-1.2 C -0.6,-1.2 -0.9,-0.7 -0.9,-0.2 C -0.9,0.5 0,1.3 0,1.3 C 0,1.3 0.9,0.5 0.9,-0.2 C 0.9,-0.7 0.6,-1.2 0,-1.2 Z"
-                                                fill="#f7d000"
-                                            />
-                                            <circle cx="0" cy="-0.2" r="0.32" fill="#00589e" />
-                                        </g>
-                                    ))}
-                                </svg>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ScrollReveal>
 
-            {/* Tooltip de pins */}
-            {pinTooltip.visible && (
-                <div
-                    className={styles.pinTooltip}
-                    style={{ top: pinTooltip.y - 70, left: pinTooltip.x + 16, position: 'fixed' }}
-                >
-                    <div className={styles.pinTooltipCity}>{pinTooltip.city}</div>
-                    <div className={styles.pinTooltipCounty}>{pinTooltip.county} County</div>
-                </div>
-            )}
-        </ScrollReveal>
+            {/* 🔥 TOOLTIP EN PORTAL (FUERA DEL TRANSFORM) */}
+            {typeof window !== "undefined" &&
+                createPortal(
+                    pinTooltip.visible ? (
+                        <div
+                            className={styles.pinTooltip}
+                            style={{
+                                top: pinTooltip.y - 70,
+                                left: pinTooltip.x + 16,
+                                position: 'fixed'
+                            }}
+                        >
+                            <div className={styles.pinTooltipCity}>{pinTooltip.city}</div>
+                            <div className={styles.pinTooltipCounty}>
+                                {pinTooltip.county} County
+                            </div>
+                        </div>
+                    ) : null,
+                    document.body
+                )}
+        </>
     );
 }

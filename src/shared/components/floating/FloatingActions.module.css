@@ -41,7 +41,7 @@
 
 .contactContainer {
     position: fixed;
-    right: 0;
+    right: 10px;
     bottom: 0;
     z-index: 10;
 }
@@ -95,7 +95,6 @@
     overflow: hidden;
     width: 100%;
 }
-
 .actionItem {
     flex: 1;
     display: flex;
@@ -111,6 +110,14 @@
     cursor: pointer;
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     text-transform: uppercase;
+    transition: opacity 0.3s ease, background-color 0.2s ease;
+}
+
+/* Estado cuando el botón está deshabilitado */
+.actionItem:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .actionItem:last-child {
@@ -121,7 +128,8 @@
     margin-top: 2px;
 }
 
-.actionItem:hover {
+/* Solo aplicar hover a los botones que NO están deshabilitados */
+.actionItem:not(:disabled):hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 

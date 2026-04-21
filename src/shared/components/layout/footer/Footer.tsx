@@ -88,7 +88,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                             <h3 className={styles.columnTitle}>Follow Us</h3>
                             <div className={styles.socialIcons}>
                                 <Link
-                                    href="https://www.facebook.com/advancedroofingteam"
+                                    href="https://www.facebook.com/profile.php?id=61580667170717"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     aria-label="Visit our Facebook page"
@@ -98,7 +98,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 </Link>
 
                                 <Link
-                                    href="https://x.com/advancedroofs"
+                                    href="https://x.com/advanced_team26"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
