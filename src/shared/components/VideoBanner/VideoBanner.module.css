@@ -11,6 +11,113 @@
     background-size: cover;
     background-position: center;
 }
+/* 1. Contenedor Principal del Cartel */
+.expansionCartel {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    background: #002d4d; /* Azul profundo */
+    border: 2px solid #00c3f8;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0, 195, 248, 0.3);
+    min-width: 200px;
+    overflow: hidden;
+    animation: cartelGlow 2s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.expansionCartel:hover {
+    transform: scale(1.05);
+}
+
+/* 2. ENCABEZADO (La parte que faltaba) */
+.cartelHeader {
+    background: #00c3f8; /* Fondo celeste */
+    color: #002d4d; /* Texto oscuro para contraste */
+    font-size: 10px;
+    font-weight: 900;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* 3. PUNTO PALPITANTE */
+.pulseDot {
+    width: 7px;
+    height: 7px;
+    background: #002d4d;
+    border-radius: 50%;
+    animation: dotBlink 1s infinite ease-in-out;
+}
+
+/* 4. CUERPO DEL CARTEL */
+.cartelBody {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+}
+
+/* 5. ANIMACIÓN DEL NOMBRE DEL ESTADO */
+.stateNameAnim {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    animation: slideInText 0.5s ease-out forwards;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- KEYFRAMES --- */
+
+@keyframes slideInText {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cartelGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 195, 248, 0.4);
+        border-color: #00c3f8;
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 195, 248, 0.7);
+        border-color: #ffffff;
+    }
+}
+
+@keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .expansionCartel {
+        top: 20px;
+        right: 20px;
+        min-width: 160px;
+    }
+    .stateNameAnim {
+        font-size: 18px;
+    }
+}
 
 .videoBg {
     position: absolute;
