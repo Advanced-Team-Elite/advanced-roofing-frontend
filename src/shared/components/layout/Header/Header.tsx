@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
 import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
+import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,8 @@ export const Header = () => {
 
     return (
         <header className={styles.headerContainer}>
+
+            <WeatherEffects />
             {/* TOP BAR - Desktop */}
             <div className={styles.topBar}>
                 <span>Serving the Des Plaines Community</span>
