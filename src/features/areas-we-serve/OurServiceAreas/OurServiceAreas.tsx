@@ -45,7 +45,7 @@ export const OurServiceAreas = () => {
 
     const allAreas = [
         ...serviceRegions.expansion.map(item => ({ ...item, isState: true })),
-        ...serviceRegions.illinois
+        ...serviceRegions.illinois.map(item => ({ ...item, isState: false })),
     ];
 
 

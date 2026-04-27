@@ -156,7 +156,7 @@ a:hover {
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #00c3f8; /* El cian para resaltar */
+    color: white; /* El cian para resaltar */
     font-weight: 700;
 }
 
@@ -170,13 +170,13 @@ a:hover {
 .phoneItem {
     display: flex;
     flex-direction: column;
-    border-left: 2px solid rgba(0, 195, 248, 0.3); /* Pequeña marca visual */
+    border-left: 2px solid white; /* Pequeña marca visual */
     padding-left: 15px;
 }
 
 .locationTag {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
+    color: white;
     text-transform: uppercase;
     font-weight: 600;
     font-family: Arial, sans-serif;
@@ -190,9 +190,6 @@ a:hover {
     transition: color 0.2s;
 }
 
-.phoneNumber:hover {
-    color: #00c3f8;
-}
 
 /* Responsivo */
 /* --- AJUSTES PARA TABLET Y MÓVIL (1 COLUMNA) --- */

@@ -17,12 +17,14 @@ import BeforeAndAfter from "@/features/home/BeforeAndAfter/BeforeAndAfter";
 import StormDamageCheck from "@/features/home/StormDamageCheck/StormDamageCheck";
 import OurProjects from "@/features/home/OurProjects/OurProjects";
 import Financing from "@/features/home/Financing/Financing";
+import {NowServing} from "@/features/home/NowServing/NowServing";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
+            <NowServing/>
             <StormAlert />
             <OurServices />
             <StatsBar/>

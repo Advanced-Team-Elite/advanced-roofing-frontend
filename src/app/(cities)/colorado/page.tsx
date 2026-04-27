@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import TinleyParkIlContainer from "@/features/areas-we-serve/tinley-park-il/TinleyParkIlContainer";
-import ColoradoContainer from "@/features/areas-we-serve/Colorado/ColoradoContainer";
+import ColoradoContainer from "@/features/areas-we-serve/colorado/ColoradoContainer";
 
 export const metadata: Metadata = {
     title: 'Roofing Contractor in Colorado | Advanced Roofing Team',

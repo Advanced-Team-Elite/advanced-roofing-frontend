@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import TinleyParkIlContainer from "@/features/areas-we-serve/tinley-park-il/TinleyParkIlContainer";
-import MichiganContainer from "@/features/areas-we-serve/Michigan/MichiganContainer";
 import MichiganUpContainer from "@/features/areas-we-serve/michigan-up/MichiganUpContainer";
 
 export const metadata: Metadata = {
