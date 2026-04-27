@@ -3,6 +3,7 @@ import "./globals.css";
 import { Open_Sans, Prompt } from "next/font/google"; // Importamos las fuentes
 import { Header } from "@/shared/components/layout/Header/Header";
 import {FloatingActions} from "@/shared/components/floating/FloatingActions";
+import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <body className="antialiased">
+        <WeatherEffects />
         <Header />
         {children}
         <FloatingActions />

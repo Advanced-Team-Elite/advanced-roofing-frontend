@@ -1,0 +1,69 @@
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+/* Copos */
+.snowflake {
+    position: fixed;
+    top: -10%;
+    color: #fff;
+    font-size: 1.2rem;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    user-select: none;
+
+    animation-name: snow-fall, snow-shake;
+    animation-duration: 12s, 4s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
+
+
+
+/* Caída vertical */
+@keyframes snow-fall {
+    0% {
+        top: -10%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+/* Movimiento lateral */
+@keyframes snow-shake {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(60px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+/* Distribución de copos */
+.snowflake:nth-child(1) { left: 5%;  animation-delay: 0s, 0s; }
+.snowflake:nth-child(2) { left: 15%; animation-delay: 2s, 1s; }
+.snowflake:nth-child(3) { left: 25%; animation-delay: 4s, 2s; }
+.snowflake:nth-child(4) { left: 35%; animation-delay: 1s, 1s; }
+.snowflake:nth-child(5) { left: 45%; animation-delay: 3s, 2s; }
+.snowflake:nth-child(6) { left: 55%; animation-delay: 5s, 1s; }
+.snowflake:nth-child(7) { left: 65%; animation-delay: 2.5s, 1.5s; }
+.snowflake:nth-child(8) { left: 75%; animation-delay: 6s, 2s; }
+.snowflake:nth-child(9) { left: 85%; animation-delay: 1.5s, 1s; }
+.snowflake:nth-child(10){ left: 95%; animation-delay: 3.5s, 2s; }
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .snowflakes {
+        display: none;
+    }
+}
