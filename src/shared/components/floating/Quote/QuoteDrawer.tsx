@@ -27,6 +27,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     const [mapZoom, setMapZoom] = useState(11);
     const [roofError, setRoofError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [showHint, setShowHint] = useState(true);
 
     const handleAddressSelect = async (address: string, lat: number, lng: number) => {
         setLocation({ lat, lng });
@@ -66,6 +67,25 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
     return (
         <div className={`${styles.quoteWrapper} ${isOpen ? styles.wrapperOpen : ''}`}>
+
+            {/* Burbuja de notificación (Solo se muestra si el drawer está cerrado) */}
+            {!isOpen && showHint && (
+                <div className={styles.quoteHint}>
+                    <button
+                        className={styles.closeHint}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setShowHint(false);
+                        }}
+                    >
+                        ×
+                    </button>
+                    <p className={styles.hintTitle}>Need a roof quote?</p>
+                    <p className={styles.hintSubtitle}>Get your price NOW!</p>
+                    <div className={styles.hintArrow}></div>
+                </div>
+            )}
+
             <button
                 className={styles.quoteSideBtn}
                 onClick={() => setIsOpen(!isOpen)}
