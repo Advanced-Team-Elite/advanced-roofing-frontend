@@ -10,6 +10,26 @@ export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [view, setView] = useState('main');
 
+    const phoneNumbers = [
+        "847-945-6565",
+        "719-627-1400",
+        "262-909-8907",
+        "219-316-4996"
+    ];
+
+    const [phoneIndex, setPhoneIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false); // Estado para pausar
+
+    useEffect(() => {
+        if (isPaused) return; // Si está pausado, no hace nada
+
+        const interval = setInterval(() => {
+            setPhoneIndex((prev) => (prev + 1) % phoneNumbers.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [isPaused]); // Se reinicia el efecto cuando cambia el estado de pausa
+
     const closeDrawer = () => {
         setIsOpen(false);
         setView('main'); // Resetear al cerrar
@@ -37,7 +57,21 @@ export const Header = () => {
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
-                    <span className={styles.telf} >877-945-6565</span>
+
+                    {/* Contenedor del Carrusel de Teléfonos */}
+                    <div
+                        className={styles.phoneCarousel}
+                        onMouseEnter={() => setIsPaused(true)}  // Pausa al entrar
+                        onMouseLeave={() => setIsPaused(false)} // Resume al salir
+                    >
+                        <a
+                            href={`tel:${phoneNumbers[phoneIndex].replace(/\D/g,'')}`}
+                            key={phoneIndex}
+                            className={styles.telf}
+                        >
+                            {phoneNumbers[phoneIndex]}
+                        </a>
+                    </div>
                 </div>
             </div>
 

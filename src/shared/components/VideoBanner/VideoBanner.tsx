@@ -1,5 +1,5 @@
 'use client';
-import {useState, useRef, useEffect} from 'react';
+import { useState, useRef } from 'react';
 import styles from './VideoBanner.module.css';
 import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
 import Link from 'next/link';
@@ -13,15 +13,6 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
-    const states = ["Wisconsin", "Indiana", "Colorado", "Michigan"];
-    const [currentStateIndex, setCurrentStateIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentStateIndex((prev) => (prev + 1) % states.length);
-        }, 2000); // Cambia cada 2 segundos
-        return () => clearInterval(interval);
-    }, []);
 
     const togglePlay = () => {
         const video = videoRef.current;
@@ -37,21 +28,6 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
     return (
         <>
             <section className={styles.heroSection}>
-                {/* --- CARTEL DE EXPANSIÓN (NOTICE BOARD) --- */}
-                <Link href="/areas-we-serve" className={styles.expansionCartel}>
-                    <div className={styles.cartelHeader}>
-                        <span className={styles.pulseDot}></span>
-                        NOW SERVING
-                    </div>
-                    <div className={styles.cartelBody}>
-                        {/* Usamos el index como key para disparar la animación de CSS cada vez que cambie */}
-                        <div key={currentStateIndex} className={styles.stateNameAnim}>
-                            {states[currentStateIndex]}
-                        </div>
-                    </div>
-                </Link>
-
-                {/* -------------------------------------- */}
                 <video
                     ref={videoRef}
                     autoPlay

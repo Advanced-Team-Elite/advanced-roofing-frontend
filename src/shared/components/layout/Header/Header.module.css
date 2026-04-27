@@ -3,9 +3,8 @@
     font-family: sans-serif;
     z-index: 9999;
 }
-
 .topBar {
-    background-color: #f7d000;
+    background-color: #f7d000; /* Amarillo oficial */
     color: #00589e;
     padding: 15px 90px;
     display: flex;
@@ -15,25 +14,55 @@
     font-weight: 800;
 }
 
-.topBar span{
-    font-size: 1.1rem;
-    font-weight: bold;
+/* Contenedor para controlar el espacio del teléfono */
+.phoneCarousel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 100px;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer; /* Indica que es clicable */
 }
 
-.topBar a:hover {
-    color: #060606 !important;
-}
-
-.telf{
+.telf {
     color: #060606;
-    font-weight: bolder;
+    font-weight: 900;
     font-size: 1.5rem !important;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.topBarNavLink{
+/* Al pausar (hover), cambiamos el color o damos un feedback visual */
+.phoneCarousel:hover .telf {
+    color: #00589e; /* Cambia al azul corporativo para confirmar la pausa */
+    transform: scale(1.0); /* Un pequeño zoom para dar seguridad */
+}
+
+.telf {
+    color: #060606;
+    font-weight: 600; /* Un poco más de peso */
+    font-size: 1.6rem !important; /* Ligeramente más grande */
+    letter-spacing: 0.5px; /* Espaciado para que se vea más premium */
+    font-family: 'Inter', sans-serif; /* O la fuente sans-serif que uses */
+}
+
+@keyframes phoneSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.topBarNavLink {
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: 600; /* Un poco más fuerte para legibilidad */
     margin-left: 13px;
+    transition: color 0.3s ease;
 }
 
 .mainNav {
