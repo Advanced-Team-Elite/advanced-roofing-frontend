@@ -14,6 +14,90 @@
     font-weight: 800;
 }
 
+.topBar span {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.phoneWrapper {
+    position: relative;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.phoneMain {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+}
+
+.phoneLabel {
+    font-size: 11px;
+    color: #00589e;
+    text-transform: uppercase;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+    color: #002d4d;
+}
+
+/* El dropdown oculto por defecto */
+.phoneDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 10px 0;
+    display: none; /* Se oculta */
+    z-index: 1000;
+}
+
+/* Mostrar al hacer hover */
+.phoneWrapper:hover .phoneDropdown {
+    display: block;
+}
+
+.phoneWrapper:hover .chevron {
+    transform: rotate(180deg);
+}
+
+.dropdownItem {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+    background: #f8fafc;
+}
+
+.locName {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.locPhone {
+    font-size: 16px;
+    color: #002d4d;
+    font-weight: 800;
+    text-decoration: none;
+
+    font-family: 'Inter', sans-serif; /* O la fuente sans-serif que uses */
+}
+
+.locPhone:hover {
+    color: #002d4d;
+}
+
 /* Contenedor para controlar el espacio del teléfono */
 .phoneCarousel {
     display: flex;
@@ -27,24 +111,14 @@
 
 .telf {
     color: #060606;
-    font-weight: 900;
-    font-size: 1.5rem !important;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Al pausar (hover), cambiamos el color o damos un feedback visual */
-.phoneCarousel:hover .telf {
-    color: #00589e; /* Cambia al azul corporativo para confirmar la pausa */
-    transform: scale(1.0); /* Un pequeño zoom para dar seguridad */
-}
-
-.telf {
-    color: #060606;
     font-weight: 600; /* Un poco más de peso */
-    font-size: 1.6rem !important; /* Ligeramente más grande */
+    font-size: 23px !important; /* Ligeramente más grande */
     letter-spacing: 0.5px; /* Espaciado para que se vea más premium */
     font-family: 'Inter', sans-serif; /* O la fuente sans-serif que uses */
+}
+
+.telf:hover {
+    color: #060606;
 }
 
 @keyframes phoneSlide {

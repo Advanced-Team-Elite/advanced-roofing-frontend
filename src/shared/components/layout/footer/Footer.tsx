@@ -141,15 +141,35 @@ export const Footer = ({ upperSection }: FooterProps) => {
                     </div>
 
                     {/* Phone */}
+                    {/* Phone Section en Footer */}
                     <div className={styles.footerBottomLine}>
-                        <div className={styles.phoneWrapper}>
-                            <span>Call Us Today!</span>
-                            <a href="tel:8779456565" className={styles.phoneNumber}>
-                                <strong>
-                                    877-945-6565
-                                </strong>
+                        <div className={styles.phoneGrid}>
+                            <div className={styles.phoneHeader}>
+                                <span className={styles.pulseIcon}></span>
+                                <span className={styles.callText}>Call Us Today!</span>
+                            </div>
 
-                            </a>
+                            <div className={styles.numbersContainer}>
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>IL & Main:</span>
+                                    <a href="tel:8479456565" className={styles.phoneNumber}>847-945-6565</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Colorado:</span>
+                                    <a href="tel:7196271400" className={styles.phoneNumber}>719-627-1400</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Wisconsin:</span>
+                                    <a href="tel:2629098907" className={styles.phoneNumber}>262-909-8907</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Indiana:</span>
+                                    <a href="tel:2193164996" className={styles.phoneNumber}>219-316-4996</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

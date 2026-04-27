@@ -10,25 +10,15 @@ export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [view, setView] = useState('main');
 
-    const phoneNumbers = [
-        "847-945-6565",
-        "719-627-1400",
-        "262-909-8907",
-        "219-316-4996"
+    const locations = [
+        { label: "Main Office", phone: "847-945-6565" },
+        { label: "Colorado", phone: "719-627-1400" },
+        { label: "Wisconsin", phone: "262-909-8907" },
+        { label: "Indiana", phone: "219-316-4996" }
     ];
 
     const [phoneIndex, setPhoneIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false); // Estado para pausar
-
-    useEffect(() => {
-        if (isPaused) return; // Si está pausado, no hace nada
-
-        const interval = setInterval(() => {
-            setPhoneIndex((prev) => (prev + 1) % phoneNumbers.length);
-        }, 3000);
-
-        return () => clearInterval(interval);
-    }, [isPaused]); // Se reinicia el efecto cuando cambia el estado de pausa
 
     const closeDrawer = () => {
         setIsOpen(false);
@@ -58,19 +48,26 @@ export const Header = () => {
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
 
-                    {/* Contenedor del Carrusel de Teléfonos */}
-                    <div
-                        className={styles.phoneCarousel}
-                        onMouseEnter={() => setIsPaused(true)}  // Pausa al entrar
-                        onMouseLeave={() => setIsPaused(false)} // Resume al salir
-                    >
-                        <a
-                            href={`tel:${phoneNumbers[phoneIndex].replace(/\D/g,'')}`}
-                            key={phoneIndex}
-                            className={styles.telf}
-                        >
-                            {phoneNumbers[phoneIndex]}
-                        </a>
+                    <div className={styles.phoneWrapper}>
+                        {/* Este es el número que se ve siempre */}
+                        <div className={styles.phoneMain}>
+                            <a href="tel:8479456565" className={styles.telf}>847-945-6565</a>
+                            <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+
+                        {/* El desplegable con todos los números */}
+                        <div className={styles.phoneDropdown}>
+                            {locations.map((loc, index) => (
+                                <div key={index} className={styles.dropdownItem}>
+                                    <span className={styles.locName}>{loc.label}</span>
+                                    <a href={`tel:${loc.phone.replace(/\D/g,'')}`} className={styles.locPhone}>
+                                        {loc.phone}
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
