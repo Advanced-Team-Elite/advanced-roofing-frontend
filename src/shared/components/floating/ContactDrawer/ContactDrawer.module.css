@@ -127,6 +127,8 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100%;
+    gap: 18px;
 
     /* Opcional: Estilizar la barra de scroll para que sea más sutil */
     scrollbar-width: thin;
