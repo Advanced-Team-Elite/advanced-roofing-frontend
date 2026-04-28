@@ -70,7 +70,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
             {/* Burbuja de notificación (Solo se muestra si el drawer está cerrado) */}
             {!isOpen && showHint && (
                 <div className={styles.quoteHint}>
-                    {/* 🔥 Ícono de Notificación Animado */}
                     <span className={styles.notifIcon}>$</span>
 
                     <button

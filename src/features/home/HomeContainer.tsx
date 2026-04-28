@@ -24,8 +24,8 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
         <main>
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
-            <NowServing/>
             <StormAlert />
+            <NowServing/>
             <OurServices />
             <StatsBar/>
             <AboutHome />

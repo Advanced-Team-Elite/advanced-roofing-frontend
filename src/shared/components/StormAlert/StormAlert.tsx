@@ -37,7 +37,7 @@ export default function StormAlert() {
                     // Verificar si el cache aún es válido
                     if (Date.now() - timestamp < CACHE_DURATION) {
                         userLocation = data;
-                        console.log("Ubicación recuperada de LocalStorage:", userLocation.city);
+                        console.log("Location:", userLocation.city);
                     }
                 }
 
@@ -57,7 +57,6 @@ export default function StormAlert() {
                             data: userLocation,
                             timestamp: Date.now()
                         }));
-                        console.log("Ubicación guardada en LocalStorage:", userLocation.city);
                     }
                 }
 
@@ -85,7 +84,7 @@ export default function StormAlert() {
                         areaDesc.includes(county) || descText.includes(county)
                     );
 
-                    return true;//hasKeyword && isChicagoArea
+                    return hasKeyword && isChicagoArea; //true
                 });
 
                 if (activeAlert && activeAlert.properties.event) {
