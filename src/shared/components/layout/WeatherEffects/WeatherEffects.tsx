@@ -16,7 +16,7 @@ export const WeatherEffects = () => {
         else setSeason("spring");
 
         // Forzar para probar:
-         setSeason("winter");
+         setSeason("fall");
     }, []);
 
     /*useEffect(() => {
