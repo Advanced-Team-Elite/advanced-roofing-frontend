@@ -194,7 +194,7 @@ export const FloatingActions = () => {
                             className={styles.actionItem}
                             onClick={() => {
                                 if (isMobile()) {
-                                    window.location.href = "tel:+18472629774"; // Número directo en móvil
+                                    window.location.href = "tel:+12244264773"; // Número directo en móvil
                                 } else {
                                     setActiveContactType('call'); // Abre el drawer en escritorio
                                 }
