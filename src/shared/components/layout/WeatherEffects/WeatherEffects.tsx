@@ -8,7 +8,7 @@ type Season = "winter" | "summer" | "fall" | "spring" | null;
 export const WeatherEffects = () => {
     const [season, setSeason] = useState<Season>(null);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const month = new Date().getMonth();
         if ([11, 0, 1].includes(month)) setSeason("winter");
         else if ([5, 6, 7].includes(month)) setSeason("summer");
@@ -17,6 +17,27 @@ export const WeatherEffects = () => {
 
         // Forzar para probar:
          setSeason("spring");
+    }, []);*/
+    useEffect(() => {
+        const seasons: Season[] = ["winter", "summer", "fall", "spring"];
+
+        // Función para cambiar clima
+        const changeWeather = () => {
+            setSeason(prev => {
+                // Opcional: Evitar que salga la misma estación dos veces seguidas
+                const otherSeasons = seasons.filter(s => s !== prev);
+                return otherSeasons[Math.floor(Math.random() * otherSeasons.length)];
+            });
+        };
+
+        // Cambiar inmediatamente al montar
+        changeWeather();
+
+        // Configurar intervalo (ejemplo: cada 15 segundos)
+        const interval = setInterval(changeWeather, 5000);
+
+        // Limpiar intervalo al desmontar el componente
+        return () => clearInterval(interval);
     }, []);
 
     // GRANIZO (winter) - partículas pequeñas que caen rápido
