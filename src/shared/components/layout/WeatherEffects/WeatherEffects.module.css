@@ -189,18 +189,16 @@
     background: linear-gradient(
             to right,
             transparent 0%,
-            rgba(255, 255, 255, 0.25) 40%,
-            rgba(210, 235, 255, 0.15) 70%,
+            rgba(255, 255, 255, 0.45) 40%,
+            rgba(210, 235, 255, 0.25) 70%,
             transparent 100%
     );
 
     border-radius: 999px;
 
-    /* 2. Usamos shorthand y agregamos 'backwards' o 'both' */
-    /* Esto aplica los estilos del frame 0% antes de que empiece la animación */
     animation: wind-gust var(--gust-duration) var(--gust-delay) ease-out infinite backwards;
 
-    filter: blur(1px);
+    filter: blur(3px);
     will-change: transform; /* Optimización de rendimiento */
 }
 
