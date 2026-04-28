@@ -1,7 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
 import styles from "../FloatingActions.module.css";
-// Importaciones de tus componentes de lógica (ajusta las rutas según tu carpeta)
 import { AddressSearch} from "@/features/widget/AddressSearch";
 import { RoofMap} from "@/features/widget/RoofMap";
 import { QuoteForm} from "@/features/widget/QuoteForm";
@@ -71,6 +70,9 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
             {/* Burbuja de notificación (Solo se muestra si el drawer está cerrado) */}
             {!isOpen && showHint && (
                 <div className={styles.quoteHint}>
+                    {/* 🔥 Ícono de Notificación Animado */}
+                    <span className={styles.notifIcon}>$</span>
+
                     <button
                         className={styles.closeHint}
                         onClick={(e) => {

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Open_Sans, Prompt } from "next/font/google"; // Importamos las fuentes
 import { Header } from "@/shared/components/layout/Header/Header";
 import {FloatingActions} from "@/shared/components/floating/FloatingActions";
+import { getDynamicWeather } from "@/lib/weather";
 import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -22,10 +23,13 @@ export const metadata: Metadata = {
     description: "Professional roofers in Chicago and the Greater Chicagoland Area.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const currentSeason = await getDynamicWeather();
+
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <body className="antialiased">
+        <WeatherEffects forcedSeason={currentSeason} />
         <Header />
         {children}
         <FloatingActions />

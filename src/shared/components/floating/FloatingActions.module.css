@@ -215,19 +215,79 @@
     right: 0;
 }
 
-/* Contenedor de la burbuja */
+/* --- Eliminamos la animación floatingHint original --- */
+
 .quoteHint {
     position: absolute;
-    left: -315px; /* Ajustar según el ancho de la burbuja */
+    left: -315px;
     top: 45%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Ahora la mantenemos quieta */
     background: white;
     padding: 20px 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra más dramática */
     width: 250px;
     z-index: 10002;
-    animation: floatingHint 3s ease-in-out infinite;
+}
+
+/* --- 🔥 ESTILOS Y ANIMACIÓN DEL ÍCONO NOTIF --- */
+.notifIcon {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #ffcd00;
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+    animation: popupAndFloat 3s ease-in-out infinite;
+}
+
+@keyframes popupAndFloat {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    5% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+    10% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    /* 🔥 Aquí es donde "vuela" hacia arriba */
+    60% {
+        /* Cambiamos -150% por -250% para que suba mucho más alto al disolverse */
+        transform: translate(-50%, -250%) scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -250%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Definición de la sacudida */
+@keyframes textAttention {
+    0%, 90% { transform: translate(0, 0); }
+    91% { transform: translate(-2px, 0); }
+    92% { transform: translate(2px, 0); }
+    93% { transform: translate(-2px, 0); }
+    94% { transform: translate(2px, 0); }
+    95% { transform: translate(0, 0); }
 }
 
 .hintTitle {
@@ -236,13 +296,19 @@
     font-weight: 800;
     margin: 0;
     line-height: 1.2;
+
+    /* 🔥 La sacudida ocurre cada 5 segundos */
+    animation: textAttention 5s ease-in-out infinite;
+    display: inline-block; /* Importante para que el transform funcione bien */
 }
 
+/* MEJORA EXTRA: Pulso de color sutil */
 .hintSubtitle {
     color: #4a5568;
     font-size: 16px;
     font-weight: 600;
     margin: 4px 0 0 0;
+    transition: color 0.3s ease;
 }
 
 /* Botón de cerrar pequeño */
@@ -274,6 +340,7 @@
     border-bottom: 10px solid transparent;
     border-left: 10px solid white;
 }
+
 
 /* Ajustes para Mobile */
 @media (max-width: 768px) {
@@ -345,6 +412,8 @@
     text-transform: uppercase;
     font-family: var(--font-prompt);
 }
+
+
 
 /* Overlay sutil para el resto de la página */
 .drawerOverlay {

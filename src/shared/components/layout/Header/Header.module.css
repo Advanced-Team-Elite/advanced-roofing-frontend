@@ -111,10 +111,10 @@
 
 .telf {
     color: #060606;
-    font-weight: 600; /* Un poco más de peso */
+    font-weight: 800; /* Un poco más de peso */
     font-size: 23px !important; /* Ligeramente más grande */
     letter-spacing: 0.5px; /* Espaciado para que se vea más premium */
-    font-family: 'Inter', sans-serif; /* O la fuente sans-serif que uses */
+    font-family: 'Prompt', sans-serif; /* O la fuente sans-serif que uses */
 }
 
 .telf:hover {

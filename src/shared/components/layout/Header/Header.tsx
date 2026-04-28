@@ -40,8 +40,6 @@ export const Header = () => {
 
     return (
         <header className={styles.headerContainer}>
-
-            <WeatherEffects />
             {/* TOP BAR - Desktop */}
             <div className={styles.topBar}>
                 <span>Serving the Des Plaines Community</span>

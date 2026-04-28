@@ -1,22 +1,19 @@
 "use client";
-
 import React, { useMemo, useEffect, useState } from "react";
 import styles from "./WeatherEffects.module.css";
 
 type Season = "winter" | "summer" | "fall" | "spring" | null;
 
-export const WeatherEffects = () => {
-    const [season, setSeason] = useState<Season>(null);
+interface Props {
+    forcedSeason: "winter" | "summer" | "fall" | "spring";
+}
+
+export const WeatherEffects = ({ forcedSeason }: Props) => {
+    const season = forcedSeason;
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        const month = new Date().getMonth();
-        if ([11, 0, 1].includes(month)) setSeason("winter");
-        else if ([5, 6, 7].includes(month)) setSeason("summer");
-        else if ([8, 9, 10].includes(month)) setSeason("fall");
-        else setSeason("spring");
-
-        // Forzar para probar:
-         setSeason("spring");
+        setIsMounted(true);
     }, []);
 
     /*useEffect(() => {
@@ -58,15 +55,15 @@ export const WeatherEffects = () => {
 
     // VIENTO (spring) - ráfagas horizontales
     const windGusts = useMemo(() => {
-        return [...Array(18)].map((_, i) => ({
+        return [...Array(20)].map((_, i) => ({
             id: i,
             top: `${Math.random() * 100}%`,
-            delay: `${Math.random() * 4}s`,
-            width: `${200 + Math.random() * 300}px`,       // más largo
-            opacity: 0.12 + Math.random() * 0.18,
-            duration: `${2.5 + Math.random() * 2}s`,
-            thickness: `${4 + Math.random() * 8}px`,       // más grueso
-            startX: `-${150 + Math.random() * 100}px`,
+            width: `${200 + Math.random() * 300}px`,
+            thickness: `${5 + Math.random() * 7}px`,
+            opacity: 0.1 + Math.random() * 0.2,
+            delay: `${Math.random() * 5}s`,
+            duration: `${2 + Math.random() * 3}s`,
+            startX: `${-250 + Math.random() * 100}px`,
         }));
     }, []);
 
@@ -89,7 +86,7 @@ export const WeatherEffects = () => {
         return drops;
     }, []);
 
-    if (!season) return null;
+    if (!isMounted) return null;
 
     return (
         <div className={styles.container} aria-hidden="true">
