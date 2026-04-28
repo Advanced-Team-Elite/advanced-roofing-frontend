@@ -121,6 +121,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     >
                         <GoogleBusinessIcon />
                     </Link>
+
                 </div>
 
                 <div className={styles.videoControls}>

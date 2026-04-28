@@ -167,27 +167,31 @@
     display: flex;
     gap: 20px;   /* Espacio entre iconos */
     z-index: 4;  /* Por encima del overlay y el contenido */
-    margin-left: 40px;
+    margin-left: 20px;
+    padding: 20px;
 }
 
 .socialIcon {
-    color: white;
+    color: #00589e;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    background-color: white;
+    border-radius: 50%;
+    padding: 13px;
 }
 
 /* Tamaño de los iconos sociales */
 .socialIcon svg {
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     fill: currentColor;
 }
 
 .socialIcon:hover {
     transform: scale(1.1);
-    color: #f7d000;
+    color: #00589e;
 }
 
 /* --- RESPONSIVE --- */
@@ -219,14 +223,7 @@
     }
 
     .socialIcons {
-        top: 20px;
-        left: 20px;
-        gap: 15px;
-    }
-
-    .socialIcon svg {
-        width: 18px;
-        height: 18px;
+        display: none;
     }
 
     .heroTitle {
