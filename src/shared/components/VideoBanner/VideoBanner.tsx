@@ -4,6 +4,13 @@ import styles from './VideoBanner.module.css';
 import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
 import Link from 'next/link';
 import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
+import {
+    FacebookIcon,
+    XIcon,
+    YelpIcon,
+    HouzzIcon,
+    GoogleBusinessIcon
+} from "@/shared/Icons/Icons";
 
 interface VideoBannerProps {
     showSubtitle?: boolean;
@@ -60,6 +67,59 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
 
                     <Link href="/contact-us" className={styles.contactBtn} title="Go to our contact page">
                         Contact Us
+                    </Link>
+                </div>
+
+
+                <div className={styles.socialIcons}>
+                    <Link
+                        href="https://www.facebook.com/profile.php?id=61580667170717"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        aria-label="Visit our Facebook page"
+                        rel="noopener noreferrer"
+                    >
+                        <FacebookIcon />
+                    </Link>
+
+                    <Link
+                        href="https://x.com/advanced_team26"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Follow us on X (Twitter)"
+                    >
+                        <XIcon />
+                    </Link>
+
+                    <Link
+                        href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View our profile on Yelp"
+                    >
+                        <YelpIcon />
+                    </Link>
+
+                    <Link
+                        href="https://www.houzz.com/hznb/professionals/roofing-and-gutters/advanced-roofing-team-construction-pfvwus-pf~314416282"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Check our reviews on Houzz"
+                    >
+                        <HouzzIcon />
+                    </Link>
+
+                    <Link
+                        href="https://www.google.com/maps"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Find us on Google Business"
+                    >
+                        <GoogleBusinessIcon />
                     </Link>
                 </div>
 

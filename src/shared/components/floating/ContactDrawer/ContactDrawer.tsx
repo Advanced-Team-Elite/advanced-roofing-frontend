@@ -40,11 +40,15 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
     });
     const [errors, setErrors] = useState<FormErrors>({});
 
-    useEffect(() => {
+    /*useEffect(() => {
         setMounted(true);
         if (type) document.body.style.overflow = 'hidden';
         return () => { document.body.style.overflow = 'unset'; };
-    }, [type]);
+    }, [type]);*/
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Reset al cerrar
     useEffect(() => {

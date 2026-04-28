@@ -6,6 +6,11 @@
   --font-prompt: var(--font-prompt), sans-serif;
 }
 
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
+
 /* 1. Contenedor principal de sugerencias */
 .pac-container {
   border-radius: 0 0 12px 12px !important;
