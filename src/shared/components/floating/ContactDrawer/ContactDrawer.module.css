@@ -25,7 +25,9 @@
     margin-right: 10px;
     margin-bottom: 75px;
     width: 375px;
-    height: 750px;
+    /* Altura dinámica basada en el viewport */
+    height: 85vh;
+    max-height: 800px; /* Limite opcional para pantallas muy grandes */
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -33,7 +35,7 @@
     transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden; /* Mantenemos hidden aquí para que el scroll sea interno */
 }
 
 .expanded {
@@ -120,11 +122,27 @@
 .formPanel {
     flex: 1;
     min-width: 375px;
-    padding: 20px 20px 5px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Opcional: Estilizar la barra de scroll para que sea más sutil */
+    scrollbar-width: thin;
+    scrollbar-color: #00589e #f0f0f0;
+}
+
+.formPanel::-webkit-scrollbar {
+    width: 6px;
+}
+.formPanel::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.formPanel::-webkit-scrollbar-thumb {
+    background-color: #00589e;
+    border-radius: 10px;
 }
 
 .formTitle {
@@ -323,8 +341,9 @@ textarea.floatingInput:not(:placeholder-shown) {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 40px 32px;
-    gap: 16px;
+    padding: 20px;
+    /* Asegura que ocupe todo el alto disponible para centrar el contenido */
+    min-height: 100%;
 }
 
 .successIcon {
@@ -495,7 +514,7 @@ textarea.floatingInput:not(:placeholder-shown) {
     .drawerContainer {
         margin: 0;
         width: 100% !important;
-        height: 100% !important;
+        height: 100vh !important; /* Full height en móvil */
         max-height: 100vh !important;
         border-radius: 0;
     }

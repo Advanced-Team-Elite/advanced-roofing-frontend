@@ -541,7 +541,7 @@
     }
 
     .quoteSideBtn {
-        left: -44px; /* Un poco más pequeño en móvil */
+        left: -49px; /* Un poco más pequeño en móvil */
         padding: 25px 8px;
         font-size: 0.9rem;
     }
