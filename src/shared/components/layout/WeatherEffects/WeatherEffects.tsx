@@ -8,7 +8,7 @@ type Season = "winter" | "summer" | "fall" | "spring" | null;
 export const WeatherEffects = () => {
     const [season, setSeason] = useState<Season>(null);
 
-    /*useEffect(() => {
+    useEffect(() => {
         const month = new Date().getMonth();
         if ([11, 0, 1].includes(month)) setSeason("winter");
         else if ([5, 6, 7].includes(month)) setSeason("summer");
@@ -16,9 +16,10 @@ export const WeatherEffects = () => {
         else setSeason("spring");
 
         // Forzar para probar:
-         setSeason("spring");
-    }, []);*/
-    useEffect(() => {
+         setSeason("winter");
+    }, []);
+
+    /*useEffect(() => {
         const seasons: Season[] = ["winter", "summer", "fall", "spring"];
 
         // Función para cambiar clima
@@ -38,18 +39,20 @@ export const WeatherEffects = () => {
 
         // Limpiar intervalo al desmontar el componente
         return () => clearInterval(interval);
-    }, []);
+    }, []);*/
 
     // GRANIZO (winter) - partículas pequeñas que caen rápido
     const hailstones = useMemo(() => {
-        return [...Array(35)].map((_, i) => ({ // 🔥 menos cantidad
+        return [...Array(5)].map((_, i) => ({ // Reducimos cantidad
             id: i,
-            left: `${Math.random() * 110 - 5}%`,
-            fallDelay: `${Math.random() * 2}s`,
-            fallDuration: `${1.4 + Math.random() * 0.8}s`, // 🔥 más lento
-            size: `${6 + Math.random() * 8}px`, // 🔥 más grande
-            opacity: 0.7 + Math.random() * 0.3,
-            angle: `${-8 - Math.random() * 12}deg`,
+            left: `${Math.random() * 120}%`,
+            fallDelay: `${Math.random() * -5}s`, // Delay negativo para que empiece "vivo"
+            // Caída veloz (duración corta)
+            fallDuration: `${0.8 + Math.random() * 0.6}s`,
+            // 🔥 Mucho más grandes (esféricos)
+            size: `${18 + Math.random() * 12}px`,
+            opacity: 0.8 + Math.random() * 0.2,
+            // Eliminamos el ángulo de inclinación, caen recto
         }));
     }, []);
 
@@ -101,13 +104,15 @@ export const WeatherEffects = () => {
                             style={{
                                 left: stone.left,
                                 width: stone.size,
-                                height: stone.size,
+                                height: stone.size, // Ancho = Alto → Perfectamente Redondo
                                 opacity: stone.opacity,
                                 "--fall-delay": stone.fallDelay,
                                 "--fall-duration": stone.fallDuration,
-                                "--angle": stone.angle,
                             } as React.CSSProperties}
-                        />
+                        >
+                            {/* 🔥 NUEVO: Efecto de explosión/Splat */}
+                            <div className={styles.hailSplat} />  {/* 👈 renombrado */}
+                        </div>
                     ))}
                 </div>
             )}
