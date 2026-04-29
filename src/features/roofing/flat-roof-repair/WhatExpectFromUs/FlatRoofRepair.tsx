@@ -34,10 +34,7 @@ const FlatRoofRepair = () => {
                             , we help homeowners and property managers throughout Chicago protect their
                             properties and simplify what can feel like an overwhelming process. Our team
                             works directly with you and your insurance provider, streamlining your
-                            experience and setting clear expectations from your very first call about{' '}
-                            <Link href="/services/roofing/flat-roof-repair" className={styles.linkText}>
-                                flat roof repair in Chicago
-                            </Link>.
+                            experience and setting clear expectations from your very first call about flat roof repair in Chicago.
                         </p>
 
                         <p>

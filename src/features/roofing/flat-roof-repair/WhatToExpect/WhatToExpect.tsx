@@ -26,7 +26,7 @@ export const WhatToExpect = () => {
                     <ul className={styles.processList}>
                         <li>
                             <strong>
-                                <Link href="/emergency-roof-repair-chicago/" className={styles.inlineLink}>
+                                <Link href="/roofing/emergency-roof-repairs" className={styles.inlineLink}>
                                     24/7 Emergency Response:
                                 </Link>
                             </strong>{' '}

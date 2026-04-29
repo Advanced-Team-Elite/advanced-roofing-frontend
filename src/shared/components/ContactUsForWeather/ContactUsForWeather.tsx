@@ -341,7 +341,7 @@ export const ContactUsForWeather = () => {
                             <div className={styles.ctaBanner}>
                                 <p className={styles.ctaText}>
                                     Call <a href="tel:8779456565">(877) 945-6565</a> or{' '}
-                                    <Link href="/contact" className={styles.blueLink}>
+                                    <Link href="/contact-us" className={styles.blueLink}>
                                         contact us online
                                     </Link>{' '}
                                     today to schedule your free consultation and discuss roofing solutions tailored for your property.

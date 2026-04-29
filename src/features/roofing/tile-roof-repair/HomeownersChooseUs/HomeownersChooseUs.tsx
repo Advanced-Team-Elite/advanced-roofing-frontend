@@ -49,7 +49,7 @@ export const HomeownersChooseUs = () => {
                         </li>
                         <li>
                             <strong>
-                                <Link href="/emergency-roof-repairs/" className={styles.inlineLink}>
+                                <Link href="/roofing/emergency-roof-repairs/" className={styles.inlineLink}>
                                     24/7 service availability:
                                 </Link>
                             </strong>{' '}

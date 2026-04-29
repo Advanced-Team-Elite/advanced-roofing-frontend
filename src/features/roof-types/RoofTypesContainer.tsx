@@ -14,7 +14,7 @@ export const RoofTypesContainer = () => {
         <div className={styles.mainWrapper}>
 
             <SharedBanner
-                title="Roofing"
+                title="Roof types"
                 isCityVisible={false}
                 isIconVisible={true}
                 backgroundImage={"/assets/images/features/roofing/banner-v3.webp"}

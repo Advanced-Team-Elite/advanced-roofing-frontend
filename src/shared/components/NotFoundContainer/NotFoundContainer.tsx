@@ -24,7 +24,7 @@ const NotFoundContainer = () => {
 
                 <div className={styles.imageSide}>
                     <Image
-                        src="/assets/images/shared/17.jpg"
+                        src="/assets/images/shared/17.webp"
                         alt="Advanced Roofing Houses"
                         fill
                         priority
