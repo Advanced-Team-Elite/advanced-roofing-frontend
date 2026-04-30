@@ -5,16 +5,18 @@ import React from "react";
 
 interface SharedBannerProps {
     title: string;
+    subtitle?: string; // Nuevo parámetro opcional
     isCityVisible?: boolean;
     isIconVisible?: boolean;
-    backgroundImage?: string; // Nueva prop opcional
+    backgroundImage?: string;
 }
 
 const SharedBanner = ({
                           title,
+                          subtitle,
                           isCityVisible = true,
                           isIconVisible = false,
-                          backgroundImage = '/assets/images/features/about-us/banner-v1.webp' // Valor por defecto
+                          backgroundImage = '/assets/images/features/about-us/banner-v1.webp'
                       }: SharedBannerProps) => {
     return (
         <>
@@ -30,6 +32,7 @@ const SharedBanner = ({
                             </div>
                         )}
                         <h1 className={`${styles.title} ${!isCityVisible ? styles.noCityMargin : ''}`}>{title}</h1>
+                        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
                     </div>
                 </div>
             </section>
