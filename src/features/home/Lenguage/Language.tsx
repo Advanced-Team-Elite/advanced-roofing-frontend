@@ -4,11 +4,11 @@ import Image from 'next/image';
 import styles from './Language.module.css';
 
 const languages = [
-    { name: 'English', flag: '/assets/images/languages/usa.png' },
-    { name: 'Spanish', flag: '/assets/images/languages/mexico.png' },
-    { name: 'Polish', flag: '/assets/images/languages/poland.png' },
-    { name: 'Arabic', flag: '/assets/images/languages/saudi.png' },
-    { name: 'Hindi', flag: '/assets/images/languages/india.png' },
+    { name: 'English', flag: '/assets/images/languages/usa.webp' },
+    { name: 'Spanish', flag: '/assets/images/languages/mexico.webp' },
+    { name: 'Polish', flag: '/assets/images/languages/poland.webp' },
+    { name: 'Arabic', flag: '/assets/images/languages/saudi.webp' },
+    { name: 'Hindi', flag: '/assets/images/languages/india.webp' },
 ];
 
 export const Language = () => {

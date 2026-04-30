@@ -73,7 +73,7 @@ export const NowServing = () => {
                     {/* Camión Original */}
                     <motion.div style={{ x: xTruck, y: yTruck }} className={styles.vehicleWrapper}>
                         <Image
-                            src="/assets/images/features/serving/advance-truck-alt.png"
+                            src="/assets/images/features/serving/advance-truck-alt.webp"
                             alt="Truck" width={1536} // Resolución real
                             height={1024}
                             quality={100} className={styles.vehicleImg}
@@ -83,7 +83,7 @@ export const NowServing = () => {
                     {/* Van */}
                     <motion.div style={{ x: xVan, y: yVan }} className={styles.vehicleWrapper}>
                         <Image
-                            src="/assets/images/features/serving/advance-van-alt.png"
+                            src="/assets/images/features/serving/advance-van-alt.webp"
                             alt="Van" width={1536} // Resolución real
                             height={1024}
                             quality={100} className={styles.vehicleImg}
@@ -93,7 +93,7 @@ export const NowServing = () => {
                     {/* Box Truck */}
                     <motion.div style={{ x: xBoxTruck, y: yBoxTruck }} className={styles.vehicleWrapper}>
                         <Image
-                            src="/assets/images/features/serving/advance-box-truck-alt.png"
+                            src="/assets/images/features/serving/advance-box-truck-alt.webp"
                             alt="Box Truck" width={1536} // Resolución real
                             height={1024}
                             quality={100} className={styles.vehicleImg}
@@ -103,7 +103,7 @@ export const NowServing = () => {
                     {/* Grúa (Crane) con Banderas */}
                     <motion.div style={{ x: xCrane, y: yCrane }} className={styles.vehicleWrapper}>
                         <Image
-                            src="/assets/images/features/serving/advance-crane-alt.png"
+                            src="/assets/images/features/serving/advance-crane-alt.webp"
                             alt="Crane" width={1536} // Resolución real
                             height={1024}
                             quality={100} className={styles.vehicleImg}

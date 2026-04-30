@@ -1,5 +1,5 @@
 .section {
-    margin-top: 100px;
+    margin: 100px 0 50px 0;
     padding: 80px 20px;
     background-color: #f2f2f2; /* Fondo gris claro como en la imagen */
     width: 100%;
@@ -64,6 +64,9 @@
 /* --- RESPONSIVE --- */
 
 @media (max-width: 768px) {
+    .section {
+        margin: 50px 0 50px 0;
+    }
     .title {
         font-size: 2.2rem;
     }
