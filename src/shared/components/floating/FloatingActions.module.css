@@ -230,13 +230,14 @@
     z-index: 10002;
 }
 
-/* --- 🔥 ESTILOS Y ANIMACIÓN DEL ÍCONO NOTIF --- */
+/* --- 🔥 ESTILOS Y ANIMACIÓN DEL ÍCONO NOTIF (PALPITANTE) --- */
 .notifIcon {
     position: absolute;
     top: 0%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background-color: #ffcd00;
+    /* Mantenemos el centrado inicial */
+    transform: translate(-50%, -50%) scale(1);
+    background-color: red;
     color: white;
     font-size: 20px;
     font-weight: 900;
@@ -248,35 +249,23 @@
     justify-content: center;
     pointer-events: none;
     z-index: 10;
-    animation: popupAndFloat 3s ease-in-out infinite;
+    /* Cambiamos a la nueva animación de palpito */
+    animation: pulseHeartbeat 1.5s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
 }
 
-@keyframes popupAndFloat {
+@keyframes pulseHeartbeat {
     0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
     }
-    5% {
+    70% {
         transform: translate(-50%, -50%) scale(1.1);
-        opacity: 1;
-    }
-    10% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-    40% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-    /* 🔥 Aquí es donde "vuela" hacia arriba */
-    60% {
-        /* Cambiamos -150% por -250% para que suba mucho más alto al disolverse */
-        transform: translate(-50%, -250%) scale(1.2);
-        opacity: 0;
+        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
     }
     100% {
-        transform: translate(-50%, -250%) scale(1);
-        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
     }
 }
 
@@ -291,7 +280,7 @@
 }
 
 .hintTitle {
-    color: #00589e;
+    color: black;
     font-size: 20px;
     font-weight: 800;
     margin: 0;
@@ -355,8 +344,8 @@
     left: -53px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #00ccff;
-    color: white;
+    background-color: #f7d000;
+    color: black;
     border: none;
     padding: 35px 10px;
     border-radius: 12px 0 0 12px;
@@ -390,6 +379,7 @@
 
 .quoteText {
     font-size: 1.3rem;
+    font-weight: bolder;
     transform: rotate(180deg);
     display: inline-block;
 }

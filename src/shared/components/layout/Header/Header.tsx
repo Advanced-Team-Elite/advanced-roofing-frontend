@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
-import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
+import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, NextdoorIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
 import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
 import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 
@@ -13,6 +13,7 @@ export const Header = () => {
 
     const locations = [
         { label: "Main Office", phone: "847-945-6565" },
+        { label: "Toll-Free", phone: "877-945-6565" },
         { label: "Colorado", phone: "719-627-1400" },
         { label: "Wisconsin", phone: "262-909-8907" },
         { label: "Indiana", phone: "219-316-4996" }
@@ -253,12 +254,12 @@ export const Header = () => {
                                             </Link>
 
                                             <Link
-                                                href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                                                href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
                                                 className={styles.socialIcon}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <YelpIcon />
+                                                <NextdoorIcon />
                                             </Link>
 
                                             <Link

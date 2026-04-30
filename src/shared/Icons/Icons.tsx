@@ -65,6 +65,20 @@ export const YelpIcon = ({ size = 28, className }: IconProps) => (
     </svg>
 );
 
+export const NextdoorIcon = ({ size = 28, className }: IconProps) => (
+    <svg
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        className={className}
+        fill="currentColor"
+        aria-hidden
+    >
+        {/* Silueta sólida de la casa con chimenea */}
+        <path d="M22.42 10.74l-1.38-1.15V21c0 .55-.45 1-1 1H3.96c-.55 0-1-.45-1-1V9.59l-1.38 1.15c-.41.34-.9.05-.9-.49 0-.21.09-.42.26-.56L11.59 1.4c.24-.2.58-.2.82 0l4.34 3.62V3.5c0-.28.22-.5.5-.5h2.5c.28 0 .5.22.5.5v4.54l2.14 1.78c.17.14.26.35.26.56 0 .54-.49.83-.9.49z" />
+    </svg>
+);
+
 export const PlayIcon = ({ size = 28, className }: IconProps) => (
     <svg
         viewBox="0 0 24 24"

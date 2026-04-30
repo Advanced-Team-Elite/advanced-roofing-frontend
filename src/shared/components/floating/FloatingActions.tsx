@@ -194,8 +194,9 @@ export const FloatingActions = () => {
                             className={styles.actionItem}
                             onClick={() => {
                                 if (isMobile()) {
-                                    window.location.href = "tel:+12244264773"; // Número directo en móvil
-                                } else {
+                                    window.location.href = "tel:+18479456565"; // Actualizado al número 847-945-6565
+                                }
+                                else {
                                     setActiveContactType('call'); // Abre el drawer en escritorio
                                 }
                             }}

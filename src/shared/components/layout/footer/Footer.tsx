@@ -8,7 +8,7 @@ import {
     XIcon,
     YelpIcon,
     HouzzIcon,
-    GoogleBusinessIcon
+    GoogleBusinessIcon, NextdoorIcon
 } from "@/shared/Icons/Icons";
 
 interface FooterProps {
@@ -108,13 +108,13 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 </Link>
 
                                 <Link
-                                    href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                                    href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="View our profile on Yelp"
                                 >
-                                    <YelpIcon />
+                                    <NextdoorIcon />
                                 </Link>
 
                                 <Link

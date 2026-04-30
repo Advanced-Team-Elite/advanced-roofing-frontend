@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
 import styles from './VideoBanner.module.css';
-import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
+import {PlayIcon, DescriptionIcon, NextdoorIcon} from '@/shared/Icons/Icons';
 import Link from 'next/link';
 import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
 import {
@@ -93,13 +93,13 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     </Link>
 
                     <Link
-                        href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                        href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
                         className={styles.socialIcon}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="View our profile on Yelp"
                     >
-                        <YelpIcon />
+                        <NextdoorIcon />
                     </Link>
 
                     <Link
