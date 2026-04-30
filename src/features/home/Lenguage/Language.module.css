@@ -1,0 +1,83 @@
+.section {
+    margin-top: 100px;
+    padding: 80px 20px;
+    background-color: #f2f2f2; /* Fondo gris claro como en la imagen */
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    color: #005a9c; /* El azul de los otros títulos */
+    font-weight: 800;
+    margin-bottom: 60px;
+    letter-spacing: -1px;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.langItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.langItem:hover {
+    transform: translateY(-10px);
+}
+
+.flagWrapper {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
+}
+
+.flagImg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.langName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    font-style: italic; /* Como se ve en la referencia */
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .grid {
+        gap: 25px;
+    }
+
+    .flagWrapper {
+        width: 85px;
+        height: 85px;
+    }
+
+    .langName {
+        font-size: 1.2rem;
+    }
+}

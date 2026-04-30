@@ -18,6 +18,7 @@ import StormDamageCheck from "@/features/home/StormDamageCheck/StormDamageCheck"
 import OurProjects from "@/features/home/OurProjects/OurProjects";
 import Financing from "@/features/home/Financing/Financing";
 import {NowServing} from "@/features/home/NowServing/NowServing";
+import {Language} from "@/features/home/Lenguage/Language";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -26,6 +27,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <NowServing/>
+                <Language/>
             <OurServices />
             <StatsBar/>
             <AboutHome />

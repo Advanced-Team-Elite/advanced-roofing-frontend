@@ -1,9 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import styles from './NowServing.module.css';
-import { ScrollReveal } from "@/shared/animations/ScrollReveal";
 import { useRouter } from 'next/navigation';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const states = [
     { id: 'wisconsin', name: 'Wisconsin', img: '/assets/images/features/serving/wisconsin.webp' },
@@ -14,9 +14,35 @@ const states = [
 
 export const NowServing = () => {
     const router = useRouter();
+    const containerRef = useRef(null);
+
+    // Detectamos el scroll específicamente en esta sección
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    /**
+     * Configuramos el movimiento:
+     * El camión original sale a la izquierda (-150%)
+     * Los nuevos entran desde la derecha y cruzan
+     */
+        // ... dentro de tu componente NowServing
+    // Eje X: El Truck empieza más a la derecha y los demás le siguen de cerca
+    const xTruck    = useTransform(scrollYProgress, [0, 1], ["60%", "-140%"]);
+    const xVan      = useTransform(scrollYProgress, [0, 1], ["100%", "-95%"]);   // +45% de diferencia
+    const xBoxTruck = useTransform(scrollYProgress, [0, 1], ["140%", "-50%"]);   // +45% de diferencia
+    const xCrane    = useTransform(scrollYProgress, [0, 1], ["170%", "-5%"]);    // +45% de diferencia
+
+    // Eje Y: Mantenemos el escalonado descendente (Truck arriba -> Grúa abajo)
+    // He ajustado los valores finales para que al terminar el scroll sigan alineados
+    const yTruck    = useTransform(scrollYProgress, [0, 1], [0, 0]);     // Bajó significativamente
+    const yVan      = useTransform(scrollYProgress, [0, 1], [25, 25]);   // Bajó para seguir al truck
+    const yBoxTruck = useTransform(scrollYProgress, [0, 1], [45, 45]);   // Casi a nivel de la grúa
+    const yCrane    = useTransform(scrollYProgress, [0, 1], [60, 60]);   // Se queda donde estaba
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section} ref={containerRef}>
             <h2 className={styles.title}>Now Serving</h2>
 
             <div className={styles.container}>
@@ -41,16 +67,50 @@ export const NowServing = () => {
                     ))}
                 </div>
 
-                <ScrollReveal direction="right" initialOpacity={1} distance={150} className={styles.truckWrapper}>
-                    <Image
-                        src="/assets/images/features/serving/advance-truck.webp"
-                        alt="Advanced Roofing Truck"
-                        width={800}
-                        height={400}
-                        className={styles.truck}
-                    />
-                    <div className={styles.truckShadow}></div>
-                </ScrollReveal>
+                {/* --- FLOTA ANIMADA --- */}
+                <div className={styles.fleetContainer}>
+
+                    {/* Camión Original */}
+                    <motion.div style={{ x: xTruck, y: yTruck }} className={styles.vehicleWrapper}>
+                        <Image
+                            src="/assets/images/features/serving/advance-truck-alt.png"
+                            alt="Truck" width={1536} // Resolución real
+                            height={1024}
+                            quality={100} className={styles.vehicleImg}
+                        />
+                    </motion.div>
+
+                    {/* Van */}
+                    <motion.div style={{ x: xVan, y: yVan }} className={styles.vehicleWrapper}>
+                        <Image
+                            src="/assets/images/features/serving/advance-van-alt.png"
+                            alt="Van" width={1536} // Resolución real
+                            height={1024}
+                            quality={100} className={styles.vehicleImg}
+                        />
+                    </motion.div>
+
+                    {/* Box Truck */}
+                    <motion.div style={{ x: xBoxTruck, y: yBoxTruck }} className={styles.vehicleWrapper}>
+                        <Image
+                            src="/assets/images/features/serving/advance-box-truck-alt.png"
+                            alt="Box Truck" width={1536} // Resolución real
+                            height={1024}
+                            quality={100} className={styles.vehicleImg}
+                        />
+                    </motion.div>
+
+                    {/* Grúa (Crane) con Banderas */}
+                    <motion.div style={{ x: xCrane, y: yCrane }} className={styles.vehicleWrapper}>
+                        <Image
+                            src="/assets/images/features/serving/advance-crane-alt.png"
+                            alt="Crane" width={1536} // Resolución real
+                            height={1024}
+                            quality={100} className={styles.vehicleImg}
+                        />
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );

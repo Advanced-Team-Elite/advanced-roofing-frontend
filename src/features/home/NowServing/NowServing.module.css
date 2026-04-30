@@ -111,6 +111,76 @@
     transform: scaleY(0.5); /* Aplastamos la elipse verticalmente */
 }
 
+/* ... (Manten tus estilos de .section, .title y .accordion igual) */
+
+.fleetContainer {
+    position: relative;
+    /* Subimos un poco más el contenedor para que no pise el título de abajo */
+    margin-top: -220px;
+    z-index: 10;
+    width: 100%;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.vehicleWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Reducimos el ancho base para que no se salgan */
+    width: 650px;
+    transition: transform 0.2s ease-out;
+}
+
+.vehicleWrapper:nth-child(1) {
+    z-index: 7;
+    width: 450px; /* Truck al fondo: más chico */
+}
+
+.vehicleWrapper:nth-child(2) {
+    z-index: 8;
+    width: 520px;
+}
+
+.vehicleWrapper:nth-child(3) {
+    z-index: 9;
+    width: 600px;
+}
+
+.vehicleWrapper:nth-child(4) {
+    z-index: 10;
+    width: 780px; /* Grúa al frente: el más grande pero controlado */
+}
+
+.vehicleImg {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Evita filtros de suavizado que causan borrosidad */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.truckShadow {
+    width: 70%; /* Ajustado para que no parezca que flotan */
+    height: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    filter: blur(8px);
+    margin-top: -40px; /* Súbelo para que toque las llantas */
+    transform: scaleY(0.3);
+}
+
+@media (max-width: 768px) {
+    .fleetContainer {
+        display: none; /* Ocultar convoy en móvil para evitar lag */
+    }
+}
+
 /* --- TABLET --- */
 @media (max-width: 1024px) {
     .accordion {
