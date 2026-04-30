@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './Language.module.css';
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const languages = [
     { name: 'English', flag: '/assets/images/languages/usa.webp' },
@@ -14,10 +15,10 @@ const languages = [
 export const Language = () => {
     return (
         <section className={styles.section}>
-            <div className={styles.container}>
+            <ScrollReveal className={styles.container} direction="left" initialOpacity={20} distance={90}>
                 <h2 className={styles.title}>We speak your language</h2>
 
-                <div className={styles.grid}>
+                <div className={styles.grid} >
                     {languages.map((lang, index) => (
                         <div key={index} className={styles.langItem}>
                             <div className={styles.flagWrapper}>
@@ -33,7 +34,7 @@ export const Language = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </ScrollReveal>
         </section>
     );
 };

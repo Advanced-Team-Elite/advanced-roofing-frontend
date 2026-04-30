@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './OurServices.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const OurServices = () => {
     const services = [
@@ -13,7 +14,7 @@ const OurServices = () => {
 
     return (
         <section className={styles.section}>
-            <div className={styles.container}>
+            <ScrollReveal className={styles.container} direction="right" initialOpacity={20} distance={90}>
                 <h2 className={styles.mainTitle}>Our Services</h2>
 
                 <div className={styles.servicesGrid}>
@@ -40,7 +41,7 @@ const OurServices = () => {
                         </button>
                     </Link>
                 </div>
-            </div>
+            </ScrollReveal>
         </section>
     );
 };
