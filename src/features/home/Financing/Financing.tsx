@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 
 // Definimos una interfaz para las props del Slider
@@ -17,7 +18,11 @@ interface SliderInputProps {
     allowedValues?: number[];
 }
 
-const Financing = () => {
+interface FinancingProps {
+    backgroundColor?: string; // Prop opcional
+}
+
+const Financing = ({ backgroundColor = "bg-[#f0f0f0]" }: FinancingProps) => {
     const [amount, setAmount] = useState(74500);
     const [apr, setApr] = useState(12.4);
     const [term, setTerm] = useState(5);
@@ -28,8 +33,8 @@ const Financing = () => {
     const monthlyPayment = isFinite(rawPayment) ? rawPayment : 0;
 
     return (
-        <section className="bg-[#f0f0f0] py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans">
-            <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-start">
+        <section className={`${backgroundColor} py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans`}>
+            <ScrollReveal direction="left" initialOpacity={20} distance={90} className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-start" >
 
                 <div className="space-y-8 md:col-span-6">
                     <div className="max-w-md mx-auto md:mx-0">
@@ -71,12 +76,12 @@ const Financing = () => {
                         </div>
                         <div className="p-6 flex items-center justify-around flex-1 text-[#005596] font-bold">
                             <div className="text-center">
-                                <p className="text-[10px] uppercase text-gray-500 mb-1">Total Amount</p>
+                                <p className="text-[12px] uppercase text-gray-500 mb-1">Total Amount</p>
                                 <p className="text-xl">${amount.toLocaleString()}</p>
                             </div>
                             <div className="text-4xl font-light text-gray-400">/</div>
                             <div className="text-center">
-                                <p className="text-[10px] uppercase text-gray-500 mb-1">Monthly Payment</p>
+                                <p className="text-[12px] uppercase text-gray-500 mb-1">Monthly Payment</p>
                                 <p className="text-xl">${monthlyPayment.toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
                             </div>
                         </div>
@@ -121,7 +126,7 @@ const Financing = () => {
                     </p>
                 </div>
 
-            </div>
+            </ScrollReveal>
         </section>
     );
 };

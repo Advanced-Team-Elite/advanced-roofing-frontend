@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styles from './VideoBanner.module.css';
 import {PlayIcon, DescriptionIcon, NextdoorIcon} from '@/shared/Icons/Icons';
 import Link from 'next/link';
@@ -32,6 +32,12 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
         setIsPlaying(!isPlaying);
     };
 
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = true;
+        }
+    }, []);
+
     return (
         <>
             <section className={styles.heroSection}>
@@ -43,6 +49,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     playsInline
                     className={styles.videoBg}
                     poster="/assets/images/features/home/hero-mobile-bg.webp"
+                    onCanPlay={(e) => (e.currentTarget.muted = true)}
                 >
                     <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
                 </video>
@@ -97,7 +104,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                         className={styles.socialIcon}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="View our profile on Yelp"
+                        aria-label="View our profile on NextDoor"
                     >
                         <NextdoorIcon />
                     </Link>
