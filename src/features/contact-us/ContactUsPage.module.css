@@ -165,7 +165,7 @@
 }
 
 .disclaimer a {
-    color: #00ccff;
+    color: #00ccff !important;
     text-decoration: underline;
 }
 

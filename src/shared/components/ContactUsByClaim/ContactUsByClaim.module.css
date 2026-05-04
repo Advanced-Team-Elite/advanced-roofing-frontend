@@ -103,7 +103,7 @@
 .notServed { color: #000; }
 
 .disclaimerLink{
-    color: #00c3f8;
+    color: #00c3f8 !important;
     text-decoration: underline;
 }
 

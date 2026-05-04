@@ -287,13 +287,13 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                                 <span className="font-bold uppercase tracking-wider">APR</span>
                                                 <span className="font-bold text-[#00589e]">{finApr.toFixed(1)}%</span>
                                             </div>
-                                            <input type="range" min={0} max={39} step={0.1}
+                                            <input type="range" min={5} max={40} step={0.1}
                                                    value={finApr} onChange={e => setFinApr(Number(e.target.value))}
                                                    style={{
                                                        width: '100%',
                                                        height: '4px',
                                                        borderRadius: '2px',
-                                                       background: `linear-gradient(to right, #00589e ${(finApr/39)*100}%, #d1d5db ${(finApr/39)*100}%)`,
+                                                       background: `linear-gradient(to right, #00589e ${((finApr - 5) / 35) * 100}%, #d1d5db ${((finApr - 5) / 35) * 100}%)`,
                                                        outline: 'none',
                                                        appearance: 'none',
                                                        cursor: 'pointer',
@@ -307,20 +307,34 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                                 <span className="font-bold uppercase tracking-wider">Term</span>
                                                 <span className="font-bold text-[#00589e]">{finTerm} yrs</span>
                                             </div>
-                                            <input type="range" min={1} max={12} step={1}
-                                                   value={finTerm} onChange={e => setFinTerm(Number(e.target.value))}
-                                                   style={{
-                                                       width: '100%',
-                                                       height: '4px',
-                                                       borderRadius: '2px',
-                                                       background: `linear-gradient(to right, #00589e ${((finTerm-1)/11)*100}%, #d1d5db ${((finTerm-1)/11)*100}%)`,
-                                                       outline: 'none',
-                                                       appearance: 'none',
-                                                       cursor: 'pointer',
-                                                   }}
+                                            <input
+                                                type="range"
+                                                min={2}
+                                                max={12}
+                                                step={1}
+                                                value={finTerm}
+                                                onChange={e => {
+                                                    const rawValue = Number(e.target.value);
+                                                    const allowed = [2, 3, 5, 7, 9, 12];
+                                                    // Encontramos el valor más cercano del array
+                                                    const closest = allowed.reduce((prev, curr) =>
+                                                        Math.abs(curr - rawValue) < Math.abs(prev - rawValue) ? curr : prev
+                                                    );
+                                                    setFinTerm(closest);
+                                                }}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '4px',
+                                                    borderRadius: '2px',
+                                                    // Ajustamos el cálculo del gradiente para que use el rango 2-12
+                                                    background: `linear-gradient(to right, #00589e ${((finTerm - 2) / 10) * 100}%, #d1d5db ${((finTerm - 2) / 10) * 100}%)`,
+                                                    outline: 'none',
+                                                    appearance: 'none',
+                                                    cursor: 'pointer',
+                                                }}
                                             />
                                             <div className="flex justify-between text-[9px] text-gray-400 mt-1">
-                                                <span>1 yr</span><span>12 yrs</span>
+                                                <span>2 yrs</span><span>12 yrs</span>
                                             </div>
                                         </div>
 

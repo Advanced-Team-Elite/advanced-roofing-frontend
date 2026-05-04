@@ -14,6 +14,7 @@ interface SliderInputProps {
     prefix?: string;
     suffix?: string;
     rangeLabels?: [string, string]; // Opcional y con formato de tupla
+    allowedValues?: number[];
 }
 
 const Financing = () => {
@@ -28,13 +29,32 @@ const Financing = () => {
 
     return (
         <section className="bg-[#f0f0f0] py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans">
-            <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-center">
+            <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-start">
 
                 <div className="space-y-8 md:col-span-6">
                     <div className="max-w-md mx-auto md:mx-0">
                         <h2 className="text-[#005596] text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 text-center md:text-left">
                             We offer easy financing options for your project
                         </h2>
+                        {/* --- BANNER DE HEARTH AQUÍ --- */}
+                        <div className="flex flex-col items-center md:items-start gap-2 mb-6">
+                            <p className="text-gray-600 text-lg text-center md:text-left">
+                                Financing provided by:
+                            </p>
+                            <a
+                                href="https://app.gethearth.com/financing/12308/13571/prequalify?utm_campaign=12308&utm_content=darkblue&utm_medium=contractor-website&utm_source=contractor&utm_term=13571"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition-transform block"
+                            >
+                                <img
+                                    src="https://app.gethearth.com/contractor_images/advanced-team/banner.jpg?size_id=310x120&amp;color=darkblue"
+                                    alt="Hearth Financing Options"
+                                    className="rounded-lg shadow-md border border-white/50"
+                                    style={{ cursor: 'pointer', maxWidth: '280px', height: 'auto' }}
+                                />
+                            </a>
+                        </div>
                         <p className="text-gray-600 text-lg text-center md:text-left">
                             Estimate what your monthly payment will be:
                         </p>
@@ -67,21 +87,22 @@ const Financing = () => {
                     <SliderInput
                         label="Amount"
                         subLabel="Move slider to select amount"
-                        min={500} max={200000} step={500}
+                        min={1000} max={250000} step={500}
                         value={amount} onChange={setAmount}
                         prefix="$"
                     />
                     <SliderInput
                         label="APR"
                         subLabel="Move slider to select APR"
-                        min={0} max={39} step={0.1}
+                        min={5} max={40} step={0.1}
                         value={apr} onChange={setApr}
                         suffix="%"
                     />
                     <SliderInput
                         label="Financing term"
                         subLabel="In years"
-                        min={1} max={12} step={1}
+                        min={2} max={12} step={2}
+                        allowedValues={[2, 3, 5, 7, 9, 12]}
                         value={term} onChange={setTerm}
                         rangeLabels={['1', '12']}
                     />
@@ -91,10 +112,12 @@ const Financing = () => {
                             Contact Us
                         </button>
                     </Link>
+
                     <p className="text-xs text-gray-400 leading-relaxed mt-4">
-                        * Estimated payments based on credit approval. Final pricing depends on individual
-                        creditworthiness and a physical inspection of project scope and materials.
-                        Financing provided by third-party lenders.
+                        * This estimate is based on the principal, APR, and term selected. Actual rates and
+                        payments are subject to credit approval and will vary based on your personal
+                        financial profile, final project scope, and material selection. Financing
+                        is provided by third-party lenders.
                     </p>
                 </div>
 
@@ -105,29 +128,51 @@ const Financing = () => {
 
 // Componente Slider con Tipado Correcto
 const SliderInput: React.FC<SliderInputProps> = ({
-                                                     label, subLabel, min, max, step, value, onChange, prefix = "", suffix = "", rangeLabels
-                                                 }) => (
-    <div className="flex flex-col space-y-2">
-        <h3 className="text-[#005596] font-bold text-lg leading-none">{label}</h3>
-        <p className="text-gray-500 text-sm">{subLabel}</p>
-        <div className="bg-[#d9d9d9] p-4 rounded-lg relative">
-            <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-700 font-medium">{prefix}{value}{suffix}</span>
-                <button className="text-gray-400 hover:text-gray-600">✎</button>
-            </div>
-            <input
-                type="range"
-                min={min} max={max} step={step}
-                value={value}
-                onChange={(e) => onChange(Number(e.target.value))}
-                className="w-full h-1 bg-[#005596] rounded-lg appearance-none cursor-pointer accent-[#005596]"
-            />
-            <div className="flex justify-between text-[10px] text-gray-500 mt-1">
-                <span>{rangeLabels ? rangeLabels[0] : `${prefix}${min}${suffix}`}</span>
-                <span>{rangeLabels ? rangeLabels[1] : `${prefix}${max.toLocaleString()}${suffix}`}</span>
+                                                     label, subLabel, min, max, step, value, onChange, prefix = "", suffix = "", rangeLabels, allowedValues
+                                                 }) => {
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const rawValue = Number(e.target.value);
+
+        if (allowedValues && allowedValues.length > 0) {
+            // Buscamos el valor de la lista más cercano al que marcó el input range
+            const closest = allowedValues.reduce((prev, curr) => {
+                return Math.abs(curr - rawValue) < Math.abs(prev - rawValue) ? curr : prev;
+            });
+            onChange(closest);
+        } else {
+            // Comportamiento normal para los demás sliders
+            onChange(rawValue);
+        }
+    };
+
+    return (
+        <div className="flex flex-col space-y-2">
+            <h3 className="text-[#005596] font-bold text-lg leading-none">{label}</h3>
+            <p className="text-gray-500 text-sm">{subLabel}</p>
+            <div className="bg-[#d9d9d9] p-4 rounded-lg relative">
+                <div className="flex justify-between items-center mb-2">
+                    {/* Mostramos el valor actual (que gracias a handleChange será uno de la lista) */}
+                    <span className="text-gray-700 font-medium">{prefix}{value}{suffix}</span>
+                    <button className="text-gray-400 hover:text-gray-600">✎</button>
+                </div>
+                <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={allowedValues ? 1 : step} // Si hay lista, usamos step 1 para mayor suavidad al detectar el cambio
+                    value={value}
+                    onChange={handleChange}
+                    className="w-full h-1 bg-[#005596] rounded-lg appearance-none cursor-pointer accent-[#005596]"
+                />
+                <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+                    <span>{rangeLabels ? rangeLabels[0] : `${prefix}${min}${suffix}`}</span>
+                    <span>{rangeLabels ? rangeLabels[1] : `${prefix}${max.toLocaleString()}${suffix}`}</span>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+
+};
 
 export default Financing;
