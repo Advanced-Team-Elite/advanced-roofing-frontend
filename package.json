@@ -11,6 +11,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.2",
     "@react-google-maps/api": "^2.20.8",
+    "@vis.gl/react-google-maps": "^1.8.3",
     "framer-motion": "^12.34.3",
     "lucide-react": "^1.8.0",
     "next": "16.1.6",

@@ -19,6 +19,7 @@ import OurProjects from "@/features/home/OurProjects/OurProjects";
 import Financing from "@/features/home/Financing/Financing";
 import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
+import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -35,6 +36,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <AwardsBanner />
             <WhyChooseUs />
             <AdvancedIsHere/>
+            <CoverageMap/>
             <BeforeAndAfter/>
             <StormDamageCheck/>
             <OurProjects/>
