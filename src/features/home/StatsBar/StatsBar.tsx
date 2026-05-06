@@ -28,7 +28,7 @@ const StatsBar = () => {
                     </div>
 
                     <div className={`${styles.card} ${styles.cardBlue}`}>
-                        <span className={`${styles.value} ${styles.valueYellow}`}>Thousands</span>
+                        <span className={`${styles.value} ${styles.valueYellow}`}>+1000</span>
                         <span className={`${styles.label} ${styles.labelLight}`}>Roofs Completed</span>
                     </div>
 
