@@ -20,7 +20,7 @@ export default function CoverageMap() {
         if (!place?.geometry?.location) return;
 
         const location = place.geometry.location;
-        setSearchResult(location); // 👈 esto mueve el mapa
+        setSearchResult(location); // Esto dispara el efecto una sola vez
 
         const point = new google.maps.LatLng(location.lat(), location.lng());
         const match = polygons.find(({ polygon }) =>
@@ -29,15 +29,26 @@ export default function CoverageMap() {
         setHoveredArea(match ? match.area : { notFound: true });
     };
 
-    // Agrega este hook dentro del componente Map interno
-    function MapController({ searchResult }: { searchResult: google.maps.LatLng | null }) {
+    // Dentro de tu archivo, donde definiste esta función:
+    function MapController({
+                               searchResult,
+                               setSearchResult
+                           }: {
+        searchResult: google.maps.LatLng | null,
+        setSearchResult: (val: google.maps.LatLng | null) => void
+    }) {
         const map = useMap();
+
         useEffect(() => {
             if (map && searchResult) {
                 map.panTo(searchResult);
                 map.setZoom(13);
+
+                // Aquí es donde se usará la función para "limpiar" el estado
+                setSearchResult(null);
             }
-        }, [map, searchResult]);
+        }, [map, searchResult, setSearchResult]);
+
         return null;
     }
 
@@ -54,7 +65,12 @@ export default function CoverageMap() {
                                 defaultZoom={10}
                                 disableDefaultUI={true}
                             >
-                                <MapController searchResult={searchResult} />
+                                {/* ANTES: <MapController searchResult={searchResult} /> */}
+                                {/* AHORA: Agregamos setSearchResult */}
+                                <MapController
+                                    searchResult={searchResult}
+                                    setSearchResult={setSearchResult}
+                                />
                                 {COVERAGE_AREAS.map((area) => (
                                     <AreaPolygon
                                         key={area.id}
@@ -155,7 +171,7 @@ function SearchBox({ autocompleteRef, handlePlaceChanged }: any) {
                     <input
                         type="text"
                         placeholder="Search your address..."
-                        className="flex-1 bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg"
+                        className="flex-1 bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg w-full overflow-ellipsis"
                     />
                 </div>
             </Autocomplete>
