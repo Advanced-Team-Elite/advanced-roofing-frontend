@@ -170,9 +170,10 @@
 /* --- RESPONSIVE ADJUSTMENTS --- */
 
 @media (max-width: 1024px) {
+
     .mainContainer { padding: 80px 2rem; }
     .header {
-        margin-left: 0;
+        margin-left: 80px;
     }
 
     .title { font-size: 48px; }
@@ -186,9 +187,9 @@
 
 @media (max-width: 768px) {
     .contentWrapper { align-items: center; } /* Centramos cabecera */
-    .header { align-items: center; text-align: center; }
+    .header { align-items: center; text-align: center; margin-left: 0;}
 
-    .title { font-size: 36px; }
+    .title { font-size: 48px; }
     .description { font-size: 1rem; max-width: 320px; }
 
     /* Proporción más vertical en mobile para que se vea mejor */

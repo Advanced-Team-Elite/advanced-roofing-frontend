@@ -67,6 +67,36 @@ html {
   display: none !important;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.6) transparent;
+}
+
+/* Chrome, Edge, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.6);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.8);
+}
+
+@media (max-width: 1200px) {
+  .custom-scrollbar {
+    margin-top: 100px;
+    max-height: calc(90% - 80px);
+  }
+}
+
 /* Estilos base usando la sintaxis moderna */
 @layer base {
   body {

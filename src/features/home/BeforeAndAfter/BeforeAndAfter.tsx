@@ -69,7 +69,7 @@ const BeforeAndAfter = () => {
     };
 
     return (
-        <ScrollReveal className={styles.mainContainer} direction="left">
+        <ScrollReveal className={styles.mainContainer} direction="right">
             <div className={styles.contentWrapper}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>Before & After</h2>
