@@ -302,16 +302,28 @@ function AreaPolygon({
         onPolygonReady(area, polygon);
 
         const mouseOverListener = polygon.addListener('mouseover', () => {
+            // 1. Aplicamos los estilos visuales válidos al polígono
             polygon.setOptions({
-                fillOpacity: 0.6,
-                cursor: 'pointer'
+                fillOpacity: 0.6
             });
+
+            // 2. Cambiamos el cursor a través de la instancia del mapa
+            const map = polygon.getMap();
+            if (map) {
+                map.setOptions({ draggableCursor: 'pointer' });
+            }
         });
 
         const mouseOutListener = polygon.addListener('mouseout', () => {
             polygon.setOptions({
-                fillOpacity: 0.35
+                fillOpacity: 0.4 // O tu opacidad original
             });
+
+            // 3. Restauramos el cursor (null lo devuelve al default)
+            const map = polygon.getMap();
+            if (map) {
+                map.setOptions({ draggableCursor: null });
+            }
         });
 
         const clickListener = polygon.addListener('click', () => {
