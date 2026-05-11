@@ -19,6 +19,8 @@ const prompt = Prompt({
 });
 
 export const metadata: Metadata = {
+    // Reemplaza con tu dominio real
+    //metadataBase: new URL("https://advancedteamelite.com"),
     title: "Advanced Roofing Team | Chicago Roofing Company",
     description: "Professional roofers in Chicago and the Greater Chicagoland Area.",
 };
