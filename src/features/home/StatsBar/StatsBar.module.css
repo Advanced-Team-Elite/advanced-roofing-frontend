@@ -1,5 +1,4 @@
-/* --- ESTILOS BASE (Desktop / Pantallas Grandes) --- */
-
+/* --- ESTILOS BASE --- */
 .section {
     background-color: white;
     padding: 2rem 2rem 7rem 2rem;
@@ -10,7 +9,7 @@
 
 .container {
     display: flex;
-    flex-direction: row; /* Desktop: Lado a lado */
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     max-width: 1280px;
@@ -50,27 +49,52 @@
 
 .btnPrimary:hover {
     background-color: #00abd5;
-
 }
 
-/* Grid de Stats Equitativo */
+/* --- GRID DE STATS (Estructura de Jerarquía) --- */
 .gridSide {
     display: grid;
     flex: 1.5;
-    /* repeat(2, minmax(0, 1fr)) obliga a que las 2 columnas midan exactamente lo mismo */
+    /* Define dos columnas de igual tamaño */
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Define filas automáticas para permitir el 'span 2' */
+    grid-auto-rows: minmax(150px, auto);
     gap: 1.5rem;
     width: 100%;
 }
 
 .card {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2rem; /* Aumentamos el padding vertical para que tengan más presencia */
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido al inicio */
+    align-items: flex-start;    /* Alinea el texto a la izquierda como la Hero Card */
     box-sizing: border-box;
-    background-color: #00589E; /* Azul por defecto */
-    transition: transform 0.3s ease;
-    min-width: 0; /* Permite que el contenido se encoja correctamente */
+    background-color: #00589E;
+    border: 1px solid rgba(255,255,255,0.08); /* Sutil borde para profundidad */
+    transition: all 0.3s ease;
+    min-width: 0;
+}
+
+.cardLine {
+    width: 40px;
+    height: 3px;
+    background: #F7D000;
+    margin: 1rem 0;
+}
+
+.cardDetail {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 1);
+    line-height: 1.4;
+    margin-top: 0.75rem;
+}
+
+/* Efecto Hover mejorado */
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(247, 208, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .card:hover {
@@ -78,76 +102,395 @@
 }
 
 .value {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 0.5rem;
-    word-wrap: break-word; /* Rompe palabras largas si es necesario */
-    overflow-wrap: break-word;
 }
 
 .label {
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.2;
+    color: white;
 }
 
-/* Colores */
+/* --- ✅ HERO CARD (Énfasis 20+ Años) ✅ --- */
+.heroCard {
+    grid-row: span 2; /* Hace que la card sea el doble de alta */
+    background: linear-gradient(145deg, #00457a 0%, #00589e 100%);
+    border: 2px solid #F7D000 !important; /* Borde oro para diferenciar */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.premiumContent {
+    position: relative;
+    z-index: 2;
+}
+
+.valuePremium {
+    color: #f7d000;
+    font-size: 4rem !important; /* Aumento de tamaño para énfasis */
+}
+
+.labelPremium {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.premiumSubtext {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+}
+
+/* --- ✅ ANIMACIONES (Optimizadas para Lighthouse) ✅ --- */
+
+/* Barrido de luz diagonal */
+.heroCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(247, 208, 0, 0.3) 55%,
+            rgba(255, 255, 255, 0) 70%,
+            transparent 100%
+    );
+    animation: lightSweep 6s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes lightSweep {
+    0% { left: -150%; }
+    15% { left: 100%; }
+    100% { left: 100%; }
+}
+/* --- COLORES Y UTILIDADES --- */
 .cardBlue { background-color: #00589E; }
 .valueYellow { color: #F7D000; }
 .labelLight { color: white; }
 
-/* --- MEDIA QUERIES (Desktop-First) --- */
+/* --- RESPONSIVE --- */
 
-/* Tablet y Laptops pequeñas */
 @media (max-width: 1280px) {
     .container {
         flex-direction: column;
         text-align: center;
         gap: 4rem;
     }
+    .headerSide { max-width: 100%; }
+    .section { padding: 4rem 100px; }
+    .actions { display: flex; justify-content: center; }
+}
 
-    .headerSide {
-        max-width: 100%;
+/* =========================
+   HERO CARD - 20 YEARS
+========================= */
+
+.cardHero {
+    grid-column: span 2;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #004d89 0%,
+                    #00589e 45%,
+                    #0077d8 100%
+            );
+
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 260px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+            0 20px 60px rgba(0,0,0,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+
+    transition: transform 0.4s ease;
+}
+
+.cardHero:hover {
+    transform: translateY(-8px);
+}
+
+/* Glow radial */
+.cardHero::before {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    top: -180px;
+    right: -120px;
+}
+
+/* Shine */
+.cardHero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+            linear-gradient(
+                    115deg,
+                    transparent 20%,
+                    rgba(255,255,255,0.15) 50%,
+                    transparent 80%
+            );
+
+    transform: translateX(-120%);
+    animation: heroSweep 8s infinite;
+}
+
+@keyframes heroSweep {
+    0% {
+        transform: translateX(-120%);
     }
 
+    15% {
+        transform: translateX(120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+.heroTop {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heroBadge {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: rgba(255,255,255,1);
+}
+
+.heroContent {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heroNumberWrapper {
+    flex-shrink: 0;
+}
+
+.heroNumber {
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: #F7D000;
+
+    text-shadow:
+            0 0 30px rgba(247,208,0,0.25);
+}
+
+.heroText {
+    max-width: 320px;
+}
+
+.heroLabel {
+    display: block;
+
+    font-size: 1.8rem;
+    line-height: 1.05;
+    font-weight: 800;
+    color: white;
+
+    margin-bottom: 1rem;
+}
+
+.heroLine {
+    width: 80px;
+    height: 4px;
+    background: #F7D000;
+    margin-bottom: 1rem;
+}
+
+.heroDescription {
+    color: rgba(255,255,255, 1);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.heroDescription strong{
+    color: #F7D000 !important;
+}
+
+@keyframes shakeSlow {
+    0%, 50%, 100% { transform: rotate(0deg); } /* Reposo */
+    55%, 65%, 75%, 85% { transform: rotate(4deg); } /* Movimiento derecha */
+    60%, 70%, 80%, 90% { transform: rotate(-4deg); } /* Movimiento izquierda */
+}
+
+.shakeAnim {
+    display: inline-block;
+    /* Ciclo total de 3 segundos */
+    animation: shakeSlow 3s infinite ease-in-out;
+    /* Delay inicial para que el contador (20+) termine de subir primero */
+    animation-delay: 1.5s;
+    will-change: transform;
+}
+
+/* IMPORTANTE: Evita que el layout salte cuando los números cambian */
+.value, .heroNumber {
+    font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1ch; /* Reserva espacio mínimo */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .cardHero {
+        grid-column: span 1;
+        padding: 2rem;
+    }
+
+    .heroContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .heroLabel {
+        font-size: 1.4rem;
+    }
+
+    .heroNumber {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* La card principal ocupa todo el ancho */
+    .cardHero {
+        grid-row: span 1;
+        grid-column: span 2;
+        align-items: center; /* Centra el contenido verticalmente */
+        text-align: center;
+    }
+
+    /* Centra el flex interno de la Hero Card (el 20+ y el texto) */
+    .heroContent {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    /* Centra el texto de la Hero Card */
+    .heroText {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Centra las cards de abajo (+1000 y Since 2004) */
+    .card {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Centra las líneas amarillas en todas las cards */
+    .heroLine, .cardLine {
+        width: 80px; /* Ancho fijo para que no se estiren al 100% y se vean raras */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Centra el contenedor de las acciones si es necesario */
     .actions {
         display: flex;
         justify-content: center;
     }
-
-    .gridSide {
-        margin: 0 auto;
-    }
 }
-
-/* Smartphones y Tablets pequeñas */
-@media (max-width: 1280px) {
-    .section {
-        padding: 4rem 120px;
-    }
-
-    .value {
-        font-size: 2rem; /* Reducimos un poco el número para que quepa */
-    }
-}
-
-/* Móviles muy estrechos (Evita el error de tu imagen 2) */
 @media (max-width: 768px) {
+    /* Forzamos una sola columna real y eliminamos cualquier rastro de grid previo */
     .gridSide {
-        /* Pasamos a 1 sola columna para que "Chicagoland" tenga espacio total */
-        grid-template-columns: minmax(0, 1fr);
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        width: 100%;
     }
 
-    .section {
-        padding: 40px 40px;
+    /* La Card principal ahora se comporta como bloque único */
+    .cardHero, .heroCard {
+        grid-column: span 1 !important;
+        grid-row: auto !important;
+        width: 100%;
+        min-height: auto;
+        padding: 3rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0;
     }
 
+    /* Centrado de los elementos internos de la Hero Card */
+    .heroContent {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .heroNumber {
+        font-size: 5rem; /* Tamaño ajustable para que no rompa el ancho */
+        text-align: center;
+    }
+
+    /* Forzamos que todas las cards secundarias sean full width */
     .card {
-        padding: 2rem 1.5rem;
+        width: 100% !important;
+        align-items: center;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
     }
 
-    .mainTitle {
-        font-size: 2.2rem;
+    /* Líneas amarillas siempre centradas y con tamaño fijo */
+    .heroLine, .cardLine {
+        width: 80px !important;
+        margin: 1.5rem auto !important;
+    }
+
+    /* Ajustes de texto general */
+    .section { padding: 50px 20px; }
+    .mainTitle { font-size: 2.2rem; text-align: center; }
+    .description { text-align: center; }
+
+    /* Espacio para el número en "Since 2004" */
+    .value {
+        justify-content: center;
+        width: 100%;
     }
 }
