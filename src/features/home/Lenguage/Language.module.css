@@ -63,21 +63,36 @@
 
 /* --- RESPONSIVE --- */
 
+/* --- RESPONSIVE --- */
+
 @media (max-width: 768px) {
     .section {
         margin: 50px 0 50px 0;
+        padding: 40px 20px; /* Reducimos padding para ganar espacio */
     }
+
     .title {
         font-size: 2.2rem;
+        margin-bottom: 80px;
     }
 
     .grid {
-        gap: 25px;
+        display: grid;
+        /* Definimos 2 columnas de igual tamaño */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px; /* 40px de espacio vertical, 20px horizontal */
+        justify-items: center;
+    }
+
+    /* TRUCO PARA EL ÚLTIMO ITEM (DISEÑO 2-2-1) */
+    /* Seleccionamos el 5to elemento para que ocupe las dos columnas y se centre */
+    .langItem:nth-child(5) {
+        grid-column: span 2;
     }
 
     .flagWrapper {
-        width: 85px;
-        height: 85px;
+        width: 90px;
+        height: 90px;
     }
 
     .langName {
