@@ -47,6 +47,11 @@ const comparisonSlides = [
         before: '/assets/images/slider/roof3-before.webp',
         after: '/assets/images/slider/roof3-after.webp',
     },
+    {
+        id: 4,
+        before: '/assets/images/slider/roof4-before.webp',
+        after: '/assets/images/slider/roof4-after.webp',
+    },
 ];
 
 const BeforeAndAfter = () => {
