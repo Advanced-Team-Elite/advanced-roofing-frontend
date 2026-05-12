@@ -175,12 +175,6 @@
     transform: scaleY(0.3);
 }
 
-@media (max-width: 768px) {
-    .fleetContainer {
-        display: none; /* Ocultar convoy en móvil para evitar lag */
-    }
-}
-
 /* --- TABLET --- */
 @media (max-width: 1024px) {
     .accordion {
@@ -198,6 +192,7 @@
 
 /* --- MOBILE --- */
 @media (max-width: 768px) {
+
     .section {
         padding: 80px 40px 20px 40px;
     }
@@ -241,5 +236,31 @@
 
     .title {
         font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Habilitamos el contenedor que estaba en 'none' */
+    .fleetContainer {
+        display: flex;
+        margin-top: -120px; /* Ajustado para que pise el grid de 2x2 en móvil */
+        height: 200px; /* Altura reducida para mobile */
+    }
+
+    .vehicleWrapper {
+        /* Reducimos drásticamente el ancho para que quepan en la pantalla del celular */
+        width: 280px !important;
+    }
+
+    /* Escalonamos los anchos para mantener la perspectiva en móvil */
+    .vehicleWrapper:nth-child(1) { width: 180px !important; } /* Truck */
+    .vehicleWrapper:nth-child(2) { width: 220px !important; } /* Van */
+    .vehicleWrapper:nth-child(3) { width: 250px !important; } /* Box Truck */
+    .vehicleWrapper:nth-child(4) { width: 300px !important; } /* Crane */
+
+    .truckShadow {
+        height: 8px;
+        filter: blur(5px);
+        margin-top: -15px;
     }
 }
