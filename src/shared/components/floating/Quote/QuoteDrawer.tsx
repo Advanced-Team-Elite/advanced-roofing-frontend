@@ -1,10 +1,14 @@
 "use client";
-import { useState, useMemo } from "react";
+/**
+ * QuoteDrawer — GoogleMapsProvider removed.
+ * The SDK is now loaded globally in RootLayout → GoogleMapsProvider.
+ * This component simply uses AddressSearch and RoofMap directly.
+ */
+import { useState } from "react";
 import styles from "../FloatingActions.module.css";
-import { AddressSearch} from "@/features/widget/AddressSearch";
-import { RoofMap} from "@/features/widget/RoofMap";
-import { QuoteForm} from "@/features/widget/QuoteForm";
-import { GoogleMapsProvider} from "@/features/widget/GoogleMapsProvider";
+import { AddressSearch } from "@/features/widget/AddressSearch";
+import { RoofMap } from "@/features/widget/RoofMap";
+import { QuoteForm } from "@/features/widget/QuoteForm";
 import { getRoofData } from "@/lib/google-solar";
 import { DEFAULT_CENTER } from "@/lib/google-maps";
 import { DetectedPitch } from "@/types/roofing";
@@ -17,21 +21,21 @@ interface QuoteDrawerProps {
 type WidgetStep = "search" | "quote";
 
 export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
-    const [step, setStep] = useState<WidgetStep>("search");
-    const [location, setLocation] = useState(DEFAULT_CENTER);
+    const [step, setStep]                   = useState<WidgetStep>("search");
+    const [location, setLocation]           = useState(DEFAULT_CENTER);
     const [selectedAddress, setSelectedAddress] = useState("");
-    const [detectedArea, setDetectedArea] = useState(2000);
-    const [roofPolygon, setRoofPolygon] = useState<{ lat: number; lng: number }[] | undefined>(undefined);
+    const [detectedArea, setDetectedArea]   = useState(2000);
+    const [roofPolygon, setRoofPolygon]     = useState<{ lat: number; lng: number }[] | undefined>(undefined);
     const [suggestedPitch, setSuggestedPitch] = useState<DetectedPitch>("medium");
-    const [mapZoom, setMapZoom] = useState(11);
-    const [roofError, setRoofError] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [showHint, setShowHint] = useState(true);
+    const [mapZoom, setMapZoom]             = useState(11);
+    const [roofError, setRoofError]         = useState<string | null>(null);
+    const [isLoading, setIsLoading]         = useState(false);
+    const [showHint, setShowHint]           = useState(true);
 
     const handleAddressSelect = async (address: string, lat: number, lng: number) => {
         setLocation({ lat, lng });
         setSelectedAddress(address);
-        setMapZoom(19); // Zoom más cercano para techos
+        setMapZoom(19);
         setRoofError(null);
         setIsLoading(true);
 
@@ -44,13 +48,11 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
             setDetectedArea(data.areaSqFt);
             setRoofPolygon(data.coords);
 
-            // Lógica de inclinación (Pitch)
-            if (data.pitchDegrees < 5) setSuggestedPitch("flat");
+            if (data.pitchDegrees < 5)       setSuggestedPitch("flat");
             else if (data.pitchDegrees < 15) setSuggestedPitch("shallow");
             else if (data.pitchDegrees < 30) setSuggestedPitch("medium");
-            else setSuggestedPitch("steep");
-
-        } catch (err) {
+            else                             setSuggestedPitch("steep");
+        } catch {
             setRoofError("api_error");
         } finally {
             setIsLoading(false);
@@ -67,17 +69,13 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     return (
         <div className={`${styles.quoteWrapper} ${isOpen ? styles.wrapperOpen : ''}`}>
 
-            {/* Burbuja de notificación (Solo se muestra si el drawer está cerrado) */}
+            {/* Notification bubble */}
             {!isOpen && showHint && (
                 <div className={styles.quoteHint}>
                     <span className={styles.notifIcon}>!</span>
-
                     <button
                         className={styles.closeHint}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setShowHint(false);
-                        }}
+                        onClick={(e) => { e.stopPropagation(); setShowHint(false); }}
                     >
                         ×
                     </button>
@@ -95,8 +93,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                 <span className={styles.quoteText}>Instant Roof Quote</span>
             </button>
 
-            <div className={styles.quoteDrawer} >
-                <GoogleMapsProvider>
+            <div className={styles.quoteDrawer}>
                     <div className="flex flex-col h-full bg-white overflow-y-auto pr-2 custom-scrollbar">
                         {/* Header con botón de cierre pegado a la derecha */}
                         <div className="flex justify-end p-4">
@@ -209,7 +206,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                             )}
                         </div>
                     </div>
-                </GoogleMapsProvider>
             </div>
         </div>
     );

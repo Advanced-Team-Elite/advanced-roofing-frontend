@@ -1,21 +1,33 @@
 "use client";
-import { useJsApiLoader } from "@react-google-maps/api";
+/**
+ * GoogleMapsProvider — unified loader
+ *
+ * Previously used useJsApiLoader from @react-google-maps/api.
+ * Now uses APIProvider from @vis.gl/react-google-maps.
+ *
+ * ONE loader for the entire app — CoverageMap and QuoteDrawer both
+ * consume the same google.maps global, eliminating the dual-loader
+ * conflict that caused "google.maps.Map is not a constructor".
+ *
+ * Libraries loaded: places, drawing, geometry
+ * (drawing is required by DrawingManager / "Edit Roof" button)
+ */
+
+import { APIProvider } from "@vis.gl/react-google-maps";
 import { GOOGLE_MAPS_API_KEY } from "@/lib/google-maps";
 import { ReactNode } from "react";
 
-// 'drawing' es requerido para el DrawingManager (botón "Edit Roof")
-// 'geometry' es requerido para computeArea en handlePolygonEdit
-const LIBRARIES: ("places" | "drawing" | "geometry")[] = ["places", "drawing", "geometry"];
+const LIBRARIES = ["places", "drawing", "geometry"] as const;
 
 export const GoogleMapsProvider = ({ children }: { children: ReactNode }) => {
-    const { isLoaded, loadError } = useJsApiLoader({
-        id: "google-map-script",
-        googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-        libraries: LIBRARIES,
-    });
-
-    if (loadError) return <div className="p-4 text-red-500">Error loading Maps</div>;
-    if (!isLoaded) return <div className="p-4">Loading satellite engine...</div>;
-
-    return <>{children}</>;
+    return (
+        <APIProvider
+            apiKey={GOOGLE_MAPS_API_KEY}
+            libraries={[...LIBRARIES]}
+            onLoad={() => console.debug("[Maps] SDK loaded")}
+            onError={(e) => console.error("[Maps] Load error", e)}
+        >
+            {children}
+        </APIProvider>
+    );
 };
