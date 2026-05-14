@@ -6,9 +6,8 @@ import { useState } from 'react';
 const awards = [
     // --- Existentes ---
     { src: '/assets/images/features/home/AngiesList.webp', alt: 'Angies List Super Service Award 2015' },
-    { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Certified Inspector' },
     { src: '/assets/images/features/home/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor' },
-    { src: '/assets/images/features/home/PreferredContractor_OwensCorning.webp', alt: 'Owens Corning Preferred Contractor' },
+    { src: '/assets/images/features/home/PreferredContractor_OwensCorning_guide.webp', alt: 'Owens Corning Preferred Contractor' },
 
     // --- Nuevos Agregados ---
     { src: '/assets/images/features/home/bbb-accredited.png', alt: 'BBB Accredited Business' },

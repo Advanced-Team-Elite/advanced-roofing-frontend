@@ -311,11 +311,11 @@ export const ContactUsByAccurate = () => {
                                 The first step in the insurance claim process is to assess the damage to your home. After a hailstorm or high winds, it's important to inspect your roof, siding, windows, and other exterior features for any signs of damage. At Advanced Roofing Team, our team of experts can conduct a thorough inspection of your property to identify and document any damage caused by hail or wind.
                             </p>
                             <h3 className={styles.subtitle}>
-                                FILING A CLAIM WAS NEVER EASIER
+                                FROM INSPECTION TO INSTALLATION — WE'VE GOT YOU COVERED
                             </h3>
 
                             <p className={styles.paragraph}>
-                                Once the damage has been assessed, the next step is to file a claim with your insurance company. This involves contacting your insurance provider and providing them with the necessary information and documentation to support your claim. Our team at Advanced Roofing Team can assist you with this process, including preparing and submitting the required documentation, such as reports, photographs, and estimates for the necessary repairs.
+                                Once we've completed our damage assessment, you'll have the information you need to decide on next steps, which for many homeowners includes contacting their insurance company. As part of every project, our team at Advanced Roofing Team prepares a Property Evidence Report — professional photographs, technical measurements, and a detailed repair estimate documenting the condition of your roof and the scope of work required. It's yours to use however you see fit, including sharing it with your insurer if you choose to file a claim.
                             </p>
 
                             <div className={styles.rowBtn}>

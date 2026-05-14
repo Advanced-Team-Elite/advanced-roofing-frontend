@@ -16,29 +16,31 @@ export const WorkDirectly = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h2 className={styles.title}>We Work Directly With Your Insurance</h2>
+                    <h2 className={styles.title}>The Professional Standard for Property Restoration</h2>
                     <h3 className={styles.subtitle}>
-                        HELPING YOU GET THE COMPENSATION YOU DESERVE
+                        WE PROVIDE THE UNDENIABLE PROOF NEEDED TO RESTORE YOUR PROPERTY
                     </h3>
 
                     <p className={styles.paragraph}>
-                        When your home is damaged by hail or wind, navigating the insurance claim process can be a daunting and overwhelming task. At Advanced Roofing Team, we understand the challenges that homeowners face when dealing with insurance companies after a catastrophic event. That’s why we are here to guide you through the insurance claim process and ensure that you receive the compensation you deserve to repair and restore your home.
+                        When your home is affected by a storm, the most valuable asset you can have is a Property Evidence Report. At Advanced Roofing Team, we don't just provide a quick estimate; we deliver a comprehensive, high-level documentation package that captures every detail of your home’s condition. Our reports are designed to be as thorough as they get, providing a solid foundation for your restoration project.
                     </p>
 
                     <h3 className={styles.subtitle}>
-                        ACCURATE ASSESMENT OF DAMAGES
+                        WHAT’S INSIDE YOUR EVIDENCE REPORT?
                     </h3>
 
-                    <p className={styles.paragraph}>
-                        The first step in the insurance claim process is to assess the damage to your home. After a hailstorm or high winds, it’s important to inspect your roof, siding, windows, and other exterior features for any signs of damage. At Advanced Roofing Team, our team of experts can conduct a thorough inspection of your property to identify and document any damage caused by hail or wind.
-                    </p>
+                    <div className={styles.contentColumn}>
+                        <p className={styles.paragraph}>
+                            We’ve perfected a reporting process that speaks the language of the industry to give you a professional roadmap for your restoration. Our Property Evidence Report includes forensic photo documentation with GPS-tagged imagery, industry-standard precision pricing for transparent estimates, and a detailed Illinois building code analysis. We provide a complete line-by-line scope of work for every material and labor hour required to return your property to its true pre-storm condition.
+                        </p>
+                    </div>
 
                     <h3 className={styles.subtitle}>
-                        FILING A CLAIM WAS NEVER EASIER
+                        PRECISE. PROFESSIONAL. READY.
                     </h3>
 
                     <p className={styles.paragraph}>
-                        Once the damage has been assessed, the next step is to file a claim with your insurance company. This involves contacting your insurance provider and providing them with the necessary information and documentation to support your claim. Our team at Advanced Roofing Team can assist you with this process, including preparing and submitting the required documentation, such as reports, photographs, and estimates for the necessary repairs.
+                        Our Property Evidence Report gives you the confidence to move forward. By providing a factual, "ready-to-go" documentation suite, we ensure that you are the most informed person in the room when it comes to your home’s restoration journey.
                     </p>
 
                 </div>

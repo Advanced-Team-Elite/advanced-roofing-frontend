@@ -1,10 +1,10 @@
 export const ReputationAwards = () => {
     const trustLogos = [
-        { src: '/logos/bbb.svg', alt: 'BBB Accredited' },
-        { src: '/logos/nextdoor.svg', alt: 'Nextdoor Fave' },
-        { src: '/logos/angi-2015.svg', alt: 'Angie Super Service 2015' },
-        { src: '/logos/angi-2019.svg', alt: 'Angie Super Service 2019' },
-        { src: '/logos/vsi.svg', alt: 'VSI Certified' }, // Quinto elemento para llenar
+        { src: '/assets/images/features/home/bbb-accredited.png', alt: 'BBB Accredited' },
+        { src: '/assets/images/features/home/nextdoor-neighborhood-fave.png', alt: 'Nextdoor Fave' },
+        { src: '/assets/images/features/home/AngiesList.webp', alt: 'Angie Super Service 2015' },
+        { src: '/assets/images/features/home/AngiesList_2019.webp', alt: 'Angie Super Service 2019' },
+        { src: '/assets/images/features/home/bbb-accredited.png', alt: 'VSI Certified' }, // Quinto elemento para llenar
     ];
 
     return (

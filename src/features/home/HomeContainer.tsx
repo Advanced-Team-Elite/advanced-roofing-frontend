@@ -21,6 +21,8 @@ import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {ManufacturingAwards} from "@/shared/components/ManufacturingAwards/ManufacturingAwards";
+import {ReputationAwards} from "@/shared/components/ReputationAwards/ReputationAwards";
+import RoofingHappyCustomers from "@/shared/components/RoofingHappyCustomers/RoofingHappyCustomers";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (

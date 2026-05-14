@@ -1,9 +1,9 @@
 export const ManufacturingAwards = () => {
     const manufacturers = [
-        { src: '/logos/gaf-certified.svg', alt: 'GAF Certified' },
-        { src: '/logos/owens-corning.svg', alt: 'Owens Corning Preferred' },
-        { src: '/logos/haag-res.svg', alt: 'Haag Residential Inspector' },
-        { src: '/logos/haag-comm.svg', alt: 'Haag Commercial Inspector' },
+        { src: '/assets/images/features/home/gaf-certified-logo.webp', alt: 'GAF Certified' },
+        { src: '/assets/images/features/home/PreferredContractor_OwensCorning.webp', alt: 'Owens Corning Preferred' },
+        { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Residential Inspector' },
+        { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Commercial Inspector' },
     ];
 
     return (
