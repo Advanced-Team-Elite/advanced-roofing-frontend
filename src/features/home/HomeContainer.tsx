@@ -20,6 +20,7 @@ import Financing from "@/features/home/Financing/Financing";
 import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
+import {ManufacturingAwards} from "@/shared/components/ManufacturingAwards/ManufacturingAwards";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (

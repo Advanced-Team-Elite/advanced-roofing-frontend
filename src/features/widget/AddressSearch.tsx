@@ -47,6 +47,21 @@ export const AddressSearch = ({
 
         acRef.current = ac;
 
+        // 👇 Esto hace que el pac-container recalcule su posición
+        // cada vez que el input cambia de posición en el DOM
+        const observer = new ResizeObserver(() => {
+            google.maps.event.trigger(ac, 'resize');
+        });
+
+        // Observa el contenedor scrolleable (el drawer)
+        const scrollParent = inputRef.current.closest('.overflow-y-auto') as Element;
+        if (scrollParent) {
+            scrollParent.addEventListener('scroll', () => {
+                google.maps.event.trigger(ac, 'resize');
+            });
+            observer.observe(scrollParent);
+        }
+
         const listener = ac.addListener("place_changed", () => {
             const place = ac.getPlace();
             if (!place?.geometry?.location) return;
@@ -57,7 +72,10 @@ export const AddressSearch = ({
             );
         });
 
-        return () => google.maps.event.removeListener(listener);
+        return () => {
+            google.maps.event.removeListener(listener);
+            observer.disconnect();
+        };
     }, [placesLib, onAddressSelect]);
 
     // Shared START button handler (hero variant)

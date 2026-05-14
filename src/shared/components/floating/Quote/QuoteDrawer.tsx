@@ -131,7 +131,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                         />
                                         {isLoading && (
                                             <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center z-20">
-                                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#003366]"></div>
+                                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ffffff]"></div>
                                             </div>
                                         )}
                                     </div>

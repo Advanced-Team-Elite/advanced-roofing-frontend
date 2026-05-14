@@ -34,6 +34,17 @@ export const RoofMap = ({
                             zoom = 20,
                             hideControls = false,
                         }: RoofMapProps) => {
+
+    const map = useMap(); // Obtenemos la instancia del mapa
+
+    // Sincronizar el mapa cuando el centro cambia (ej. el usuario busca otra dirección)
+    useEffect(() => {
+        if (map && center) {
+            map.setCenter(center);
+            map.setZoom(zoom);
+        }
+    }, [map, center, zoom]);
+
     const [isDrawingMode, setIsDrawingMode] = useState(false);
     const [drawnCoords, setDrawnCoords]     = useState<{ lat: number; lng: number }[] | undefined>(undefined);
 
@@ -58,11 +69,10 @@ export const RoofMap = ({
             <div style={{ width: "100%", height: "400px" }}>
                 <Map
                     defaultCenter={center}
-                    center={center}
                     defaultZoom={zoom}
-                    zoom={zoom}
                     mapTypeId="satellite"
                     disableDefaultUI={true}
+                    gestureHandling={'greedy'} // Mejora la experiencia en móviles/scroll
                     tilt={0}
                     style={{ width: "100%", height: "100%" }}
                 >
