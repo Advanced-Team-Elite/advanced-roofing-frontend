@@ -8,11 +8,11 @@ const awards = [
     { src: '/assets/images/features/home/AngiesList.webp', alt: 'Angies List Super Service Award 2015' },
     { src: '/assets/images/features/home/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor' },
     { src: '/assets/images/features/home/PreferredContractor_OwensCorning_guide.webp', alt: 'Owens Corning Preferred Contractor' },
+    { src: '/assets/images/features/home/nextdoor-neighborhood-alt.png', alt: 'Nextdoor Neighborhood Fave' },
 
     // --- Nuevos Agregados ---
     { src: '/assets/images/features/home/bbb-accredited.png', alt: 'BBB Accredited Business' },
     { src: '/assets/images/features/home/vsi-certified.png', alt: 'VSI Certified Siding Installer' },
-    { src: '/assets/images/features/home/nextdoor-neighborhood-fave.png', alt: 'Nextdoor Neighborhood Fave' },
 
     // --- Resto de originales ---
     { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Certified Inspector Commercial' },
@@ -33,7 +33,7 @@ export default function AwardsBanner() {
     return (
         <section className={styles.awardsSection}>
             <div className={styles.container}>
-                <h2 className={styles.awardsTitle}>Award-Winning Business</h2>
+                <h2 className={styles.awardsTitle}>Trusted & Certified Professionals</h2>
 
                 <div className={styles.awardsGrid}>
                     {awards.map((award, index) => (
