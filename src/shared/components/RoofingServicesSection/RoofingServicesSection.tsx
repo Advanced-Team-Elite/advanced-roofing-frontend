@@ -38,7 +38,7 @@ export const RoofingServicesSection = ({ title, imageSrc }: RoofingServicesSecti
                             We are a GAF MasterElite Roofing Contractor and Owens Corner Preferred Contractor.
                         </li>
                         <li className={styles.benefitItem}>
-                            We specialize in insurance claims assistance and catastrophe repairs.
+                            We specialize in property damage assessment and catastrophe repairs.
                         </li>
                     </ul>
 

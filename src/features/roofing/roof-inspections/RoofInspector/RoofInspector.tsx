@@ -85,7 +85,7 @@ export const RoofInspector = () => {
                             </li>
                             <li>
                                 <strong>Securing a Fair{' '}
-                                    <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                                    <Link href="/src/app/property-report/" className={styles.inlineLink}>
                                         Insurance Claim
                                     </Link>:</strong>{' '}
                                 A detailed, certified inspection report provides the objective evidence and

@@ -115,7 +115,7 @@ export const Header = () => {
                                 <Link href="/about-us/gaf-masterelite-preferred-contractor">GAF Masterelite Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="/roofing-insurance-claims">Insurance Claims</Link>
+                                <Link href="/property-report">Property Report</Link>
                             </li>
                         </ul>
                     </li>
@@ -136,7 +136,7 @@ export const Header = () => {
                         </ul>
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>
-                    <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Property Report</Link></li>
+                    <li><Link href="/property-report" className={styles.navLink}>Property Report</Link></li>
                     <li><Link href="/contact-us" title="Go to our contact page" className={styles.navLink}>Contact Us</Link></li>
                     <li>
                         <Link href="/contact-us/" className={styles.quoteBtnLink} title="Go to our contact page">
@@ -205,7 +205,7 @@ export const Header = () => {
                                         </div>
                                     </li>
                                     <li><Link href="/commercial-roofing" onClick={closeDrawer}>Commercial Roofing</Link></li>
-                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Property Evidence Report</Link></li>
+                                    <li><Link href="/property-report" onClick={closeDrawer}>Property Report</Link></li>
 
                                     <li className={styles.linkWithArrow}>
                                         <Link href="/areas-we-serve" onClick={closeDrawer}>Areas We Serve</Link>
@@ -306,7 +306,7 @@ export const Header = () => {
                                 <ul className={styles.mobileList}>
                                     <li><Link href="/about-us/owens-corning-preferred-contractor" onClick={closeDrawer}>Owens Corning Preferred Contractor</Link></li>
                                     <li><Link href="/about-us/gaf-masterelite-preferred-contractor" onClick={closeDrawer}>GAF Masterelite Preferred Contractor</Link></li>
-                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
+                                    <li><Link href="/property-report" onClick={closeDrawer}>Property Report</Link></li>
                                 </ul>
                             </div>
 

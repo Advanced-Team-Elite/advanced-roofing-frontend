@@ -38,7 +38,7 @@ export const WhyChicagoRely = () => {
                     <p className={styles.paragraph}>
                         We know that storm damage brings uncertainty and stress. Homeowners choose Advanced Roofing Team
                         Construction because we streamline the repair and{' '}
-                        <Link href="/roofing-insurance-claims/" className={styles.blueLink}>
+                        <Link href="/src/app/property-report/" className={styles.blueLink}>
                             insurance process.
                         </Link>{' '}
                         Our trained team manages inspections, detailed documentation, and ensures that nothing falls through

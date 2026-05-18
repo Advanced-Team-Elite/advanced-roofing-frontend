@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     ],
     openGraph: {
         title: 'Meet Chicago’s Trusted Roofing Team | Advanced Roofing Team',
-        description: 'Two decades of experience in roof installations and insurance claims assistance. Get to know our professional crew.',
+        description: 'Two decades of experience in roof installations and insurance claims documentation. Get to know our professional crew.',
         images: [{ url: '/icon.png' }],
     },
 };

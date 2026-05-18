@@ -32,7 +32,7 @@ export default function RoofingInHoffman() {
 
                     <p className={styles.paragraph}>
                         We know many homeowners in Hoffman Estates juggle busy schedules, so we work to make the process as convenient as possible. Our team coordinates inspection times, helps you gather any information your{' '}
-                        <Link href="/roofing-insurance-claims" className={styles.inlineLink}>insurance</Link>{' '}
+                        <Link href="/property-report" className={styles.inlineLink}>insurance</Link>{' '}
                         carrier requests, and keeps you updated on next steps. By handling measurements and documentation consistently on every project, we aim to reduce back-and-forth with adjusters and move your roof replacement forward with fewer delays caused by paperwork.
                     </p>
 

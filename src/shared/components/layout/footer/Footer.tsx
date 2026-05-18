@@ -53,7 +53,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 <ul className={styles.linkList}>
                                     <li><Link href="/">Home</Link></li>
                                     <li><Link href="/roofing">Roofing</Link></li>
-                                    <li><Link href="/roofing-insurance-claims">Property Report</Link></li>
+                                    <li><Link href="/property-report">Property Report</Link></li>
                                     <li><Link href="/reviews">Reviews</Link></li>
                                 </ul>
 

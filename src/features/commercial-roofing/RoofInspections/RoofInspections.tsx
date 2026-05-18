@@ -47,7 +47,7 @@ export const RoofInspections = () => {
                         </Link>{' '}
                         to identify storm-related damage promptly. When replacement is necessary, we provide clear documentation and assist throughout the
                         {' '}
-                        <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                        <Link href="/src/app/property-report/" className={styles.inlineLink}>
                             insurance process
                         </Link>{' '}
                         . Our trained catastrophe inspectors know what to look for and can help guide the next steps.

@@ -6,7 +6,7 @@ const services = [
     { name: 'Roof Installation & Replacement', href: '/roofing/roof-installation-replacement' },
     { name: 'Roofing Services', href: '/roofing' },
     { name: 'Shingle Roofing', href: '/roof-types/shingle-roofing' },
-    { name: 'Insurance Claims', href: '/roofing-insurance-claims' },
+    { name: 'Insurance Claims', href: '/property-report' },
     { name: 'Commercial Roofing', href: '/commercial-roofing' },
     { name: 'Roof Types', href: '/roof-types' },
     { name: 'Gutters', href: '/roofing/gutters' },

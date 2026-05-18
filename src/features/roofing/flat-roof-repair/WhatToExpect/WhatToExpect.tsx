@@ -43,12 +43,12 @@ export const WhatToExpect = () => {
                         </li>
                         <li>
                             <strong>
-                                <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
-                                    Claims assistance:
+                                <Link href="/property-report" className={styles.inlineLink}>
+                                    Insurance Documentation:
                                 </Link>
                             </strong>{' '}
-                            We assist with insurance correspondence, ensuring that
-                            supporting documents reach your insurance company and that your claim addresses all covered damages.
+                            We provide comprehensive, photo-documented damage reports for you to submit
+                            to your provider, ensuring all structural facts are clearly presented.
                         </li>
                         <li>
                             <strong>Professional restoration:</strong> We utilize high-quality materials that meet Chicago

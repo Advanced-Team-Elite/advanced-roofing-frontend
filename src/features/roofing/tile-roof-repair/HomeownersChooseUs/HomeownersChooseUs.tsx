@@ -22,7 +22,7 @@ export const HomeownersChooseUs = () => {
                     <p className={styles.paragraph}>
                         Handling tile roof damage and navigating
                         {' '}
-                        <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                        <Link href="/src/app/property-report/" className={styles.inlineLink}>
                         insurance claim.
                         </Link>{' '}
                         can be frustrating even for seasoned property owners. That’s why many families and
