@@ -136,7 +136,7 @@ export const Header = () => {
                         </ul>
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>
-                    <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Property Evidence Report</Link></li>
+                    <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Property Report</Link></li>
                     <li><Link href="/contact-us" title="Go to our contact page" className={styles.navLink}>Contact Us</Link></li>
                     <li>
                         <Link href="/contact-us/" className={styles.quoteBtnLink} title="Go to our contact page">

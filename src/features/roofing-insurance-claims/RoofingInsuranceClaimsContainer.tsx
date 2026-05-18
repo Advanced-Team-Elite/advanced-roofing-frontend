@@ -14,7 +14,7 @@ export const RoofingInsuranceClaimsContainer = () => {
         <div className={styles.mainWrapper}>
             {/* Usamos el SharedBanner con la ciudad visible */}
             <SharedBanner
-                title="Property Evidence Report"
+                title="Property Report"
                 isCityVisible={false}
                 isIconVisible={true}
                 backgroundImage={"/assets/images/features/roofing/banner-v3.webp"}
