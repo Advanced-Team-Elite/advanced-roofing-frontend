@@ -31,10 +31,6 @@ export const FinancingAtAdvanced = () => {
                         , we offer flexible financing options to help make the process straightforward and accessible. Our financing solutions are designed to provide a smooth experience, with an easy application process, convenient payment structures, and prompt approvals, allowing you to move forward with your roofing project confidently and without unnecessary delays.
                     </p>
 
-                    <img
-                        src="https://app.gethearth.com/contractor_images/advanced-team/banner.jpg?size_id=310x120&amp;color=darkblue"
-                        alt="home_improvement 310x120"/>
-
                 </div>
 
                 {/* RIGHT */}

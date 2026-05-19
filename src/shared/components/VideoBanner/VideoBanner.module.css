@@ -11,6 +11,7 @@
     background-size: cover;
     background-position: center;
 }
+/* 1. Contenedor Principal del Cartel */
 
 .videoBg {
     position: absolute;
@@ -69,23 +70,34 @@
     cursor: pointer;
     font-size: 1rem;
 }
+.contactBtn:hover {
+    background-color: #00afdc;
+}
 
 .videoControls {
     position: absolute;
     bottom: 40px;
     left: 40px;
+    right: 40px;
     display: flex;
+    align-items: center;
     gap: 25px;
-    z-index: 999;
-    isolation: isolate;
+    z-index: 2;
+}
+
+.pushRight {
+    margin-left: auto;
+    z-index: 2 !important;
 }
 
 .controlBtn {
-    background: transparent;
     border: none;
     color: white;
     font-size: 30px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
 }
 
 .controlBtn svg {
@@ -147,6 +159,41 @@
     min-height: 180px;
 }
 
+/* Contenedor de iconos en la esquina superior izquierda */
+.socialIcons {
+    position: absolute;
+    top: 40px;   /* Misma distancia que los controles del bottom */
+    left: 40px;  /* Misma distancia que los controles del bottom */
+    display: flex;
+    gap: 20px;   /* Espacio entre iconos */
+    z-index: 4;  /* Por encima del overlay y el contenido */
+    margin-left: 20px;
+    padding: 20px;
+}
+
+.socialIcon {
+    color: #00589e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    background-color: white;
+    border-radius: 50%;
+    padding: 13px;
+}
+
+/* Tamaño de los iconos sociales */
+.socialIcon svg {
+    width: 25px;
+    height: 25px;
+    fill: currentColor;
+}
+
+.socialIcon:hover {
+    transform: scale(1.1);
+    color: #00589e;
+}
+
 /* --- RESPONSIVE --- */
 @media (min-width: 1281px) {
     .heroOverlay {
@@ -155,6 +202,11 @@
     .heroContent {
         padding: 0;
         margin: 0;
+    }
+}
+@media (max-width: 1520px) {
+    .socialIcons {
+        margin-left: 0;
     }
 }
 
@@ -169,6 +221,11 @@
         width: 118px;
         margin-top: -100px;
     }
+
+    .socialIcons {
+        display: none;
+    }
+
     .heroTitle {
         font-size: 4rem;
         font-weight: 800;
@@ -206,5 +263,9 @@
         font-weight: 800;
         margin-bottom: 0.8rem;
         line-height: 1;
+    }
+
+    .socialIcons {
+        display: none;
     }
 }

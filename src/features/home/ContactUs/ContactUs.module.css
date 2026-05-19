@@ -96,7 +96,7 @@
 }
 
 .disclaimer a {
-    color: #f7d000;
+    color: #f7d000 !important;
     text-decoration: underline;
 }
 

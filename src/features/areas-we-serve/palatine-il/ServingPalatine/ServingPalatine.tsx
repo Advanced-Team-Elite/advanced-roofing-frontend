@@ -73,8 +73,8 @@ export const ServingPalatine = () => {
                         <div className={styles.ctaBanner} style={{ marginTop: '30px' }}>
                             <p style={{ textAlign: 'center', margin: 0 }}>
                                 Call {' '}
-                                <Link href="tel:(847) 262-9774">
-                                    <strong>(847) 262-9774</strong>
+                                <Link href="tel:(877) 945-6565">
+                                    <strong>(877) 945-6565</strong>
                                 </Link>
                                 {' '} or {' '}
                                 <Link href="/contact" className={styles.yellowLink}>

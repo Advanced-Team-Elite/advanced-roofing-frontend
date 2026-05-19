@@ -1,0 +1,199 @@
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 80px 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 60px;
+    gap: 80px; /* Aumentamos el gap para controlar la separación mínima */
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 900;
+    color: #00589e;
+    margin: 0;
+    flex: 1; /* Ocupa el espacio necesario a la izquierda */
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+    flex: 2; /* CAMBIO: Aumentamos el factor de crecimiento para que gane más terreno que el título */
+    width: 100%;
+    max-width: 800px; /* CAMBIO: Aumentamos o quitamos el max-width para que el bloque rojo se expanda */
+    text-align: left; /* Opcional: asegura que el texto dentro del bloque rojo empiece a la izquierda */
+    margin: auto;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+/* CARDS */
+.card {
+    background: #00589e;
+    padding: 30px 20px 20px;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+}
+
+
+.projectTitle {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    width: 90%;
+}
+
+.active .projectTitle {
+    color: white;
+}
+
+.projectMeta {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    font-style: italic;
+}
+
+.active .projectMeta {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.imageWrapper {
+    position: relative;
+    margin-top: 30px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.projectImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.systemBadge {
+    position: absolute;
+    bottom: 70px; /* Por encima de la barra de iconos */
+    right: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.iconBar {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.iconCircle {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00589e; /* Color por defecto */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.iconCircle:hover {
+    background: #00589e;
+    color: black !important;
+    transform: scale(1.1);
+}
+
+.active .iconCircle {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* BOTÓN INFERIOR */
+.moreBtn {
+    margin-top: 50px;
+    background: #00ccff;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.moreBtn:hover {
+    background: #00b1dc;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1280px) { /* Tablet Landscape */
+    .container {
+        padding: 80px 100px;
+    }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .title { font-size: 48px; }
+}
+
+@media (max-width: 768px) { /* Tablet Portrait / Mobile */
+    .container {
+        padding: 80px 40px;
+    }
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .title {
+        margin: auto;
+    }
+    .description { max-width: 100%; }
+    .grid { grid-template-columns: 1fr; }
+    .title { font-size: 40px; }
+    .card { min-height: auto; }
+}

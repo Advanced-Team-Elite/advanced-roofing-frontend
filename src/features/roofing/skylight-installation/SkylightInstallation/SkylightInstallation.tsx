@@ -45,7 +45,7 @@ export const SkylightInstallation = () => {
                         <div className={styles.innerCta}>
                             <p>
                                 Transform your dark interior spaces with beautiful natural light and reliable, leak-proof skylight installation from our certified experts.
-                                Contact us at <strong>(847) 262-9774</strong> or <span className={styles.blueLink}>fill out our online form.</span>
+                                Contact us at <strong>(877) 945-6565</strong> or <span className={styles.blueLink}>fill out our online form.</span>
                             </p>
                         </div>
 

@@ -1,8 +1,16 @@
 'use client';
-import { useState, useRef } from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styles from './VideoBanner.module.css';
-import { PlayIcon, DescriptionIcon } from '@/shared/Icons/Icons';
+import {PlayIcon, DescriptionIcon, NextdoorIcon} from '@/shared/Icons/Icons';
 import Link from 'next/link';
+import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
+import {
+    FacebookIcon,
+    XIcon,
+    YelpIcon,
+    HouzzIcon,
+    GoogleBusinessIcon
+} from "@/shared/Icons/Icons";
 
 interface VideoBannerProps {
     showSubtitle?: boolean;
@@ -24,6 +32,12 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
         setIsPlaying(!isPlaying);
     };
 
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = true;
+        }
+    }, []);
+
     return (
         <>
             <section className={styles.heroSection}>
@@ -35,6 +49,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     playsInline
                     className={styles.videoBg}
                     poster="/assets/images/features/home/hero-mobile-bg.webp"
+                    onCanPlay={(e) => (e.currentTarget.muted = true)}
                 >
                     <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
                 </video>
@@ -55,12 +70,69 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                             Chicago&apos;s Trusted Roofing & Storm Recovery Team
                         </p>
                     )}
+
+
                     <Link href="/contact-us" className={styles.contactBtn} title="Go to our contact page">
                         Contact Us
                     </Link>
                 </div>
 
+
+                <div className={styles.socialIcons}>
+                    <Link
+                        href="https://www.facebook.com/profile.php?id=61580667170717"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        aria-label="Visit our Facebook page"
+                        rel="noopener noreferrer"
+                    >
+                        <FacebookIcon />
+                    </Link>
+
+                    <Link
+                        href="https://x.com/advanced_team26"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Follow us on X (Twitter)"
+                    >
+                        <XIcon />
+                    </Link>
+
+                    <Link
+                        href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View our profile on NextDoor"
+                    >
+                        <NextdoorIcon />
+                    </Link>
+
+                    <Link
+                        href="https://www.houzz.com/hznb/professionals/roofing-and-gutters/advanced-roofing-team-construction-pfvwus-pf~314416282"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Check our reviews on Houzz"
+                    >
+                        <HouzzIcon />
+                    </Link>
+
+                    <Link
+                        href="https://www.google.com/maps"
+                        className={styles.socialIcon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Find us on Google Business"
+                    >
+                        <GoogleBusinessIcon />
+                    </Link>
+
+                </div>
+
                 <div className={styles.videoControls}>
+                    {/* Botones de la izquierda */}
                     <button className={styles.controlBtn} aria-label="Play/Pause" onClick={togglePlay}>
                         <span className="material-icons">
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -73,6 +145,11 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     >
                         <span className="material-icons"><DescriptionIcon /></span>
                     </button>
+
+                    {/* El Badge con la clase que lo empuja a la derecha */}
+                    <div className={styles.pushRight}>
+                        <InspectionBadge/>
+                    </div>
                 </div>
             </section>
 

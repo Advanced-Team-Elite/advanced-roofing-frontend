@@ -38,7 +38,7 @@ export const ExpectFromChicago = () => {
                         <div className={styles.ctaBanner}>
                             <p>
                                 Need an expert assessment for an insurance claim or home purchase?
-                                Contact us at <a href="tel:8472629774" className={styles.yellowLink}><strong>(847) 262-9774</strong></a> or{' '}
+                                Contact us at <a href="tel:8779456565" className={styles.yellowLink}><strong>(877) 945-6565</strong></a> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

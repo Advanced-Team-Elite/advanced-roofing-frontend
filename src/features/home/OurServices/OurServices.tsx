@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import styles from './OurServices.module.css';
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 const OurServices = () => {
     const services = [
         { title: "Commercial Roofing", img: "/assets/images/features/home/1.webp", href: "/commercial-roofing" },
-        { title: "Insurance Claims", img: "/assets/images/features/home/2.webp", href: "/roofing-insurance-claims" },
+        { title: "Property Report", img: "/assets/images/features/home/2.webp", href: "/property-report" },
         { title: "Shingle Roofing", img: "/assets/images/features/home/3.webp", href: "/roof-types/shingle-roofing/" },
         { title: "Roofing Services", img: "/assets/images/features/home/4.webp", href: "/roofing/" },
         { title: "Roof Installation & Replacement", img: "/assets/images/features/home/5.webp", href: "/roofing/roof-installation-replacement/" },
@@ -13,7 +14,7 @@ const OurServices = () => {
 
     return (
         <section className={styles.section}>
-            <div className={styles.container}>
+            <ScrollReveal className={styles.container} direction="right" initialOpacity={20} distance={90}>
                 <h2 className={styles.mainTitle}>Our Services</h2>
 
                 <div className={styles.servicesGrid}>
@@ -40,7 +41,7 @@ const OurServices = () => {
                         </button>
                     </Link>
                 </div>
-            </div>
+            </ScrollReveal>
         </section>
     );
 };

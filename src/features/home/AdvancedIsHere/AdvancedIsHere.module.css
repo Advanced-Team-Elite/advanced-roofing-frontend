@@ -1,0 +1,518 @@
+.outerContainer {
+    padding: 80px 2rem;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mapCard {
+    background: rgba(113, 113, 113, 0.09);
+    width: 100%;
+    max-width: 1600px;
+    height: 870px;
+    border-radius: 30px;
+    padding: 60px 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* FLAIR de fondo */
+.flairBg {
+    position: absolute;
+    top: 34%;
+    left: -20%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0.25;
+    z-index: 0;
+    overflow: visible;
+}
+
+.flairBg svg {
+    width: 110vw !important;
+    max-width: none !important;
+    height: auto !important;
+    flex-shrink: 0;
+}
+
+.flairBg svg path {
+    fill: #00589E !important;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    gap: 40px;
+}
+
+/* LADO IZQUIERDO */
+.infoSide {
+    flex: 0 0 460px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+    gap: 32px;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 500;
+    margin: 0;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 0.95;
+    color: #1a1a2e;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.highlight { color: #00589e; }
+
+.description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.description strong { color: #1a1a2e; }
+
+/* LISTA DE COUNTIES */
+.countyList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.countyItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.countyItem:hover {
+    background: rgba(0, 88, 158, 0.06);
+    border-color: rgba(0, 88, 158, 0.15);
+}
+
+.countyItemActive {
+    background: rgba(0, 88, 158, 0.1) !important;
+    border-color: rgba(0, 88, 158, 0.3) !important;
+}
+
+.countyDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00589e;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.countyItemActive .countyDot {
+    opacity: 1;
+}
+
+.countyInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.countyName {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.countyCities {
+    font-size: 11px;
+    color: #00589e;
+    font-weight: 500;
+}
+
+.countyChevron {
+    color: #aaa;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.countyItemActive .countyChevron {
+    color: #00589e;
+}
+
+/* LADO DERECHO — MAPA */
+.mapSide {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mapWrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 60px;
+}
+
+/* Contenedor relativo para superponer pins sobre el SVG */
+.mapRelative {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.svgMap {
+    height: 100%;
+    width: auto;
+    pointer-events: auto;
+    display: block;
+}
+
+/* Overlay de pins: mismo tamaño y posición que el SVG */
+.pinOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.pinGroup {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+/* Paths del mapa base */
+.svgMap path {
+    fill: #DDDDDD;
+    stroke: #ffffff;
+    stroke-width: 0.9px;
+    transition: fill 0.25s ease, opacity 0.25s ease;
+    cursor: default;
+    vector-effect: non-scaling-stroke;
+}
+
+/* Counties activos: azul con opacidad por defecto */
+.svgMap path.pathHighlighted {
+    fill: #00589e;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+/* Hover sobre county activo */
+.svgMap path.pathHighlighted:hover {
+    opacity: 0.75;
+}
+
+/* County seleccionado: azul sólido */
+.svgMap path.pathActive {
+    fill: #00589e !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+/* PIN TOOLTIP */
+.pinTooltip {
+    position: fixed;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0, 88, 158, 0.15);
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.pinTooltipCity {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 2px;
+}
+
+.pinTooltipCounty {
+    font-size: 11px;
+    font-weight: 500;
+    color: #00589e;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px; /* Ajusta según tu diseño */
+    position: relative;
+}
+
+.customSelectContainer {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+.selectHeader {
+    width: 100%;
+    padding: 14px 20px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.selectHeader.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+    color: #1a1a2e;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* LIMITAR A 6 ELEMENTOS Y HABILITAR SCROLL */
+    max-height: 250px; /* Ajusta este valor según el alto de tus filas */
+    overflow-y: auto;  /* Habilita el scroll vertical si sobrepasa el max-height */
+    overflow-x: hidden; /* Evita scroll horizontal innecesario */
+
+    animation: slideDown 0.2s ease-out;
+    z-index: 110;
+}
+
+/* Opcional: Estilo para que el scrollbar se vea más limpio (Chrome/Safari) */
+.optionsList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-bottom-right-radius: 12px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+    background: #00589e;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.optionItem {
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-top: 1px solid rgba(0,0,0,0.03);
+    /* Asegura que el texto no se corte */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.optionItem:hover {
+    background: #f8f9fa;
+    color: #00589e;
+}
+
+.selectedOption {
+    background: #f0f7ff;
+    color: #00589e;
+    font-weight: 600;
+}
+
+/* Estilos de la lista de ciudades debajo */
+.cityList {
+    list-style: none;
+    margin: 10px 0 0 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cityItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+}
+
+.cityDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00589e;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1280px) {
+    .mapCard {
+        height: auto !important; /* Permitimos que crezca verticalmente */
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardContent {
+        flex-direction: column;
+        height: auto;
+        gap: 40px;
+    }
+
+    .infoSide {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    /* FORZAR VISIBILIDAD DEL MAPA */
+    .mapSide {
+        display: flex !important; /* Aseguramos que no esté oculto */
+        width: 100%;
+        height: 450px; /* Altura fija necesaria para que el SVG respire */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: visible;
+    }
+
+    .mapWrapper {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mapRelative {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .svgMap {
+        width: auto !important;
+        height: 100% !important; /* El mapa se escala según los 450px del padre */
+        max-width: 70%;
+        display: block;
+    }
+
+    .title { font-size: 40px; }
+
+    .customSelectContainer{
+        text-align: start;
+    }
+
+    .flairBg svg {
+        width: 180vw !important;
+    }
+
+    /* Ajuste del Flair para que no empuje el contenido */
+    .flairBg {
+        top: 10%;
+        left: -30%;
+        opacity: 0.1;
+    }
+}
+
+@media (max-width: 640px) {
+    .mapSide {
+        height: 350px; /* Un poco más pequeño en móviles */
+    }
+
+    .title { font-size: 32px; }
+
+    .svgMap {
+        max-width: 100%;
+    }
+
+    .flairBg svg {
+        width: 180vw !important;
+    }
+
+    /* Ajuste del Flair para que no empuje el contenido */
+    .flairBg {
+        top: 10%;
+        left: -30%;
+        opacity: 0.1;
+    }
+}

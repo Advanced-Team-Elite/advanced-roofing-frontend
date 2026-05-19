@@ -6,7 +6,7 @@ import {ArrowIcon} from "@/shared/Icons/Icons";
 
 const services = [
     { title: "Commercial Roofing", img: "/assets/images/features/about-us/1.webp", href: "/commercial-roofing" },
-    { title: "Insurance Claims", img: "/assets/images/features/about-us/2.webp", href: "/roofing-insurance-claims" },
+    { title: "Property Report", img: "/assets/images/features/about-us/2.webp", href: "/property-report" },
     { title: "Shingle Roofing", img: "/assets/images/features/about-us/3.webp", href: "/roof-types/shingle-roofing/" },
     { title: "Roofing Services", img: "/assets/images/features/about-us/4.webp", href: "/roofing" },
 ];

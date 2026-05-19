@@ -124,7 +124,7 @@ export const FrequentlyQuestionsSiding = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Upgrade to modern materials that won't warp in the summer or crack during a sub-zero Chicago deep freeze.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

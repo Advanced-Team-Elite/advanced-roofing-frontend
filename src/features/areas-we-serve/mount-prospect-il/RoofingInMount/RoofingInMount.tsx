@@ -28,7 +28,7 @@ export default function RoofingInMount() {
 
                     <div className={styles.ctaBanner}>
                         <p style={{ textAlign: 'center' }}>
-                            Call <strong>(847) 262-9774</strong> or{' '}
+                            Call <strong>(877) 945-6565</strong> or{' '}
                             <Link href="/contact" className={styles.yellowLink}>contact us online</Link>{' '}
                             to schedule a service and get a free estimate.
                         </p>

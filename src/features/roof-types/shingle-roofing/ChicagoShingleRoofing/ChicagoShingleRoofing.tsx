@@ -44,8 +44,8 @@ export const ChicagoShingleRoofing = () => {
                         <div className={styles.innerCta}>
                             <p>
                                 Call {' '}
-                                <Link href="tel:8472629774">
-                                    (847) 262-9774
+                                <Link href="tel:8779456565">
+                                    (877) 945-6565
                                 </Link>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.blueLink}>

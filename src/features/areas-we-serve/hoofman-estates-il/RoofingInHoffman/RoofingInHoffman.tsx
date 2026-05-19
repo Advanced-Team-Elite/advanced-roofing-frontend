@@ -32,14 +32,14 @@ export default function RoofingInHoffman() {
 
                     <p className={styles.paragraph}>
                         We know many homeowners in Hoffman Estates juggle busy schedules, so we work to make the process as convenient as possible. Our team coordinates inspection times, helps you gather any information your{' '}
-                        <Link href="/roofing-insurance-claims" className={styles.inlineLink}>insurance</Link>{' '}
+                        <Link href="/property-report" className={styles.inlineLink}>insurance</Link>{' '}
                         carrier requests, and keeps you updated on next steps. By handling measurements and documentation consistently on every project, we aim to reduce back-and-forth with adjusters and move your roof replacement forward with fewer delays caused by paperwork.
                     </p>
 
                     <div className={styles.ctaBanner}>
                         <p style={{ textAlign: 'center' }}>
                             Avoid costly interior water damage by identifying hidden shingle wear before the next heavy storm hits.
-                            Contact us at <strong>(847) 262-9774</strong> or{' '}
+                            Contact us at <strong>(877) 945-6565</strong> or{' '}
                             <Link href="/contact" className={styles.yellowLink}>fill out our online form.</Link>
                         </p>
                     </div>

@@ -62,7 +62,7 @@ export const ServingNaperville = () => {
                         {/* Banner CTA (Oculto bajo el botón en el mockup original, pero dentro del div expandible) */}
                         <div className={styles.ctaBanner} style={{ marginTop: '30px' }}>
                             <p style={{ textAlign: 'center', margin: 0 }}>
-                                Upgrade your home’s curb appeal and defense with high-quality materials installed by our certified local experts. Contact us at <strong>(847) 262-9774</strong> or {' '}
+                                Upgrade your home’s curb appeal and defense with high-quality materials installed by our certified local experts. Contact us at <strong>(877) 945-6565</strong> or {' '}
                                 <Link href="/contact" className={styles.yellowLink}>
                                     fill out our online form.
                                 </Link>

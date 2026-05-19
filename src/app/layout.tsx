@@ -1,23 +1,26 @@
+// layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import { Open_Sans, Prompt } from "next/font/google"; // Importamos las fuentes
+import { Open_Sans, Prompt } from "next/font/google";
 import { Header } from "@/shared/components/layout/Header/Header";
-import { Footer } from "@/shared/components/layout/footer/Footer";
-import {FloatingActions} from "@/shared/components/floating/FloatingActions";
-import FinancingSection from "@/shared/components/FinancingSection/FinancingSection";
-import ContactToday from "@/shared/components/ContactToday/ContactToday";
-import ContactUsByClaim from "@/shared/components/ContactUsByClaim/ContactUsByClaim";
+import { FloatingActions } from "@/shared/components/floating/FloatingActions";
+import { WeatherEffectsAsync } from "@/shared/components/layout/WeatherEffects/WeatherEffectsAsync";
+import { Suspense } from "react";
+import {GoogleMapsProvider} from "@/features/widget/GoogleMapsProvider";
+
 const openSans = Open_Sans({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-open-sans",
+    preload: true,
 });
 
 const prompt = Prompt({
     subsets: ["latin"],
-    weight: ["500", "600"], // Pesos necesarios para títulos potentes
+    weight: ["500", "600"],
     display: "swap",
     variable: "--font-prompt",
+    preload: true,
 });
 
 export const metadata: Metadata = {
@@ -29,9 +32,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <body className="antialiased">
-        <Header />
-        {children}
-        <FloatingActions />
+        <Suspense fallback={null}>
+            <WeatherEffectsAsync />
+        </Suspense>
+
+        {/*
+                GoogleMapsProvider wraps the entire app so that:
+                - CoverageMap (inside HomeContainer → children)
+                - RoofMap / AddressSearch (inside FloatingActions → QuoteDrawer)
+                ...all share the SAME single google.maps SDK instance.
+
+                Previously GoogleMapsProvider lived inside QuoteDrawer, making
+                it a sibling branch to HomeContainer — CoverageMap had no
+                APIProvider ancestor and threw "<Map> can only be used inside
+                an <APIProvider>".
+            */}
+        <GoogleMapsProvider>
+            <Header />
+            {children}
+            <FloatingActions />
+        </GoogleMapsProvider>
+
         </body>
         </html>
     );

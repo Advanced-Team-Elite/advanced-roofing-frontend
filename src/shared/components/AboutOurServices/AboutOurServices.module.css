@@ -40,6 +40,10 @@
 .servicesGrid {
     display: flex;
     width: 100%;
+    /* 1. Fondo oscuro para que si hay un gap, no se vea blanco */
+    background-color: #00294a;
+    /* 2. Evita que cualquier pixel se escape */
+    gap: 0;
 }
 
 .serviceCard {
@@ -49,6 +53,9 @@
     overflow: hidden;
     text-decoration: none;
     display: block;
+    /* 3. El truco maestro: un margen negativo de 1px a la derecha
+       para que las cartas se encimen ligeramente y sellen la grieta */
+    margin-right: -1px;
 }
 
 
@@ -70,9 +77,12 @@
     flex-shrink: 0;
 }
 
+.serviceCard:last-child {
+    margin-right: 0;
+}
 
 .imageWrapper {
-    width: 100%;
+    width: calc(100% + 1px); /* Compensamos el solapamiento */
     height: 100%;
     position: relative;
     transition: transform 0.5s ease;

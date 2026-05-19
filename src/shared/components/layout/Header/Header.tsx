@@ -3,11 +3,24 @@ import React, {useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
-import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
+import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, NextdoorIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
+import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
+import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [view, setView] = useState('main');
+
+    const locations = [
+        { label: "Main Office", phone: "847-945-6565" },
+        { label: "Toll-Free", phone: "877-945-6565" },
+        { label: "Colorado", phone: "719-627-1400" },
+        { label: "Wisconsin", phone: "262-909-8907" },
+        { label: "Indiana", phone: "219-316-4996" }
+    ];
+
+    const [phoneIndex, setPhoneIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false); // Estado para pausar
 
     const closeDrawer = () => {
         setIsOpen(false);
@@ -36,7 +49,28 @@ export const Header = () => {
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
                     <Link href="/blog" className={styles.topBarNavLink}>Blog</Link>
                     <Link href="/reviews" className={styles.topBarNavLink}>Reviews</Link>
-                    <span className={styles.telf} >847-262-9774</span>
+
+                    <div className={styles.phoneWrapper}>
+                        {/* Este es el número que se ve siempre */}
+                        <div className={styles.phoneMain}>
+                            <a href="tel:8479456565" className={styles.telf}>847-945-6565</a>
+                            <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+
+                        {/* El desplegable con todos los números */}
+                        <div className={styles.phoneDropdown}>
+                            {locations.map((loc, index) => (
+                                <div key={index} className={styles.dropdownItem}>
+                                    <span className={styles.locName}>{loc.label}</span>
+                                    <a href={`tel:${loc.phone.replace(/\D/g,'')}`} className={styles.locPhone}>
+                                        {loc.phone}
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -63,6 +97,8 @@ export const Header = () => {
                         />
                     </Link>
 
+
+
                 </div>
 
                 {/* Desktop Links */}
@@ -79,7 +115,7 @@ export const Header = () => {
                                 <Link href="/about-us/gaf-masterelite-preferred-contractor">GAF Masterelite Preferred Contractor</Link>
                             </li>
                             <li>
-                                <Link href="/roofing-insurance-claims">Insurance Claims</Link>
+                                <Link href="/property-report">Property Report</Link>
                             </li>
                         </ul>
                     </li>
@@ -100,7 +136,7 @@ export const Header = () => {
                         </ul>
                     </li>
                     <li><Link href="/commercial-roofing" className={styles.navLink}>Commercial Roofing</Link></li>
-                    <li><Link href="/roofing-insurance-claims" className={styles.navLink}>Roofing Insurance Claims</Link></li>
+                    <li><Link href="/property-report" className={styles.navLink}>Property Report</Link></li>
                     <li><Link href="/contact-us" title="Go to our contact page" className={styles.navLink}>Contact Us</Link></li>
                     <li>
                         <Link href="/contact-us/" className={styles.quoteBtnLink} title="Go to our contact page">
@@ -117,7 +153,7 @@ export const Header = () => {
                 </ul>
 
                 {/* Icon phone - Tablet/Mobile */}
-                <a href="tel:8472629774" className={styles.phoneToggle} aria-label="Call Advanced Roofing Team at 847-262-9774">
+                <a href="tel:8779456565" className={styles.phoneToggle} aria-label="Call Advanced Roofing Team at 877-945-6565">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/>
                     </svg>
@@ -169,7 +205,7 @@ export const Header = () => {
                                         </div>
                                     </li>
                                     <li><Link href="/commercial-roofing" onClick={closeDrawer}>Commercial Roofing</Link></li>
-                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Roofing Insurance Claims</Link></li>
+                                    <li><Link href="/property-report" onClick={closeDrawer}>Property Report</Link></li>
 
                                     <li className={styles.linkWithArrow}>
                                         <Link href="/areas-we-serve" onClick={closeDrawer}>Areas We Serve</Link>
@@ -193,7 +229,7 @@ export const Header = () => {
                                 <div className={styles.drawerFooter}>
                                     <div className={styles.buttonsWrapper}>
                                         <Link href="/contact-us" title="Go to our contact page" onClick={closeDrawer} className={styles.mobileContactBtn}>Contact Us</Link>
-                                        <a href="tel:8472629774" className={styles.mobileCallBtn}>Call Us Today!</a>
+                                        <a href="tel:8779456565" className={styles.mobileCallBtn}>Call Us Today!</a>
                                     </div>
 
                                     <div className={styles.footerColumn}>
@@ -218,12 +254,12 @@ export const Header = () => {
                                             </Link>
 
                                             <Link
-                                                href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                                                href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
                                                 className={styles.socialIcon}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <YelpIcon />
+                                                <NextdoorIcon />
                                             </Link>
 
                                             <Link
@@ -270,7 +306,7 @@ export const Header = () => {
                                 <ul className={styles.mobileList}>
                                     <li><Link href="/about-us/owens-corning-preferred-contractor" onClick={closeDrawer}>Owens Corning Preferred Contractor</Link></li>
                                     <li><Link href="/about-us/gaf-masterelite-preferred-contractor" onClick={closeDrawer}>GAF Masterelite Preferred Contractor</Link></li>
-                                    <li><Link href="/roofing-insurance-claims" onClick={closeDrawer}>Insurance Claims</Link></li>
+                                    <li><Link href="/property-report" onClick={closeDrawer}>Property Report</Link></li>
                                 </ul>
                             </div>
 

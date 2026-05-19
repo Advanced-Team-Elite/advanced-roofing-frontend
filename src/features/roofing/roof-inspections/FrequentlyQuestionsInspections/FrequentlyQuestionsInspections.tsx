@@ -71,7 +71,7 @@ const FrequentlyQuestions = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Ensure your roof is ready for any weather with a professional evaluation.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

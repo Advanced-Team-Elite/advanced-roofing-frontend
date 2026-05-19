@@ -41,7 +41,7 @@ export const SkylightRepair = () => {
                         <div className={styles.innerCta}>
                             <p>
                                 See leaks or condensation around your skylight frame? Get fast, professional repair service to prevent serious interior damage.
-                                Contact us at <strong>(847) 262-9774</strong> or <span className={styles.blueLink}>fill out our online form.</span>
+                                Contact us at <strong>(877) 945-6565</strong> or <span className={styles.blueLink}>fill out our online form.</span>
                             </p>
                         </div>
 

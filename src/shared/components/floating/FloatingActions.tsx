@@ -4,6 +4,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import styles from './FloatingActions.module.css';
+import { QuoteDrawer } from './Quote/QuoteDrawer';
+import {ContactDrawer} from "@/shared/components/floating/ContactDrawer/ContactDrawer";
 
 interface IconProps {
     size?: number;
@@ -34,6 +36,9 @@ export const FloatingActions = () => {
     const [isReading, setIsReading] = useState(false);
     const [mounted, setMounted] = useState(false);
     const lastScrollY = useRef(0);
+    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+    const [activeContactType, setActiveContactType] = useState<'text' | 'email' | 'chat' | 'call' | null>(null);
+    const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 768;
 
 
     useEffect(() => {
@@ -115,6 +120,14 @@ export const FloatingActions = () => {
     return (
         <>
 
+            {/* Componente Modularizado */}
+            <QuoteDrawer isOpen={isQuoteOpen} setIsOpen={setIsQuoteOpen} />
+
+            {/* Overlay sutil */}
+            {isQuoteOpen && <div className={styles.drawerOverlay} onClick={() => setIsQuoteOpen(false)} />}
+
+
+
             {/* Menú de Accesibilidad */}
             {isMenuOpen && (
                 <div
@@ -152,7 +165,7 @@ export const FloatingActions = () => {
             </button>
 
             {/* Contact widget */}
-            {/*
+
             <div className={`${styles.contactContainer} ${mounted ? styles.contactVisible : styles.contactHidden}`}>
                 <div className={styles.chatWrapper}>
                     {showBubble && (
@@ -164,27 +177,50 @@ export const FloatingActions = () => {
                         </div>
                     )}
 
+                    <ContactDrawer
+                        type={activeContactType}
+                        onClose={() => setActiveContactType(null)}
+                    />
+
                     <div className={styles.actionGrid}>
-                        <button className={styles.actionItem} aria-label="Send us a text message">
+                        {/* TEXT - DESHABILITADO */}
+                        <button className={styles.actionItem} onClick={() => setActiveContactType('text')} aria-label="Send us a text message" disabled>
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
                             <span>Text</span>
                         </button>
-                        <button className={styles.actionItem} aria-label="Call our office">
+
+                        {/* CALL - ÚNICO ACTIVO */}
+                        <button
+                            className={styles.actionItem}
+                            onClick={() => {
+                                if (isMobile()) {
+                                    window.location.href = "tel:+18479456565"; // Actualizado al número 847-945-6565
+                                }
+                                else {
+                                    setActiveContactType('call'); // Abre el drawer en escritorio
+                                }
+                            }}
+                            aria-label="Call our office"
+                        >
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                             <span>Call</span>
                         </button>
-                        <button className={styles.actionItem} aria-label="Send us an email">
+
+                        {/* EMAIL - DESHABILITADO */}
+                        <button className={styles.actionItem} onClick={() => setActiveContactType('email')} aria-label="Send us an email" disabled>
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             <span>Email</span>
                         </button>
-                        <button className={styles.actionItem} aria-label="Open live chat">
+
+                        {/* CHAT - DESHABILITADO */}
+                        <button className={styles.actionItem} aria-label="Open live chat" disabled>
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
                             <span>Chat</span>
                         </button>
                     </div>
                 </div>
             </div>
-            */}
+
         </>
     );
 };

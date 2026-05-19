@@ -38,7 +38,7 @@ export const WhyChicagoRely = () => {
                     <p className={styles.paragraph}>
                         We know that storm damage brings uncertainty and stress. Homeowners choose Advanced Roofing Team
                         Construction because we streamline the repair and{' '}
-                        <Link href="/roofing-insurance-claims/" className={styles.blueLink}>
+                        <Link href="/src/app/property-report/" className={styles.blueLink}>
                             insurance process.
                         </Link>{' '}
                         Our trained team manages inspections, detailed documentation, and ensures that nothing falls through
@@ -64,7 +64,7 @@ export const WhyChicagoRely = () => {
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
                         <div className={styles.ctaBanner}>
                             <p>
-                                Need an urgent repair with full insurance documentation? Contact us at <strong>(847) 262-9774</strong> or{' '}
+                                Need an urgent repair with full insurance documentation? Contact us at <strong>(877) 945-6565</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

@@ -37,6 +37,7 @@
     line-height: 1.1;
     margin-bottom: 30px;
     font-weight: 800;
+    max-width: 90%;
 }
 
 .bodyText p {
@@ -45,7 +46,7 @@
     color: #060606;
     line-height: 1.8;
     margin-bottom: 25px;
-    max-width: 600px;
+    max-width: 90%;
 }
 
 .imageContainerWrapper {
@@ -109,6 +110,10 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+
+    .title {
+        max-width: none;
+    }
 
     .bodyText p {
         font-size: 1rem;

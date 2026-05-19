@@ -29,7 +29,7 @@ export const ScrollReveal = ({
 
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 95%", "start 30%"]
+        offset: ["start 91%", "start 30%"]
     });
 
     const isNoMovement = ['center', 'fade', 'zoom'].includes(direction);
@@ -52,7 +52,8 @@ export const ScrollReveal = ({
                 x: isMobile ? 0 : xAnim,
                 y: isMobile ? 0 : yAnim,
                 scale: isMobile ? 1 : scaleAnim,
-                willChange: isMobile ? "auto" : "transform, opacity"
+                // CAMBIO AQUÍ: Solo aplicar willChange si no es mobile Y el scroll está en rango
+                willChange: isMobile ? "auto" : "opacity, transform"
             }}
         >
             {children}

@@ -26,7 +26,13 @@ export default function RoofInSchaumburg() {
                         <li className={styles.paragraph}>We offer 50-year inclusive manufacturer-backed warranties.</li>
                         <li className={styles.paragraph}>We have <Link href="/roofing/emergency-roof-repairs" className={styles.inlineLink}>24/7 emergency services</Link> available to clients in need.</li>
                         <li className={styles.paragraph}>We are a <Link href="/about-us/gaf-masterelite-preferred-contractor" className={styles.inlineLink}>GAF Master Elite Roofing Contractor</Link> and an <Link href="/about-us/owens-corning-preferred-contractor" className={styles.inlineLink}>Owens Corner Preferred Contractor</Link>.</li>
-                        <li className={styles.paragraph}>We focus on <Link href="/insurance-claims-assistance" className={styles.inlineLink}>insurance claims assistance</Link> and catastrophe repairs.</li>
+                        <li className={styles.paragraph}>
+                            We specialize in{' '}
+                            <Link href="/property-report" className={styles.inlineLink}>
+                                storm damage documentation
+                            </Link>{' '}
+                            and catastrophe repairs.
+                        </li>
                     </ol>
 
                     <p className={styles.paragraph}>
@@ -35,7 +41,7 @@ export default function RoofInSchaumburg() {
 
                     <div className={styles.ctaBanner}>
                         <p style={{ textAlign: 'center' }}>
-                            If you are facing major repairs or roofing needs, don’t wait! <Link href="/contact" className={styles.yellowLink}>Contact our office today</Link> at <strong>(847) 262-9774</strong> and schedule a service.
+                            If you are facing major repairs or roofing needs, don’t wait! <Link href="/contact" className={styles.yellowLink}>Contact our office today</Link> at <strong>(877) 945-6565</strong> and schedule a service.
                         </p>
                     </div>
 

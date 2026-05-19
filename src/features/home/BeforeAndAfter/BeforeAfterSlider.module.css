@@ -1,0 +1,59 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    margin: auto;
+}
+
+.beforeImage, .afterImage {
+    position: absolute;
+    /* Cambia 'inherit' por un valor explícito si el padre no lo pasa bien */
+    border-radius: 20px;
+    top: -1px; /* Un pequeño truco de 'over-sampling' para cubrir bordes blancos */
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-size: cover;
+    background-position: center;
+}
+
+.sliderLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: white;
+    pointer-events: none;
+    z-index: 5;
+    transform: translateX(-50%);
+}
+
+.sliderButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 36px;
+    height: 70px;
+    border-radius: 20px;
+
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.dotsIcon {
+    width: 12px;
+    height: 18px;
+    background-image: radial-gradient(#333 2px, transparent 2px);
+    background-size: 6px 6px;
+    background-repeat: repeat;
+}

@@ -71,7 +71,7 @@ const areas = [
     { name: "Hickory Hills", served: false },
     { name: "Highland Park", served: false },
     { name: "Hinsdale", served: false },
-    { name: "Hoffman Estates", served: true, path: "/hoffman-estates-il/" },
+    { name: "Hoffman Estates", served: true, path: "/hoofman-estates-il/" },
     { name: "La Grange", served: false },
     { name: "Lake Forest", served: true, path: "/lake-forest-il/" },
     { name: "Lake Villa", served: false },
@@ -102,7 +102,7 @@ const areas = [
     { name: "Riverdale", served: false },
     { name: "Riverwoods", served: false },
     { name: "Rolling Meadows", served: true, path: "/rolling-meadows-il/" },
-    { name: "Romeoville", served: true, path: "/romeoville-il/" },
+    { name: "Romeoville", served: true, path: "/areas-we-serve/" },
     { name: "Roselle", served: false },
     { name: "Round Lake Beach", served: false },
     { name: "Round Lake Heights", served: false },
@@ -301,7 +301,7 @@ const ContactToday = () => {
                             <div className={styles.formColumnContainer}>
                                 <h2 className={styles.formTitle}>Contact Scorpion Makes Today!</h2>
                                 <p className={styles.formSubtitle}>
-                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
+                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (877) 945-6565 or fill out the form below to contact one of our team members.
                                 </p>
 
                                 <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
