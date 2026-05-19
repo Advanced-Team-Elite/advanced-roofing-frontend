@@ -31,7 +31,7 @@ const projects = [
         type: 'Residential Shingle Roof',
         size: '4,222 sq. ft.',
         time: '3 weeks',
-        image: '/assets/images/projects/suburban-heritage.webp',
+        image: '/assets/images/projects/suburban-heritage-alt.webp',
         system: 'Timberline GAF shingle',
     },
     {
