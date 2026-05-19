@@ -38,7 +38,7 @@ export const FrequentlyQuestionsTileRoof = () => {
                             <h4>What makes tile roof repairs different in Chicago?</h4>
                             <p>
                                 The city experiences severe winters, rapid temperature swings, and strict building codes. These factors require a thorough approach to repair and compliance to ensure lasting results and valid
-                                {" "}<Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                                {" "}<Link href="/src/app/property-report/" className={styles.inlineLink}>
                                 insurance claims
                             </Link>.
 
@@ -82,7 +82,7 @@ export const FrequentlyQuestionsTileRoof = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Protect your home from water damage with meticulous tile repair and flashing restoration. Request a free repair estimate and secure your roof's future.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

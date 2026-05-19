@@ -170,7 +170,7 @@ const ContactUsByEstimating = () => {
                             <div className={styles.formColumnContainer}>
                                 <h2 className={styles.formTitle}>Contact Us</h2>
                                 <p className={styles.formSubtitle}>
-                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (847) 262-9774 or fill out the form below to contact one of our team members.
+                                    At Advanced Roofing Team Construction, we're always ready to take your call! Give us a call at (877) 945-6565 or fill out the form below to contact one of our team members.
                                 </p>
 
                                 <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
@@ -334,13 +334,21 @@ const ContactUsByEstimating = () => {
                                 Chicago weather.
                             </p>
 
+                            <p className={styles.paragraph}>
+                                When you reach out for a free estimate, we will ask a few questions about your property, schedule a convenient time for an on-site visit, and then prepare a clear, written proposal. We are happy to compare different product lines, discuss warranty options from GAF and Owens Corning, and explain our step-by-step process so you know what to expect before any work begins.
+                            </p>
+
+                            <p className={styles.paragraph}>
+                                Homeowners and businesses often tell us they appreciate working with a roofing company Chicago residents can call year-round for inspections, repairs, and full replacements. Whether your property is in the city or in suburbs like Des Plaines, Park Ridge, or Mount Prospect, we aim to make the experience as smooth as possible by communicating updates, keeping job sites tidy, and respecting your time and budget.
+                            </p>
+
                             <div className={styles.ctaBanner}>
                                 <p className={styles.ctaText}>
-                                    Call <a href="tel:8472629774" className={styles.phoneLink}>(847) 262-9774</a> today or{' '}
+                                    We utilize premium, hail-resistant materials and provide industry-leading labor warranties to give you total confidence in your property's long-term durability.
+                                    Contact us at <a href="tel:8779456565" className={styles.phoneLink}>(877) 945-6565</a> or{' '}
                                     <Link href="/contact" className={styles.blueLink}>
-                                        contact us online
+                                        fill out our online form
                                     </Link>{' '}
-                                    to schedule a service and get a free estimate.
                                 </p>
                             </div>
 

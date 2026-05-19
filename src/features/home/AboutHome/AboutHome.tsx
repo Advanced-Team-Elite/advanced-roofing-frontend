@@ -21,11 +21,11 @@ export const AboutHome = () => {
                     <p className={styles.paragraph}>
                         When it comes to protecting your property, your roof plays one of the most important roles.
                         At{' '}
-                        <Link href="/" className={styles.highlight}>
+                        <Link href="/about-us" className={styles.highlight}>
                             Advanced Roofing Team Construction
                         </Link>
                         , we help homeowners and businesses across Chicago with professional{' '}
-                        <Link href="/services/roofing/roof-installation-replacement" className={styles.highlight}>
+                        <Link href="/roofing/roof-installation-replacement" className={styles.highlight}>
                             roof installations and full replacements
                         </Link>{' '}
                         designed to handle our region's unpredictable weather.
@@ -38,7 +38,7 @@ export const AboutHome = () => {
 
                     <div className={styles.ctaBanner}>
                         <p>
-                            Call <strong>(847) 262-9774</strong> today or{' '}
+                            Call <strong>(877) 945-6565</strong> today or{' '}
                             <Link href="/contact-us" className={styles.yellowLink} title="Go to our contact page">
                                 contact us online
                             </Link>{' '}

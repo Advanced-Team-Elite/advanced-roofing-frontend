@@ -39,7 +39,7 @@ export default async function MainPage() {
     }));
 
     return (
-        <main>
+        <main className="overflow-x-hidden">
             <HomeContainer dbReviews={serializedReviews}/>
         </main>
     );

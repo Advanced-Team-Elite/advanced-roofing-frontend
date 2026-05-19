@@ -26,7 +26,7 @@ export const WhatToExpect = () => {
                     <ul className={styles.processList}>
                         <li>
                             <strong>
-                                <Link href="/emergency-roof-repair-chicago/" className={styles.inlineLink}>
+                                <Link href="/roofing/emergency-roof-repairs" className={styles.inlineLink}>
                                     24/7 Emergency Response:
                                 </Link>
                             </strong>{' '}
@@ -43,12 +43,12 @@ export const WhatToExpect = () => {
                         </li>
                         <li>
                             <strong>
-                                <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
-                                    Claims assistance:
+                                <Link href="/property-report" className={styles.inlineLink}>
+                                    Insurance Documentation:
                                 </Link>
                             </strong>{' '}
-                            We assist with insurance correspondence, ensuring that
-                            supporting documents reach your insurance company and that your claim addresses all covered damages.
+                            We provide comprehensive, photo-documented damage reports for you to submit
+                            to your provider, ensuring all structural facts are clearly presented.
                         </li>
                         <li>
                             <strong>Professional restoration:</strong> We utilize high-quality materials that meet Chicago
@@ -63,7 +63,7 @@ export const WhatToExpect = () => {
                     <div className={`${styles.expandableContent} ${isExpanded ? styles.expanded : ''}`}>
                         <div className={styles.ctaBanner}>
                             <p>
-                                Protect your property and inventory from costly water damage. Contact us <strong>(847) 262-9774</strong> or{' '}
+                                Protect your property and inventory from costly water damage. Contact us <strong>(877) 945-6565</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

@@ -56,7 +56,7 @@ const MoreThanRoofing = () => {
 
                     <div className={styles.ctaBox}>
                         <p>
-                            Call <strong>(847) 262-9774</strong> or <strong>contact us online</strong> now to schedule a service and get a free estimate.
+                            Call <strong>(877) 945-6565</strong> or <strong>contact us online</strong> now to schedule a service and get a free estimate.
                         </p>
                     </div>
                 </div>

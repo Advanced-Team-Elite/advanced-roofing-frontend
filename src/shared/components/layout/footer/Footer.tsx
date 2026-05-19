@@ -8,7 +8,7 @@ import {
     XIcon,
     YelpIcon,
     HouzzIcon,
-    GoogleBusinessIcon
+    GoogleBusinessIcon, NextdoorIcon
 } from "@/shared/Icons/Icons";
 
 interface FooterProps {
@@ -53,7 +53,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 <ul className={styles.linkList}>
                                     <li><Link href="/">Home</Link></li>
                                     <li><Link href="/roofing">Roofing</Link></li>
-                                    <li><Link href="/roofing-insurance-claims">Roofing Insurance Claims</Link></li>
+                                    <li><Link href="/property-report">Property Report</Link></li>
                                     <li><Link href="/reviews">Reviews</Link></li>
                                 </ul>
 
@@ -88,7 +88,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                             <h3 className={styles.columnTitle}>Follow Us</h3>
                             <div className={styles.socialIcons}>
                                 <Link
-                                    href="https://www.facebook.com/advancedroofingteam"
+                                    href="https://www.facebook.com/profile.php?id=61580667170717"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     aria-label="Visit our Facebook page"
@@ -98,7 +98,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 </Link>
 
                                 <Link
-                                    href="https://x.com/advancedroofs"
+                                    href="https://x.com/advanced_team26"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -108,13 +108,13 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 </Link>
 
                                 <Link
-                                    href="https://www.yelp.com/biz/advanced-roofing-team-construction-des-plaines-2"
+                                    href="https://nextdoor.com/pages/advanced-roofing-team-construction-rolling-meadows-il-1/"
                                     className={styles.socialIcon}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="View our profile on Yelp"
                                 >
-                                    <YelpIcon />
+                                    <NextdoorIcon />
                                 </Link>
 
                                 <Link
@@ -141,15 +141,35 @@ export const Footer = ({ upperSection }: FooterProps) => {
                     </div>
 
                     {/* Phone */}
+                    {/* Phone Section en Footer */}
                     <div className={styles.footerBottomLine}>
-                        <div className={styles.phoneWrapper}>
-                            <span>Call Us Today!</span>
-                            <a href="tel:8472629774" className={styles.phoneNumber}>
-                                <strong>
-                                    847-262-9774
-                                </strong>
+                        <div className={styles.phoneGrid}>
+                            <div className={styles.phoneHeader}>
+                                <span className={styles.pulseIcon}></span>
+                                <span className={styles.callText}>Call Us Today!</span>
+                            </div>
 
-                            </a>
+                            <div className={styles.numbersContainer}>
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>IL & Main:</span>
+                                    <a href="tel:8479456565" className={styles.phoneNumber}>847-945-6565</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Colorado:</span>
+                                    <a href="tel:7196271400" className={styles.phoneNumber}>719-627-1400</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Wisconsin:</span>
+                                    <a href="tel:2629098907" className={styles.phoneNumber}>262-909-8907</a>
+                                </div>
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Indiana:</span>
+                                    <a href="tel:2193164996" className={styles.phoneNumber}>219-316-4996</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

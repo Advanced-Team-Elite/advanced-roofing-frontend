@@ -34,10 +34,7 @@ const FlatRoofRepair = () => {
                             , we help homeowners and property managers throughout Chicago protect their
                             properties and simplify what can feel like an overwhelming process. Our team
                             works directly with you and your insurance provider, streamlining your
-                            experience and setting clear expectations from your very first call about{' '}
-                            <Link href="/services/roofing/flat-roof-repair" className={styles.linkText}>
-                                flat roof repair in Chicago
-                            </Link>.
+                            experience and setting clear expectations from your very first call about flat roof repair in Chicago.
                         </p>
 
                         <p>
@@ -50,8 +47,8 @@ const FlatRoofRepair = () => {
                                 Don't let ponding water or cracks compromise your commercial building;
                                 call our flat roof specialists for a rapid inspection and guaranteed repair solution.
                                 Contact us at{' '}
-                                <Link href="tel:8472629774" className={styles.linkText}>
-                                    <strong>(847) 262-9774</strong>
+                                <Link href="tel:8779456565" className={styles.linkText}>
+                                    <strong>(877) 945-6565</strong>
                                 </Link>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.blueLink}>

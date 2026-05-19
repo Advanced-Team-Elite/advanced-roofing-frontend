@@ -47,8 +47,8 @@ const EmergencyRoofRepair = () => {
                         <div className={styles.innerCta}>
                             <p>
                                 Has a storm compromised your roof and exposed your home? Contact us at{' '}
-                                <Link href="tel:8472629774" className={styles.linkText}>
-                                    <strong>(847) 262-9774</strong>
+                                <Link href="tel:8779456565" className={styles.linkText}>
+                                    <strong>(877) 945-6565</strong>
                                 </Link>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.blueLink}>

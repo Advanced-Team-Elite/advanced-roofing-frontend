@@ -89,7 +89,7 @@ export const ServingHoffman = () => {
                         {/* Banner dentro de la parte expandible */}
                         <div className={styles.ctaBanner} style={{ marginTop: '30px' }}>
                             <p style={{ textAlign: 'center', margin: 0 }}>
-                                Upgrade to premium, wind-rated roofing systems that provide long-lasting beauty and superior protection for your family. Contact us at <strong>(847) 262-9774</strong> or {' '}
+                                Upgrade to premium, wind-rated roofing systems that provide long-lasting beauty and superior protection for your family. Contact us at <strong>(877) 945-6565</strong> or {' '}
                                 <Link href="/contact" className={styles.yellowLink}>
                                     fill out our online form.
                                 </Link>

@@ -7,33 +7,47 @@ import Link from "next/link";
 export const OurServiceAreas = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const communities = [
-        { name: "Arlington Heights", path: "/arlington-heights-il/" },
-        { name: "Barrington", path: "/barrington-il/" },
-        { name: "Bolingbrook", path: "/bolingbrook-il/" },
-        { name: "Buffalo Grove", path: "/buffalo-grove-il/" },
-        { name: "Des Plaines", path: "/des-plaines-il/" },
-        { name: "Downers Grove", path: "/downers-grove-il/" },
-        { name: "Elmhurst", path: "/elmhurst-il/" },
-        { name: "Evanston", path: "/evanston-il/" },
-        { name: "Hoffman Estates", path: "/hoofman-estates-il/" },
-        { name: "Lake Forest", path: "/lake-forest-il/" },
-        { name: "Lake Zurich", path: "/lake-zurich-il/" },
-        { name: "Lemont", path: "/lemont-il/" },
-        { name: "Lockport", path: "/lockport-il/" },
-        { name: "Mount Prospect", path: "/mount-prospect-il/" },
-        { name: "Naperville", path: "/naperville-il/" },
-        { name: "Northbrook", path: "/northbrook-il/" },
-        { name: "Orland Park", path: "/orland-park-il/" },
-        { name: "Oak Brook", path: "/oak-brook-il/" },
-        { name: "Palatine", path: "/palatine-il/" },
-        { name: "Rolling Meadows", path: "/rolling-meadows-il/" },
-        { name: "Romeoville", path: "/areas-we-serve/" },
-        { name: "Schaumburg", path: "/schaumburg-il/" },
-        { name: "Skokie", path: "/skokie-il/" },
-        { name: "St. Charles", path: "/st-charles-il/" },
-        { name: "Tinley Park", path: "/tinley-park-il/" }
+    const serviceRegions = {
+        illinois: [
+            { name: "Arlington Heights", path: "/arlington-heights-il/" },
+            { name: "Barrington", path: "/barrington-il/" },
+            { name: "Bolingbrook", path: "/bolingbrook-il/" },
+            { name: "Buffalo Grove", path: "/buffalo-grove-il/" },
+            { name: "Des Plaines", path: "/des-plaines-il/" },
+            { name: "Downers Grove", path: "/downers-grove-il/" },
+            { name: "Elmhurst", path: "/elmhurst-il/" },
+            { name: "Evanston", path: "/evanston-il/" },
+            { name: "Hoffman Estates", path: "/hoofman-estates-il/" },
+            { name: "Lake Forest", path: "/lake-forest-il/" },
+            { name: "Lake Zurich", path: "/lake-zurich-il/" },
+            { name: "Lemont", path: "/lemont-il/" },
+            { name: "Lockport", path: "/lockport-il/" },
+            { name: "Mount Prospect", path: "/mount-prospect-il/" },
+            { name: "Naperville", path: "/naperville-il/" },
+            { name: "Northbrook", path: "/northbrook-il/" },
+            { name: "Orland Park", path: "/orland-park-il/" },
+            { name: "Oak Brook", path: "/oak-brook-il/" },
+            { name: "Palatine", path: "/palatine-il/" },
+            { name: "Rolling Meadows", path: "/rolling-meadows-il/" },
+            { name: "Romeoville", path: "/areas-we-serve/" },
+            { name: "Schaumburg", path: "/schaumburg-il/" },
+            { name: "Skokie", path: "/skokie-il/" },
+            { name: "St. Charles", path: "/st-charles-il/" },
+            { name: "Tinley Park", path: "/tinley-park-il/" }
+        ],
+        expansion: [
+            { name: "Wisconsin", path: "/wisconsin/" },
+            { name: "Indiana", path: "/indiana/" },
+            { name: "Colorado", path: "/colorado/" },
+            { name: "Michigan (Upper Peninsula)", path: "/michigan-up/" }
+        ]
+    };
+
+    const allAreas = [
+        ...serviceRegions.expansion.map(item => ({ ...item, isState: true })),
+        ...serviceRegions.illinois.map(item => ({ ...item, isState: false })),
     ];
+
 
     return (
         <section className={styles.supportSection}>
@@ -50,10 +64,23 @@ export const OurServiceAreas = () => {
                 <h3 className={styles.listHeading}>Our services include:</h3>
 
                 <ul className={styles.citiesGridList}>
-                    {communities.map((city) => (
+                    {allAreas.map((city) => (
                         <li key={city.path} className={styles.cityItem}>
-                            <Link href={city.path} className={styles.linkHighlightBlue}>
-                                {city.name}
+                            <Link href={city.path} className="flex items-center justify-between w-full group">
+                                <span className={`transition-colors ${
+                                    city.isState
+                                        ? 'text-[#00589e] font-medium '
+                                        : 'text-[#00c3f8] font-medium'
+                                }`}>
+                                    {city.name}
+                                </span>
+
+                                {/* El badge alineado a la derecha */}
+                                {city.isState && (
+                                    <span className="ml-2 text-[9px] bg-blue-100 text-[#00589e] px-2 py-0.5 rounded-full font-extrabold uppercase tracking-tighter whitespace-nowrap">
+                                        New State
+                                    </span>
+                                )}
                             </Link>
                         </li>
                     ))}

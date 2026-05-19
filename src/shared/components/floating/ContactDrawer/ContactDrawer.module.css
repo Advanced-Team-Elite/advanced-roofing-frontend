@@ -1,0 +1,533 @@
+.fullScreenWrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    pointer-events: none; /* Permite clics fuera si no hay backdrop */
+    transition: background 0.3s ease;
+}
+
+.withBackdrop {
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+}
+
+.clickableOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.drawerContainer {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 75px;
+    width: 375px;
+    /* Altura dinámica basada en el viewport */
+    height: 85vh;
+    max-height: 800px; /* Limite opcional para pantallas muy grandes */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Mantenemos hidden aquí para que el scroll sea interno */
+}
+
+.expanded {
+    width: 900px; /* Tamaño total expandido */
+}
+
+.layout {
+    display: flex;
+    height: 100%;
+}
+
+/* Panel de Información Izquierdo */
+.infoPanel {
+    width: 0;
+    opacity: 0;
+    background: #f8faff;
+    border-right: 1px solid #eee;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    white-space: nowrap;
+}
+
+.infoPanel.visible {
+    width: 360px;
+    opacity: 1;
+    padding: 50px 25px;
+}
+
+.brand h3 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #1a1a2e;
+    line-height: 1.3;
+}
+
+.logo { width: 160px; }
+
+.contactInfo p, .businessHours p {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.blueIcon {
+    width: 20px;
+    height: 20px;
+    color: #4680e1; /* El azul de tu botón 'Send' */
+    flex-shrink: 0;
+}
+
+.infoItem p, .infoItem h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    white-space: normal; /* Permite que la dirección haga wrap si es larga */
+}
+
+.hoursDetail {
+    padding-left: 32px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6; /* Añade esto para dar espacio entre las dos líneas */
+}
+
+.hoursDetail strong {
+    font-weight: 700;
+    color: #434343; /* Un tono un poco más oscuro para que resalte del resto */
+}
+
+/* Panel de Formulario Derecho */
+.formPanel {
+    flex: 1;
+    min-width: 375px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    gap: 18px;
+
+    /* Opcional: Estilizar la barra de scroll para que sea más sutil */
+    scrollbar-width: thin;
+    scrollbar-color: #00589e #f0f0f0;
+}
+
+.formPanel::-webkit-scrollbar {
+    width: 6px;
+}
+.formPanel::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.formPanel::-webkit-scrollbar-thumb {
+    background-color: #00589e;
+    border-radius: 10px;
+}
+
+.formTitle {
+    font-size: 28px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 5px;
+    margin-top: 50px;
+}
+
+.formSubtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.mainForm {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.inputRow {
+    display: flex;
+    gap: 16px;
+}
+
+.mainForm input, .mainForm select, .mainForm textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fafafa;
+    font-size: 14px;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fieldGroup label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.mainForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Aumentado el espacio entre filas */
+    margin-top: 10px;
+}
+
+.floatingGroup {
+    position: relative;
+    width: 100%;
+}
+
+/* INPUT BASE */
+.floatingInput {
+    width: 100%;
+    min-height: 58px;
+    /* Padding inicial equilibrado para que el texto/placeholder esté centrado */
+    padding: 16px !important;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: #ffffff;
+    font-size: 16px;
+    color: #111;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* 🔥 CUANDO EL LABEL ESTÁ ARRIBA: Empujamos el texto del input hacia abajo */
+.floatingInput:focus,
+.floatingInput:not(:placeholder-shown),
+.selectInput:valid {
+    padding-top: 28px !important; /* Espacio para la etiqueta arriba */
+    padding-bottom: 10px !important;
+}
+
+.floatingLabel {
+    position: absolute;
+    left: 16px;
+    /* Centrado vertical perfecto usando transform */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af !important;
+    font-size: 15px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+
+.floatingInput:focus + .floatingLabel,
+.floatingInput:not(:placeholder-shown) + .floatingLabel,
+.selectInput:valid ~ .floatingLabel {
+    top: 8px; /* Posición fija arriba */
+    transform: translateY(0); /* Quitamos el centrado vertical */
+    font-size: 11px;
+    font-weight: 600;
+    color: #00589e;
+}
+
+/* Sobrescribimos el comportamiento solo cuando el label sigue a un textarea */
+textarea.floatingInput ~ .floatingLabel {
+    top: 26px; /* Lo bajamos un poco para que no choque con el borde superior */
+    transform: translateY(-50%); /* Lo centramos respecto a esa línea de inicio */
+}
+
+/* Cuando el textarea tiene foco o texto, el label sube a la posición estándar */
+textarea.floatingInput:focus + .floatingLabel,
+textarea.floatingInput:not(:placeholder-shown) + .floatingLabel {
+    top: 8px;
+    transform: translateY(0);
+}
+
+/* Ajuste del padding interno del textarea para que el cursor no pise al label */
+textarea.floatingInput {
+    padding-top: 20px !important; /* Padding inicial equilibrado */
+    resize: none; /* Opcional: para mantener la estética del drawer */
+}
+
+textarea.floatingInput:focus,
+textarea.floatingInput:not(:placeholder-shown) {
+    padding-top: 32px !important; /* Espacio extra para que el texto empiece debajo del label */
+}
+/* Estilo específico para el select para alinear la flecha nativa */
+.selectInput {
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Cuando el select tiene una opción válida elegida */
+.selectInput:valid ~ .floatingLabel {
+    top: 8px;
+    font-size: 12px;
+}
+
+.actionsFooter {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitBtn {
+    background-color: #4680e1 !important;
+    color: white;
+    padding: 6px 60px !important;
+    border-radius: 7px !important;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submitBtn:hover {
+    background: #1d4ed8;
+}
+
+.legalNotice {
+    font-size: 11px;
+    color: #999;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.legalNotice a { color: #4680e1; }
+
+.legalNotice a:hover { color: #4680e1; }
+
+.inputError {
+    border-color: #ef4444 !important;
+    background: #fff5f5 !important;
+}
+
+.errorMsg {
+    display: block;
+    font-size: 11px;
+    color: #ef4444;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Success / Loading states */
+.successState {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    /* Asegura que ocupe todo el alto disponible para centrar el contenido */
+    min-height: 100%;
+}
+
+.successIcon {
+    background: #eff6ff;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.successTitle {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111;
+    margin: 0;
+}
+
+.successMessage {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0;
+}
+
+.closeSuccessBtn {
+    margin-top: 8px;
+    padding: 12px 48px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    width: 100%;
+    max-width: 260px;
+}
+
+.closeSuccessBtn:hover {
+    border-color: #00589e;
+    color: #00589e;
+}
+
+/* Spinner */
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #00589e;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loadingText {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* Controles (Botones Arriba) */
+.drawerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.headerLogo {
+    height: 40px; /* Tamaño ajustado según la referencia */
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.headerLogo.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Para que no se pueda clickear lo invisible */
+    height: 0;
+}
+
+.controls {
+    display: flex;
+    gap: 8px; /* Espacio entre el botón de expandir y cerrar */
+}
+
+.iconBtn {
+    background: #f3f4f6; /* Fondo gris suave circular */
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+    background: #e5e7eb;
+    color: #111;
+}
+
+/* Título debajo del header */
+.formTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin: 10px 0 5px 0;
+}
+
+.iconBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f0f0;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.iconBtn:hover { background: #e0e0e0; }
+
+/* Footer */
+.actionsFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancelBtn {
+    background: none;
+    border: none;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+}
+
+.submitBtn {
+    background: #00589e;
+    color: white;
+    padding: 14px 60px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submitBtn:hover { background: #004a85; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .drawerContainer {
+        margin: 0;
+        width: 100% !important;
+        height: 100vh !important; /* Full height en móvil */
+        max-height: 100vh !important;
+        border-radius: 0;
+    }
+    .infoPanel { display: none !important; }
+    .formPanel {
+        min-width: 100%;
+        justify-content: start;
+        padding: 20px 20px;
+    }
+    .mainForm{
+        margin-bottom: auto;
+    }
+    .iconBtn:first-child { display: none; } /* Ocultar botón expandir en móvil */
+}

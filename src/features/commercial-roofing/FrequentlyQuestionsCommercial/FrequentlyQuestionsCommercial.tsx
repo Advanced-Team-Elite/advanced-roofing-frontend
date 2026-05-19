@@ -60,7 +60,7 @@ export const FrequentlyQuestionsCommercial = () => {
                         <div className={styles.ctaBanner}>
                             <p>
                                 Extend the lifecycle of your current roof and prevent expensive structural damage with our customized commercial preventative maintenance programs.
-                                Contact us <strong>(847) 262-9774</strong> or{' '}
+                                Contact us <strong>(877) 945-6565</strong> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

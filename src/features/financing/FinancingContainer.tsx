@@ -9,6 +9,7 @@ import {Footer} from "@/shared/components/layout/footer/Footer";
 import ContactToday from "@/shared/components/ContactToday/ContactToday";
 import {AreasWeService} from "@/features/areas-we-serve/AreasWeService/AreasWeService";
 import {FinancingAtAdvanced} from "@/features/financing/FinancingAtAdvanced/FinancingAtAdvanced";
+import Financing from "@/features/home/Financing/Financing";
 
 export const FinancingContainer = () => {
     return (
@@ -23,7 +24,7 @@ export const FinancingContainer = () => {
             <section className={styles.contentSection}>
                 <div className={styles.container}>
 
-                    <FinancingAtAdvanced />
+                    <Financing backgroundColor={"bg-white"}/>
                     <WhyChoose />
                     <SupportRoofDamage />
 

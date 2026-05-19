@@ -68,8 +68,8 @@ export const ServingSchaumburg = () => {
                         <div className={styles.ctaBanner} style={{ marginTop: '30px' }}>
                             <p style={{ textAlign: 'center', margin: 0 }}>
                                 Stop worrying about leaks and storm damage by upgrading to a modern roofing system engineered for superior resistance. Contact us at {' '}
-                                <Link href="tel:(847) 262-9774" className={styles.yellowLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <Link href="tel:(877) 945-6565" className={styles.yellowLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </Link>
                                 {' '} or {' '}
                                 <Link href="/contact" className={styles.yellowLink}>

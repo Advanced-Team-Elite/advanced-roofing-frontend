@@ -33,7 +33,7 @@ const RoofingProjects = () => {
                     <p className={styles.paragraph}>
                         We manage roofing projects from start to finish, whether you're updating an older system,
                         recovering from storm damage, or planning new construction. Every{' '}
-                        <Link href="/materials" className={styles.inlineLink}>
+                        <Link href="/roof-types/" className={styles.inlineLink}>
                             material and process
                         </Link>{' '}
                         we use is selected to stand up to the Midwest’s harsh winters, hail, wind, and wide temperature swings.
@@ -43,13 +43,13 @@ const RoofingProjects = () => {
 
                     <ul className={styles.clickableList}>
                         <li>
-                            <Link href="/roof-installation">Roof installation and replacement</Link>
+                            <Link href="/roof-installation-replacement/">Roof installation and replacement</Link>
                         </li>
                         <li>
-                            <Link href="/gutters">Gutters</Link>
+                            <Link href="/roofing/gutters/">Gutters</Link>
                         </li>
                         <li>
-                            <Link href="/siding">Siding</Link>
+                            <Link href="/roofing/siding/">Siding</Link>
                         </li>
                         <li>
                             <Link href="/roofing/storm-damage-repair/">Storm damage solutions</Link>

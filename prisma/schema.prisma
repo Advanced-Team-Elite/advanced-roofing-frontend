@@ -32,3 +32,9 @@ model Review {
   createdAt DateTime @default(now())
 }
 
+model WeatherConfig {
+  id           Int      @id @default(1)
+  currentClimate String
+  city         String   @default("Chicago")
+  updatedAt    DateTime @updatedAt
+}

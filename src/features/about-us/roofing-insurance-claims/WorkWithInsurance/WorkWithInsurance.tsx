@@ -63,7 +63,7 @@ const WorkWithInsurance = () => {
                 <div className={styles.imageColumn}>
                     <div className={styles.imageFrame}>
                         <img
-                            src="/assets/images/features/about-us/content-v13.png"
+                            src="/assets/images/features/about-us/content-v13.webp"
                             alt="Workers assessing roof damage"
                             className={styles.mainImage}
                         />

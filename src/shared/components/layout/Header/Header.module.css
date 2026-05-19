@@ -3,9 +3,8 @@
     font-family: sans-serif;
     z-index: 9999;
 }
-
 .topBar {
-    background-color: #f7d000;
+    background-color: #f7d000; /* Amarillo oficial */
     color: #00589e;
     padding: 15px 90px;
     display: flex;
@@ -15,25 +14,133 @@
     font-weight: 800;
 }
 
-.topBar span{
+.topBar span {
     font-size: 1.1rem;
     font-weight: bold;
 }
 
-.topBar a:hover {
-    color: #060606 !important;
+.phoneWrapper {
+    position: relative;
+    padding: 5px 0;
+    cursor: pointer;
 }
 
-.telf{
+.phoneMain {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+}
+
+.phoneLabel {
+    font-size: 11px;
+    color: #00589e;
+    text-transform: uppercase;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+    color: #002d4d;
+}
+
+/* El dropdown oculto por defecto */
+.phoneDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 10px 0;
+    display: none; /* Se oculta */
+    z-index: 1000;
+}
+
+/* Mostrar al hacer hover */
+.phoneWrapper:hover .phoneDropdown {
+    display: block;
+}
+
+.phoneWrapper:hover .chevron {
+    transform: rotate(180deg);
+}
+
+.dropdownItem {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+    background: #f8fafc;
+}
+
+.locName {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.locPhone {
+    font-size: 16px;
+    color: #002d4d;
+    font-weight: 800;
+    text-decoration: none;
+
+    font-family: 'Inter', sans-serif; /* O la fuente sans-serif que uses */
+}
+
+.locPhone:hover {
+    color: #002d4d;
+}
+
+/* Contenedor para controlar el espacio del teléfono */
+.phoneCarousel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 100px;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer; /* Indica que es clicable */
+}
+
+.telf {
     color: #060606;
-    font-weight: bolder;
-    font-size: 1.5rem !important;
+    font-weight: 800; /* Un poco más de peso */
+    font-size: 23px !important; /* Ligeramente más grande */
+    letter-spacing: 0.5px; /* Espaciado para que se vea más premium */
+    font-family: 'Prompt', sans-serif; /* O la fuente sans-serif que uses */
 }
 
-.topBarNavLink{
+.telf:hover {
+    color: #060606;
+}
+
+@keyframes phoneSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.topBarNavLink {
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: 600; /* Un poco más fuerte para legibilidad */
     margin-left: 13px;
+    transition: color 0.3s ease;
+}
+
+.topBarNavLink:hover {
+    color: black;
 }
 
 .mainNav {

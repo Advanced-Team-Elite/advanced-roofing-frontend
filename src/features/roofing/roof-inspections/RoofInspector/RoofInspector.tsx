@@ -55,8 +55,8 @@ export const RoofInspector = () => {
                             <p>
                                 Protect your property and budget from hidden roof damage. Contact us at
                                 Call {' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    (847) 262-9774
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    (877) 945-6565
                                 </a>{' '}
                                 or{' '} or{' '}
                                 <Link href="/contact-us/" className={styles.inlineLink}>
@@ -85,7 +85,7 @@ export const RoofInspector = () => {
                             </li>
                             <li>
                                 <strong>Securing a Fair{' '}
-                                    <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                                    <Link href="/src/app/property-report/" className={styles.inlineLink}>
                                         Insurance Claim
                                     </Link>:</strong>{' '}
                                 A detailed, certified inspection report provides the objective evidence and

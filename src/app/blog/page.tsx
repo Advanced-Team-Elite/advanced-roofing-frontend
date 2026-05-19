@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: 'Roofing & Storm Recovery Blog | Insights by Advanced Roofing Team',
-    description: 'Expert advice on roofing, siding, and insurance claims. Stay updated on how climate change affects hail damage and find the best siding options for your home.',
+    description: 'Expert advice on roofing, siding, and insurance claims reports. Stay updated on how climate change affects hail damage and find the best siding options for your home.',
     keywords: [
         'roofing blog Chicago',
         'hail damage insurance advice',

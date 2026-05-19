@@ -64,7 +64,7 @@ export const HandleRoofingProjectSection = ({ city }: StormRecoveryProps) => {
                             Are you a first-time client? Reach out to our licensed and certified roofers and we can set you up with a free estimate. Don’t settle for another roofing company when our expert roofing team is ready to assist.
                         </p>
                         <p>
-                            Give us a call at (847) 262-9774 or schedule an appointment online to get started on your roofing project!
+                            Give us a call at (877) 945-6565 or schedule an appointment online to get started on your roofing project!
                         </p>
                     </div>
                 </div>

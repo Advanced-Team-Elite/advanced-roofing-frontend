@@ -61,7 +61,7 @@ export const FrequentlyQuestionsSkylightRepair = () => {
                         <div className={styles.blackBanner}>
                             <p>
                                 Avoid the risk of roof damage with immediate, professional skylight repair. Secure fast service from licensed roofers who specialize in skylight sealing.
-                                Contact us at <span className={styles.yellowText}>(847) 262-9774</span> or{' '}
+                                Contact us at <span className={styles.yellowText}>(877) 945-6565</span> or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>
                                     fill out our online form
                                 </Link>{' '}

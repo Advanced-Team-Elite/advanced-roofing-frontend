@@ -53,7 +53,7 @@ const AboutUs = () => {
                 </div>
 
                 <p className={styles.footerContact}>
-                    Call (847) 262-9774 or <a href="/contact-us" className={styles.contactLink}>contact us online</a> today for a free estimate and discover how we help property owners across Chicago.
+                    Call (877) 945-6565 or <a href="/contact-us" className={styles.contactLink}>contact us online</a> today for a free estimate and discover how we help property owners across Chicago.
                 </p>
             </div>
         </section>

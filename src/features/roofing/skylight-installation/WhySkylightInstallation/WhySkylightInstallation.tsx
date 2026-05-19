@@ -34,7 +34,7 @@ export const WhySkylightInstallation = () => {
                         </li>
                         <li>
                             <strong>Advocacy during{' '}
-                                <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                                <Link href="/src/app/property-report/" className={styles.inlineLink}>
                                     insurance claims:
                                 </Link></strong>{' '}
                             If storm damage or coverage is an issue, we work with you to ensure all
@@ -57,7 +57,7 @@ export const WhySkylightInstallation = () => {
                     <p className={styles.paragraph}>
                         Our commitment goes beyond completing the installation. We offer products backed by manufacturer warranties for extra assurance. Chicago's diverse roofs require tailored solutions, and our team adjusts methods for different styles, from classic city homes to contemporary designs. With our detailed documentation, you can address
                         {' '}
-                        <Link href="/roofing-insurance-claims/" className={styles.inlineLink}>
+                        <Link href="/src/app/property-report/" className={styles.inlineLink}>
                             insurance claims
                         </Link>{' '}
                         smoothly if recent weather has caused damage. We aim to make the entire skylight installation process easy and transparent, so you remain confident throughout the entire process.
@@ -68,8 +68,8 @@ export const WhySkylightInstallation = () => {
                             <p>
                                 Ready to enhance your home's appeal and energy efficiency with modern, insulated skylights?
                                 Contact us at{' '}
-                                <a href="tel:8472629774" className={styles.inlineLink}>
-                                    <strong>(847) 262-9774</strong>
+                                <a href="tel:8779456565" className={styles.inlineLink}>
+                                    <strong>(877) 945-6565</strong>
                                 </a>{' '}
                                 or{' '}
                                 <Link href="/contact-us" className={styles.yellowLink}>

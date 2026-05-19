@@ -16,9 +16,9 @@ const ServingHome = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h2 className={styles.title}>Chicago Roofing Services</h2>
+                    <h2 className={styles.title}>Roofing Services in Chicago, IL</h2>
                     <h3 className={styles.subtitle}>
-                        Serving Homes & Businesses Across the Greater <br/> Chicagoland Area — We've Got You Covered
+                        Secure Your Property with Our Weather-Resistant Roof Reinforcement
                     </h3>
 
                     <p className={styles.paragraph}>
@@ -41,10 +41,14 @@ const ServingHome = () => {
                         <li>Free estimates to help you plan with confidence</li>
                         <li>Insured service with dependable warranties</li>
                     </ul>
+                    <p className={styles.paragraph}>
+                        Because we work on homes from the city to the suburbs, we understand how Chicago's weather, lake-effect snow, and local building codes can affect your roof over time. When you reach out to our team, we take the time to listen, explain your options, and recommend the right solution, whether you are comparing materials, trying to time a replacement around other projects, or looking for a roofing contractor who can coordinate with your insurance company.
+                    </p>
 
                     <div className={styles.contactBanner}>
                         <p className={styles.contactText}>
-                            Call <a href="tel:8472629774">(847) 262-9774</a> or <Link href="/contact"><strong className={styles.contactUs}>contact us online</strong></Link> today and talk to one of our team about your roofing needs.
+                            From minor leak repairs to complete structural replacements, our certified team ensures your home remains protected against the most severe lake-effect weather.
+                            Contact us at <a href="tel:8779456565">(877) 945-6565</a> or <Link href="/contact-us"><strong className={styles.contactUs}>fill out our online form</strong></Link>
                         </p>
                     </div>
                 </div>

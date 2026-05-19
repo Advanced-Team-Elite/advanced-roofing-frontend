@@ -30,6 +30,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
+    max-width: 90%;
 }
 
 .subtitle {
@@ -49,8 +50,8 @@
 }
 
 .inlineLinkBlue {
-    color: #00c3f8;
-    text-decoration: none;
+    color: #00c3f8 !important;
+    text-decoration: none !important;
     font-weight: normal;
 }
 
@@ -202,6 +203,7 @@
 
     .title {
         font-size: 2.5rem;
+        max-width: 90%;
     }
 
     .textContent {
@@ -236,6 +238,7 @@
     .title {
         width: 90%;
         font-size: 2.2rem;
+        max-width: none;
     }
 
     .subtitle {
