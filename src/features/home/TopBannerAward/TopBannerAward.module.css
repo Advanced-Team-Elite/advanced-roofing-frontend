@@ -1,0 +1,138 @@
+.awardSection {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Wrapper principal del título */
+.titleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    width: 100%;
+}
+
+.title {
+    color: #00589e;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+/* Contenedor base de las imágenes PNG */
+.laurelContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* El enlace hipervínculo de validación */
+.awardLink {
+    color: #00589e;
+    font-style: italic;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.awardLink:hover {
+    color: #ffd700;
+    text-decoration-color: #ffd700;
+}
+
+.description {
+    color: #4a5568;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 780px;
+}
+
+.description strong {
+    color: #00589e;
+    font-weight: 800;
+}
+
+.subtext {
+    color: #718096;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-top: 2px solid #ffd700;
+    padding-top: 8px;
+}
+
+.desktopBreak {
+    display: block;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MÓVIL AUTOMÁTICO (CORRECCIÓN DE UI)
+   ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .awardSection {
+        padding: 40px 16px;
+    }
+
+    .titleWrapper {
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 1.45rem;
+        line-height: 1.3;
+    }
+
+    .laurelContainer {
+        width: 42px !important;
+        height: auto !important;
+    }
+
+    .laurelContainer img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .desktopBreak {
+        display: none;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0 4px;
+    }
+}
