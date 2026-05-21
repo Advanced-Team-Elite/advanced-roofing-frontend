@@ -64,7 +64,7 @@ export const TopBannerAward = () => {
                 <div className={styles.titleWrapper}>
                     <div className={`${styles.laurelContainer} ${styles.laurelLeft}`}>
                         <Image
-                            src="/assets/images/features/home/laurel-left-alt.png"
+                            src="/assets/images/features/home/laurel-left.webp"
                             alt="Laurel Left"
                             width={120}
                             height={160}
@@ -79,7 +79,7 @@ export const TopBannerAward = () => {
 
                     <div className={`${styles.laurelContainer} ${styles.laurelRight}`}>
                         <Image
-                            src="/assets/images/features/home/laurel-right-alt.png"
+                            src="/assets/images/features/home/laurel-right.webp"
                             alt="Laurel Right"
                             width={120}
                             height={160}
