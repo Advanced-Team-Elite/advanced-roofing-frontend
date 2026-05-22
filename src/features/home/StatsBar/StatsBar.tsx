@@ -39,68 +39,98 @@ const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) =
 };
 
 // ──────────────────────────────────────────────────────────────
-// CONTADOR EFECTO SLOT MACHINE (Maquinita clásica de palanca)
+// CONTADOR EFECTO SLOT MACHINE CON PALANCA INTERACTIVA
 // ──────────────────────────────────────────────────────────────
 const SlotCounter = ({ targetNumber }: { targetNumber: number }) => {
     const [hasStarted, setHasStarted] = useState(false);
+    const [isLeverPulled, setIsLeverPulled] = useState(false);
+    const [resetTrigger, setResetTrigger] = useState(false); // Fuerza el reinicio de los tambores
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Convertimos el número a dígitos separados (Ej: ["1", "6", ",", "0", "0", "0"])
     const digitsArray = targetNumber.toLocaleString('en-US').split('');
-
-    // Array extendido para simular que el rodillo físico tiene muchos números y gira varias veces
     const extendedNumbers = Array.from({ length: 6 }, () => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).flat();
     const totalItems = extendedNumbers.length;
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) setHasStarted(true);
+                if (entry.isIntersecting && !hasStarted) setHasStarted(true);
             },
             { threshold: 0.1 }
         );
         if (containerRef.current) observer.observe(containerRef.current);
         return () => observer.disconnect();
-    }, []);
+    }, [hasStarted]);
+
+    // Función mágica para volver a jalar la palanca y "jugar" otra vez
+    const handlePullLever = () => {
+        if (isLeverPulled) return; // Evita doble clic bugeado mientras gira
+
+        setIsLeverPulled(true);
+        setResetTrigger(true); // Regresa los rodillos a 0 de golpe
+
+        // 1. Soltar la palanca (animación de regreso rápido en CSS)
+        setTimeout(() => {
+            setIsLeverPulled(false);
+        }, 400);
+
+        // 2. Apagar el reset e iniciar el giro con furia inmediatamente
+        setTimeout(() => {
+            setResetTrigger(false);
+        }, 50);
+    };
 
     return (
-        <div ref={containerRef} className={styles.slotMachineContainer}>
-            {digitsArray.map((char, index) => {
-                // Si es una coma, se muestra en su propio casillero estático
-                if (char === ',') {
+        <div ref={containerRef} className={styles.slotMachineWrapper}>
+
+            {/* Chasis principal que contiene los rodillos */}
+            <div className={styles.slotMachineContainer}>
+                {digitsArray.map((char, index) => {
+                    if (char === ',') {
+                        return (
+                            <div key={index} className={styles.slotCommaWindow}>
+                                <span className={styles.slotCommaItem}>,</span>
+                            </div>
+                        );
+                    }
+
+                    const targetDigit = parseInt(char, 10);
+                    const totalPositionsToMove = 40 + targetDigit;
+                    const percentageTranslate = (totalPositionsToMove / totalItems) * 100;
+
+                    // Si está en modo reset, se clava en 0%, de lo contrario va al número final si ya arrancó
+                    const currentTranslation = resetTrigger ? '0%' : (hasStarted ? `-${percentageTranslate}%` : '0%');
+
                     return (
-                        <div key={index} className={styles.slotCommaWindow}>
-                            <span className={styles.slotCommaItem}>,</span>
+                        <div key={index} className={styles.slotDrumWindow}>
+                            <div
+                                className={`${styles.slotDrumReel} ${resetTrigger ? styles.noTransition : ''}`}
+                                style={{
+                                    transform: `translateY(${currentTranslation})`,
+                                    // Pasamos el delay como una variable CSS limpia o la propiedad nativa individual desglosada
+                                    transitionDelay: resetTrigger ? '0ms' : `${index * 100}ms`
+                                }}
+                            >
+                                {extendedNumbers.map((num, numIndex) => (
+                                    <span key={numIndex} className={styles.slotDrumDigit}>{num}</span>
+                                ))}
+                            </div>
+                            <div className={styles.slotDrumReflex} />
                         </div>
                     );
-                }
+                })}
+            </div>
 
-                const targetDigit = parseInt(char, 10);
-
-                // Forzamos 4 vueltas completas (40 posiciones) + el dígito final para que ruede bastante
-                const totalPositionsToMove = 40 + targetDigit;
-                const percentageTranslate = (totalPositionsToMove / totalItems) * 100;
-
-                return (
-                    <div key={index} className={styles.slotDrumWindow}>
-                        {/* El rodillo interno que se desliza verticalmente */}
-                        <div
-                            className={styles.slotDrumReel}
-                            style={{
-                                transform: hasStarted ? `translateY(-${percentageTranslate}%)` : 'translateY(0%)',
-                                transitionDelay: `${index * 100}ms` // Cascada de izquierda a derecha al parar
-                            }}
-                        >
-                            {extendedNumbers.map((num, numIndex) => (
-                                <span key={numIndex} className={styles.slotDrumDigit}>{num}</span>
-                            ))}
-                        </div>
-
-                        {/* Brillo reflectante superior/inferior para dar el efecto de vidrio/tambor curvo */}
-                        <div className={styles.slotDrumReflex} />
-                    </div>
-                );
-            })}
+            {/* 🕹️ LA PALANCA MECÁNICA (Mover a la derecha del chasis) */}
+            <div
+                className={`${styles.leverStructure} ${isLeverPulled ? styles.leverPulled : ''}`}
+                onClick={handlePullLever}
+                title="Pull to spin again!"
+            >
+                <div className={styles.leverBase} />
+                <div className={styles.leverRod} />
+                <div className={styles.leverBall} />
+            </div>
         </div>
     );
 };
