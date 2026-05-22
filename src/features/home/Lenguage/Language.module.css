@@ -1,19 +1,19 @@
 .section {
     margin: 100px 0 50px 0;
     padding: 80px 20px;
-    background-color: #f2f2f2; /* Fondo gris claro como en la imagen */
+    background-color: #f2f2f2;
     width: 100%;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     text-align: center;
 }
 
 .title {
     font-size: 3.5rem;
-    color: #005a9c; /* El azul de los otros títulos */
+    color: #005a9c;
     font-weight: 800;
     margin-bottom: 60px;
     letter-spacing: -1px;
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 80px;
+    gap: 60px 40px;
     flex-wrap: wrap;
 }
 
@@ -32,11 +32,9 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    transition: transform 0.3s ease;
-}
-
-.langItem:hover {
-    transform: translateY(-10px);
+    width: 160px; /* Ancho fijo para mantener la simetría al cambiar los textos largos */
+    position: relative;
+    cursor: pointer;
 }
 
 .flagWrapper {
@@ -45,7 +43,8 @@
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .flagImg {
@@ -54,39 +53,86 @@
     height: 100%;
 }
 
+/* Contenedor relativo para posicionar los textos encimados */
+.textContainer {
+    position: relative;
+    width: 100%;
+    height: 50px; /* Altura controlada para que no mueva el flujo del layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* NOMBRE DEL IDIOMA (VISIBLE POR DEFECTO) */
 .langName {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    position: absolute;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MENSAJE EN HOVER (OCULTO POR DEFECTO ABAJO) */
+.hoverMessage {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #333;
-    font-style: italic; /* Como se ve en la referencia */
+    color: #005a9c; /* Color corporativo destacable */
+    font-style: italic;
+    text-align: center;
+    position: absolute;
+    width: 130%; /* Le da un poco más de aire lateral para que no rompa en dos líneas tan fácil */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none; /* Evita parpadeos raros del puntero */
+}
+
+/* ──────────────────────────────────────────────────────────────
+   COMPORTAMIENTO HOVER AUTOMÁTICO
+   ────────────────────────────────────────────────────────────── */
+.langItem:hover .flagWrapper {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px #005a9c, 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Al hacer hover, se va el idioma... */
+.langItem:hover .langName {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* ...Y entra el mensaje del representante */
+.langItem:hover .hoverMessage {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* --- RESPONSIVE --- */
-
-/* --- RESPONSIVE --- */
-
 @media (max-width: 768px) {
     .section {
         margin: 50px 0 50px 0;
-        padding: 40px 20px; /* Reducimos padding para ganar espacio */
+        padding: 40px 16px;
     }
 
     .title {
         font-size: 2.2rem;
-        margin-bottom: 80px;
+        margin-bottom: 50px;
     }
 
     .grid {
         display: grid;
-        /* Definimos 2 columnas de igual tamaño */
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px 20px; /* 40px de espacio vertical, 20px horizontal */
+        gap: 35px 10px;
         justify-items: center;
     }
 
-    /* TRUCO PARA EL ÚLTIMO ITEM (DISEÑO 2-2-1) */
-    /* Seleccionamos el 5to elemento para que ocupe las dos columnas y se centre */
-    .langItem:nth-child(5) {
+    .langItem {
+        width: 140px;
+    }
+
+    .langItem:nth-child(7) {
         grid-column: span 2;
     }
 
@@ -95,7 +141,9 @@
         height: 90px;
     }
 
-    .langName {
-        font-size: 1.2rem;
+    /* En móvil forzamos a que el mensaje se quede visible o responda al touch de forma limpia */
+    .hoverMessage {
+        font-size: 0.85rem;
+        width: 110%;
     }
 }
