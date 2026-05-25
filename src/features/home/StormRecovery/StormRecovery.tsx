@@ -14,7 +14,7 @@ export const StormRecovery = () => {
                         <div className={styles.yellowFrame}>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src="/assets/images/features/home/content-v15.webp"
+                                    src="/assets/images/features/home/content-v15-v2.webp"
                                     alt="Roofing worker repairing storm damage"
                                     width={600}
                                     height={500}
