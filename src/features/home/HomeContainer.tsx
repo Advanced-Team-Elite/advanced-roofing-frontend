@@ -29,7 +29,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
-            {<MagazineFlip/>}
+            {/*<MagazineFlip/>*/}
             <TopBannerAward/>
             <NowServing/>
             <Language/>

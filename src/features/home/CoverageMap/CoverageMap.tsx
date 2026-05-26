@@ -146,7 +146,7 @@ export default function CoverageMap() {
                     ">
                         <div className="flex justify-between items-start mb-5 md:mb-6">
                             <h3 className="font-extrabold text-xl md:text-2xl text-gray-900 tracking-tight pr-4">
-                                {hoveredArea.notFound ? 'Area not covered' : hoveredArea.name}
+                                {hoveredArea.notFound ? 'No projects yet' : hoveredArea.name}
                             </h3>
                             <button onClick={() => setHoveredArea(null)} aria-label="Close"
                                     className="p-2 hover:bg-black/5 rounded-full transition-colors flex-shrink-0">
@@ -156,7 +156,7 @@ export default function CoverageMap() {
 
                         {hoveredArea.notFound ? (
                             <p className="text-gray-500 text-sm md:text-base leading-relaxed">
-                                This address is outside our current coverage areas. Contact us to check availability.
+                                We serve this area, but no projects are pinned here yet. <strong>Be the first to feature your roof!</strong>
                             </p>
                         ) : (
                             <>
