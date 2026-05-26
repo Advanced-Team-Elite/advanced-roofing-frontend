@@ -18,7 +18,7 @@ const FinancingSection = () => {
                 started hassle-free.
             </p>
 
-            <Link href="/contact-us" className={styles.btnLearnMore} aria-label="Learn more about our roofing and exterior services">
+            <Link href="/contact-us" title="Go to our contact page" className={styles.btnLearnMore} aria-label="Learn more about our roofing and exterior services">
                 Learn More
             </Link>
         </section>
