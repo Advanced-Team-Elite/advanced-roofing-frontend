@@ -80,10 +80,10 @@ export const AboutHome = () => {
                     <div className={styles.imageColumn}>
                         <div className={styles.imageWrapper}>
                             <Image
-                                src="/assets/images/features/home/content-v14-alt.webp"
+                                src="/assets/images/features/home/content-v14-v3.webp"
                                 alt="Chicago Roofing"
                                 width={1000}
-                                height={800}
+                                height={1000}
                                 className={styles.mainImage}
                                 priority
                             />

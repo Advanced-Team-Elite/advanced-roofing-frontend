@@ -94,7 +94,7 @@ export default function CoverageMap() {
                 </h1>
                 <div className="max-w-[650px] pb-2 text-center md:text-justify">
                     <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                        <span className="font-bold">Explore real roofing projects completed across the U.S.</span>
+                        <span className="font-bold">Explore the areas we have covered across the U.S.</span>
                         {' '}— from storm restoration and commercial systems to residential roof
                         replacements, with insights tailored to each region and roofing type.
                     </p>

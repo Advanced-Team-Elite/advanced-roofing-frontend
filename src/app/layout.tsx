@@ -35,18 +35,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Suspense fallback={null}>
             <WeatherEffectsAsync />
         </Suspense>
-
-        {/*
-                GoogleMapsProvider wraps the entire app so that:
-                - CoverageMap (inside HomeContainer → children)
-                - RoofMap / AddressSearch (inside FloatingActions → QuoteDrawer)
-                ...all share the SAME single google.maps SDK instance.
-
-                Previously GoogleMapsProvider lived inside QuoteDrawer, making
-                it a sibling branch to HomeContainer — CoverageMap had no
-                APIProvider ancestor and threw "<Map> can only be used inside
-                an <APIProvider>".
-            */}
         <GoogleMapsProvider>
             <Header />
             {children}
