@@ -1,0 +1,219 @@
+.section {
+    padding: 80px 20px 100px;
+    background: #f0ece4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c8a96e;
+    font-family: sans-serif;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 8px 0 12px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #888;
+    font-family: sans-serif;
+}
+
+/* ── SCENE ── */
+.scene {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 620px;
+}
+
+
+/* ── INDIVIDUAL PAGE ── */
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #e8e0d0;
+}
+
+.pageImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── READ MORE ── */
+.readMore {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, color 0.2s;
+    z-index: 3;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.readMore:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* ── PAGE NUMBER ── */
+.pageNumber {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ── OPEN BUTTON ── */
+.openBtn {
+    position: absolute;
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.openBtn:hover {
+    background: #c8a96e;
+}
+
+/* ── CLOSE BUTTON ── */
+.closeBtn {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #888;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.closeBtn:hover {
+    color: #1a1a1a;
+}
+
+/* ── NAV BUTTONS ── */
+.navBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #1a1a1a;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    transition: opacity 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.navBtn:disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.navBtn:not(:disabled):hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.navLeft  { left: -64px; }
+.navRight { right: -64px; }
+
+/* ── DOTS ── */
+.dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    padding: 0;
+}
+
+.dotActive {
+    background: #c8a96e;
+    transform: scale(1.3);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+    .navLeft  { left: -40px; }
+    .navRight { right: -40px; }
+
+    .navBtn {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+}
