@@ -1,4 +1,18 @@
-// src/shared/data/coverageAreas.ts
+export interface ProjectSpec {
+    piecesSquare: string;
+    bundlesSquare: string;
+    nailsSquare: string;
+    exposure: string;
+    dimensions: string;
+}
+
+export interface Project {
+    id: string;
+    image: string;
+    specs: ProjectSpec;
+}
+
+
 export const COVERAGE_AREAS = [
     {
         id: 1,
@@ -86,7 +100,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.0711238, lng: -87.6796378 }
         ]
     },
-    // Copia esto dentro de tu array COVERAGE_AREAS
     {
         id: 3,
         name: "Schaumburg",
@@ -264,7 +277,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.1545466, lng: -88.0108857 }
         ]
     },
-    // Objeto para Orland Park
     {
         id: 6, // Ajusta el ID según tu secuencia
         name: "Orland Park",
@@ -325,7 +337,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.6526619, lng: -87.8394067 }
         ]
     },
-    // Objeto para Bolingbrook
     {
         id: 7,
         name: "Bolingbrook",
@@ -373,7 +384,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.7284018, lng: -88.0508182 }
         ]
     },
-    // Objeto para Downers Grove
     {
         id: 8, // Ajusta según tu índice actual
         name: "Downers Grove",
@@ -448,7 +458,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.8315227, lng: -88.0550802 }
         ]
     },
-    // Objeto para Elmhurst
     {
         id: 9, // Sigue la secuencia de tu array de sectores
         name: "Elmhurst",
@@ -502,7 +511,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.9178845, lng: -87.9209273 }
         ]
     },
-    // Objeto para Skokie
     {
         id: 10,
         name: "Skokie",
@@ -542,7 +550,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.0524201, lng: -87.7101149 }  // Cerrado perfecto
         ]
     },
-    // Objeto para Northbrook
     {
         id: 11, // Sigue la secuencia de tus sectores
         name: "Northbrook",
@@ -1142,5 +1149,48 @@ export const COVERAGE_AREAS = [
             { lat: 42.1645, lng: -88.1480 }  // Cierre del polígono en el punto de origen
         ]
     },
+];
 
+// Lista de 10 configuraciones e imágenes de proyectos dinámicos
+export const MOCK_PROJECTS_POOL: Omit<Project, 'id'>[] = [
+    {
+        image: '/assets/images/features/map/house-shingles.png',
+        specs: { piecesSquare: '64', bundlesSquare: '3', nailsSquare: '256', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_1.png',
+        specs: { piecesSquare: '60', bundlesSquare: '4', nailsSquare: '240', exposure: '5 1/2" (140 mm)', dimensions: '12" x 36"' }
+    },
+    {
+        image: '/assets/images/features/map/house_2.png',
+        specs: { piecesSquare: '68', bundlesSquare: '3', nailsSquare: '272', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_3.png',
+        specs: { piecesSquare: '65', bundlesSquare: '3.5', nailsSquare: '260', exposure: '5 3/4" (146 mm)', dimensions: '13" x 40"' }
+    },
+    {
+        image: '/assets/images/features/map/house_4.png',
+        specs: { piecesSquare: '72', bundlesSquare: '3', nailsSquare: '288', exposure: '5" (127 mm)', dimensions: '12 1/4" x 36"' }
+    },
+    {
+        image: '/assets/images/features/map/house_5.png',
+        specs: { piecesSquare: '56', bundlesSquare: '4', nailsSquare: '224', exposure: '5 7/8" (150 mm)', dimensions: '14" x 40"' }
+    },
+    {
+        image: '/assets/images/features/map/house_6.png',
+        specs: { piecesSquare: '66', bundlesSquare: '3', nailsSquare: '264', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_7.png',
+        specs: { piecesSquare: '62', bundlesSquare: '3.5', nailsSquare: '248', exposure: '5 1/2" (140 mm)', dimensions: '12 1/2" x 38"' }
+    },
+    {
+        image: '/assets/images/features/map/house_8.png',
+        specs: { piecesSquare: '70', bundlesSquare: '3', nailsSquare: '280', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_9.png',
+        specs: { piecesSquare: '64', bundlesSquare: '4', nailsSquare: '256', exposure: '5 3/4" (146 mm)', dimensions: '13" x 39"' }
+    }
 ];

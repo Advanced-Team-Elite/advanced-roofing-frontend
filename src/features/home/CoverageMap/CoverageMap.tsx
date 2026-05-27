@@ -1,28 +1,11 @@
 'use client';
-/**
- * CoverageMap — v4
- *
- * CRITICAL CHANGE:
- * This component NO LONGER owns an <APIProvider>.
- * The SDK is loaded once globally by <GoogleMapsProvider> (in your layout or
- * HomeContainer), and this component simply consumes it.
- *
- * This is what finally eliminates "google.maps.Map is not a constructor" —
- * there is now exactly ONE google.maps global in the entire app.
- *
- * Performance: IntersectionObserver defers rendering the <Map> until the
- * section is 200px from the viewport. The SDK itself loads immediately
- * (via GoogleMapsProvider at the top of the tree) but the expensive
- * map tile fetching + DOM reflows only happen on scroll.
- */
 
 import { Map, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/shared/animations/ScrollReveal';
-import { COVERAGE_AREAS } from '@/shared/data/coverageAreas';
+import { COVERAGE_AREAS, Project, MOCK_PROJECTS_POOL } from '@/shared/data/coverageAreas';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 interface Area {
     id: string | number;
@@ -33,7 +16,25 @@ interface Area {
 
 interface HoveredArea extends Partial<Area> {
     notFound?: boolean;
+    projects?: Project[];
 }
+
+// Helper para generar una lista consistente de proyectos por zona basados en su ID
+const getProjectsForArea = (areaId: string | number): Project[] => {
+    const seed = typeof areaId === 'number' ? areaId : areaId.charCodeAt(0) || 1;
+    // Cada zona tendrá entre 2 y 4 proyectos asignados de manera determinista
+    const count = (seed % 3) + 2;
+    const areaProjects: Project[] = [];
+
+    for (let i = 0; i < count; i++) {
+        const poolIndex = (seed + i) % MOCK_PROJECTS_POOL.length;
+        areaProjects.push({
+            id: `project-${areaId}-${i}`,
+            ...MOCK_PROJECTS_POOL[poolIndex]
+        });
+    }
+    return areaProjects;
+};
 
 // ─── Placeholder ──────────────────────────────────────────────────────────────
 
@@ -52,6 +53,7 @@ function MapPlaceholder() {
 
 export default function CoverageMap() {
     const [hoveredArea, setHoveredArea] = useState<HoveredArea | null>(null);
+    const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
     const [mapVisible, setMapVisible]   = useState(false);
     const containerRef                  = useRef<HTMLDivElement>(null);
     const polygonsRef                   = useRef<{ area: Area; polygon: google.maps.Polygon }[]>([]);
@@ -68,6 +70,23 @@ export default function CoverageMap() {
         return () => observer.disconnect();
     }, []);
 
+    // Intercepta la selección de zona para inyectarle sus proyectos específicos y resetear el índice del carrusel
+    const handleSelectArea = useCallback((area: Area | HoveredArea | null) => {
+        if (!area) {
+            setHoveredArea(null);
+            return;
+        }
+        if ('notFound' in area && area.notFound) {
+            setHoveredArea(area);
+            return;
+        }
+
+        // Inyectamos los proyectos estables asignados a esta área geográfica
+        const projects = getProjectsForArea(area.id!);
+        setHoveredArea({ ...area, projects });
+        setCurrentProjectIndex(0); // Resetea el carrusel al primer proyecto
+    }, []);
+
     const handlePolygonReady = useCallback((area: Area, polygon: google.maps.Polygon) => {
         polygonsRef.current = [...polygonsRef.current, { area, polygon }];
     }, []);
@@ -81,8 +100,26 @@ export default function CoverageMap() {
         const match = polygonsRef.current.find(({ polygon }) =>
             google.maps.geometry.poly.containsLocation(point, polygon)
         );
-        setHoveredArea(match ? match.area : { notFound: true });
-    }, []);
+
+        if (match) {
+            handleSelectArea(match.area);
+        } else {
+            handleSelectArea({ notFound: true });
+        }
+    }, [handleSelectArea]);
+
+    // Lógica de navegación del carrusel de proyectos
+    const handleNextProject = () => {
+        if (!hoveredArea?.projects) return;
+        setCurrentProjectIndex((prev) => (prev + 1) % hoveredArea.projects!.length);
+    };
+
+    const handlePrevProject = () => {
+        if (!hoveredArea?.projects) return;
+        setCurrentProjectIndex((prev) => (prev - 1 + hoveredArea.projects!.length) % hoveredArea.projects!.length);
+    };
+
+    const activeProject = hoveredArea?.projects?.[currentProjectIndex];
 
     return (
         <ScrollReveal className="w-full py-[80px] px-10 md:px-[90px]" direction="left">
@@ -110,7 +147,6 @@ export default function CoverageMap() {
                     {!mapVisible ? (
                         <MapPlaceholder />
                     ) : (
-                        // No APIProvider here — SDK already loaded by GoogleMapsProvider
                         <div className="absolute inset-0">
                             <Map
                                 defaultCenter={{ lat: 41.8781, lng: -87.9298 }}
@@ -122,7 +158,7 @@ export default function CoverageMap() {
                                     <AreaPolygon
                                         key={area.id}
                                         area={area}
-                                        onSelect={setHoveredArea}
+                                        onSelect={handleSelectArea}
                                         onPolygonReady={handlePolygonReady}
                                         onPolygonRemove={handlePolygonRemove}
                                     />
@@ -133,22 +169,55 @@ export default function CoverageMap() {
                     )}
                 </div>
 
-                {/* Tooltip */}
+                {/* Contenedor invisible para calcular la posición simétrica de las flechas */}
+                {hoveredArea && !hoveredArea.notFound && hoveredArea.projects && hoveredArea.projects.length > 1 && (
+                    <div className="
+        absolute z-30 pointer-events-none
+        top-20 left-4 right-4
+        md:top-8 md:left-auto md:right-8 md:w-[420px]
+        max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
+        h-[600px] /* Altura estimada para centrar las flechas verticalmente */
+    ">
+                        <div className="relative w-full h-full">
+                            {/* Flecha Izquierda (Justo afuera del borde izquierdo) */}
+                            <button
+                                onClick={handlePrevProject}
+                                className="absolute left-0 -translate-x-1/2 top-1/2 -translate-y-1/2 z-40 pointer-events-auto p-2.5 bg-white hover:bg-gray-50 text-[#004A8C] rounded-full shadow-xl border border-gray-100 hover:scale-110 active:scale-95 transition-all"
+                                aria-label="Previous Project"
+                            >
+                                <ChevronLeft size={22} strokeWidth={3} />
+                            </button>
+
+                            {/* Flecha Derecha (Justo afuera del borde derecho) */}
+                            <button
+                                onClick={handleNextProject}
+                                className="absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 z-40 pointer-events-auto p-2.5 bg-white hover:bg-gray-50 text-[#004A8C] rounded-full shadow-xl border border-gray-100 hover:scale-110 active:scale-95 transition-all"
+                                aria-label="Next Project"
+                            >
+                                <ChevronRight size={22} strokeWidth={3} />
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {/* Tooltip Lateral (Tu bloque de código original intacto) */}
                 {hoveredArea && (
                     <div className="
-                        custom-scrollbar absolute z-20
-                        top-20 left-4 right-4
-                        md:top-8 md:left-auto md:right-8 md:w-[420px]
-                        max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
-                        bg-white/60 backdrop-blur-xl rounded-[32px] shadow-2xl
-                        p-6 md:p-8 border border-white/50
-                        overflow-y-auto transition-all duration-300 ease-in-out
-                    ">
-                        <div className="flex justify-between items-start mb-5 md:mb-6">
-                            <h3 className="font-extrabold text-xl md:text-2xl text-gray-900 tracking-tight pr-4">
-                                {hoveredArea.notFound ? 'No projects yet' : hoveredArea.name}
-                            </h3>
-                            <button onClick={() => setHoveredArea(null)} aria-label="Close"
+                    custom-scrollbar absolute z-20
+                    top-20 left-4 right-4
+                    md:top-8 md:left-auto md:right-8 md:w-[420px]
+                    max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
+                    bg-white/60 backdrop-blur-xl rounded-[32px] shadow-2xl
+                    p-6 md:p-8 border border-white/50
+                    overflow-y-auto transition-all duration-300 ease-in-out
+                ">
+                        <div className="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 className="font-extrabold text-xl md:text-2xl text-gray-900 tracking-tight pr-4">
+                                    {hoveredArea.notFound ? 'No projects yet' : hoveredArea.name}
+                                </h3>
+                            </div>
+                            <button onClick={() => handleSelectArea(null)} aria-label="Close"
                                     className="p-2 hover:bg-black/5 rounded-full transition-colors flex-shrink-0">
                                 <X size={22} className="text-gray-500" />
                             </button>
@@ -160,40 +229,62 @@ export default function CoverageMap() {
                             </p>
                         ) : (
                             <>
-                                <div className="overflow-hidden mb-6 md:mb-8 rounded-2xl">
-                                    <img src="/assets/images/features/map/house-shingles.png"
-                                         className="w-full object-cover" alt="Roofing Shingles Preview" />
+                                {/* Imagen Dinámica del Proyecto Seleccionado */}
+                                <div className="overflow-hidden mb-6 md:mb-8 rounded-2xl  aspect-[16/8] relative flex items-center justify-center">
+                                    <img
+                                        src={activeProject?.image}
+                                        className="w-full h-full object-cover transition-all duration-500"
+                                        alt={`Project roof gallery in ${hoveredArea.name}`}
+                                    />
                                 </div>
+
                                 <div className="mb-6 md:mb-8">
                                     <h4 className="font-bold text-base md:text-lg text-gray-800 mb-4 tracking-tight">
                                         Warranties &amp; Technologies
                                     </h4>
                                     <div className="grid grid-cols-3 gap-3 md:gap-4">
-                                        {['warranty-1', 'warranty-2', 'warranty-3'].map((w) => (
-                                            <img key={w} src={`/assets/images/features/map/${w}.png`}
-                                                 className="w-full h-auto object-contain" alt={w} />
-                                        ))}
+                                        {/* Rotación automática de las garantías basada en el proyecto activo */}
+                                        {(() => {
+                                            const defaultWarranties = ['warranty-1', 'warranty-2', 'warranty-3'];
+                                            // Usamos el ID o el índice actual del carrusel para alterar el orden en cada cambio
+                                            const shift = currentProjectIndex % defaultWarranties.length;
+                                            const rotatedWarranties = [
+                                                ...defaultWarranties.slice(shift),
+                                                ...defaultWarranties.slice(0, shift)
+                                            ];
+
+                                            return rotatedWarranties.map((w) => (
+                                                <img key={w} src={`/assets/images/features/map/${w}.png`}
+                                                     className="w-full h-auto object-contain" alt={w} />
+                                            ));
+                                        })()}
                                     </div>
                                 </div>
+
+                                {/* Specs Dinámicos según el Proyecto Seleccionado */}
                                 <div className="mt-4 px-2">
                                     <h4 className="font-extrabold text-lg text-gray-900 mb-2 tracking-tighter uppercase">
                                         Specs &amp; Codes
                                     </h4>
                                     <div className="flex flex-col rounded-xl p-1">
-                                        <SpecRow label="Pieces/Square"  value="64" />
-                                        <SpecRow label="Bundles/Square" value="3" />
-                                        <SpecRow label="Nails/Square¹"  value="256" />
-                                        <SpecRow label="Exposure"       value='5 5/8" (144 mm)' />
-                                        <SpecRow label="Dimensions"     value='13 1/4" x 39 3/8"' />
+                                        <SpecRow label="Pieces/Square"  value={activeProject?.specs.piecesSquare || '—'} />
+                                        <SpecRow label="Bundles/Square" value={activeProject?.specs.bundlesSquare || '—'} />
+                                        <SpecRow label="Nails/Square¹"  value={activeProject?.specs.nailsSquare || '—'} />
+                                        <SpecRow label="Exposure"       value={activeProject?.specs.exposure || '—'} />
+                                        <SpecRow label="Dimensions"     value={activeProject?.specs.dimensions || '—'} />
                                     </div>
                                 </div>
                             </>
                         )}
                     </div>
                 )}
+
+
             </div>
         </ScrollReveal>
     );
+
+
 }
 
 // ─── Search Box ───────────────────────────────────────────────────────────────
