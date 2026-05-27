@@ -21,19 +21,17 @@ interface HoveredArea extends Partial<Area> {
 
 // Helper para generar una lista consistente de proyectos por zona basados en su ID
 const getProjectsForArea = (areaId: string | number): Project[] => {
+    // Usamos el ID como base para la consistencia
     const seed = typeof areaId === 'number' ? areaId : areaId.charCodeAt(0) || 1;
-    // Cada zona tendrá entre 2 y 4 proyectos asignados de manera determinista
     const count = (seed % 3) + 2;
-    const areaProjects: Project[] = [];
 
-    for (let i = 0; i < count; i++) {
-        const poolIndex = (seed + i) % MOCK_PROJECTS_POOL.length;
-        areaProjects.push({
-            id: `project-${areaId}-${i}`,
-            ...MOCK_PROJECTS_POOL[poolIndex]
-        });
-    }
-    return areaProjects;
+    // Crear una copia del pool y mezclarla usando Fisher-Yates con el seed
+    const shuffled = [...MOCK_PROJECTS_POOL].sort(() => 0.5 - (Math.sin(seed) + 1) / 2);
+
+    return shuffled.slice(0, count).map((p, i) => ({
+        id: `project-${areaId}-${i}`,
+        ...p
+    }));
 };
 
 // ─── Placeholder ──────────────────────────────────────────────────────────────
@@ -81,10 +79,12 @@ export default function CoverageMap() {
             return;
         }
 
-        // Inyectamos los proyectos estables asignados a esta área geográfica
+        // 1. Resetear el índice SIEMPRE al cambiar de área
+        setCurrentProjectIndex(0);
+
+        // 2. Inyectar proyectos
         const projects = getProjectsForArea(area.id!);
         setHoveredArea({ ...area, projects });
-        setCurrentProjectIndex(0); // Resetea el carrusel al primer proyecto
     }, []);
 
     const handlePolygonReady = useCallback((area: Area, polygon: google.maps.Polygon) => {
