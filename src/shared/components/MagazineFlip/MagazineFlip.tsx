@@ -43,7 +43,7 @@ export const MagazineFlip = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const totalPages = PAGES.length;
-    const [bookOffset, setBookOffset] = useState(225); // mitad del ancho de página = 450/2
+    const [bookOffset, setBookOffset] = useState(275); // mitad del ancho de página = 450/2
     const bookWrapperRef = useRef<HTMLDivElement>(null);
 
 
@@ -61,10 +61,10 @@ export const MagazineFlip = () => {
                 const isRightSide = clickX > rect.width / 2;
 
                 if (isRightSide) {
-                    if (page >= PAGES.length - 2) setBookOffset(225);
+                    if (page >= PAGES.length - 2) setBookOffset(275);
                     else setBookOffset(0);
                 } else {
-                    if (page <= 1) setBookOffset(-225);
+                    if (page <= 1) setBookOffset(-275);
                     else setBookOffset(0);
                 }
             };
@@ -89,11 +89,11 @@ export const MagazineFlip = () => {
 
         if (isRightSide) {
             // flipNext
-            if (page >= PAGES.length - 2) setBookOffset(225);
+            if (page >= PAGES.length - 2) setBookOffset(275);
             else setBookOffset(0);
         } else {
             // flipPrev
-            if (page <= 1) setBookOffset(-225);
+            if (page <= 1) setBookOffset(-275);
             else setBookOffset(0);
         }
     };
@@ -105,16 +105,16 @@ export const MagazineFlip = () => {
         setIsOpen(page > 0);
 
         if (page === 0) {
-            setBookOffset(-225); // 👈 portada: tira a la IZQUIERDA
+            setBookOffset(-275); // 👈 portada: tira a la IZQUIERDA
         } else if (page >= PAGES.length - 1) {
-            setBookOffset(225);  // 👈 contraportada: tira a la DERECHA
+            setBookOffset(275);  // 👈 contraportada: tira a la DERECHA
         } else {
             setBookOffset(0);    // centro para páginas interiores
         }
     }, []);
 
     const onInit = useCallback((e: any) => {
-        setBookOffset(-225); // arranca en portada → izquierda
+        setBookOffset(-275); // arranca en portada → izquierda
     }, []);
 
     const handleOpen = () => {
@@ -123,21 +123,21 @@ export const MagazineFlip = () => {
     };
 
     const handleClose = () => {
-        setBookOffset(-225); // al cerrar vuelve a portada
+        setBookOffset(-275); // al cerrar vuelve a portada
         bookRef.current?.pageFlip().flip(0);
     };
 
     const goNext = () => {
         const page = bookRef.current?.pageFlip().getCurrentPageIndex();
         // Si estamos en la penúltima página, al flipNext iremos a la última (contraportada)
-        if (page >= PAGES.length - 2) setBookOffset(225);
+        if (page >= PAGES.length - 2) setBookOffset(275);
         else setBookOffset(0);
         bookRef.current?.pageFlip().flipNext();
     };
     const goPrev = () => {
         const page = bookRef.current?.pageFlip().getCurrentPageIndex();
         // Si estamos en página 1, al flipPrev iremos a portada
-        if (page <= 1) setBookOffset(-225);
+        if (page <= 1) setBookOffset(-275);
         else setBookOffset(0);
         bookRef.current?.pageFlip().flipPrev();
     };
@@ -148,9 +148,9 @@ export const MagazineFlip = () => {
             const page = bookRef.current?.pageFlip().getCurrentPageIndex();
 
             if (page === 0) {
-                setBookOffset(-225); // va a abrir → centra a la izq
+                setBookOffset(-275); // va a abrir → centra a la izq
             } else if (page >= PAGES.length - 2) {
-                setBookOffset(225);  // va a cerrar → centra a la der
+                setBookOffset(275);  // va a cerrar → centra a la der
             } else {
                 setBookOffset(0);
             }
@@ -185,7 +185,7 @@ export const MagazineFlip = () => {
                         width={550}
                         height={750}
                         size="fixed"
-                        showCover={true}        
+                        showCover={true}
                         drawShadow={false}
                         flippingTime={800}
                         maxShadowOpacity={0.4}
@@ -197,9 +197,9 @@ export const MagazineFlip = () => {
                         style={{}}
                         startPage={0}
                         minWidth={300}
-                        maxWidth={450}
+                        maxWidth={550}
                         minHeight={400}
-                        maxHeight={600}
+                        maxHeight={750}
                         autoSize={false}
                         clickEventForward={true}
                         usePortrait={false}

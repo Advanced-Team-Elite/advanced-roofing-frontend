@@ -107,7 +107,7 @@
 /* ── OPEN BUTTON ── */
 .openBtn {
     position: absolute;
-    bottom: -48px;
+    bottom: -88px;
     left: 50%;
     transform: translateX(-50%);
     background: #1a1a1a;
