@@ -1,4 +1,18 @@
-// src/shared/data/coverageAreas.ts
+export interface ProjectSpec {
+    piecesSquare: string;
+    bundlesSquare: string;
+    nailsSquare: string;
+    exposure: string;
+    dimensions: string;
+}
+
+export interface Project {
+    id: string;
+    image: string;
+    specs: ProjectSpec;
+}
+
+
 export const COVERAGE_AREAS = [
     {
         id: 1,
@@ -86,7 +100,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.0711238, lng: -87.6796378 }
         ]
     },
-    // Copia esto dentro de tu array COVERAGE_AREAS
     {
         id: 3,
         name: "Schaumburg",
@@ -264,7 +277,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.1545466, lng: -88.0108857 }
         ]
     },
-    // Objeto para Orland Park
     {
         id: 6, // Ajusta el ID según tu secuencia
         name: "Orland Park",
@@ -325,7 +337,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.6526619, lng: -87.8394067 }
         ]
     },
-    // Objeto para Bolingbrook
     {
         id: 7,
         name: "Bolingbrook",
@@ -373,7 +384,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.7284018, lng: -88.0508182 }
         ]
     },
-    // Objeto para Downers Grove
     {
         id: 8, // Ajusta según tu índice actual
         name: "Downers Grove",
@@ -448,7 +458,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.8315227, lng: -88.0550802 }
         ]
     },
-    // Objeto para Elmhurst
     {
         id: 9, // Sigue la secuencia de tu array de sectores
         name: "Elmhurst",
@@ -502,7 +511,6 @@ export const COVERAGE_AREAS = [
             { lat: 41.9178845, lng: -87.9209273 }
         ]
     },
-    // Objeto para Skokie
     {
         id: 10,
         name: "Skokie",
@@ -542,7 +550,6 @@ export const COVERAGE_AREAS = [
             { lat: 42.0524201, lng: -87.7101149 }  // Cerrado perfecto
         ]
     },
-    // Objeto para Northbrook
     {
         id: 11, // Sigue la secuencia de tus sectores
         name: "Northbrook",
@@ -624,5 +631,566 @@ export const COVERAGE_AREAS = [
             { lat: 42.146441, lng: -87.7946147 },
             { lat: 42.1527225, lng: -87.7989411 } // Polígono cerrado
         ]
+    },
+    {
+        id: 12,
+        name: "Tinley Park",
+        center: { lat: 41.5734, lng: -87.7845 },
+        paths: [
+            // --- BORDE NORTE ---
+            { lat: 41.6035, lng: -87.7915 }, // Esquina superior izquierda
+            { lat: 41.6035, lng: -87.7550 }, // Línea recta norte
+            { lat: 41.5940, lng: -87.7550 }, // Pequeño quiebre hacia el sur
+            { lat: 41.5940, lng: -87.7340 }, // Extensión noreste (hacia Oak Forest)
+
+            // --- BORDE ESTE ---
+            { lat: 41.5865, lng: -87.7340 }, // Bajada este superior
+            { lat: 41.5865, lng: -87.7510 }, // Entrada hacia Harlem Ave
+            { lat: 41.5685, lng: -87.7510 }, // Bajada por Harlem Ave
+            { lat: 41.5685, lng: -87.7340 }, // Saliente este (debajo de la diagonal ferroviaria)
+            { lat: 41.5590, lng: -87.7340 }, // Esquina este media
+            { lat: 41.5590, lng: -87.7420 }, // Quiebre hacia Bartel Grassland
+            { lat: 41.5510, lng: -87.7420 }, // Bajada bordeando la reserva
+
+            // --- BORDE SURESTE Y AUTOPISTA (I-80) ---
+            { lat: 41.5510, lng: -87.7515 }, // Ajuste sobre la curva de la reserva
+            { lat: 41.5430, lng: -87.7515 }, // Bajada hacia el área industrial sur
+            { lat: 41.5430, lng: -87.7610 }, // Línea horizontal sobre el tramo de la I-80
+            { lat: 41.5360, lng: -87.7610 }, // Saliente máximo hacia el sur (base inferior derecha)
+            { lat: 41.5360, lng: -87.7700 }, // Quiebre horizontal inferior
+            { lat: 41.5280, lng: -87.7700 }, // Muesca extrema sur
+            { lat: 41.5280, lng: -87.7830 }, // Base sur izquierda
+            { lat: 41.5360, lng: -87.7830 }, // Subida regresando hacia el norte
+
+            // --- BORDE SUROESTE ---
+            { lat: 41.5360, lng: -87.7950 }, // Conexión con zona residencial suroeste
+            { lat: 41.5450, lng: -87.7950 }, // Escalón residencial
+            { lat: 41.5450, lng: -87.8210 }, // Punta extrema inferior izquierda (límite sur de US 45)
+
+            // --- BORDE OESTE (Límite con Orland Hills / US 45) ---
+            { lat: 41.5560, lng: -87.8210 }, // Subida por el lateral izquierdo
+            { lat: 41.5560, lng: -87.8080 }, // Entrada horizontal (esquina inferior de Orland Hills)
+            { lat: 41.5645, lng: -87.8080 }, // Subida bordeando Orland Hills
+            { lat: 41.5645, lng: -87.8170 }, // Salida hacia la izquierda envolviendo la comunidad vecina
+            { lat: 41.5770, lng: -87.8170 }, // Subida recta oeste
+            { lat: 41.5770, lng: -87.7925 }, // Entrada profunda hacia el centro por la avenida media
+            { lat: 41.5900, lng: -87.7925 }, // Subida interna paralela
+            { lat: 41.5900, lng: -87.7915 }, // Último ajuste de cuadrícula antes del cierre
+            { lat: 41.6035, lng: -87.7915 }  // Cierre del polígono en el origen norte
+        ]
+    },
+    {
+        id: 13,
+        name: "St. Charles",
+        center: { lat: 41.9140, lng: -88.3090 },
+        paths: [
+            // --- EXTREMO NORTE (Eje del Fox River) ---
+            { lat: 41.9560, lng: -88.3150 }, // Punta superior izquierda del "brazo" norte
+            { lat: 41.9560, lng: -88.3000 }, // Esquina superior derecha del brazo norte
+            { lat: 41.9400, lng: -88.3000 }, // Bajada este del brazo norte
+            { lat: 41.9360, lng: -88.2730 }, // Extensión noreste (hacia Wayne)
+            { lat: 41.9210, lng: -88.2730 }, // Bajada este superior
+
+            // --- BORDE ESTE (Bordeando el DuPage County Airport) ---
+            { lat: 41.9210, lng: -88.2530 }, // Saliente máximo al noreste
+            { lat: 41.8980, lng: -88.2530 }, // Bajada por el límite este superior
+            { lat: 41.8980, lng: -88.2430 }, // Escalón este (zona comercial norte de la IL-64)
+            { lat: 41.8910, lng: -88.2430 }, // Cruce de la IL-64 (North Ave)
+            { lat: 41.8910, lng: -88.2310 }, // Extensión máxima este junto al aeropuerto
+            { lat: 41.8840, lng: -88.2310 }, // Esquina sureste del sector aeropuerto
+            { lat: 41.8840, lng: -88.2500 }, // Regreso horizontal hacia el oeste
+            { lat: 41.8740, lng: -88.2500 }, // Bajada sur del límite este (Kirk Road)
+
+            // --- BORDE SUR ---
+            { lat: 41.8740, lng: -88.2830 }, // Línea horizontal sur hacia el río
+            { lat: 41.8680, lng: -88.2830 }, // Pequeño ajuste sur inferior
+            { lat: 41.8680, lng: -88.3300 }, // Base sur larga cruzando la IL-38
+            { lat: 41.8780, lng: -88.3300 }, // Subida lateral sur-oeste
+            { lat: 41.8780, lng: -88.3420 }, // Ajuste horizontal interno
+
+            // --- BORDE OESTE (Extensión hacia Campton Hills) ---
+            { lat: 41.8780, lng: -88.3680 }, // Extensión máxima hacia el oeste (zona residencial baja)
+            { lat: 41.8950, lng: -88.3680 }, // Esquina inferior izquierda del mapa
+            { lat: 41.8950, lng: -88.3420 }, // Retorno horizontal oeste
+            { lat: 41.9050, lng: -88.3420 }, // Escalón subiendo por Randall Road
+            { lat: 41.9050, lng: -88.3240 }, // Quiebre hacia el centro de la ciudad
+            { lat: 41.9170, lng: -88.3240 }, // Subida central oeste
+
+            // --- BORDE NOROESTE (Regreso al brazo del norte) ---
+            { lat: 41.9170, lng: -88.3150 }, // Ajuste horizontal previo al eje norte
+            { lat: 41.9330, lng: -88.3150 }, // Subida vertical izquierda conectando con la base norte
+            { lat: 41.9330, lng: -88.3240 }, // Pequeño saliente residencial a la izquierda
+            { lat: 41.9420, lng: -88.3240 }, // Subida final del lateral izquierdo
+            { lat: 41.9420, lng: -88.3150 }, // Conexión final con el brazo del norte
+            { lat: 41.9560, lng: -88.3150 }  // Cierre del polígono en el punto inicial
+        ]
+    },
+    {
+        id: 14,
+        name: "Romeoville",
+        center: { lat: 41.6475, lng: -88.0895 },
+        paths: [
+            // --- SECTOR NORTE (Límite con Bolingbrook / Cruce IL-53) ---
+            { lat: 41.6730, lng: -88.1150 }, // Esquina superior izquierda (Norte-Oeste)
+            { lat: 41.6730, lng: -88.1020 }, // Quiebre horizontal norte
+            { lat: 41.6520, lng: -88.1020 }, // Bajada interna
+            { lat: 41.6520, lng: -88.0780 }, // Línea horizontal norte media
+            { lat: 41.6600, lng: -88.0780 }, // Saliente norte junto a la IL-53
+            { lat: 41.6600, lng: -88.0580 }, // Esquina superior norte-centro
+            { lat: 41.6710, lng: -88.0580 }, // Espolón que sube al norte cerca de la autopista
+            { lat: 41.6710, lng: -88.0480 }, // Quiebre este superior
+
+            // --- PUNTA NORESTE (Paralela al Canal y conectando a la I-355) ---
+            { lat: 41.6610, lng: -88.0480 }, // Bajada hacia la zona del canal
+            { lat: 41.6610, lng: -88.0280 }, // Extensión este superior
+            { lat: 41.6670, lng: -88.0280 }, // Pequeña muesca norte industrial
+            { lat: 41.6670, lng: -88.0050 }, // Punta máxima Noreste (Cruce con la I-355 / Lemont)
+            { lat: 41.6530, lng: -88.0250 }, // Bajada diagonal siguiendo el curso del río/canal
+            { lat: 41.6430, lng: -88.0420 }, // Continuación de la diagonal hacia el sur-oeste
+            { lat: 41.6430, lng: -88.0310 }, // Saliente este medio (debajo del canal)
+            { lat: 41.6310, lng: -88.0310 }, // Esquina este media inferior
+
+            // --- SECTOR SUR Y SURESTE (Abrazando Lewis University Airport) ---
+            { lat: 41.6310, lng: -88.0460 }, // Ajuste horizontal hacia el oeste
+            { lat: 41.5950, lng: -88.0460 }, // Bajada vertical este larga (Límite con Lockport)
+            { lat: 41.5950, lng: -88.0620 }, // Base inferior derecha (Esquina sur del aeropuerto)
+            { lat: 41.6030, lng: -88.0620 }, // Quiebre interno inferior hacia el norte
+            { lat: 41.6030, lng: -88.1000 }, // Base sur horizontal inferior (debajo del aeropuerto)
+            { lat: 41.6210, lng: -88.1000 }, // Subida por el flanco oeste del aeropuerto
+
+            // --- EXTENSIÓN SUROESTE Y OESTE (Zona Residencial / Límite Plainfield) ---
+            { lat: 41.6210, lng: -88.1400 }, // Extensión horizontal máxima hacia el Suroeste
+            { lat: 41.6420, lng: -88.1400 }, // Esquina inferior izquierda del mapa
+            { lat: 41.6420, lng: -88.1250 }, // Quiebre horizontal hacia el este
+            { lat: 41.6490, lng: -88.1250 }, // Subida lateral oeste
+            { lat: 41.6490, lng: -88.1150 }, // Entrada recta media
+            { lat: 41.6610, lng: -88.1320 }, // Diagonal exterior que bordea la I-55 hacia el Norte-Oeste
+            { lat: 41.6730, lng: -88.1150 }  // Cierre del polígono en la esquina superior izquierda
+        ]
+    },
+    {
+        id: 15,
+        name: "Rolling Meadows",
+        center: { lat: 42.0710, lng: -88.0250 },
+        paths: [
+            // --- BRAZO DEL NORTE (Eje IL-53 / Arlington Park) ---
+            { lat: 42.1130, lng: -88.0260 },
+            { lat: 42.1130, lng: -88.0160 },
+            { lat: 42.0910, lng: -88.0160 },
+
+            // --- BORDE ESTE (Límite con Arlington Heights / Elk Grove) ---
+            { lat: 42.0910, lng: -87.9910 },
+            { lat: 42.0460, lng: -87.9890 },
+
+            // --- PUNTA SURESTE (Diagonal Busse Forest / Cruce I-90) ---
+            { lat: 42.0360, lng: -87.9890 },
+            { lat: 42.0150, lng: -87.9620 }, // Extremo en la reserva
+            { lat: 42.0220, lng: -87.9810 },
+            { lat: 42.0220, lng: -88.0150 },
+            { lat: 42.0370, lng: -88.0150 },
+            { lat: 42.0370, lng: -88.0280 },
+
+            // --- SECTOR DE CONEXIÓN MEDIO-OESTE ---
+            { lat: 42.0440, lng: -88.0280 },
+            { lat: 42.0440, lng: -88.0430 },
+            { lat: 42.0520, lng: -88.0430 },
+            { lat: 42.0520, lng: -88.0580 },
+
+            // --- ALA OESTE (Abrazando Harper College) ---
+            { lat: 42.0620, lng: -88.0580 },
+            { lat: 42.0620, lng: -88.0820 }, // Extrema izquierda
+            { lat: 42.0760, lng: -88.0820 },
+            { lat: 42.0760, lng: -88.0620 }, // <-- CORREGIDO: de -87.0620 a -88.0620
+            { lat: 42.0680, lng: -88.0620 }, // <-- CORREGIDO: de -87.0620 a -88.0620
+            { lat: 42.0680, lng: -88.0420 },
+
+            // --- BORDE NOROESTE (Subida final al origen) ---
+            { lat: 42.0830, lng: -88.0420 },
+            { lat: 42.0830, lng: -88.0260 },
+            { lat: 42.1130, lng: -88.0260 }
+        ]
+    },
+    {
+        id: 16,
+        name: "Palatine",
+        center: { lat: 42.1120, lng: -88.0340 },
+        paths: [
+            // --- BORDE NORTE (Límite con Lake County / Deer Grove) ---
+            { lat: 42.1510, lng: -88.0610 }, // Esquina superior izquierda del bloque norte
+            { lat: 42.1510, lng: -88.0460 }, // Línea superior horizontal
+            { lat: 42.1440, lng: -88.0460 }, // Escalón hacia el sur ingresando al parque
+            { lat: 42.1440, lng: -88.0200 }, // Trazo horizontal norte medio
+            { lat: 42.1510, lng: -88.0200 }, // Esquina superior noreste extrema
+            { lat: 42.1510, lng: -88.0120 }, // Cierre del bloque del extremo norte
+
+            // --- BORDE ESTE (Límite con Arlington Heights / Eje IL-53) ---
+            { lat: 42.1310, lng: -88.0020 }, // Bajada diagonal noreste siguiendo la curva de la vía
+            { lat: 42.1310, lng: -87.9940 }, // Pequeña saliente horizontal este
+            { lat: 42.1260, lng: -87.9940 }, // Inicio del tramo pegado a la IL-53
+            { lat: 42.1220, lng: -87.9980 }, // Ajuste interno horizontal
+            { lat: 42.1060, lng: -87.9980 }, // Bajada recta paralela a la autopista IL-53
+            { lat: 42.0910, lng: -87.9910 }, // Caída diagonal sureste (esquina inferior derecha de este bloque)
+            { lat: 42.0990, lng: -88.0120 }, // Quiebre regresando hacia el oeste en el centro-sur
+            { lat: 42.0900, lng: -88.0240 }, // Diagonal interna que apunta al suroeste
+
+            // --- EXTENSIÓN SUR (Bota junto a la I-90 / Paul Douglas) ---
+            { lat: 42.0900, lng: -88.0400 }, // Conexión horizontal hacia el inicio de la bota sur
+            { lat: 42.0830, lng: -88.0440 }, // Escalón residencial sur
+            { lat: 42.0830, lng: -88.0580 }, // Ajuste horizontal sobre Harper College / Rolling Meadows
+            { lat: 42.0720, lng: -88.0580 }, // Bajada de la bota (borde este de Paul Douglas)
+            { lat: 42.0630, lng: -88.0550 }, // Pequeño quiebre este inferior
+            { lat: 42.0630, lng: -88.0620 }, // Esquina sureste extrema de la bota sur
+            { lat: 42.0520, lng: -88.0620 }, // Caída máxima al sur (esquina pegada a la I-90)
+            { lat: 42.0530, lng: -88.0720 }, // Base inferior izquierda de la bota sur
+            { lat: 42.0740, lng: -88.0700 }, // Subida vertical izquierda bordeando Paul Douglas
+
+            // --- BORDE OESTE (Subida y la Gran Diagonal de Inverness) ---
+            { lat: 42.0740, lng: -88.0820 }, // Saliente oeste inferior (Cruce IL-62)
+            { lat: 42.0950, lng: -88.0820 }, // Subida vertical recta del flanco oeste bajo
+            { lat: 42.1060, lng: -88.0750 }, // Entrada escalonada hacia el centro
+            { lat: 42.1150, lng: -88.0750 }, // Subida vertical media
+            { lat: 42.1260, lng: -88.0980 }, // Esquina de quiebre donde arranca la gran diagonal
+            { lat: 42.1260, lng: -88.0610 }, // PUNTO DE ANCLAJE: Conexión limpia con el bloque superior
+            { lat: 42.1510, lng: -88.0610 }  // Cierre del polígono en el extremo norte
+        ]
+    },
+    {
+        id: 17,
+        name: "Oak Brook",
+        center: { lat: 41.8400, lng: -87.9520 },
+        paths: [
+            // --- SECTOR NORTE / NORESTE (Límite Elmhurst y Autopistas) ---
+            { lat: 41.8625, lng: -87.9470 }, // Esquina superior izquierda del bloque norte
+            { lat: 41.8625, lng: -87.9300 }, // Línea superior horizontal norte
+            { lat: 41.8530, lng: -87.9300 }, // Pequeña bajada este
+            { lat: 41.8530, lng: -87.9150 }, // Punta máxima Noreste (Cerca de la I-294 / Roosevelt Rd)
+
+            // --- BORDE ESTE (Límite paralelo a la I-294 / DuPage County) ---
+            { lat: 41.8315, lng: -87.9170 }, // Bajada vertical este alta (Bordeando cementerios)
+            { lat: 41.8315, lng: -87.9240 }, // Ajuste horizontal interno por York Road
+            { lat: 41.8150, lng: -87.9240 }, // Bajada vertical este media
+            { lat: 41.8150, lng: -87.9295 }, // Quiebre horizontal hacia Cook County
+            { lat: 41.8080, lng: -87.9295 }, // Esquina inferior derecha (Sureste, cerca de Bemis Woods)
+
+            // --- BORDE SUR (Límite con Hinsdale / US 34 Ogden Ave) ---
+            { lat: 41.8080, lng: -87.9390 }, // Base sur derecha
+            { lat: 41.8040, lng: -87.9400 }, // Muesca sur inferior (Punta extrema abajo junto a la IL-83)
+            { lat: 41.8040, lng: -87.9460 }, // Quiebre horizontal de la muesca sur
+            { lat: 41.8125, lng: -87.9460 }, // Subida regresando hacia el centro por Kingery Hwy
+            { lat: 41.8125, lng: -87.9595 }, // Línea horizontal sur-centro (Bordeando Hunter Trails)
+            { lat: 41.8185, lng: -87.9595 }, // Escalón residencial interno
+            { lat: 41.8185, lng: -87.9730 }, // Base sur izquierda del tramo central
+
+            // --- EXTENSIÓN OESTE (Abrazando Midwest Club / Saddle Brook) ---
+            { lat: 41.8185, lng: -88.0055 }, // Línea recta horizontal hacia el extremo oeste
+            { lat: 41.8320, lng: -88.0055 }, // Esquina inferior izquierda del mapa (Saddle Brook)
+            { lat: 41.8320, lng: -87.9950 }, // Entrada interna horizontal
+            { lat: 41.8450, lng: -87.9950 }, // Subida por el flanco oeste de Midwest Club
+            { lat: 41.8450, lng: -87.9860 }, // Ajuste horizontal superior del ala oeste
+
+            // --- BORDE NOROESTE (Límite con Oakbrook Terrace / I-88) ---
+            { lat: 41.8400, lng: -87.9860 }, // Bajada pegada a la autopista I-88
+            { lat: 41.8400, lng: -87.9620 }, // Tramo largo horizontal central paralelo a la autopista
+            { lat: 41.8465, lng: -87.9620 }, // Pequeño espolón que sube al norte por la IL-83
+            { lat: 41.8465, lng: -87.9470 }, // Retorno horizontal buscando el bloque de origen
+            { lat: 41.8625, lng: -87.9470 }  // Cierre del polígono en la esquina superior izquierda
+        ]
+    },
+    {
+        id: 18,
+        name: "Mount Prospect",
+        center: { lat: 42.0654, lng: -87.9364 },
+        paths: [
+            // --- SECTOR NORTE / NOROESTE (Límite con Prospect Heights) ---
+            { lat: 42.1030, lng: -87.9520 }, // Esquina superior izquierda del bloque norte
+            { lat: 42.1030, lng: -87.9400 }, // Línea horizontal norte
+            { lat: 42.0945, lng: -87.9400 }, // Escalón hacia el sur
+            { lat: 42.0945, lng: -87.9250 }, // Conexión horizontal hacia la US-12 (Rand Rd)
+
+            // --- EXTENSIÓN NORESTE (Lado Oeste de Chicago Executive Airport) ---
+            { lat: 42.1120, lng: -87.9250 }, // Subida vertical del espolón noreste
+            { lat: 42.1120, lng: -87.9150 }, // Punta máxima Norte-Este (Cerca de Wolf Rd)
+            { lat: 42.0910, lng: -87.9150 }, // Bajada vertical este del espolón
+            { lat: 42.0910, lng: -87.9250 }, // Ajuste hacia el oeste cruzando la US-45
+            { lat: 42.0830, lng: -87.9250 }, // Bajada hacia Central Rd
+
+            // --- BORDE ESTE (Límite con Des Plaines) ---
+            { lat: 42.0830, lng: -87.9150 }, // Saliente este medio
+            { lat: 42.0520, lng: -87.9150 }, // Bajada vertical larga paralela a Elmhurst Rd
+            { lat: 42.0520, lng: -87.9290 }, // Quiebre interno horizontal (Cerca de Golf Rd)
+            { lat: 42.0310, lng: -87.9290 }, // Continuación de la bajada este baja
+
+            // --- PUNTA EXTREMA SUR (Bordeando Elk Grove Village / I-90) ---
+            { lat: 42.0160, lng: -87.9430 }, // Caída en diagonal hacia el extremo sur
+            { lat: 42.0160, lng: -87.9540 }, // Base inferior del polígono (Cerca de Algonquin Rd)
+            { lat: 42.0340, lng: -87.9540 }, // Subida vertical del flanco suroeste
+
+            // --- BORDE OESTE (Límite con Arlington Heights) ---
+            { lat: 42.0340, lng: -87.9420 }, // Ajuste horizontal hacia el este
+            { lat: 42.0630, lng: -87.9420 }, // Subida recta por el lateral izquierdo principal
+            { lat: 42.0630, lng: -87.9520 }, // Entrada profunda hacia la izquierda (Oeste)
+            { lat: 42.0730, lng: -87.9520 }, // Subida escalonada izquierda
+            { lat: 42.0730, lng: -87.9430 }, // Ajuste horizontal central
+            { lat: 42.0860, lng: -87.9430 }, // Subida vertical buscando el bloque norte
+            { lat: 42.0860, lng: -87.9520 }, // Último quiebre horizontal a la izquierda
+            { lat: 42.1030, lng: -87.9520 }  // Cierre del polígono en el origen norte
+        ]
+    },
+    {
+        id: 19,
+        name: "Lockport",
+        center: { lat: 41.5895, lng: -88.0520 },
+        paths: [
+            // --- BORDE NORTE (Límite directo con Romeoville) ---
+            { lat: 41.6310, lng: -88.0460 }, // Esquina superior izquierda (Conexión Romeoville)
+            { lat: 41.6310, lng: -88.0120 }, // Línea horizontal norte (135th St)
+            { lat: 41.6160, lng: -88.0120 }, // Escalón hacia el sur
+            { lat: 41.6160, lng: -87.9930 }, // Extensión noreste buscando la I-355
+
+            // --- BORDE ESTE (Eje Interestatal I-355) ---
+            { lat: 41.5950, lng: -87.9930 }, // Bajada este superior paralela a la autopista
+            { lat: 41.5950, lng: -88.0110 }, // Ajuste horizontal interno (Cerca de 151st St)
+            { lat: 41.5800, lng: -88.0110 }, // Bajada este media
+            { lat: 41.5800, lng: -87.9940 }, // Saliente este inferior (Hacia Hadley Valley)
+            { lat: 41.5660, lng: -87.9940 }, // Esquina sureste extrema
+
+            // --- BORDE SUR (Límite con Joliet) ---
+            { lat: 41.5660, lng: -88.0280 }, // Línea horizontal sur (Cruce de la IL-171 / Archer Ave)
+            { lat: 41.5510, lng: -88.0280 }, // Muesca que baja al sur (Zonas industriales bajas)
+            { lat: 41.5510, lng: -88.0480 }, // Base inferior izquierda (Cruce con el Fox River / Canal)
+            { lat: 41.5650, lng: -88.0480 }, // Subida por el eje del río
+
+            // --- BORDE OESTE (Límite con Crest Hill) ---
+            { lat: 41.5650, lng: -88.0690 }, // Extensión hacia la izquierda (Oeste)
+            { lat: 41.5800, lng: -88.0690 }, // Esquina inferior izquierda (Cerca de Weber Rd)
+            { lat: 41.5800, lng: -88.0520 }, // Retorno horizontal este
+            { lat: 41.5950, lng: -88.0520 }, // Subida vertical por el flanco izquierdo principal
+            { lat: 41.5950, lng: -88.0460 }, // Ajuste horizontal de cuadrícula
+            { lat: 41.6310, lng: -88.0460 }  // Cierre del polígono en el límite norte con Romeoville
+        ]
+    },
+    {
+        id: 20,
+        name: "Lemont",
+        center: { lat: 41.6735, lng: -87.9950 },
+        paths: [
+            // --- SECTOR NORTE (Cruce del Canal y Río Des Plaines) ---
+            { lat: 41.7100, lng: -87.9950 }, // Esquina superior izquierda del brazo norte
+            { lat: 41.7100, lng: -87.9750 }, // Esquina superior derecha (Límite norte)
+            { lat: 41.6930, lng: -87.9750 }, // Bajada este del corredor del río
+            { lat: 41.6930, lng: -87.9550 }, // Extensión noreste (Zonas industriales norte)
+
+            // --- BORDE ESTE (Límite con Palos Park / Forest Preserves) ---
+            { lat: 41.6810, lng: -87.9550 }, // Esquina noreste principal
+            { lat: 41.6810, lng: -87.9670 }, // Quiebre interno por Bell Road
+            { lat: 41.6560, lng: -87.9670 }, // Bajada vertical este larga
+            { lat: 41.6560, lng: -87.9520 }, // Saliente este medio (Hacia McCarthy Rd)
+            { lat: 41.6380, lng: -87.9520 }, // Esquina sureste extrema del bloque residencial
+            { lat: 41.6380, lng: -87.9810 }, // Regreso horizontal hacia el oeste
+
+            // --- BORDE SUR (Límite con Homer Glen) ---
+            { lat: 41.6310, lng: -87.9810 }, // Escalón sur inferior
+            { lat: 41.6310, lng: -88.0120 }, // Línea horizontal sur larga (135th St)
+            { lat: 41.6420, lng: -88.0120 }, // Subida de cuadrícula sur-oeste
+            { lat: 41.6420, lng: -88.0240 }, // Ajuste horizontal buscando la autopista
+
+            // --- BORDE OESTE (Conexión I-355 y Límite Romeoville) ---
+            { lat: 41.6530, lng: -88.0250 }, // Esquina inferior izquierda (Cruce con la I-355 / Romeoville)
+            { lat: 41.6670, lng: -88.0050 }, // Diagonal noroeste siguiendo el corredor del canal
+            { lat: 41.6780, lng: -88.0150 }, // Saliente industrial oeste
+            { lat: 41.6880, lng: -88.0150 }, // Subida por el flanco izquierdo de la cantera
+            { lat: 41.6880, lng: -87.9950 }, // Cierre horizontal superior buscando el brazo norte
+            { lat: 41.7100, lng: -87.9950 }  // Cierre del polígono en el origen norte
+        ]
+    },
+    {
+        id: 21,
+        name: "Lake Zurich",
+        center: { lat: 42.1965, lng: -88.0934 },
+        paths: [
+            // --- SECTOR NORTE (Eje IL-63 / Borde Superior) ---
+            { lat: 42.2155, lng: -88.0860 }, // Esquina superior izquierda del brazo norte
+            { lat: 42.2155, lng: -88.0770 }, // Línea horizontal norte superior
+            { lat: 42.2240, lng: -88.0770 }, // Espolón que sube al norte por la IL-63
+            { lat: 42.2240, lng: -88.0690 }, // Punta máxima Noreste superior
+            { lat: 42.2100, lng: -88.0690 }, // Bajada este del brazo norte
+            { lat: 42.2100, lng: -88.0580 }, // Escalón horizontal hacia el este
+
+            // --- BORDE ESTE (Límite con Hawthorn Woods / Kildeer) ---
+            { lat: 42.1970, lng: -88.0580 }, // Bajada vertical este alta
+            { lat: 42.1970, lng: -88.0515 }, // Saliente horizontal este medio (Main St / IL-22)
+            { lat: 42.1900, lng: -88.0515 }, // Ajuste vertical este
+            { lat: 42.1900, lng: -88.0580 }, // Retorno horizontal interno
+            { lat: 42.1740, lng: -88.0580 }, // Bajada este baja (Límite con Old Mill Grove)
+            { lat: 42.1740, lng: -88.0665 }, // Quiebre horizontal hacia el oeste
+
+            // --- EXTENSIÓN SUR (Diagonal de Rand Rd / Cuba Marsh) ---
+            { lat: 42.1640, lng: -88.0665 }, // Caída vertical sureste
+            { lat: 42.1640, lng: -88.0820 }, // Base inferior derecha (Cerca de Ela Rd)
+            { lat: 42.1750, lng: -88.0820 }, // Subida buscando el cruce de la autopista
+            { lat: 42.1620, lng: -88.0990 }, // Punta oblicua extrema sur-oeste (Dentro de Cuba Marsh)
+            { lat: 42.1770, lng: -88.1060 }, // Regreso en diagonal sobre la US-12 (Rand Rd)
+
+            // --- BORDE OESTE (Límite con North Barrington) ---
+            { lat: 42.1770, lng: -88.1130 }, // Esquina inferior izquierda del mapa
+            { lat: 42.1915, lng: -88.1130 }, // Subida vertical izquierda por el flanco del lago
+            { lat: 42.1915, lng: -88.1050 }, // Ajuste horizontal interno (Cerca de Miller Rd)
+            { lat: 42.2030, lng: -88.1050 }, // Subida vertical centro-oeste
+            { lat: 42.2030, lng: -88.0860 }, // Conexión horizontal superior buscando el origen norte
+            { lat: 42.2155, lng: -88.0860 }  // Cierre del polígono en la esquina superior norte
+        ]
+    },
+    {
+        id: 22,
+        name: "Lake Forest",
+        center: { lat: 42.2450, lng: -87.8500 },
+        paths: [
+            // --- LÍMITE NORTE (Frontera con Lake Bluff) ---
+            { lat: 42.2680, lng: -87.8280 }, // Esquina noreste pegada a la costa del Lago Michigan
+            { lat: 42.2680, lng: -87.8540 }, // Línea horizontal norte hacia el interior (Deerpath Rd / IL-60)
+            { lat: 42.2790, lng: -87.8540 }, // Muesca que sube al norte por Green Bay Rd
+            { lat: 42.2790, lng: -87.8760 }, // Tramo horizontal norte alto (Cerca de Waukegan Rd / IL-43)
+
+            // --- ALA OESTE (Cruzando la I-94 / Límite con Libertyville y Mettawa) ---
+            { lat: 42.2590, lng: -87.8760 }, // Ajuste hacia el sur buscando el corredor de la autopista
+            { lat: 42.2590, lng: -87.9040 }, // Extensión profunda hacia el oeste cruzando la I-94
+            { lat: 42.2470, lng: -87.9040 }, // Esquina superior izquierda del ala oeste
+            { lat: 42.2470, lng: -87.9150 }, // Punta máxima hacia el oeste (Límite corporativo poniente)
+            { lat: 42.2310, lng: -87.9150 }, // Bajada vertical oeste por el borde de Vernon Hills
+
+            // --- BORDE SUR-OESTE (Regreso por Everett Rd / I-94) ---
+            { lat: 42.2130, lng: -87.8960 }, // Caída diagonal suroeste baja
+            { lat: 42.2130, lng: -87.8810 }, // Base horizontal sur-oeste (Everett Rd)
+            { lat: 42.2240, lng: -87.8810 }, // Subida pegada al flanco este de la autopista I-94
+            { lat: 42.2240, lng: -87.8640 }, // Ajuste horizontal interno cruzando Waukegan Rd
+
+            // --- BORDE SUR (Límite con Bannockburn y Highwood) ---
+            { lat: 42.2090, lng: -87.8640 }, // Caída vertical sur (Esquina inferior izquierda del bloque este)
+            { lat: 42.2090, lng: -87.8340 }, // Línea horizontal sur de regreso a la costa (Half Day Rd / IL-60)
+            { lat: 42.2210, lng: -87.8340 }, // Escalón residencial interno junto a Highwood
+            { lat: 42.2210, lng: -87.8220 }, // Conexión a la esquina inferior derecha en la playa
+
+            // --- LÍNEA DE COSTA ESTE (Lago Michigan) ---
+            { lat: 42.2350, lng: -87.8180 }, // Curva baja de la costa este
+            { lat: 42.2510, lng: -87.8210 }, // Punto medio costero (Cerca de Lake Forest Beach)
+            { lat: 42.2680, lng: -87.8280 }  // Cierre del polígono en la esquina norte
+        ]
+    },
+    {
+        id: 23,
+        name: "Hoffman Estates",
+        center: { lat: 42.0450, lng: -88.1200 },
+        paths: [
+            // --- SECTOR NORTE (Límite con Inverness / Palatine) ---
+            { lat: 42.1120, lng: -88.0980 }, // Punta máxima Noreste superior
+            { lat: 42.0940, lng: -88.0980 }, // Bajada vertical este del brazo norte
+            { lat: 42.0940, lng: -88.0820 }, // Conexión horizontal pegada a Palatine
+            { lat: 42.0720, lng: -88.0820 }, // Bajada vertical flanqueando Paul Douglas
+
+            // --- SECTOR ESTE (Límite con Schaumburg) ---
+            { lat: 42.0720, lng: -88.0620 }, // Esquina noreste del bloque central-este
+            { lat: 42.0440, lng: -88.0620 }, // Caída recta este cruzando la I-90
+            { lat: 42.0440, lng: -88.0410 }, // Saliente horizontal este bajo
+            { lat: 42.0290, lng: -88.0410 }, // Punta extrema Sureste (Junto a Schaumburg)
+            { lat: 42.0290, lng: -88.0690 }, // Retorno horizontal hacia el oeste por Golf Rd
+            { lat: 42.0160, lng: -88.0690 }, // Muesca sur inferior derecha
+            { lat: 42.0160, lng: -88.0880 }, // Base horizontal inferior derecha
+
+            // --- CUERPO CENTRAL (Corredor I-90 / Algonquin Rd) ---
+            { lat: 42.0400, lng: -88.0880 }, // Ajuste vertical interno buscando la autopista
+            { lat: 42.0400, lng: -88.1380 }, // Tramo horizontal largo central que pasa bajo South Barrington
+            { lat: 42.0280, lng: -88.1380 }, // Caída sur que conecta con el bloque del bosque Poplar Creek
+
+            // --- EXTENSIÓN ALA OESTE (Rodeando Poplar Creek / Límite con Elgin) ---
+            { lat: 42.0280, lng: -88.1750 }, // Línea recta horizontal hacia el extremo poniente
+            { lat: 42.0480, lng: -88.1750 }, // Subida por el flanco oeste bajo
+            { lat: 42.0480, lng: -88.1920 }, // Saliente superior del ala oeste (Límite extremo noroeste)
+            { lat: 42.0220, lng: -88.1920 }, // Caída vertical izquierda rozando el borde de Elgin
+            { lat: 42.0220, lng: -88.1480 }, // Retorno horizontal por la base sur del ala oeste
+            { lat: 42.0400, lng: -88.1480 }, // Ajuste de subida vertical interno
+
+            // --- SUBIDA FLANCO OESTE ALTO Y RETORNO ---
+            { lat: 42.0520, lng: -88.1250 }, // Conexión diagonal siguiendo el límite con South Barrington
+            { lat: 42.0640, lng: -88.1250 }, // Subida vertical buscando el brazo norte original
+            { lat: 42.0640, lng: -88.1120 }, // Ajuste horizontal de cuadrícula
+            { lat: 42.1120, lng: -88.1120 }, // Subida vertical izquierda del brazo norte
+            { lat: 42.1120, lng: -88.0980 }  // Cierre del polígono en el punto de origen
+        ]
+    },
+    {
+        id: 24,
+        name: "Barrington",
+        center: { lat: 42.1535, lng: -88.1360 },
+        paths: [
+            // --- SECTOR NOROESTE (Eje US-14 / Northwest Hwy) ---
+            { lat: 42.1645, lng: -88.1480 }, // Esquina superior izquierda (Entrada por W Northwest Hwy)
+            { lat: 42.1645, lng: -88.1345 }, // Límite norte superior junto a la US-14
+            { lat: 42.1585, lng: -88.1345 }, // Escalón hacia el sur (Eje de la vía férrea)
+            { lat: 42.1585, lng: -88.1250 }, // Avance horizontal norte central
+
+            // --- ALA ESTE (Límite con Cuba Marsh / Fox Point) ---
+            { lat: 42.1585, lng: -88.1020 }, // Esquina noreste del saliente oriental (Borde de Cuba Marsh)
+            { lat: 42.1480, lng: -88.1020 }, // Quiebro vertical este hacia el sector residencial
+            { lat: 42.1480, lng: -88.0820 }, // Extensión máxima real al este (Borde de la urbanización Fox Point)
+            { lat: 42.1345, lng: -88.0820 }, // Esquina sureste del ala oriental
+            { lat: 42.1345, lng: -88.1130 }, // Retorno horizontal por el límite sur de Cook County line
+
+            // --- SECTOR SUR / APÉNDICE INFERIOR (S. Barrington Rd) ---
+            { lat: 42.1390, lng: -88.1130 }, // Ángulo interno de subida hacia el centro histórico
+            { lat: 42.1390, lng: -88.1260 }, // Ajuste horizontal hacia el eje de Barrington Rd
+            { lat: 42.1215, lng: -88.1260 }, // Caída vertical este del apéndice sur
+            { lat: 42.1215, lng: -88.1370 }, // Base inferior (Cruce norte de W Dundee Rd)
+            { lat: 42.1365, lng: -88.1370 }, // Subida vertical por el flanco oeste del apéndice
+
+            // --- BORDE OESTE (Límite con Lake Barrington) ---
+            { lat: 42.1365, lng: -88.1480 }, // Saliente horizontal oeste bajo hacia S Slocum Lake Rd
+            { lat: 42.1490, lng: -88.1480 }, // Flanco vertical izquierdo (Oeste principal)
+            { lat: 42.1490, lng: -88.1480 }, // Cierre y ajuste de cuadrícula oeste alto
+            { lat: 42.1645, lng: -88.1480 }  // Cierre del polígono en el punto de origen
+        ]
+    },
+];
+
+// Lista de 10 configuraciones e imágenes de proyectos dinámicos
+export const MOCK_PROJECTS_POOL: Omit<Project, 'id'>[] = [
+    {
+        image: '/assets/images/features/map/house-shingles.png',
+        specs: { piecesSquare: '64', bundlesSquare: '3', nailsSquare: '256', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_1.png',
+        specs: { piecesSquare: '60', bundlesSquare: '4', nailsSquare: '240', exposure: '5 1/2" (140 mm)', dimensions: '12" x 36"' }
+    },
+    {
+        image: '/assets/images/features/map/house_2.png',
+        specs: { piecesSquare: '68', bundlesSquare: '3', nailsSquare: '272', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_3.png',
+        specs: { piecesSquare: '65', bundlesSquare: '3.5', nailsSquare: '260', exposure: '5 3/4" (146 mm)', dimensions: '13" x 40"' }
+    },
+    {
+        image: '/assets/images/features/map/house_4.png',
+        specs: { piecesSquare: '72', bundlesSquare: '3', nailsSquare: '288', exposure: '5" (127 mm)', dimensions: '12 1/4" x 36"' }
+    },
+    {
+        image: '/assets/images/features/map/house_5.png',
+        specs: { piecesSquare: '56', bundlesSquare: '4', nailsSquare: '224', exposure: '5 7/8" (150 mm)', dimensions: '14" x 40"' }
+    },
+    {
+        image: '/assets/images/features/map/house_6.png',
+        specs: { piecesSquare: '66', bundlesSquare: '3', nailsSquare: '264', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_7.png',
+        specs: { piecesSquare: '62', bundlesSquare: '3.5', nailsSquare: '248', exposure: '5 1/2" (140 mm)', dimensions: '12 1/2" x 38"' }
+    },
+    {
+        image: '/assets/images/features/map/house_8.png',
+        specs: { piecesSquare: '70', bundlesSquare: '3', nailsSquare: '280', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
+    },
+    {
+        image: '/assets/images/features/map/house_9.png',
+        specs: { piecesSquare: '64', bundlesSquare: '4', nailsSquare: '256', exposure: '5 3/4" (146 mm)', dimensions: '13" x 39"' }
     }
 ];

@@ -57,7 +57,7 @@ const StormDamageCheck = () => {
 
                         <div className={styles.ctaWrapper}>
                             {/* Redirige a la página completa de contacto */}
-                            <Link href="/contact-us" className={styles.linkWrapper}>
+                            <Link href="/contact-us" title="Go to our contact page" className={styles.linkWrapper}>
                                 <button
                                     className={`${styles.contactBtn} ${isButtonEnabled ? styles.enabled : styles.disabled}`}
                                     disabled={!isButtonEnabled}

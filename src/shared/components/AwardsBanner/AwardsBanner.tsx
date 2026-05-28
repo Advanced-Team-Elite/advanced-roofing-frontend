@@ -4,19 +4,20 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const awards = [
-    // --- Existentes ---
-    { src: '/assets/images/features/home/AngiesList.webp', alt: 'Angies List Super Service Award 2015' },
-    { src: '/assets/images/features/home/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor' },
-    { src: '/assets/images/features/home/PreferredContractor_OwensCorning_guide.webp', alt: 'Owens Corning Preferred Contractor' },
-    { src: '/assets/images/features/home/nextdoor-neighborhood-alt.png', alt: 'Nextdoor Neighborhood Fave' },
-
-    // --- Nuevos Agregados ---
-    { src: '/assets/images/features/home/bbb-accredited.png', alt: 'BBB Accredited Business' },
-    { src: '/assets/images/features/home/vsi-certified.png', alt: 'VSI Certified Siding Installer' },
-
-    // --- Resto de originales ---
-    { src: '/assets/images/features/home/Haag-Commercial-Logo.webp', alt: 'Haag Certified Inspector Commercial' },
-    { src: '/assets/images/features/home/AngiesList_2019.webp', alt: 'Angies List Super Service Award 2019' },
+    { src: '/assets/images/features/home/badgets/AngiesList.webp', alt: 'Angie’s List Super Service Award 2015 Badge' },
+    { src: '/assets/images/features/home/badgets/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor Badge' },
+    { src: '/assets/images/features/home/badgets/PreferredContractor_OwensCorning_guide.webp', alt: 'Owens Corning Preferred Contractor Logo' },
+    { src: '/assets/images/features/home/badgets/nextdoor-neighborhood-alt.png', alt: 'Nextdoor Neighborhood Fave Award Sello' },
+    { src: '/assets/images/features/home/badgets/bbb-accredited.png', alt: 'Better Business Bureau BBB Accredited Business Logo' },
+    { src: '/assets/images/features/home/badgets/vsi-certified.png', alt: 'VSI Certified Vinyl Siding Installer Badge' },
+    { src: '/assets/images/features/home/badgets/Haag-Commercial-Logo.webp', alt: 'HAAG Certified Commercial Roof Inspector Logo' },
+    { src: '/assets/images/features/home/badgets/AngiesList_2019.webp', alt: 'Angie’s List Super Service Award 2019 Badge' },
+    { src: '/assets/images/features/home/badgets/iko.webp', alt: 'IKO Certified Roofing Contractor Logo' },
+    { src: '/assets/images/features/home/badgets/tribuilt.webp', alt: 'TRI-BUILT Materials Certified Contractor Logo' },
+    { src: '/assets/images/features/home/badgets/velux.webp', alt: 'VELUX Certified Skylight Installer Logo' },
+    { src: '/assets/images/features/home/badgets/gaf.webp', alt: 'GAF Factory-Certified Roofing Contractor Logo' },
+    { src: '/assets/images/features/home/badgets/wrrs.webp', alt: 'WRRS Certified Roofing Specialist Logo' },
+    { src: '/assets/images/features/home/badgets/certainTeed.webp', alt: 'CertainTeed Credentialed Roofing Contractor Logo' },
 ];
 
 export default function AwardsBanner() {

@@ -183,6 +183,223 @@
 .valueYellow { color: #F7D000; }
 .labelLight { color: white; }
 
+
+/* ==========================================================================
+   NUEVO EFECTO: SLOT MACHINE MECHANICAL DRUMS
+   ========================================================================== */
+
+/* Contenedor principal de la maquinita */
+.slotMachineContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Espaciado físico entre cada rodillo mecánico */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo del chasis de la caja */
+    padding: 6px 8px;
+    border-radius: 8px;
+    box-shadow:
+            inset 0 4px 10px rgba(0, 0, 0, 0.5),
+            0 1px 0 rgba(255, 255, 255, 0.1);
+    height: 4rem;
+    box-sizing: border-box;
+}
+
+/* Contenedor padre que junta la caja de números con la palanca a su derecha */
+.slotMachineWrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-right: 45px; /* Espacio de seguridad reservado para la palanca */
+}
+
+.leverPulled .leverRod,
+.leverStructure.leverPulled:hover .leverRod {
+    transform: rotateX(45deg) scaleY(0.3) !important;
+    height: 35px !important;
+}
+
+/* Forzamos a la bola a descender drásticamente a su posición baja (32px),
+   incluso si el mouse sigue haciendo :hover encima de la palanca.
+*/
+.leverPulled .leverBall,
+.leverStructure.leverPulled:hover .leverBall {
+    transform: translateY(32px) scale(0.95) !important;
+    background: radial-gradient(circle at 6px 6px, #FFF275 0%, #F7D000 50%, #A38200 100%) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Modificación del contenedor para que conviva con la palanca */
+.slotMachineContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 6px 8px;
+    border-radius: 8px;
+    box-shadow:
+            inset 0 4px 10px rgba(0, 0, 0, 0.6),
+            0 1px 0 rgba(255, 255, 255, 0.1);
+    height: 4rem;
+    box-sizing: border-box;
+}
+
+.leverStructure {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 70px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Soporte o junta empernada al chasis */
+.leverBase {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(135deg, #666 0%, #333 100%);
+    border-radius: 50%;
+    border: 2px solid #222;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Barra de acero de la palanca */
+.leverRod {
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to right, #e0e0e0 0%, #ffffff 40%, #999999 100%);
+    border-radius: 2px;
+    transform-origin: bottom center;
+    transition: transform 0.2s ease-in-out, height 0.2s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+}
+
+/* Bola interactiva en la punta (Usa el color amarillo corporativo para invitar a dar clic) */
+.leverBall {
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 6px 6px, #FFF275 0%, #F7D000 50%, #A38200 100%);
+    border-radius: 50%;
+    box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.3),
+            inset 0 -2px 5px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Efecto hover sutil para indicar que es un botón */
+.leverStructure:hover .leverBall {
+    background: radial-gradient(circle at 6px 6px, #FFFFFF 0%, #FFE135 40%, #F7D000 100%);
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   ANIMACIÓN CUANDO SE JALA LA PALANCA (ACTIVE STATE)
+   ========================================================================== */
+
+/* La barra colapsa hacia abajo imitando la perspectiva 3D */
+.leverPulled .leverRod {
+    transform: rotateX(45deg) scaleY(0.3);
+    height: 35px;
+}
+
+/* La bola desciende drásticamente hasta el tope de la base */
+.leverPulled .leverBall {
+    transform: translateY(32px) scale(0.95);
+}
+
+/* Ventana o Casillero individual para cada número (El marco del tambor) */
+.slotDrumWindow {
+    position: relative;
+    width: 2.2rem;
+    height: 100%;
+    background-color: #003663; /* Color de fondo oscuro para que resalte el número amarillo */
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:
+            inset 0 2px 5px rgba(0,0,0,0.6),
+            0 1px 1px rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* El rodillo mecánico interno con la tira de números */
+.slotDrumReel {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Curva cubic-bezier con REBOTE mecánico al final (Efecto palanca clásica) */
+    transition: transform 3.2s cubic-bezier(0.12, 0.95, 0.22, 1.08);
+    will-change: transform;
+}
+
+/* Cada número impreso en el tambor */
+.slotDrumDigit {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 3.2rem; /* Alineación vertical exacta dentro de la cajita */
+    height: 3.2rem;
+    text-align: center;
+    color: #F7D000;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: inherit;
+}
+
+/* Casillero especial para la Coma */
+.slotCommaWindow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 0.8rem;
+    height: 100%;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+/* El texto de la coma */
+.slotCommaItem {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #F7D000;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Brillo de cristal curvo sobre el rodillo para darle realismo 3D */
+.slotDrumReflex {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(255, 255, 255, 0.1) 15%,
+            transparent 40%,
+            transparent 60%,
+            rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+/* Signo + por fuera de la caja de la máquina */
+.plusSign {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #F7D000;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    text-shadow: 0 2px 10px rgba(247, 208, 0, 0.3);
+}
+
 /* --- RESPONSIVE --- */
 
 @media (max-width: 1280px) {
@@ -386,6 +603,69 @@
 
     .heroNumber {
         font-size: 5rem;
+    }
+
+    .slotMachineContainer {
+        height: 3.2rem;
+        padding: 4px 6px;
+    }
+    .slotDrumWindow {
+        width: 1.8rem;
+    }
+    .slotDrumDigit {
+        font-size: 1.9rem;
+        line-height: 2.6rem;
+        height: 2.6rem;
+    }
+    .slotCommaWindow {
+        width: 0.6rem;
+        padding-bottom: 4px;
+    }
+    .slotCommaItem {
+        font-size: 1.9rem;
+    }
+    .plusSign {
+        font-size: 2.2rem;
+    }
+
+    .slotMachineWrapper {
+        padding-right: 35px;
+    }
+    .leverStructure {
+        height: 55px;
+        width: 25px;
+    }
+    .leverRod {
+        height: 28px;
+        bottom: 20px;
+    }
+    .leverBall {
+        width: 15px;
+        height: 15px;
+        top: 2px;
+        left: -1px;
+    }
+    .leverPulled .leverRod {
+        transform: rotateX(45deg) scaleY(0.2);
+        height: 25px;
+    }
+    .leverPulled .leverBall {
+        transform: translateY(22px);
+    }
+    .leverBase {
+        bottom: 12px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .leverPulled .leverRod,
+    .leverStructure.leverPulled:hover .leverRod {
+        transform: rotateX(45deg) scaleY(0.2) !important;
+        height: 25px !important;
+    }
+    .leverPulled .leverBall,
+    .leverStructure.leverPulled:hover .leverBall {
+        transform: translateY(22px) !important;
     }
 }
 
