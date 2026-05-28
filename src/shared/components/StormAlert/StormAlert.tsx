@@ -117,7 +117,7 @@ export default function StormAlert() {
                                 ⚠️ {alertData?.event} reported near {alertData?.area}!
                             </span>
                             <span className={styles.hiddenMobile}> Protect your property — </span>
-                            <a href="/contact-us" className={styles.link}>
+                            <a href="/contact-us" className={styles.link} title="Go to our contact page">
                                 Schedule your free inspection
                             </a>
                         </p>

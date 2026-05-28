@@ -1,6 +1,6 @@
-// WeatherEffects.tsx — corregir el Forced Reflow
 "use client";
-import React, { useMemo, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./WeatherEffects.module.css";
 
 type Season = "winter" | "summer" | "fall" | "spring";
@@ -9,8 +9,7 @@ interface Props {
     forcedSeason: Season;
 }
 
-// ✅ Generar partículas FUERA del componente con seed fija
-// Así no hay Math.random() en cada render ni forced reflow
+// ✅ Generador estático de Partículas de Granizo
 function generateParticles(seed: number, count: number) {
     const rng = (i: number) => ((Math.sin(seed + i) * 43758.5453) % 1 + 1) % 1;
     return Array.from({ length: count }, (_, i) => ({
@@ -23,18 +22,39 @@ function generateParticles(seed: number, count: number) {
     }));
 }
 
+// ✅ Ráfagas de viento mejoradas (Más visibles, más opacas y con inclinación)
 function generateWind(seed: number, count: number) {
     const rng = (i: number) => ((Math.sin(seed + i * 1.7) * 43758.5453) % 1 + 1) % 1;
     return Array.from({ length: count }, (_, i) => ({
         id: i,
         top: `${rng(i) * 100}%`,
-        width: `${200 + rng(i + 1) * 300}px`,
-        thickness: `${5 + rng(i + 2) * 7}px`,
-        opacity: 0.1 + rng(i + 3) * 0.2,
-        delay: `${rng(i + 4) * 5}s`,
-        duration: `${2 + rng(i + 5) * 3}s`,
-        startX: `${-250 + rng(i + 6) * 100}px`,
+        width: `${400 + rng(i + 1) * 400}px`, // Ráfagas mucho más largas
+        thickness: `${6 + rng(i + 2) * 10}px`, // Líneas más gruesas
+        opacity: 0.25 + rng(i + 3) * 0.35,     // Incrementamos opacidad
+        delay: `${rng(i + 4) * 6}s`,
+        duration: `${1.5 + rng(i + 5) * 2}s`,  // Más veloces para simular ráfagas fuertes
+        startX: `${-600 + rng(i + 6) * 100}px`,
+        skewY: `${-5 + rng(i + 7) * 10}deg`,   // Inclinación variable del viento
     }));
+}
+
+// ✅ NUEVO: Generador estático de hojas físicas para el viento de Primavera
+function generateLeaves(seed: number, count: number) {
+    const rng = (i: number) => ((Math.sin(seed + i * 3.1) * 43758.5453) % 1 + 1) % 1;
+    return Array.from({ length: count }, (_, i) => {
+        // Alternamos entre la hoja izquierda y derecha que tienes en el proyecto
+        const leafSide = rng(i) > 0.5 ? "left" : "right";
+        return {
+            id: i,
+            side: leafSide,
+            top: `${10 + rng(i + 1) * 80}%`,       // Distribuido verticalmente
+            size: `${24 + rng(i + 2) * 20}px`,     // Tamaños variados (proporción física)
+            delay: `${rng(i + 3) * 7}s`,           // Delay escalonado
+            duration: `${2.5 + rng(i + 4) * 3}s`,  // Velocidad de arrastre
+            rotateStart: `${rng(i + 5) * 360}deg`, // Ángulo inicial único
+            swayIntensity: `${15 + rng(i + 6) * 25}px` // Qué tanto cabecea de arriba a abajo
+        };
+    });
 }
 
 function generateRain(seed: number) {
@@ -57,9 +77,10 @@ function generateRain(seed: number) {
     return drops;
 }
 
-// ✅ Partículas estáticas generadas una sola vez al módulo cargarse
+// ✅ Inicialización estática única en memoria
 const HAIL = generateParticles(42, 5);
-const WIND = generateWind(99, 20);
+const WIND = generateWind(99, 15);
+const LEAVES = generateLeaves(1337, 12); // Creamos 12 hojas voladoras
 const RAIN = generateRain(7);
 
 export const WeatherEffects = ({ forcedSeason }: Props) => {
@@ -133,6 +154,7 @@ export const WeatherEffects = ({ forcedSeason }: Props) => {
 
             {forcedSeason === "spring" && (
                 <div className={styles.windContainer}>
+                    {/* Render de las Ráfagas de Viento */}
                     {WIND.map((gust) => (
                         <div
                             key={gust.id}
@@ -142,11 +164,43 @@ export const WeatherEffects = ({ forcedSeason }: Props) => {
                                 width: gust.width,
                                 height: gust.thickness,
                                 opacity: gust.opacity,
+                                transform: `skewY(${gust.skewY})`,
                                 "--gust-delay": gust.delay,
                                 "--gust-duration": gust.duration,
                                 "--start-x": gust.startX,
                             } as React.CSSProperties}
                         />
+                    ))}
+
+                    {/* Render Dinámico de Hojas Voladoras */}
+                    {LEAVES.map((leaf) => (
+                        <div
+                            key={leaf.id}
+                            className={styles.leafWrapper}
+                            style={{
+                                top: leaf.top,
+                                width: leaf.size,
+                                height: leaf.size,
+                                "--leaf-delay": leaf.delay,
+                                "--leaf-duration": leaf.duration,
+                                "--sway-amount": leaf.swayIntensity,
+                            } as React.CSSProperties}
+                        >
+                            <div
+                                className={styles.leaf3D}
+                                style={{
+                                    transform: `rotateZ(${leaf.rotateStart})`,
+                                }}
+                            >
+                                <Image
+                                    src={`/assets/images/features/home/leave-${leaf.side}.webp`}
+                                    alt="Flying leaf"
+                                    width={100}
+                                    height={100}
+                                    className={styles.leafImg}
+                                />
+                            </div>
+                        </div>
                     ))}
                 </div>
             )}

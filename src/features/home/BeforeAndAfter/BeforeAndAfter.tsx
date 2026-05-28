@@ -38,6 +38,11 @@ const comparisonSlides = [
         after: '/assets/images/slider/roof1-after.webp',
     },
     {
+        id: 0,
+        before: '/assets/images/slider/roof0-before.webp',
+        after: '/assets/images/slider/roof0-after.webp',
+    },
+    {
         id: 2,
         before: '/assets/images/slider/roof2-before.webp',
         after: '/assets/images/slider/roof2-after.webp',

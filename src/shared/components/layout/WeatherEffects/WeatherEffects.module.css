@@ -171,49 +171,113 @@
 }
 
 
-/* ===================== VIENTO (SPRING) ===================== */
+/* ===================== VIENTO MODERNO CON HOJAS (SPRING) ===================== */
 .windContainer {
     width: 100%;
     height: 100%;
+    position: relative;
+    perspective: 1000px; /* Habilita comportamiento tridimensional real para las hojas */
 }
 
-.windContainer {
-    width: 100%;
-    height: 100%;
-}
 .windGust {
     position: fixed;
-    /* 1. Empezamos fuera de la pantalla (izquierda) */
-    left: -500px;
+    left: -800px; /* Más a la izquierda para soportar ráfagas más anchas */
 
     background: linear-gradient(
             to right,
             transparent 0%,
-            rgba(255, 255, 255, 0.45) 40%,
-            rgba(210, 235, 255, 0.25) 70%,
-            transparent 100%
+            rgba(255, 255, 255, 0.65) 30%,    /* Subimos opacidad de las líneas */
+            rgba(215, 240, 255, 0.45) 60%,    /* Un azul cristalino más marcado */
+            rgba(255, 255, 255, 0.1) 85%,
+            transparent 100
     );
 
     border-radius: 999px;
-
-    animation: wind-gust var(--gust-duration) var(--gust-delay) ease-out infinite backwards;
-
-    filter: blur(3px);
-    will-change: transform; /* Optimización de rendimiento */
+    /* Usamos un bezier agresivo: acelera violentamente y desacelera al final de la pantalla */
+    animation: wind-gust var(--gust-duration) var(--gust-delay) cubic-bezier(0.25, 1, 0.2, 1) infinite backwards;
+    filter: blur(4px); /* Blur balanceado para simular velocidad del aire sin pixelar */
+    will-change: transform;
 }
 
 @keyframes wind-gust {
     0% {
-        transform: translateX(0); /* Relativo a su 'left: -500px' */
+        transform: translateX(0) scaleY(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9; /* Visibilidad inmediata al arrancar el ventarrón */
+    }
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(calc(100vw + 900px)) scaleY(1.3);
+        opacity: 0;
+    }
+}
+
+/* --- CONTENEDOR DE LA HOJA (Maneja el desplazamiento Horizontal y Vertical) --- */
+.leafWrapper {
+    position: fixed;
+    left: -100px;
+    will-change: transform;
+    pointer-events: none;
+    /* Combina traslación fluida y el cabeceo oscilatorio (Sway) de arriba a abajo */
+    animation:
+            leaf-fly var(--leaf-duration) var(--leaf-delay) cubic-bezier(0.33, 1, 0.68, 1) infinite backwards,
+            leaf-sway calc(var(--leaf-duration) * 0.4) var(--leaf-delay) ease-in-out infinite alternate;
+}
+
+/* --- ELEMENTO INTERNO EN 3D (Maneja las rotaciones locas sobre sus ejes) --- */
+.leaf3D {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: leaf-spin 3s linear infinite;
+}
+
+.leafImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.15)) brightness(1.1); /* Agrega profundidad */
+}
+
+/* Eje Horizontal: Atraviesa la pantalla empujada por la ráfaga */
+@keyframes leaf-fly {
+    0% {
+        left: -10px;
         opacity: 0;
     }
     10% {
-        opacity: 0.6;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
     }
     100% {
-        /* Calculamos el viaje total hasta cruzar toda la pantalla */
-        transform: translateX(calc(100vw + 600px));
+        left: calc(100vw + 150px);
         opacity: 0;
+    }
+}
+
+/* Eje Vertical: Hace que flote subiendo y bajando orgánicamente */
+@keyframes leaf-sway {
+    0% {
+        transform: translateY(calc(var(--sway-amount) * -1));
+    }
+    100% {
+        transform: translateY(var(--sway-amount));
+    }
+}
+
+/* Eje Tridimensional: Giros helicoidales caóticos simulando la turbulencia del aire */
+@keyframes leaf-spin {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg);
     }
 }
 
@@ -234,7 +298,7 @@
     position: absolute;
     top: -400px;
     left: -400px;
-    width: 150vw;
+    width: 1920px;
     height: 1600px;
     background: radial-gradient(
             circle at top left,

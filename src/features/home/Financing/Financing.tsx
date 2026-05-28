@@ -112,7 +112,7 @@ const Financing = ({ backgroundColor = "bg-[#f0f0f0]" }: FinancingProps) => {
                         rangeLabels={['1', '12']}
                     />
 
-                    <Link href="/contact-us" className="w-full">
+                    <Link href="/contact-us" className="w-full" title="Go to our contact page">
                         <button className="w-full cursor-pointer bg-[#005596] text-white py-4 text-xl font-semibold hover:bg-[#00447a] transition-colors">
                             Contact Us
                         </button>

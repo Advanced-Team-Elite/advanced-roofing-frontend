@@ -20,9 +20,8 @@ import Financing from "@/features/home/Financing/Financing";
 import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
-import {ManufacturingAwards} from "@/shared/components/ManufacturingAwards/ManufacturingAwards";
-import {ReputationAwards} from "@/shared/components/ReputationAwards/ReputationAwards";
-import RoofingHappyCustomers from "@/shared/components/RoofingHappyCustomers/RoofingHappyCustomers";
+import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
+import {MagazineFlip} from "@/shared/components/MagazineFlip/MagazineFlip";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -30,6 +29,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             {/* --- HERO SECTION --- */}
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
+            <TopBannerAward/>
             <NowServing/>
             <Language/>
             <OurServices />
