@@ -173,10 +173,12 @@ export default function CoverageMap() {
                 {hoveredArea && !hoveredArea.notFound && hoveredArea.projects && hoveredArea.projects.length > 1 && (
                     <div className="
         absolute z-30 pointer-events-none
-        top-20 left-4 right-4
+        top-32 left-4 right-4
         md:top-8 md:left-auto md:right-8 md:w-[420px]
         max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
-        h-[600px] /* Altura estimada para centrar las flechas verticalmente */
+        scale-[0.50] md:scale-[0.75] lg:scale-[1]
+        origin-top-right
+        h-250 /* Altura estimada para centrar las flechas verticalmente */
     ">
                         <div className="relative w-full h-full">
                             {/* Flecha Izquierda (Justo afuera del borde izquierdo) */}
@@ -200,70 +202,69 @@ export default function CoverageMap() {
                     </div>
                 )}
 
-                {/* Tooltip Lateral (Tu bloque de código original intacto) */}
+                {/* Tooltip Lateral con Escala Dinámica */}
                 {hoveredArea && (
                     <div className="
-                    custom-scrollbar absolute z-20
-                    top-20 left-4 right-4
-                    md:top-8 md:left-auto md:right-8 md:w-[420px]
-                    max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
-                    bg-white/60 backdrop-blur-xl rounded-[32px] shadow-2xl
-                    p-6 md:p-8 border border-white/50
-                    overflow-y-auto transition-all duration-300 ease-in-out
-                ">
+        custom-scrollbar absolute z-20
+        /* Posición fija */
+        top-20 left-4 right-4
+        md:top-8 md:left-auto md:right-8 md:w-[420px]
+        max-h-[calc(100%-100px)] md:max-h-[calc(100%-64px)]
+
+        /* Escalado: 90% en mobile, 95% en tablet, 100% en desktop */
+        scale-[0.50] md:scale-[0.75] lg:scale-[1]
+        origin-top-right
+
+        bg-white/60 backdrop-blur-xl rounded-[32px] shadow-2xl
+        p-5 md:p-8 border border-white/50
+        overflow-y-auto transition-all duration-300 ease-in-out
+    ">
+                        {/* Header - Mismo diseño */}
                         <div className="flex justify-between items-start mb-3">
-                            <div>
-                                <h3 className="font-extrabold text-xl md:text-2xl text-gray-900 tracking-tight pr-4">
-                                    {hoveredArea.notFound ? 'No projects yet' : hoveredArea.name}
-                                </h3>
-                            </div>
+                            <h3 className="font-extrabold text-lg md:text-2xl text-gray-900 tracking-tight pr-2">
+                                {hoveredArea.notFound ? 'No projects yet' : hoveredArea.name}
+                            </h3>
                             <button onClick={() => handleSelectArea(null)} aria-label="Close"
-                                    className="p-2 hover:bg-black/5 rounded-full transition-colors flex-shrink-0">
-                                <X size={22} className="text-gray-500" />
+                                    className="p-1.5 hover:bg-black/5 rounded-full transition-colors flex-shrink-0">
+                                <X size={20} className="text-gray-500" />
                             </button>
                         </div>
 
                         {hoveredArea.notFound ? (
-                            <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 We serve this area, but no projects are pinned here yet. <strong>Be the first to feature your roof!</strong>
                             </p>
                         ) : (
                             <>
-                                {/* Imagen Dinámica del Proyecto Seleccionado */}
-                                <div className="overflow-hidden mb-6 md:mb-8 rounded-2xl  aspect-[16/8] relative flex items-center justify-center">
+                                {/* Imagen - Escala reducida */}
+                                <div className="overflow-hidden mb-4 md:mb-6 rounded-2xl bg-gray-100 aspect-[16/9] md:aspect-[16/8] relative flex items-center justify-center">
                                     <img
                                         src={activeProject?.image}
-                                        className="w-full h-full object-cover transition-all duration-500"
-                                        alt={`Project roof gallery in ${hoveredArea.name}`}
+                                        className="w-full h-full object-cover"
+                                        alt={`Project in ${hoveredArea.name}`}
                                     />
                                 </div>
 
-                                <div className="mb-6 md:mb-8">
-                                    <h4 className="font-bold text-base md:text-lg text-gray-800 mb-4 tracking-tight">
+                                {/* Warranties - Visible solo en tablet y desktop */}
+                                <div className="hidden md:block mb-6">
+                                    <h4 className="font-bold text-sm text-gray-800 mb-3 tracking-tight">
                                         Warranties &amp; Technologies
                                     </h4>
-                                    <div className="grid grid-cols-3 gap-3 md:gap-4">
-                                        {/* Rotación automática de las garantías basada en el proyecto activo */}
+                                    <div className="grid grid-cols-3 gap-3">
                                         {(() => {
                                             const defaultWarranties = ['warranty-1', 'warranty-2', 'warranty-3'];
-                                            // Usamos el ID o el índice actual del carrusel para alterar el orden en cada cambio
                                             const shift = currentProjectIndex % defaultWarranties.length;
-                                            const rotatedWarranties = [
-                                                ...defaultWarranties.slice(shift),
-                                                ...defaultWarranties.slice(0, shift)
-                                            ];
-
+                                            const rotatedWarranties = [...defaultWarranties.slice(shift), ...defaultWarranties.slice(0, shift)];
                                             return rotatedWarranties.map((w) => (
-                                                <img key={w} src={`/assets/images/features/map/${w}.png`}
-                                                     className="w-full h-auto object-contain" alt={w} />
+                                                <img key={w} src={`/assets/images/features/map/${w}.png`} className="w-full h-auto object-contain" alt={w} />
                                             ));
                                         })()}
                                     </div>
                                 </div>
 
-                                {/* Specs Dinámicos según el Proyecto Seleccionado */}
-                                <div className="mt-4 px-2">
-                                    <h4 className="font-extrabold text-lg text-gray-900 mb-2 tracking-tighter uppercase">
+                                {/* Specs - Visible solo en desktop */}
+                                <div className="hidden lg:block mt-4 px-2">
+                                    <h4 className="font-extrabold text-sm text-gray-900 mb-2 tracking-tighter uppercase">
                                         Specs &amp; Codes
                                     </h4>
                                     <div className="flex flex-col rounded-xl p-1">
