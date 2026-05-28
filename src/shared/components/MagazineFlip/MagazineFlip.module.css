@@ -123,6 +123,7 @@
     cursor: pointer;
     transition: background 0.2s;
     z-index: 10;
+    margin-top: 30px !important;
 }
 
 .openBtn:hover {

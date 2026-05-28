@@ -12,12 +12,14 @@ interface MagazinePage {
 }
 
 const PAGES: MagazinePage[] = [
-    { id: 1,  image: "/assets/images/features/magazine/magazine.png" },
-    { id: 2,  image: "/assets/images/features/magazine/magazine.png", link: "/blog/storm-damage-2024", linkLabel: "Read full story" },
-    { id: 3,  image: "/assets/images/features/magazine/magazine.png", link: "/blog/owens-corning", linkLabel: "Learn more" },
-    { id: 4,  image: "/assets/images/features/magazine/magazine.png" },
-    { id: 5,  image: "/assets/images/features/magazine/magazine.png", link: "/roofing/roof-installation-replacement", linkLabel: "Our services" },
-    { id: 6,  image: "/assets/images/features/magazine/magazine.png" },
+    { id: 1,  image: "/assets/images/features/magazine/port.png" },
+    { id: 2,  image: "/assets/images/features/magazine/page-0.png" },
+    { id: 3,  image: "/assets/images/features/magazine/page-1.png" },
+    { id: 4,  image: "/assets/images/features/magazine/page-2.png" },
+    { id: 5,  image: "/assets/images/features/magazine/page-3.png" }, /*link: "/roofing/roof-installation-replacement", linkLabel: "Our services"*/
+    { id: 6,  image: "/assets/images/features/magazine/page-4.png" },
+    { id: 7,  image: "/assets/images/features/magazine/page-5.png" },
+    { id: 8,  image: "/assets/images/features/magazine/page-6.png" },
 ];
 
 // Cada página necesita forwardRef para react-pageflip
@@ -159,7 +161,7 @@ export const MagazineFlip = () => {
         <section className={styles.section}>
             <div className={styles.header}>
                 <span className={styles.label}>Advanced Roofing</span>
-                <h2 className={styles.title}>Our Magazine</h2>
+                <h2 className={styles.title}>Our Journal</h2>
                 <p className={styles.subtitle}>Stories, projects & expertise from our team</p>
             </div>
 
@@ -167,7 +169,7 @@ export const MagazineFlip = () => {
                 {/* Botón de abrir — solo visible cuando está cerrado */}
                 {!isOpen && (
                     <button className={styles.openBtn} onClick={handleOpen}>
-                        Open Magazine ›
+                        Open Journal ›
                     </button>
                 )}
 
@@ -180,10 +182,10 @@ export const MagazineFlip = () => {
                 >
                     <HTMLFlipBook
                         ref={bookRef}
-                        width={450}
-                        height={600}
+                        width={550}
+                        height={750}
                         size="fixed"
-                        showCover={true}          /* portada en página única */
+                        showCover={true}        
                         drawShadow={false}
                         flippingTime={800}
                         maxShadowOpacity={0.4}
@@ -232,9 +234,6 @@ export const MagazineFlip = () => {
                             aria-label="Next"
                         >
                             ›
-                        </button>
-                        <button className={styles.closeBtn} onClick={handleClose}>
-                            × Close
                         </button>
                     </>
                 )}
