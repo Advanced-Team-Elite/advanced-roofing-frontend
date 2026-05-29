@@ -177,48 +177,23 @@
 .navRight { right: -64px; }
 
 
-/* ─── MOBILE: Single-page viewer ─────────────────────────────────────────── */
+/* ─── MOBILE: HTMLFlipBook portrait ──────────────────────────────────────── */
 .mobileScene {
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* espacio para las flechas a los lados sin solapar el libro */
+    padding: 0 52px;
+    box-sizing: border-box;
 }
 
-/* La página ocupa casi todo el ancho disponible */
-.mobilePage {
+/* Wrapper relativo para posicionar el botón "Open" encima del libro */
+.mobileBookWrapper {
     position: relative;
-    width: min(90vw, 420px);
-    /* Ratio A4 aprox */
-    aspect-ratio: 3 / 4;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
-    background: #e8e0d0;
-
-    /* animación de salida */
-    transition: opacity 0.28s ease, transform 0.28s ease;
-}
-
-.mobilePageImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    user-select: none;
-    pointer-events: none;
-}
-
-/* Slide-out animations (la nueva página aparece tras el timeout) */
-.slideOutLeft {
-    opacity: 0;
-    transform: translateX(-18px);
-}
-
-.slideOutRight {
-    opacity: 0;
-    transform: translateX(18px);
+    display: flex;
+    justify-content: center;
 }
 
 /* ── Botón "Open" superpuesto a la portada (mobile) ── */
@@ -270,8 +245,8 @@
 .mobileNav:disabled { opacity: 0.2; cursor: default; }
 .mobileNav:not(:disabled):hover { transform: translateY(-50%) scale(1.08); }
 
-.mobileNavLeft  { left: 0px; }
-.mobileNavRight { right: 0px; }
+.mobileNavLeft  { left: 4px; }
+.mobileNavRight { right: 4px; }
 
 /* Si el contenedor es muy estrecho, que las flechas no solapen la imagen */
 @media (max-width: 480px) {

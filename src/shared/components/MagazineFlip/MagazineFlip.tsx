@@ -51,30 +51,43 @@ const Page = React.forwardRef<HTMLDivElement, { page: MagazinePage }>(
 );
 Page.displayName = "Page";
 
-// ── Vista mobile: una sola cara centrada ───────────────────────────────────
+// ── Vista mobile: HTMLFlipBook en portrait (una cara) ────────────────────
 function MobileMagazine() {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const bookRef = useRef<any>(null);
+    const [currentPage, setCurrentPage] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
-    const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
-    const [animating, setAnimating] = useState(false);
+    const totalPages = PAGES.length;
 
-    const navigate = (dir: "next" | "prev") => {
-        if (animating) return;
-        const next = dir === "next" ? currentIndex + 1 : currentIndex - 1;
-        if (next < 0 || next >= PAGES.length) return;
+    // Dimensiones dinámicas según el viewport
+    const [pageSize, setPageSize] = useState({ width: 340, height: 453 });
 
-        setAnimDir(dir === "next" ? "left" : "right");
-        setAnimating(true);
-        setTimeout(() => {
-            setCurrentIndex(next);
-            setAnimating(false);
-            setAnimDir(null);
-        }, 280);
+    useEffect(() => {
+        const calcSize = () => {
+            const vw = window.innerWidth;
+            const width = Math.min(Math.floor(vw * 0.88), 420);
+            const height = Math.round(width * (4 / 3));
+            setPageSize({ width, height });
+        };
+        calcSize();
+        window.addEventListener("resize", calcSize);
+        return () => window.removeEventListener("resize", calcSize);
+    }, []);
+
+    const onFlip = useCallback((e: any) => {
+        const page = e.data;
+        setCurrentPage(page);
+        setIsOpen(page > 0);
+    }, []);
+
+    const handleOpen = () => {
+        bookRef.current?.pageFlip().flipNext();
     };
 
-    const page = PAGES[currentIndex];
-    const isFirst = currentIndex === 0;
-    const isLast = currentIndex === PAGES.length - 1;
+    const goNext = () => bookRef.current?.pageFlip().flipNext();
+    const goPrev = () => bookRef.current?.pageFlip().flipPrev();
+
+    const isFirst = currentPage === 0;
+    const isLast  = currentPage >= totalPages - 1;
 
     return (
         <section className={styles.section}>
@@ -85,11 +98,10 @@ function MobileMagazine() {
             </div>
 
             <div className={styles.mobileScene}>
-                {/* Flechas laterales */}
                 {isOpen && (
                     <button
                         className={`${styles.mobileNav} ${styles.mobileNavLeft}`}
-                        onClick={() => navigate("prev")}
+                        onClick={goPrev}
                         disabled={isFirst}
                         aria-label="Previous"
                     >
@@ -97,29 +109,43 @@ function MobileMagazine() {
                     </button>
                 )}
 
-                {/* Página actual */}
-                <div
-                    className={`${styles.mobilePage} ${
-                        animating && animDir === "left"  ? styles.slideOutLeft  :
-                            animating && animDir === "right" ? styles.slideOutRight : ""
-                    }`}
-                >
-                    <img src={page.image} alt={`Page ${page.id}`} className={styles.mobilePageImage} />
+                <div className={styles.mobileBookWrapper}>
+                    <HTMLFlipBook
+                        ref={bookRef}
+                        width={pageSize.width}
+                        height={pageSize.height}
+                        size="fixed"
+                        minWidth={240}
+                        maxWidth={420}
+                        minHeight={320}
+                        maxHeight={560}
+                        showCover={true}
+                        drawShadow={true}
+                        flippingTime={700}
+                        maxShadowOpacity={0.4}
+                        useMouseEvents={true}
+                        mobileScrollSupport={false}
+                        usePortrait={true}          /* ← una sola página visible */
+                        startPage={0}
+                        autoSize={false}
+                        clickEventForward={true}
+                        startZIndex={0}
+                        swipeDistance={30}
+                        renderOnlyPageLengthChange={false}
+                        showPageCorners={true}
+                        disableFlipByClick={false}
+                        onFlip={onFlip}
+                        className={styles.mobileBook}
+                        style={{}}
+                    >
+                        {PAGES.map((page) => (
+                            <Page key={page.id} page={page} />
+                        ))}
+                    </HTMLFlipBook>
 
-                    {page.link && (
-                        <Link href={page.link} className={styles.readMore}>
-                            {page.linkLabel ?? "Ver más"} →
-                        </Link>
-                    )}
-
-                    <span className={styles.pageNumber}>{page.id}</span>
-
-                    {/* Botón "Open" sobre la portada */}
+                    {/* Botón "Open" superpuesto a la portada */}
                     {!isOpen && (
-                        <button
-                            className={styles.mobileOpenBtn}
-                            onClick={() => { setIsOpen(true); navigate("next"); }}
-                        >
+                        <button className={styles.mobileOpenBtn} onClick={handleOpen}>
                             Open Journal ›
                         </button>
                     )}
@@ -128,7 +154,7 @@ function MobileMagazine() {
                 {isOpen && (
                     <button
                         className={`${styles.mobileNav} ${styles.mobileNavRight}`}
-                        onClick={() => navigate("next")}
+                        onClick={goNext}
                         disabled={isLast}
                         aria-label="Next"
                     >
@@ -143,8 +169,8 @@ function MobileMagazine() {
                     {PAGES.map((_, i) => (
                         <button
                             key={i}
-                            className={`${styles.dot} ${i === currentIndex ? styles.dotActive : ""}`}
-                            onClick={() => setCurrentIndex(i)}
+                            className={`${styles.dot} ${i === currentPage ? styles.dotActive : ""}`}
+                            onClick={() => bookRef.current?.pageFlip().flip(i)}
                         />
                     ))}
                 </div>
