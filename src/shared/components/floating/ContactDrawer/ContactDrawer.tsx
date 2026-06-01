@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './ContactDrawer.module.css';
+import {ChatInterface} from "@/shared/components/floating/ContactDrawer/ChatInterface/ChatInterface";
 
 interface ContactDrawerProps {
     type: 'text' | 'email' | 'chat' | 'call' | null;
@@ -169,7 +170,7 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
                     </div>
 
                     {/* Panel Derecho */}
-                    <div className={styles.formPanel}>
+                    <div className={`${styles.formPanel} ${type === 'chat' ? styles.formPanelChat : ''}`}>
                         <div className={styles.drawerHeader}>
                             <img
                                 src="/assets/brand/logo-dark.png"
@@ -192,8 +193,7 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
 
                         {/* ── CHAT: espacio reservado ── */}
                         {type === 'chat' ? (
-                            <div className={styles.chatPlaceholder} />
-
+                            <ChatInterface />
                         ) : submitState === 'success' ? (
                             /* ── SUCCESS STATE ── */
                             <div className={styles.successState}>

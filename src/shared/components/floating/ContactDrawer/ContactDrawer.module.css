@@ -511,14 +511,23 @@ textarea.floatingInput:not(:placeholder-shown) {
 
 .submitBtn:hover { background: #004a85; }
 
+.formPanelChat {
+    overflow: hidden;
+    gap: 0;
+    padding: 20px 20px 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .drawerContainer {
         margin: 0;
         width: 100% !important;
-        height: 100vh !important;      /* En móvil sí queremos full height */
-        max-height: 100vh !important;
+        height: 100dvh !important;     /* dvh en lugar de vh para mobile browsers */
+        max-height: 100dvh !important;
         border-radius: 0;
+    }
+    .formPanelChat {
+        padding: 20px 20px 0;
     }
     .infoPanel { display: none !important; }
     .formPanel {
