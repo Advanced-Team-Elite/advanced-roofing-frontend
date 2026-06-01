@@ -15,6 +15,7 @@ interface FormValues {
     phone: string;
     canText: string;
     message: string;
+    email: string;
 }
 
 interface FormErrors {
@@ -23,6 +24,7 @@ interface FormErrors {
     phone?: string;
     canText?: string;
     message?: string;
+    email?: string;
 }
 
 type SubmitState = 'idle' | 'loading' | 'success';
@@ -37,42 +39,38 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
         phone: '',
         canText: '',
         message: '',
+        email: '',
     });
     const [errors, setErrors] = useState<FormErrors>({});
-
-    /*useEffect(() => {
-        setMounted(true);
-        if (type) document.body.style.overflow = 'hidden';
-        return () => { document.body.style.overflow = 'unset'; };
-    }, [type]);*/
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    // Reset al cerrar
     useEffect(() => {
         if (!type) {
-            setForm({ firstName: '', lastName: '', phone: '', canText: '', message: '' });
+            setForm({ firstName: '', lastName: '', phone: '', canText: '', message: '', email: '' });
             setErrors({});
             setSubmitState('idle');
             setIsExpanded(false);
+        } else {
+            setSubmitState('idle');
+            setErrors({});
         }
     }, [type]);
 
     if (!type || !mounted) return null;
 
-    const titles = {
-        text: 'Send us a text',
-        email: 'Send us an email',
-        chat: 'Live Chat',
-        call: 'Request a callback',
+    const content = {
+        text:  { title: 'Send us a text',     subtitle: "Let us know what you need, and we'll get back to you as soon as we can." },
+        email: { title: 'Send us an email',   subtitle: 'Please enter your name and contact info.'                                  },
+        chat:  { title: 'Live Chat',           subtitle: ''                                                                          },
+        call:  { title: 'Request a callback', subtitle: "Please enter your name, phone number, and any details you'd like to mention." },
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { id, value } = e.target;
         setForm(prev => ({ ...prev, [id]: value }));
-        // Limpiar error del campo al escribir
         if (errors[id as keyof FormErrors]) {
             setErrors(prev => ({ ...prev, [id]: undefined }));
         }
@@ -81,14 +79,22 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
     const validate = (): FormErrors => {
         const e: FormErrors = {};
         if (!form.firstName.trim()) e.firstName = 'First name is required.';
-        if (!form.lastName.trim()) e.lastName = 'Last name is required.';
+        if (!form.lastName.trim())  e.lastName  = 'Last name is required.';
 
         const digits = form.phone.replace(/\D/g, '');
-        if (!digits) e.phone = 'Phone number is required.';
+        if (!digits)                 e.phone = 'Phone number is required.';
         else if (digits.length < 10) e.phone = 'Enter a valid US phone number.';
 
         if (!form.canText) e.canText = 'Please select an option.';
-        if (!form.message.trim()) e.message = 'Please leave a message.';
+
+        if (type === 'email') {
+            if (!form.email.trim()) e.email = 'Email address is required.';
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+                e.email = 'Enter a valid email address.';
+        } else {
+            if (!form.message.trim()) e.message = 'Please leave a message.';
+        }
+
         return e;
     };
 
@@ -114,6 +120,13 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
             setErrors({ message: 'Something went wrong. Please try again.' });
             setSubmitState('idle');
         }
+    };
+
+    const successMessages = {
+        call:  "Your request has been sent! We'll call the number you provided as soon as we can.",
+        text:  "Your message has been sent! We'll text you back as soon as we can.",
+        email: "Your message has been sent! We'll reply to your email address shortly.",
+        chat:  '',
     };
 
     const drawerContent = (
@@ -177,8 +190,12 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
                             </div>
                         </div>
 
-                        {/* ── SUCCESS STATE ── */}
-                        {submitState === 'success' ? (
+                        {/* ── CHAT: espacio reservado ── */}
+                        {type === 'chat' ? (
+                            <div className={styles.chatPlaceholder} />
+
+                        ) : submitState === 'success' ? (
+                            /* ── SUCCESS STATE ── */
                             <div className={styles.successState}>
                                 <div className={styles.successIcon}>
                                     <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#00589e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -186,24 +203,24 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
                                     </svg>
                                 </div>
                                 <h2 className={styles.successTitle}>Thanks, {form.firstName}!</h2>
-                                <p className={styles.successMessage}>
-                                    Your request has been sent! We&apos;ll call the number you provided as soon as we can.
-                                </p>
+                                <br/>
+                                <p className={styles.successMessage}>{successMessages[type]}</p>
+                                <br/>
                                 <button className={styles.closeSuccessBtn} onClick={onClose}>Close</button>
                             </div>
+
                         ) : submitState === 'loading' ? (
                             /* ── LOADING STATE ── */
                             <div className={styles.successState}>
                                 <div className={styles.spinner} />
                                 <p className={styles.loadingText}>Sending your request...</p>
                             </div>
+
                         ) : (
                             /* ── FORM STATE ── */
                             <>
-                                <h2 className={styles.formTitle}>{titles[type]}</h2>
-                                <p className={styles.formSubtitle}>
-                                    Please enter your name, phone number, and any details you&apos;d like to mention.
-                                </p>
+                                <h2 className={styles.formTitle}>{content[type].title}</h2>
+                                <p className={styles.formSubtitle}>{content[type].subtitle}</p>
 
                                 <form className={styles.mainForm} onSubmit={(e) => e.preventDefault()}>
                                     <div className={styles.inputRow}>
@@ -225,6 +242,7 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
                                         </div>
                                     </div>
 
+                                    {/* Phone: visible en TODOS los tipos */}
                                     <div className={styles.floatingGroup}>
                                         <input id="phone" type="tel" placeholder=" "
                                                value={form.phone} onChange={handleChange}
@@ -234,26 +252,43 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
                                         {errors.phone && <span className={styles.errorMsg}>{errors.phone}</span>}
                                     </div>
 
+                                    {/* Can we text you: visible en TODOS los tipos */}
                                     <div className={styles.floatingGroup}>
-                                        <select id="canText" defaultValue="" onChange={handleChange}
-                                                className={`${styles.floatingInput} ${styles.selectInput} ${errors.canText ? styles.inputError : ''}`}
+                                        <select
+                                            id="canText"
+                                            value={form.canText}
+                                            onChange={handleChange}
+                                            className={`${styles.floatingInput} ${styles.selectInput} ${errors.canText ? styles.inputError : ''}`}
                                         >
-                                            <option value="" disabled hidden>Select an option</option>
+                                            <option value="" disabled>Select an option</option>
                                             <option value="yes">Yes, you can text at this number</option>
-                                            <option value="no">No, don&apos;t text me</option>
+                                            <option value="no">No, don't text me</option>
                                         </select>
                                         <label htmlFor="canText" className={styles.floatingLabel}>Can we text you?*</label>
                                         {errors.canText && <span className={styles.errorMsg}>{errors.canText}</span>}
                                     </div>
 
-                                    <div className={styles.floatingGroup}>
-                                        <textarea id="message" placeholder=" " rows={4}
-                                                  value={form.message} onChange={handleChange}
-                                                  className={`${styles.floatingInput} ${errors.message ? styles.inputError : ''}`}
-                                        />
-                                        <label htmlFor="message" className={styles.floatingLabel}>Message*</label>
-                                        {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
-                                    </div>
+                                    {/* Reemplaza el bloque del textarea message por esto: */}
+
+                                    {type === 'email' ? (
+                                        <div className={styles.floatingGroup}>
+                                            <input id="email" type="email" placeholder=" "
+                                                   value={form.email} onChange={handleChange}
+                                                   className={`${styles.floatingInput} ${errors.email ? styles.inputError : ''}`}
+                                            />
+                                            <label htmlFor="email" className={styles.floatingLabel}>Email Address*</label>
+                                            {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
+                                        </div>
+                                    ) : (
+                                        <div className={styles.floatingGroup}>
+        <textarea id="message" placeholder=" " rows={4}
+                  value={form.message} onChange={handleChange}
+                  className={`${styles.floatingInput} ${errors.message ? styles.inputError : ''}`}
+        />
+                                            <label htmlFor="message" className={styles.floatingLabel}>Message*</label>
+                                            {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
+                                        </div>
+                                    )}
 
                                     <p className={styles.legalNotice}>
                                         By submitting this form, you acknowledge and agree to our

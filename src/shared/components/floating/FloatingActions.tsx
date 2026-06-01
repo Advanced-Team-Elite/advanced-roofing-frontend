@@ -184,7 +184,7 @@ export const FloatingActions = () => {
 
                     <div className={styles.actionGrid}>
                         {/* TEXT - DESHABILITADO */}
-                        <button className={styles.actionItem} onClick={() => setActiveContactType('text')} aria-label="Send us a text message" disabled>
+                        <button className={styles.actionItem} onClick={() => setActiveContactType('text')} aria-label="Send us a text message">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
                             <span>Text</span>
                         </button>
@@ -207,7 +207,7 @@ export const FloatingActions = () => {
                         </button>
 
                         {/* EMAIL - DESHABILITADO */}
-                        <button className={styles.actionItem} onClick={() => setActiveContactType('email')} aria-label="Send us an email" disabled>
+                        <button className={styles.actionItem} onClick={() => setActiveContactType('email')} aria-label="Send us an email">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             <span>Email</span>
                         </button>
