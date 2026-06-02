@@ -12,7 +12,7 @@ interface MagazinePage {
 }
 
 const PAGES: MagazinePage[] = [
-    { id: 1,  image: "/assets/images/features/magazine/port.png" },
+    { id: 1,  image: "/assets/images/features/magazine/port-alt.png" },
     { id: 2,  image: "/assets/images/features/magazine/page-0.png" },
     { id: 3,  image: "/assets/images/features/magazine/page-1.png" },
     { id: 4,  image: "/assets/images/features/magazine/page-2.png" },
