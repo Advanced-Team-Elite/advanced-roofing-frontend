@@ -100,7 +100,7 @@ export async function POST(req: Request) {
 
         // 6. Enviar mensaje
         const result = await chat.sendMessage({ message });
-        const responseText = result.text;
+        const responseText = result.text ?? '';
 
         // 7. Guardar respuesta del bot
         const botMsg = await prisma.message.create({
