@@ -53,7 +53,7 @@ export const Header = () => {
                     <div className={styles.phoneWrapper}>
                         {/* Este es el número que se ve siempre */}
                         <div className={styles.phoneMain}>
-                            <a href="tel:8479456565" className={styles.telf}>847-945-6565</a>
+                            <a href="tel:2244264773" className={styles.telf}>224-426-4773</a>
                             <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
