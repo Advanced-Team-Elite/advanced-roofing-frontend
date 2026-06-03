@@ -22,7 +22,7 @@ interface FormData {
     address: string;
     isNewCustomer: string;
     message: string;
-    captchaInput: string;
+    // captchaInput: string;
 }
 
 interface FormErrors {
@@ -33,7 +33,7 @@ interface FormErrors {
     address?: string;
     isNewCustomer?: string;
     message?: string;
-    captchaInput?: string;
+    // captchaInput?: string;
 }
 
 const ContactUsPage = () => {
@@ -48,21 +48,21 @@ const ContactUsPage = () => {
         address: '',
         isNewCustomer: '',
         message: '',
-        captchaInput: '',
+        // captchaInput: '',
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
-    const [captchaCode, setCaptchaCode] = useState('');
+    // const [captchaCode, setCaptchaCode] = useState('');
 
-    useEffect(() => {
-        setCaptchaCode(generateCaptcha());
-    }, []);
+    // useEffect(() => {
+    //     setCaptchaCode(generateCaptcha());
+    // }, []);
 
-    const refreshCaptcha = () => {
-        setCaptchaCode(generateCaptcha());
-        setFormData((prev) => ({ ...prev, captchaInput: '' }));
-        setErrors((prev) => ({ ...prev, captchaInput: undefined }));
-    };
+    // const refreshCaptcha = () => {
+    //     setCaptchaCode(generateCaptcha());
+    //     setFormData((prev) => ({ ...prev, captchaInput: '' }));
+    //     setErrors((prev) => ({ ...prev, captchaInput: undefined }));
+    // };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -102,11 +102,11 @@ const ContactUsPage = () => {
         if (!formData.message.trim())
             newErrors.message = 'Please tell us how we can help you.';
 
-        if (!formData.captchaInput.trim()) {
-            newErrors.captchaInput = 'Please enter the captcha code.';
-        } else if (formData.captchaInput.toUpperCase() !== captchaCode) {
-            newErrors.captchaInput = 'Captcha code does not match. Try again.';
-        }
+        // if (!formData.captchaInput.trim()) {
+        //     newErrors.captchaInput = 'Please enter the captcha code.';
+        // } else if (formData.captchaInput.toUpperCase() !== captchaCode) {
+        //     newErrors.captchaInput = 'Captcha code does not match. Try again.';
+        // }
 
         return newErrors;
     };
@@ -118,13 +118,13 @@ const ContactUsPage = () => {
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-            if (validationErrors.captchaInput) {
-                refreshCaptcha();
-            }
+            // if (validationErrors.captchaInput) {
+            //     refreshCaptcha();
+            // }
             return;
         }
 
-        const { captchaInput, ...dataToSubmit } = formData;
+        // const { captchaInput, ...dataToSubmit } = formData;
 
         try {
             const response = await fetch("/api/contact", {
@@ -132,7 +132,7 @@ const ContactUsPage = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(dataToSubmit),
+                body: JSON.stringify(formData), // antes: dataToSubmit
             });
 
             if (!response.ok) {
@@ -148,11 +148,11 @@ const ContactUsPage = () => {
                 address: '',
                 isNewCustomer: '',
                 message: '',
-                captchaInput: '',
+                // captchaInput: '',
             });
 
             setErrors({});
-            refreshCaptcha();
+            // refreshCaptcha();
 
             router.push('/contact-us/thank-you');
 
@@ -182,9 +182,8 @@ const ContactUsPage = () => {
                                 className={styles.map}
                                 allowFullScreen
                                 title="Google Maps showing Advanced Roofing Team location"
-                                onLoad={() => setMapLoaded(true)} // Se dispara cuando el mapa carga
+                                onLoad={() => setMapLoaded(true)}
                             >
-
                             </iframe>
                         </div>
 
@@ -286,6 +285,7 @@ const ContactUsPage = () => {
                                 {errors.message && <span className={styles.error}>{errors.message}</span>}
                             </div>
 
+                            {/* CAPTCHA - comentado temporalmente
                             <div className={styles.field}>
                                 <div className={styles.captchaRow}>
                                     <span className={styles.captchaCode}>{captchaCode}</span>
@@ -301,6 +301,7 @@ const ContactUsPage = () => {
                                 />
                                 {errors.captchaInput && <span className={styles.error}>{errors.captchaInput}</span>}
                             </div>
+                            */}
 
                             <p className={styles.disclaimer}>
                                 By submitting, you agree to receive text messages from Advanced Roofing
@@ -326,8 +327,6 @@ const ContactUsPage = () => {
                                         <p className={styles.infoTitle}>Call Us Today!</p>
                                         <a href="tel:2244264773" className={styles.infoTextCall}>
                                             224-426-4773
-
-
                                         </a>
                                     </div>
                                 </div>
