@@ -12,7 +12,7 @@ export const Header = () => {
     const [view, setView] = useState('main');
 
     const locations = [
-        { label: "Main Office", phone: "847-945-6565" },
+        { label: "Main Office", phone: "224-426-4773" },
         { label: "Toll-Free", phone: "877-945-6565" },
         { label: "Colorado", phone: "719-627-1400" },
         { label: "Wisconsin", phone: "262-909-8907" },

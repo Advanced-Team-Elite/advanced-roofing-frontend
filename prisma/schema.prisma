@@ -38,3 +38,18 @@ model WeatherConfig {
   city         String   @default("Chicago")
   updatedAt    DateTime @updatedAt
 }
+
+model Conversation {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  sender         String       // 'user' o 'bot'
+  text           String       @db.Text
+  createdAt      DateTime     @default(now())
+}
