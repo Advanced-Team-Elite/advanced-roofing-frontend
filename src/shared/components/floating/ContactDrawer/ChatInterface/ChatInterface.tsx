@@ -2,13 +2,42 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './ChatInterface.module.css';
 
-interface Message {
+// ─── Types ───────────────────────────────────────────────────────────────────
+interface DisplayMessage {
     id: string | number;
     text: string;
     sender: 'user' | 'bot';
     time?: string;
 }
 
+interface ConversationMessage {
+    conversationId?: string;
+    eventId?: string;
+    tempEventId?: string | null;
+    message: string;
+    sender: string;
+    dateReceived: string;
+    contactInfo?: {
+        first_name: string | null;
+        last_name: string | null;
+        phones: string | null;
+        emails: string | null;
+        addresses: string | null;
+    } | null;
+}
+
+interface StoredConversation {
+    conversationId: string;
+    messages: ConversationMessage[];
+    expiresOn: string;
+}
+
+// ─── Constants ───────────────────────────────────────────────────────────────
+const GREETING = "Hi, welcome to Advanced Roofing Team Construction. How can we help you today?";
+const STORAGE_KEY = 'ConversationInfo';
+const EXPIRY_MINUTES = 30;
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 const getTime = () => {
     const now = new Date();
     let h = now.getHours();
@@ -18,48 +47,66 @@ const getTime = () => {
     return `${h}:${m} ${ampm}`;
 };
 
+const msgToTime = (dateReceived: string) => {
+    const d = new Date(dateReceived);
+    let h = d.getHours();
+    const m = d.getMinutes().toString().padStart(2, '0');
+    const ampm = h >= 12 ? 'pm' : 'am';
+    h = h % 12 || 12;
+    return `${h}:${m} ${ampm}`;
+};
+
+const toDisplay = (msgs: ConversationMessage[]): DisplayMessage[] =>
+    msgs
+        .filter(msg => {
+            // Buscamos si existe texto en cualquiera de los dos campos
+            const hasText = (msg?.message != null) || (msg as any)?.text != null;
+            if (!hasText) console.warn("Mensaje descartado por filtro:", msg);
+            return hasText;
+        })
+        .map(msg => ({
+            id: msg.eventId ?? (msg as any).id ?? crypto.randomUUID(),
+            // Normalizamos: tomamos 'message' si existe, si no, tomamos 'text'
+            text: (msg.message ?? (msg as any).text ?? "").replace('##GREETING##', '').trim(),
+            // Normalizamos el sender:
+            // Si sender es 'ScorpionAIChat' o 'bot', es 'bot'
+            sender: (msg.sender === 'User' || msg.sender === 'user') ? 'user' : 'bot',
+            time: msgToTime(msg.dateReceived ?? (msg as any).createdAt),
+        }));
+
+const initConversation = (): StoredConversation => ({
+    conversationId: crypto.randomUUID(),
+    messages: [{
+        message: `${GREETING} ##GREETING##`,
+        sender: 'ScorpionAIChat',
+        dateReceived: new Date().toISOString(),
+    }],
+    expiresOn: new Date(Date.now() + EXPIRY_MINUTES * 60 * 1000).toISOString(),
+});
+
+const getInitialConversation = (): StoredConversation => {
+    if (typeof window === 'undefined') return initConversation(); // SSR guard
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+        const parsed: StoredConversation = JSON.parse(raw);
+        const conv = new Date(parsed.expiresOn) < new Date() ? initConversation() : parsed;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(conv));
+        return conv;
+    }
+    const conv = initConversation();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(conv));
+    return conv;
+};
+
+// ─── Component ───────────────────────────────────────────────────────────────
 export const ChatInterface = () => {
-    const [conversationId, setConversationId] = useState<string | null>(null);
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: 1,
-            text: "Hello! Welcome to Advanced Roofing Team Construction. How can we help you?",
-            sender: 'bot',
-            time: getTime(),
-        }
-    ]);
+    const [conversation, setConversation] = useState<StoredConversation>(getInitialConversation);
+    const [messages, setMessages] = useState<DisplayMessage[]>(() => toDisplay(getInitialConversation().messages));
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-
-    // Efecto único para inicializar la conversación y cargar el historial
-    useEffect(() => {
-        const initChat = async () => {
-            let id = localStorage.getItem('chat_conversation_id');
-
-            if (!id) {
-                id = crypto.randomUUID();
-                localStorage.setItem('chat_conversation_id', id);
-            }
-            setConversationId(id);
-
-            try {
-                const res = await fetch(`/api/chat?conversationId=${id}`);
-                if (res.ok) {
-                    const data = await res.json();
-                    // Si recibimos historial, lo agregamos (respetando el mensaje inicial)
-                    if (data && data.length > 0) {
-                        setMessages(data);
-                    }
-                }
-            } catch (error) {
-                console.error("Error al cargar historial:", error);
-            }
-        };
-
-        initChat();
-    }, []);
 
     // Scroll automático
     useEffect(() => {
@@ -69,14 +116,30 @@ export const ChatInterface = () => {
     }, [messages, isTyping]);
 
     const handleSend = async () => {
-        if (!input.trim() || !conversationId) return;
+        if (!input.trim() || !conversation) return;
 
-        const userText = input;
+        const userText = input.trim();
         setInput('');
         setIsTyping(true);
 
-        const userMsg: Message = { id: Date.now(), text: userText, sender: 'user', time: getTime() };
-        setMessages(prev => [...prev, userMsg]);
+        // Mensaje de usuario para localStorage
+        const userMsg: ConversationMessage = {
+            conversationId: conversation.conversationId,
+            eventId: crypto.randomUUID(),
+            tempEventId: crypto.randomUUID(),
+            message: userText,
+            sender: 'User',
+            dateReceived: new Date().toISOString(),
+            contactInfo: null,
+        };
+
+        const convWithUser: StoredConversation = {
+            ...conversation,
+            messages: [...conversation.messages, userMsg],
+        };
+        setConversation(convWithUser);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(convWithUser));
+        setMessages(toDisplay(convWithUser.messages));
 
         try {
             const res = await fetch('/api/chat', {
@@ -84,13 +147,24 @@ export const ChatInterface = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     message: userText,
-                    conversationId: conversationId
+                    conversationId: conversation.conversationId,
+                    localHistory: conversation.messages,
                 }),
             });
 
-            const botMsg = await res.json();
+            const botMsg: ConversationMessage = await res.json();
+            console.log('botMsg recibido:', botMsg); // ← ver estructura real
             setIsTyping(false);
-            setMessages(prev => [...prev, { ...botMsg, time: getTime() }]);
+
+            const convWithBot: StoredConversation = {
+                ...convWithUser,
+                messages: [...convWithUser.messages, botMsg],
+            };
+            console.log("Nueva lista de mensajes:", convWithBot.messages);
+            setConversation(convWithBot);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(convWithBot));
+            setMessages(toDisplay(convWithBot.messages));
+
         } catch (error) {
             setIsTyping(false);
             console.error("Error al enviar mensaje:", error);
