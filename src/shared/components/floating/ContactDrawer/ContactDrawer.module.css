@@ -25,9 +25,8 @@
     margin-right: 10px;
     margin-bottom: 75px;
     width: 375px;
-    /* Altura dinámica basada en el viewport */
-    height: 85vh;
-    max-height: 800px; /* Limite opcional para pantallas muy grandes */
+    height: auto;          /* ← cambia de 85vh a auto */
+    max-height: 85vh;      /* ← el límite sigue siendo 85vh */
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -35,8 +34,9 @@
     transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Mantenemos hidden aquí para que el scroll sea interno */
+    overflow: hidden;
 }
+
 
 .expanded {
     width: 900px; /* Tamaño total expandido */
@@ -511,14 +511,23 @@ textarea.floatingInput:not(:placeholder-shown) {
 
 .submitBtn:hover { background: #004a85; }
 
+.formPanelChat {
+    overflow: hidden;
+    gap: 0;
+    padding: 20px 20px 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .drawerContainer {
         margin: 0;
         width: 100% !important;
-        height: 100vh !important; /* Full height en móvil */
-        max-height: 100vh !important;
+        height: 100dvh !important;     /* dvh en lugar de vh para mobile browsers */
+        max-height: 100dvh !important;
         border-radius: 0;
+    }
+    .formPanelChat {
+        padding: 20px 20px 0;
     }
     .infoPanel { display: none !important; }
     .formPanel {
