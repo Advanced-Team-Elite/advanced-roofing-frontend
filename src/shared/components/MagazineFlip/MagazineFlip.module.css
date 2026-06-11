@@ -116,12 +116,15 @@
     height: 100%;
     overflow: hidden;
     background: #e8e0d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pageImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* <--- ESTO ES LO QUE BUSCAS: muestra toda la imagen */
     display: block;
     pointer-events: none;
     user-select: none;
