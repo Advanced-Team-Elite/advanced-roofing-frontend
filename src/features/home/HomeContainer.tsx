@@ -38,7 +38,6 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <StormRecovery />
             <AwardsBanner />
             <WhyChooseUs />
-            <AdvancedIsHere/>
             <CoverageMap/>
             <BeforeAndAfter/>
             <StormDamageCheck/>
