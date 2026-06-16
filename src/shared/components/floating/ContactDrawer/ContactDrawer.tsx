@@ -292,7 +292,7 @@ export const ContactDrawer = ({ type, onClose }: ContactDrawerProps) => {
 
                                     <p className={styles.legalNotice}>
                                         By submitting this form, you acknowledge and agree to our
-                                        <a href="#"> Privacy Policy</a> and <a href="#"> Acceptable Use Policy</a>.
+                                        <a href="/privacy-policy"> Privacy Policy</a> and <a href="/acceptable-use-policy"> Acceptable Use Policy</a>.
                                         If you choose to receive text messages, you agree to receive texts from Advanced Roofing Team Construction related to your inquiry. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help.
                                     </p>
                                 </form>

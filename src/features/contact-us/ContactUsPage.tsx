@@ -310,7 +310,7 @@ const ContactUsPage = () => {
                                 purchase.
                                 Msg & data rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for
                                 assistance.{" "}
-                                <a href="#">Acceptable Use Policy</a>
+                                <a href="/acceptable-use-policy">Acceptable Use Policy</a>
                             </p>
 
                             <button type="submit" className={styles.submitBtn}>

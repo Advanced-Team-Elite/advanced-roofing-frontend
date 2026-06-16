@@ -66,7 +66,7 @@ export const ServiceForm = () => {
                         at the number provided, including those related to your inquiry, follow-ups, and review
                         requests, via automated technology. Consent is not a condition of purchase. Msg & data
                         rates may apply. Msg frequency may vary. Reply STOP to cancel or HELP for assistance.
-                        <a href="#" className={styles.link}> Acceptable Use Policy</a>
+                        <a href="acceptable-use-policy" className={styles.link}> Acceptable Use Policy</a>
                     </p>
 
                     <div className={styles.buttonCenter}>
