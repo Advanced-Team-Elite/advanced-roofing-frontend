@@ -12,8 +12,7 @@ export const Header = () => {
     const [view, setView] = useState('main');
 
     const locations = [
-        { label: "Main Office", phone: "224-426-4773" },
-        { label: "Toll-Free", phone: "877-945-6565" },
+        { label: "Main Office", phone: "877-945-6565" },
         { label: "Colorado", phone: "719-627-1400" },
         { label: "Wisconsin", phone: "262-909-8907" },
         { label: "Indiana", phone: "219-316-4996" }
@@ -53,7 +52,7 @@ export const Header = () => {
                     <div className={styles.phoneWrapper}>
                         {/* Este es el número que se ve siempre */}
                         <div className={styles.phoneMain}>
-                            <a href="tel:2244264773" className={styles.telf}>224-426-4773</a>
+                            <a href="tel:8779456565" className={styles.telf}>877-945-6565</a>
                             <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
