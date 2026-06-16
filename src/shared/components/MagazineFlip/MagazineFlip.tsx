@@ -12,12 +12,16 @@ interface MagazinePage {
 }
 
 const PAGES: MagazinePage[] = [
-    { id: 1,  image: "/assets/images/features/magazine/vol01-cover.png" },
-    { id: 2,  image: "/assets/images/features/magazine/vol01-page01.png" },
-    { id: 3,  image: "/assets/images/features/magazine/vol01-page02.png" },
-    { id: 4,  image: "/assets/images/features/magazine/vol01-page02.png" },
-    { id: 5,  image: "/assets/images/features/magazine/vol01-page03.png" },
-    { id: 6,  image: "/assets/images/features/magazine/vol01-back.png" },
+    { id: 1,  image: "/assets/images/features/magazine/1.png" },
+    { id: 2,  image: "/assets/images/features/magazine/2.png" },
+    { id: 3,  image: "/assets/images/features/magazine/3.png" },
+    { id: 4,  image: "/assets/images/features/magazine/4.png" },
+    { id: 5,  image: "/assets/images/features/magazine/5.png" },
+    { id: 6,  image: "/assets/images/features/magazine/6.png" },
+    { id: 7,  image: "/assets/images/features/magazine/7.png" },
+    { id: 8,  image: "/assets/images/features/magazine/8.png" },
+    { id: 9,  image: "/assets/images/features/magazine/9.png" },
+    { id: 10,  image: "/assets/images/features/magazine/back.png" },
 ];
 
 // ── Hook para detectar mobile ──────────────────────────────────────────────
