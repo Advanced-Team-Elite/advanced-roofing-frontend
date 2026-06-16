@@ -8,6 +8,7 @@ import { WeatherEffectsAsync } from "@/shared/components/layout/WeatherEffects/W
 import { Suspense } from "react";
 import { GoogleMapsProvider } from "@/features/widget/GoogleMapsProvider";
 import Script from "next/script"; // 1. Importa el componente Script
+import { FacebookPixel } from "@/shared/components/FacebookPixel/FacebookPixel";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
         <head>
+            {/* Google Analytics */}
             <Script
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=G-MLY1QBHZGE"
@@ -48,14 +50,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
         </head>
         <body className="antialiased">
-        <Suspense fallback={null}>
-            <WeatherEffectsAsync />
-        </Suspense>
-        <GoogleMapsProvider>
-            <Header />
-            {children}
-            <FloatingActions />
-        </GoogleMapsProvider>
+            <FacebookPixel pixelId="27082259264741522" />
+            <Suspense fallback={null}>
+                <WeatherEffectsAsync />
+            </Suspense>
+            <GoogleMapsProvider>
+                <Header />
+                {children}
+                <FloatingActions />
+            </GoogleMapsProvider>
         </body>
         </html>
     );
