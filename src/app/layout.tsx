@@ -6,7 +6,8 @@ import { Header } from "@/shared/components/layout/Header/Header";
 import { FloatingActions } from "@/shared/components/floating/FloatingActions";
 import { WeatherEffectsAsync } from "@/shared/components/layout/WeatherEffects/WeatherEffectsAsync";
 import { Suspense } from "react";
-import {GoogleMapsProvider} from "@/features/widget/GoogleMapsProvider";
+import { GoogleMapsProvider } from "@/features/widget/GoogleMapsProvider";
+import Script from "next/script"; // 1. Importa el componente Script
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -31,6 +32,21 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className={`${openSans.variable} ${prompt.variable}`}>
+        <head>
+            <Script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-MLY1QBHZGE"
+                strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-MLY1QBHZGE');
+                `}
+            </Script>
+        </head>
         <body className="antialiased">
         <Suspense fallback={null}>
             <WeatherEffectsAsync />
@@ -40,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <FloatingActions />
         </GoogleMapsProvider>
-
         </body>
         </html>
     );
