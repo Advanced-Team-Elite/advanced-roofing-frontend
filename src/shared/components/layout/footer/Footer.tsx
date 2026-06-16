@@ -36,7 +36,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                         <div className={`${styles.footerColumn} ${styles.logoColumn}`}>
                             <Link href="/">
                                 <Image
-                                    src="/assets/brand/logo-light.png"
+                                    src="/assets/brand/logo-light-ALT.png"
                                     alt="Advanced Roofing Team"
                                     width={250}
                                     height={80}
