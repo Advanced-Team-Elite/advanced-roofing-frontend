@@ -34,7 +34,7 @@ const Financing = ({ backgroundColor = "bg-[#f0f0f0]" }: FinancingProps) => {
 
     return (
         <section className={`${backgroundColor} py-12 md:py-24 px-10 md:px-16 lg:px-24 font-sans`}>
-            <ScrollReveal direction="left" initialOpacity={20} distance={90} className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-start" >
+            <ScrollReveal direction="right" initialOpacity={20} distance={90} className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 items-start" >
 
                 <div className="space-y-8 md:col-span-6">
                     <div className="max-w-md mx-auto md:mx-0">

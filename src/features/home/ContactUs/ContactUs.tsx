@@ -137,7 +137,27 @@ const ContactUs = () => {
                 throw new Error("Failed to submit form");
             }
 
-            // Reset form after successful submit
+            // 1. Redirección prioritaria: El usuario siempre recibe su confirmación
+            router.push('/contact-us/thank-you');
+
+            // 2. Medición de conversión aislada:
+            // Si OpenAI falla, el bloque try-catch interno captura el error
+            // sin romper la redirección ni la experiencia del usuario.
+            try {
+                if (typeof window !== 'undefined' && typeof window.oaiq === 'function') {
+                    window.oaiq("measure", "registration_completed", {
+                        status: "success"
+                    }, {
+                        event_id: "reg_" + Date.now()
+                    });
+                    console.log("Evento enviado a OpenAI: registration_completed");
+                }
+            } catch (pixelError) {
+                // Error silencioso: solo lo registramos para depuración en consola
+                console.error("El píxel de OpenAI falló, pero el lead se envió con éxito:", pixelError);
+            }
+
+            // 3. Reset del estado del formulario
             setFormData({
                 firstName: '',
                 lastName: '',
@@ -151,8 +171,6 @@ const ContactUs = () => {
 
             setErrors({});
             refreshCaptcha();
-
-            router.push('/contact-us/thank-you');
 
         } catch (error) {
             console.error("Error submitting form:", error);
