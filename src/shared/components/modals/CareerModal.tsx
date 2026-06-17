@@ -53,7 +53,7 @@ export const CareerModal = () => {
 
                 {/* Botón APPLY NOW */}
                 <a
-                    href="http://localhost:3000/contact-us"
+                    href="/contact-us"
                     className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 md:bottom-8 md:right-12 cursor-pointer rounded-lg bg-yellow-400 px-4 py-2 text-sm sm:px-6 sm:py-2.5 sm:text-base md:px-8 md:py-3 md:text-lg font-bold !text-blue-900 shadow-xl transition-transform hover:scale-105"
                 >
                     APPLY NOW
