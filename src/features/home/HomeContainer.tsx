@@ -22,27 +22,37 @@ import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
 import {MagazineFlip} from "@/shared/components/MagazineFlip/MagazineFlip";
+import {CareerModal} from "@/shared/components/modals/CareerModal";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
-            {/* --- HERO SECTION --- */}
+            <CareerModal />
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
+                {/*
+                <div className="w-full h-[500px] rounded-lg overflow-hidden border border-gray-300">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://radar.weather.gov/"
+                            title="Radar en vivo"
+                            style={{ border: 'none' }}
+                        />
+                </div>*/}
             <NowServing/>
             <Language/>
-            <OurServices />
             <StatsBar/>
+            <OurServices />
             <AboutHome />
-            <StormRecovery />
             <AwardsBanner />
             <WhyChooseUs />
-            <CoverageMap/>
             <BeforeAndAfter/>
             <StormDamageCheck/>
-            <OurProjects/>
             <Financing/>
+            <CoverageMap/>
+            <OurProjects/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
