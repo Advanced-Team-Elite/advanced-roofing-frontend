@@ -14,7 +14,7 @@ const OurServices = () => {
 
     return (
         <section className={styles.section}>
-            <ScrollReveal className={styles.container} direction="right" initialOpacity={20} distance={90}>
+            <ScrollReveal className={styles.container} direction="left" initialOpacity={20} distance={90}>
                 <h2 className={styles.mainTitle}>Our Services</h2>
 
                 <div className={styles.servicesGrid}>
