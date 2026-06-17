@@ -8,7 +8,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'advancedteamelite.com',
+                hostname: 'advancedroofingteam.com',
             },
         ],
     },
@@ -24,7 +24,7 @@ const nextConfig = {
                     },
                 ],
                 permanent: true,
-                destination: 'https://advancedteamelite.com/:path*',
+                destination: 'https://advancedroofingteam.com/:path*',
             },
         ]
     },
