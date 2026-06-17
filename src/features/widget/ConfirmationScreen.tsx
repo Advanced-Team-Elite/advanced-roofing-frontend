@@ -52,7 +52,7 @@ export const ConfirmationScreen = ({ total }: ConfirmationScreenProps) => {
                     Advanced Roofing Team · Chicago, IL
                 </p>
                 <p className="text-[10px] text-gray-300 mt-1">
-                    advancedteamelite.com
+                    advancedroofingteam.com
                 </p>
             </div>
         </div>

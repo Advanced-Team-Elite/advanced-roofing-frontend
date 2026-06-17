@@ -98,7 +98,11 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                 <div className="flex flex-col h-full bg-white overflow-y-auto pr-2 custom-scrollbar">
                     {/* Header con botón de cierre pegado a la derecha */}
                     <div className="flex justify-end p-4">
-                        <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-black">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="text-gray-400 hover:text-black"
+                            aria-label="Close quote drawer"
+                        >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
                         </button>
                     </div>
