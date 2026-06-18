@@ -12,7 +12,6 @@ import VideoBanner from "@/shared/components/VideoBanner/VideoBanner";
 import AwardsBanner from "@/shared/components/AwardsBanner/AwardsBanner";
 import StatsBar from "@/features/home/StatsBar/StatsBar";
 import StormAlert from "@/shared/components/StormAlert/StormAlert";
-import AdvancedIsHere from "@/features/home/AdvancedIsHere/AdvancedIsHere";
 import BeforeAndAfter from "@/features/home/BeforeAndAfter/BeforeAndAfter";
 import StormDamageCheck from "@/features/home/StormDamageCheck/StormDamageCheck";
 import OurProjects from "@/features/home/OurProjects/OurProjects";
@@ -21,13 +20,12 @@ import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
-import {MagazineFlip} from "@/shared/components/MagazineFlip/MagazineFlip";
-import {CareerModal} from "@/shared/components/modals/CareerModal";
+import {CareerCarousel} from "@/shared/components/modals/CareerModal";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
-            <CareerModal />
+            <CareerCarousel />
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
