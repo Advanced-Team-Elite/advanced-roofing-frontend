@@ -10,7 +10,6 @@ import { GoogleMapsProvider } from "@/features/widget/GoogleMapsProvider";
 import Script from "next/script"; // 1. Importa el componente Script
 import { FacebookPixel } from "@/shared/components/FacebookPixel/FacebookPixel";
 import {OpenAIPixel} from "@/shared/components/OpenAIPixel/OpenAIPixel";
-import { CareerModal } from "@/shared/components/modals/CareerModal";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
