@@ -22,22 +22,28 @@ export const CareerModal = () => {
             <button
                 onClick={close}
                 aria-label="Cerrar"
-                // He añadido 'outline-none' y asegurado que no sea focusable innecesariamente
-                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 z-50 flex h-8 w-8 sm:h-9 sm:w-9 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md ring-1 ring-white/20 transition hover:bg-white/20 hover:ring-white/40 outline-none focus:outline-none"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 z-50 flex
+             h-8 w-8 sm:h-10 sm:w-10
+             cursor-pointer items-center justify-center rounded-full
+             bg-white text-black ring-1 ring-black/10
+             transition hover:bg-neutral-100 hover:ring-black/20
+             outline-none focus:outline-none"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.75}
+                    stroke="#000000"
+                    strokeWidth={2.2}
                     strokeLinecap="round"
-                    className="h-4 w-4"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                 >
                     <path d="M18 6 6 18" />
                     <path d="M6 6l12 12" />
                 </svg>
             </button>
+
+
 
             {/* Contenedor de la imagen */}
             <div className="relative aspect-[4/3] w-[90vw] max-w-[340px] sm:max-w-[480px] md:max-w-[640px] lg:max-w-[720px] overflow-hidden rounded-2xl shadow-2xl">

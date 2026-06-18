@@ -31,8 +31,8 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
-                {/*
-                <div className="w-full h-[500px] rounded-lg overflow-hidden border border-gray-300">
+
+                {/*<div className="w-full h-[500px] rounded-lg overflow-hidden border border-gray-300">
                         <iframe
                             width="100%"
                             height="100%"
