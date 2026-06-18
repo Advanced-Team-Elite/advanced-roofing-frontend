@@ -37,12 +37,14 @@ export const CareerCarousel = () => {
             style={{ margin: "auto" }}
             onCancel={close}
         >
-            {/* Botón de cerrar */}
+            {/* Botón de cerrar: Rojo con X blanca */}
             <button
                 onClick={close}
-                className="absolute -top-3 -right-3 z-50 h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-white text-black shadow-lg hover:bg-neutral-100 outline-none"
+                className="absolute cursor-pointer -top-3 -right-3 z-50 h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition-colors outline-none"
             >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} className="h-5 w-5 sm:h-6 sm:w-6"><path d="M18 6 6 18M6 6l12 12" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-5 w-5 sm:h-7 sm:w-7">
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
             </button>
 
             {/* Contenedor del Carrusel */}
@@ -50,6 +52,7 @@ export const CareerCarousel = () => {
                 {slides.map((slide, index) => (
                     <div key={slide.src} className={`absolute inset-0 transition-opacity duration-500 ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                         <Image src={slide.src} alt="Hiring" fill priority quality={100} className="object-cover" />
+
                         {/* Botón APPLY NOW responsivo */}
                         <a
                             href={slide.link}
@@ -61,7 +64,7 @@ export const CareerCarousel = () => {
                 ))}
             </div>
 
-            {/* Flechas de navegación (ocultas en móviles muy pequeños para evitar desbordamiento) */}
+            {/* Flechas de navegación */}
             <button
                 onClick={prevSlide}
                 className="absolute left-1 top-1/2 -translate-y-1/2 md:left-[-50px] p-1 md:p-2 text-white/70 hover:text-yellow-400 transition z-10"
