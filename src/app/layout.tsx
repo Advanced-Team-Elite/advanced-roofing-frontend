@@ -10,6 +10,7 @@ import { GoogleMapsProvider } from "@/features/widget/GoogleMapsProvider";
 import Script from "next/script"; // 1. Importa el componente Script
 import { FacebookPixel } from "@/shared/components/FacebookPixel/FacebookPixel";
 import {OpenAIPixel} from "@/shared/components/OpenAIPixel/OpenAIPixel";
+import {WeatherMapWidget} from "@/shared/components/floating/WeatherMapWidget/WeatherMapWidget";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <GoogleMapsProvider>
                 <Header />
                 {children}
+                <WeatherMapWidget />
                 <FloatingActions />
             </GoogleMapsProvider>
         </body>
