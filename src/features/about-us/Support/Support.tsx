@@ -27,7 +27,7 @@ const Support = () => {
                     </ul>
                     <ul className={styles.serviceList}>
                         <li>
-                            <Link href="/src/app/property-report/" className={styles.linkHighlight}>
+                            <Link href="/property-report/" className={styles.linkHighlight}>
                                 Property damage assessment
                             </Link>{" "}
                             when severe weather impacts your roof
