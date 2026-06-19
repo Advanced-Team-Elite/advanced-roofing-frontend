@@ -28,8 +28,23 @@ const prompt = Prompt({
 });
 
 export const metadata: Metadata = {
-    title: "Advanced Roofing Team | Chicago Roofing Company",
-    description: "Professional roofers in Chicago and the Greater Chicagoland Area.",
+    title: {
+        default: "Advanced Roofing Team | Roofing & Siding in Chicagoland",
+        template: "%s | Advanced Roofing Team"
+    },
+    description: "Expert roof installation, replacement, and siding services for the Greater Chicagoland area. GAF Master Elite & Owens Corning Preferred contractors. 24/7 emergency support.",
+    metadataBase: new URL('https://www.advancedroofingteam.com'),
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        siteName: 'Advanced Roofing Team',
+
+        images: [{ url: '/logo.png', width: 1200, height: 630 }],
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -50,6 +65,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   gtag('config', 'G-MLY1QBHZGE');
                 `}
             </Script>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "RoofingContractor",
+                        "name": "Advanced Roofing Team",
+                        "url": "https://www.advancedroofingteam.com",
+                        "logo": "https://www.advancedroofingteam.com/logo.png",
+                        "telephone": "+1-877-945-6565",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Chicago",
+                            "addressRegion": "IL",
+                            "addressCountry": "US"
+                        },
+                        "areaServed": {
+                            "@type": "AdministrativeArea",
+                            "name": "Chicagoland Area"
+                        },
+                        "priceRange": "$$$"
+                    })
+                }}
+            />
         </head>
         <body className="antialiased">
             <OpenAIPixel pixelId="6dPKWdJYqiipqoUnA6L2AB" />
