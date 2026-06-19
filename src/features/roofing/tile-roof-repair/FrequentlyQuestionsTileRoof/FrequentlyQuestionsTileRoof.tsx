@@ -38,7 +38,7 @@ export const FrequentlyQuestionsTileRoof = () => {
                             <h4>What makes tile roof repairs different in Chicago?</h4>
                             <p>
                                 The city experiences severe winters, rapid temperature swings, and strict building codes. These factors require a thorough approach to repair and compliance to ensure lasting results and valid
-                                {" "}<Link href="/src/app/property-report/" className={styles.inlineLink}>
+                                {" "}<Link href="/property-report/" className={styles.inlineLink}>
                                 insurance claims
                             </Link>.
 

@@ -39,7 +39,7 @@ export const WhyOwnersTrust = () => {
                         conditions can lead to unique issues not typically seen in milder regions.
                         Our hands-on process supports you from the first call through project completion.
                         We conduct in-depth inspections, help you document issues, and guide you through the{' '}
-                        <Link href="/src/app/property-report/" className={styles.blueLink}>
+                        <Link href="/property-report/" className={styles.blueLink}>
                             insurance claim process
                         </Link>
                         . Our repairs address the real cause—not just appearances—so your skylight lasts through future seasons.
