@@ -3,12 +3,12 @@ import React from 'react';
 import styles from './AwardWinningBusiness.module.css';
 
 const logos = [
-    { src: "/assets/images/features/home/AngiesList.webp", alt: "Angie's List Super Service Award" },
-    { src: "/assets/images/features/home/gaf-certified-logo.webp", alt: "GAF Certified" },
-    { src: "/assets/images/features/home/Haag-Commercial-Logo.webp", alt: "HAAG Certified Inspector" },
-    { src: "/assets/images/features/home/PreferredContractor_OwensCorning.webp", alt: "Owens Corning Preferred Contractor" },
-    { src: "/assets/images/features/home/Haag-Commercial-Logo.webp", alt: "HAAG Certified Inspector" },
-    { src: "/assets/images/features/home/AngiesList_2019.webp", alt: "Angie's List 2019 Award" },
+    { src: "/assets/images/features/home/badgets/AngiesList.webp", alt: "Angie's List Super Service Award" },
+    { src: "/assets/images/features/home/badgets/gaf-certified-logo.webp", alt: "GAF Certified" },
+    { src: "/assets/images/features/home/badgets/Haag-Commercial-Logo.webp", alt: "HAAG Certified Inspector" },
+    { src: "/assets/images/features/home/badgets/PreferredContractor_OwensCorning_guide.webp", alt: "Owens Corning Preferred Contractor" },
+    { src: "/assets/images/features/home/badgets/Haag-Commercial-Logo.webp", alt: "HAAG Certified Inspector" },
+    { src: "/assets/images/features/home/badgets/AngiesList_2019.webp", alt: "Angie's List 2019 Award" },
 ];
 
 const AwardWinningBusiness = () => {
