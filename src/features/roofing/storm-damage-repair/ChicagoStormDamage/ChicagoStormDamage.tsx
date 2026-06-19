@@ -21,27 +21,26 @@ export const ChicagoStormDamage = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h1 className={styles.mainTitle}>Chicago, IL, Storm Damage Repair </h1>
-                    <h2 className={styles.subTitle}>We Offer 24/7 Emergency Help After Wind & Hail Damage Across the Greater Chicagoland Area</h2>
+                    <h1 className={styles.mainTitle}>Professional Storm Damage Repair & Roof Restoration</h1>
+                    <h2 className={styles.subTitle}>Providing 24/7 Emergency Support for Wind, Hail, and Storm Damage Across Chicagoland</h2>
 
                     <div className={styles.textContent}>
                         <p>
-                            In Chicago, storms can arrive fast, bringing high winds, hail, and unpredictable weather that leaves your roof vulnerable. While some damage is easy to spot, other issues may quietly weaken your roof’s ability to protect your property. At{' '}
+                            In the Chicagoland area, severe weather can strike quickly, bringing high winds and hail that leave your roofing system vulnerable. While some damage is immediately visible, other issues may silently compromise your roof’s integrity over time. At{' '}
                             <Link href="/about-us/" className={styles.inlineLink}>
                                 Advanced Roofing Team Construction
                             </Link>
-                            , we provide storm damage inspections, insurance claim assistance, and full roof replacements when severe weather takes a toll.
+                            , we specialize in comprehensive storm damage assessments, expert insurance claim guidance, and precision-engineered roof replacements when severe weather impacts your property.
                         </p>
 
-                        <p className={styles.textBold}>What you get when you work with us:</p>
-
+                        <p className={styles.textBold}>Why homeowners and businesses across Illinois trust our team:</p>
 
                         <ul className={styles.benefitsList}>
                             <li>
-                                Serving Chicago and the surrounding metropolitan area since 2004
+                                Decades of dedicated roofing experience serving Chicago, Cook County, and the greater Chicagoland metropolitan area since 2004
                             </li>
                             <li>
-                                Haag Certified Roof Inspectors trained to accurately assess wind and hail damage
+                                Haag Certified Roof Inspectors trained in the latest industry standards to accurately identify complex wind and hail damage
                             </li>
                             <li>
                                 <Link href="/about-us/gaf-masterelite-preferred-contractor/" className={styles.inlineLink}>
@@ -51,57 +50,56 @@ export const ChicagoStormDamage = () => {
                                 <Link href="/about-us/owens-corning-preferred-contractor/" className={styles.inlineLink}>
                                     Owens Corning Preferred Contractor
                                 </Link>
-                                {' '}credentials
+                                {' '}status, ensuring top-tier material installation
                             </li>
                             <li>
-                                Fully insured service with available warranty coverage
+                                Fully insured operations with robust warranty coverage for your peace of mind
                             </li>
                             <li>
-                                Around-the-clock emergency response
+                                Rapid, around-the-clock emergency response to secure your property
                             </li>
                             <li>
-                                Direct insurance claim assistance to simplify the process
+                                Direct insurance claim advocacy to simplify the documentation and approval process
                             </li>
                             <li>
-                                Free, no-obligation estimates
+                                Comprehensive, no-obligation roof inspections
                             </li>
                         </ul>
 
-                        <h3 className={styles.sectionHeading}>Why Certified Roof Inspections Make a Difference</h3>
+                        <h3 className={styles.sectionHeading}>Why Haag Certified Inspections Provide Greater Security</h3>
 
                         <p>
-                            Storm damage isn’t always obvious from the ground. Even small areas of weakness, if left undetected, can lead to bigger problems down the line. That’s why trained storm inspectors play an important role after severe weather hits.
+                            Not all storm damage is obvious from the ground. Hidden vulnerabilities, if left unaddressed, can lead to costly structural failures. Our approach relies on trained storm damage inspectors who understand how different materials react to severe Chicagoland weather events.
                         </p>
 
                         <p>
-                            At Advanced Roofing Team Construction, our team combines hands-on experience with advanced certifications to provide trusted, thorough roof evaluations. Whether you're dealing with recent storm impacts or simply want peace of mind after severe weather, we offer professional inspections backed by over 20 years of industry knowledge.
+                            At Advanced Roofing Team Construction, our team combines extensive hands-on experience with rigorous national certifications to provide detailed, objective roof evaluations. Whether you are dealing with recent storm impacts or need a professional assessment after a severe weather season, we deliver expert insights backed by over 20 years of industry leadership.
                         </p>
 
-                        <h3 className={styles.sectionHeading}>How Do I Know If My Roof Has Storm Damage?</h3>
+                        <h3 className={styles.sectionHeading}>Identifying Hidden Storm Damage</h3>
 
                         <p>
-                            Storm damage isn’t always easy to see. Signs your roof may need repair include:
+                            Early detection is key to preventing long-term damage. Common indicators that your roof requires professional evaluation include:
                         </p>
 
                         <ul className={styles.benefitsList}>
-                            <li>Missing or curled shingles</li>
-                            <li>Water stains on ceilings or walls</li>
-                            <li>Shingle granules collecting in gutters</li>
-                            <li>Dents or cracks caused by hail</li>
-                            <li>Drafts or leaks inside your attic</li>
+                            <li>Damaged, missing, or lifted shingles</li>
+                            <li>Unexpected water stains on interior ceilings or walls</li>
+                            <li>Excessive shingle granules collecting in gutter systems</li>
+                            <li>Impact dents or cracks on roof materials from hail</li>
+                            <li>Increased drafts or moisture inside attic spaces</li>
                         </ul>
 
-                        <h3 className={styles.sectionHeading}>What Should I Do Immediately After a Storm?</h3>
+                        <h3 className={styles.sectionHeading}>Immediate Steps After a Severe Storm</h3>
 
                         <p>
-                            Safety should always come first. Once the storm passes:
+                            Your safety is the priority. Once the weather clears, consider these steps:
                         </p>
 
                         <ul className={styles.benefitsList}>
-                            <li>Check your property from the ground for visible damage</li>
-                            <li>Take photos of any damage for insurance purposes</li>
-                            <li>Avoid climbing on your roof—it may be unsafe</li>
-                            <li>Contact Advanced Roofing Team Construction for a full inspection</li>
+                            <li>Perform a visual inspection from ground level—do not climb on the roof</li>
+                            <li>Document any visible damage with photographs for your insurance records</li>
+                            <li>Contact Advanced Roofing Team Construction to schedule a professional, thorough inspection</li>
                         </ul>
                     </div>
                 </div>

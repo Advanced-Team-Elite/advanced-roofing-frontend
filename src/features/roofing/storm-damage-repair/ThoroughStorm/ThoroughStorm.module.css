@@ -41,6 +41,10 @@
     color: #00c3f8;
 }
 
+.inlineLink:hover{
+    color: black;
+}
+
 /* LISTA */
 .processList {
     list-style: none;

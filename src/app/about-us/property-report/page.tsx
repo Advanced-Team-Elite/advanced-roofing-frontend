@@ -1,4 +1,4 @@
-import InsuranceClaimsContainer from "@/features/about-us/roofing-insurance-claims/InsuranceClaimsContainer";
+import {RoofingInsuranceClaimsContainer} from "@/features/roofing-insurance-claims/RoofingInsuranceClaimsContainer";
 
 export const metadata = {
     title: 'Property Reports | Chicago',
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function InsuranceClaimsPage() {
-    return <InsuranceClaimsContainer />;
+    return <RoofingInsuranceClaimsContainer />;
 }
