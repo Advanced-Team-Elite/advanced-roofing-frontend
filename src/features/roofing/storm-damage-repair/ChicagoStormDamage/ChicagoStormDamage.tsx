@@ -10,12 +10,10 @@ export const ChicagoStormDamage = () => {
         <section className={styles.mainSection}>
             <div className={styles.container}>
 
-                {/* Columna del Formulario: Primero en el DOM para que salga arriba en Tablet/Mobile */}
                 <div className={styles.formColumn}>
                     <ContactForm />
                 </div>
 
-                {/* Columna de Texto: Contenido Exacto del Mockup */}
                 <div className={styles.textColumn}>
                     <div className={styles.iconWrapper}>
                         <FlairIcon size={150} />
@@ -30,40 +28,30 @@ export const ChicagoStormDamage = () => {
                             <Link href="/about-us/" className={styles.inlineLink}>
                                 Advanced Roofing Team Construction
                             </Link>
-                            , we specialize in comprehensive storm damage assessments, expert insurance claim guidance, and precision-engineered roof replacements when severe weather impacts your property.
+                            , we specialize in comprehensive storm damage assessments, expert insurance claim guidance, and precision-engineered{' '}
+                            <Link href="/roofing/roof-installation-replacement/" className={styles.inlineLink}>
+                                <strong>roof replacements</strong>
+                            </Link>
+                            {' '}when severe weather impacts your property.
                         </p>
 
                         <p className={styles.textBold}>Why homeowners and businesses across Illinois trust our team:</p>
 
                         <ul className={styles.benefitsList}>
+                            <li>Decades of dedicated roofing experience serving Chicago, Cook County, and the greater Chicagoland metropolitan area since 2004</li>
+                            <li>Haag Certified Roof Inspectors trained in the latest industry standards to accurately identify complex wind and hail damage</li>
                             <li>
-                                Decades of dedicated roofing experience serving Chicago, Cook County, and the greater Chicagoland metropolitan area since 2004
-                            </li>
-                            <li>
-                                Haag Certified Roof Inspectors trained in the latest industry standards to accurately identify complex wind and hail damage
-                            </li>
-                            <li>
-                                <Link href="/about-us/gaf-masterelite-preferred-contractor/" className={styles.inlineLink}>
-                                    GAF Master Elite
-                                </Link>
+                                <Link href="/about-us/gaf-masterelite-preferred-contractor/" className={styles.inlineLink}>GAF Master Elite</Link>
                                 {' '}and{' '}
-                                <Link href="/about-us/owens-corning-preferred-contractor/" className={styles.inlineLink}>
-                                    Owens Corning Preferred Contractor
-                                </Link>
+                                <Link href="/about-us/owens-corning-preferred-contractor/" className={styles.inlineLink}>Owens Corning Preferred Contractor</Link>
                                 {' '}status, ensuring top-tier material installation
                             </li>
+                            <li>Fully insured operations with robust warranty coverage for your peace of mind</li>
                             <li>
-                                Fully insured operations with robust warranty coverage for your peace of mind
+                                Rapid, <Link href="/roofing/emergency-roof-repairs/" className={styles.inlineLink}><strong>around-the-clock emergency response</strong></Link> to secure your property
                             </li>
-                            <li>
-                                Rapid, around-the-clock emergency response to secure your property
-                            </li>
-                            <li>
-                                Direct insurance claim advocacy to simplify the documentation and approval process
-                            </li>
-                            <li>
-                                Comprehensive, no-obligation roof inspections
-                            </li>
+                            <li>Direct insurance claim advocacy to simplify the documentation and approval process</li>
+                            <li>Comprehensive, no-obligation roof inspections</li>
                         </ul>
 
                         <h3 className={styles.sectionHeading}>Why Haag Certified Inspections Provide Greater Security</h3>
@@ -99,7 +87,10 @@ export const ChicagoStormDamage = () => {
                         <ul className={styles.benefitsList}>
                             <li>Perform a visual inspection from ground level—do not climb on the roof</li>
                             <li>Document any visible damage with photographs for your insurance records</li>
-                            <li>Contact Advanced Roofing Team Construction to schedule a professional, thorough inspection</li>
+                            <li>
+                                <Link href="/contact-us/" className={styles.inlineLink}><strong>Contact Advanced Roofing Team Construction</strong></Link>
+                                {' '}to schedule a professional, thorough inspection. If you have active leaks, ask about our emergency stabilization services.
+                            </li>
                         </ul>
                     </div>
                 </div>
