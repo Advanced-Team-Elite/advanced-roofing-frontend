@@ -21,54 +21,57 @@ const ChicagoRoofInstallation = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h1 className={styles.mainTitle}>Chicago Roof Installation & Replacement</h1>
-                    <h2 className={styles.subTitle}>Roof Upgrades for Properties Across the Greater Chicagoland Area</h2>
+                    <h1 className={styles.mainTitle}>Professional Roof Installation & Full Replacement</h1>
+                    <h2 className={styles.subTitle}>Durable Roofing Systems Engineered for the Chicagoland Climate</h2>
 
                     <div className={styles.textContent}>
                         <p>
-                            When it’s time for a new roof, choosing the right team matters. At{' '}
+                            When it is time for a new roof, partnering with a proven, certified team is essential for long-term property protection. At{' '}
                             <Link href="/about-us/" className={styles.inlineLink}>
                                 Advanced Roofing Team Construction
                             </Link>
-                            , we help homeowners and businesses across Chicago and nearby suburbs with complete roof installation and full replacement services built to handle our region’s weather.
+                            , we provide comprehensive roof installation and full replacement services to residential homeowners and commercial property managers across Chicagoland and the surrounding metropolitan area.
                         </p>
 
                         <p >
-                            Whether your roof is showing signs of age or you've experienced{' '}
+                            Whether your current roof has reached the end of its lifespan or you have suffered severe{' '}
                             <Link href="/roofing/storm-damage-repair/" className={styles.inlineLink}>
-                                storm damage
+                                storm-related damage
                             </Link>{' '}
-                            that requires a full replacement, we guide you through the process and materials designed for long-term performance.
+                            that necessitates a total replacement, our experts guide you through the selection of high-performance materials engineered to endure the region’s extreme weather cycles.
                         </p>
 
                         {/* Banner de contacto interno (Gris) */}
                         <div className={styles.innerCta}>
                             <p>
-                                Call (877) 945-6565 or{' '}
+                                Call us at <Link href="tel:8779456565" className={styles.inlineLink}><strong>(877) 945-6565</strong></Link> or{' '}
                                 <Link href="/contact-us/" className={styles.inlineLink}>
-                                    contact us online
+                                    schedule your free inspection online
                                 </Link>{' '}
-                                today to schedule a service and get a free estimate.
+                                to get an accurate, no-obligation estimate for your property.
                             </p>
                         </div>
 
-                        <h3 className={styles.sectionHeading}>Residential & Commercial Roof Installation</h3>
+                        <h3 className={styles.sectionHeading}>Expert Residential & Commercial Roofing Solutions</h3>
 
                         <p>
-                            We install durable roofing systems built to handle the extremes of Illinois weather. Whether it’s for your home, multi-family building, or commercial property, we bring the experience and materials to deliver reliable protection.
+                            We install high-performance roofing systems designed to resist heavy winds, hail, and the rapid temperature fluctuations common throughout Illinois. From complex residential designs to large-scale commercial roofing projects, we bring the industry-leading craftsmanship required to deliver superior, reliable protection.
                         </p>
 
-                        <p className={styles.boldText}>Our roof installation and replacement services include:</p>
+                        <p className={styles.boldText}>Our professional installation and replacement capabilities include:</p>
 
                         <ul className={styles.benefitsList}>
                             <li>
-                                Full roof replacement for homes, multi-family buildings, and commercial properties
+                                Full-scale roof replacement for single-family homes, multi-family developments, and commercial buildings
                             </li>
                             <li>
-                                Storm assessments and coordination with insurance adjusters for qualified claims
+                                Advanced storm damage assessments and expert advocacy during the insurance claims process
                             </li>
                             <li>
-                                24/7 emergency response for storm-related issues
+                                Rapid, 24/7 emergency response for critical roof failures
+                            </li>
+                            <li>
+                                Precision installation of industry-leading, warrantied roofing systems
                             </li>
                         </ul>
                     </div>
