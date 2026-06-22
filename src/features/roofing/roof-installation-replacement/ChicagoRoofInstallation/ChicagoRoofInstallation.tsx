@@ -21,8 +21,8 @@ const ChicagoRoofInstallation = () => {
                         <FlairIcon size={150} />
                     </div>
 
-                    <h1 className={styles.mainTitle}>Professional Roof Installation & Full Replacement</h1>
-                    <h2 className={styles.subTitle}>Durable Roofing Systems Engineered for the Chicagoland Climate</h2>
+                    <h1 className={styles.mainTitle}>Chicago's Insurance Restoration & Roofing Experts</h1>
+                    <h2 className={styles.subTitle}>We Help Homeowners Recover More From Storm Damage Claims While Delivering Quality Roof Replacements.</h2>
 
                     <div className={styles.textContent}>
                         <p>

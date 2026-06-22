@@ -262,18 +262,29 @@ export default function CoverageMap() {
                                     </div>
                                 </div>
 
-                                {/* Specs - Visible solo en desktop */}
-                                <div className="hidden lg:block mt-4 px-2">
-                                    <h4 className="font-extrabold text-sm text-gray-900 mb-2 tracking-tighter uppercase">
-                                        Specs &amp; Codes
+                                {/* ESTO ES LO QUE DEBES PEGAR */}
+                                <div className="mt-6 px-1">
+                                    <h4 className="font-bold text-sm text-gray-500 mb-3 uppercase tracking-wider">
+                                        Features & Benefits
                                     </h4>
-                                    <div className="flex flex-col rounded-xl p-1">
-                                        <SpecRow label="Pieces/Square"  value={activeProject?.specs.piecesSquare || '—'} />
-                                        <SpecRow label="Bundles/Square" value={activeProject?.specs.bundlesSquare || '—'} />
-                                        <SpecRow label="Nails/Square¹"  value={activeProject?.specs.nailsSquare || '—'} />
-                                        <SpecRow label="Exposure"       value={activeProject?.specs.exposure || '—'} />
-                                        <SpecRow label="Dimensions"     value={activeProject?.specs.dimensions || '—'} />
-                                    </div>
+                                    <ul className="grid grid-cols-1 gap-2">
+                                        {[
+                                            { text: "Made in USA" },
+                                            { text: "Classic Appearance" },
+                                            { text: "Great Value" },
+                                            { text: "StainGuard Algae Protection" }
+                                        ].map((item, idx) => (
+                                            <li key={idx} className="flex items-center gap-3 text-gray-800 font-medium">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#004A8C]" />
+                                                {item.text}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* Descargo de responsabilidad - Tipografía más pequeña y sutil */}
+                                    <p className="mt-5 text-[9px] text-gray-800 leading-tight italic border-t border-black/5 pt-3">
+                                        Any product warranties listed are provided directly by the manufacturer and subject to the manufacturer’s terms and approval.
+                                    </p>
                                 </div>
                             </>
                         )}
