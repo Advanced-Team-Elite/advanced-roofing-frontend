@@ -14,7 +14,7 @@ export const AreasWeServeContainer = () => {
             {/* Usamos el SharedBanner con la ciudad visible */}
             <SharedBanner
                 title="Proudly Serving Chicago"
-                subtitle={"Also proudly serving Wisconsin, Indiana, and Colorado"}
+                subtitle={"Also proudly serving Wisconsin and Indiana"}
                 isCityVisible={false}
                 backgroundImage={"/assets/images/features/areas-we-serve/banner-v2.webp"}
             />

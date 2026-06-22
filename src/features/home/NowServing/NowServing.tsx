@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const states = [
     { id: 'wisconsin', name: 'Wisconsin', img: '/assets/images/features/serving/wisconsin.webp' },
     { id: 'indiana', name: 'Indiana', img: '/assets/images/features/serving/indiana.webp' },
-    { id: 'colorado', name: 'Colorado', img: '/assets/images/features/serving/colorado.webp' },
+    { id: 'areas-we-serve', name: 'Illinois', img: '/assets/images/features/serving/colorado.webp' },
     { id: 'michigan-up', name: 'Michigan', img: '/assets/images/features/serving/michigan.webp' },
 ];
 
@@ -22,11 +22,6 @@ export const NowServing = () => {
         offset: ["start end", "end start"]
     });
 
-    /**
-     * Configuramos el movimiento:
-     * El camión original sale a la izquierda (-150%)
-     * Los nuevos entran desde la derecha y cruzan
-     */
         // ... dentro de tu componente NowServing
     // Eje X: El Truck empieza más a la derecha y los demás le siguen de cerca
     const xTruck    = useTransform(scrollYProgress, [0, 1], ["60%", "-140%"]);
@@ -43,7 +38,7 @@ export const NowServing = () => {
 
     return (
         <section className={styles.section} ref={containerRef}>
-            <h2 className={styles.title}>Now Serving</h2>
+            <h2 className={styles.title}>Serving in</h2>
 
             <div className={styles.container}>
                 <div className={styles.accordion}>
