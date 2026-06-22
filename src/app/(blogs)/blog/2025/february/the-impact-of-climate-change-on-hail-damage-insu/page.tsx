@@ -66,7 +66,7 @@ export default function ClimateChangeBlogPage() {
                                 Data from the National Oceanic and Atmospheric Administration (NOAA) reveals a steady rise in extreme weather events attributed to climate change. Among these, hailstorms have become increasingly unpredictable in their occurrence and intensity. With larger hailstones and longer storm durations becoming commonplace, the financial impact of hail damage has surged significantly.
                             </p>
                             <p>
-                                A single hailstorm in 2022, for instance, caused an estimated $2 billion in property damage in the United States. Such events are no longer isolated; they are becoming regular occurrences in parts of the country such as Texas, Colorado, and Oklahoma, commonly referred to as "Hail Alley." These patterns place immense pressure on insurance companies to adjust their policies to remain financially sustainable.
+                                A single hailstorm in 2022, for instance, caused an estimated $2 billion in property damage in the United States. Such events are no longer isolated; they are becoming regular occurrences in parts of the country such as Texas and Oklahoma, commonly referred to as "Hail Alley." These patterns place immense pressure on insurance companies to adjust their policies to remain financially sustainable.
                             </p>
 
                             <h2 className={styles.subTitle}>How Insurance Policies Are Changing</h2>

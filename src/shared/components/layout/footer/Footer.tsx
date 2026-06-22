@@ -156,11 +156,6 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                 </div>
 
                                 <div className={styles.phoneItem}>
-                                    <span className={styles.locationTag}>Colorado:</span>
-                                    <a href="tel:7196271400" className={styles.phoneNumber}>719-627-1400</a>
-                                </div>
-
-                                <div className={styles.phoneItem}>
                                     <span className={styles.locationTag}>Wisconsin:</span>
                                     <a href="tel:2629098907" className={styles.phoneNumber}>262-909-8907</a>
                                 </div>
