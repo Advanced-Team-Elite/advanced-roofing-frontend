@@ -38,7 +38,6 @@ export const OurServiceAreas = () => {
         expansion: [
             { name: "Wisconsin", path: "/wisconsin/" },
             { name: "Indiana", path: "/indiana/" },
-            { name: "Colorado", path: "/colorado/" },
             { name: "Michigan (Upper Peninsula)", path: "/michigan-up/" }
         ]
     };

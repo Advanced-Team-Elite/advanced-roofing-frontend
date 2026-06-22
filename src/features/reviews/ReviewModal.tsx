@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 const locations = [
     { label: "--- UNITED STATES ---", value: "", disabled: true },
-    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Connecticut",
     "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
     "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
     "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
