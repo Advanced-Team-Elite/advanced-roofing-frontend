@@ -2,9 +2,7 @@ import { Metadata } from 'next';
 import { RoofInstallationReplacementContainer } from "@/features/roofing/roof-installation-replacement/RoofInstallationReplacementContainer";
 
 export const metadata: Metadata = {
-    // Título enfocado en autoridad y alcance regional
-    title: 'Expert Roof Installation & Replacement | Chicagoland Roofing Pros',
-    // Descripción que destaca certificaciones y durabilidad
+    title: 'Chicago Insurance Restoration & Roofing Experts',
     description: 'Premier roof installation and full replacement across Chicagoland. GAF Master Elite & Owens Corning Preferred contractors providing durable roofing systems for homes and businesses.',
     keywords: [
         'roof replacement Chicagoland',
@@ -28,7 +26,6 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <main>
-            {/* Schema Markup de 'RoofingContractor' para mayor autoridad local */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -37,6 +34,9 @@ export default function Page() {
                         "@type": "RoofingContractor",
                         "name": "Advanced Roofing Team",
                         "url": "https://www.advancedroofingteam.com/roofing/roof-installation-replacement",
+                        "telephone": "877-945-6565",
+                        "priceRange": "$$",
+                        "openingHours": "Mo-Sa 08:00-18:00",
                         "areaServed": [
                             { "@type": "City", "name": "Chicago" },
                             { "@type": "AdministrativeArea", "name": "Cook County" },

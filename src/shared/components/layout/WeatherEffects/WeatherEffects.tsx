@@ -28,33 +28,28 @@ function generateWind(seed: number, count: number) {
     return Array.from({ length: count }, (_, i) => ({
         id: i,
         top: `${rng(i) * 100}%`,
-        width: `${400 + rng(i + 1) * 400}px`, // Ráfagas mucho más largas
-        thickness: `${6 + rng(i + 2) * 10}px`, // Líneas más gruesas
-        opacity: 0.25 + rng(i + 3) * 0.35,     // Incrementamos opacidad
-        delay: `${rng(i + 4) * 6}s`,
-        duration: `${1.5 + rng(i + 5) * 2}s`,  // Más veloces para simular ráfagas fuertes
+        width: `${300 + rng(i + 1) * 300}px`,
+        thickness: `${4 + rng(i + 2) * 6}px`,  // Líneas un poco más finas
+        opacity: 0.1 + rng(i + 3) * 0.2,       // Menos opacas
+        delay: `${rng(i + 4) * 8}s`,           // Más dispersas en el tiempo
+        duration: `${3 + rng(i + 5) * 3}s`,    // Duración más larga = movimiento más lento
         startX: `${-600 + rng(i + 6) * 100}px`,
-        skewY: `${-5 + rng(i + 7) * 10}deg`,   // Inclinación variable del viento
+        skewY: `${-2 + rng(i + 7) * 4}deg`,    // Inclinación más suave
     }));
 }
-
 // ✅ NUEVO: Generador estático de hojas físicas para el viento de Primavera
 function generateLeaves(seed: number, count: number) {
     const rng = (i: number) => ((Math.sin(seed + i * 3.1) * 43758.5453) % 1 + 1) % 1;
-    return Array.from({ length: count }, (_, i) => {
-        // Alternamos entre la hoja izquierda y derecha que tienes en el proyecto
-        const leafSide = rng(i) > 0.5 ? "left" : "right";
-        return {
-            id: i,
-            side: leafSide,
-            top: `${10 + rng(i + 1) * 80}%`,       // Distribuido verticalmente
-            size: `${24 + rng(i + 2) * 20}px`,     // Tamaños variados (proporción física)
-            delay: `${rng(i + 3) * 7}s`,           // Delay escalonado
-            duration: `${2.5 + rng(i + 4) * 3}s`,  // Velocidad de arrastre
-            rotateStart: `${rng(i + 5) * 360}deg`, // Ángulo inicial único
-            swayIntensity: `${15 + rng(i + 6) * 25}px` // Qué tanto cabecea de arriba a abajo
-        };
-    });
+    return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        side: rng(i) > 0.5 ? "left" : "right",
+        top: `${10 + rng(i + 1) * 80}%`,
+        size: `${20 + rng(i + 2) * 15}px`,
+        delay: `${rng(i + 3) * 10}s`,          // Más tiempo entre apariciones
+        duration: `${5 + rng(i + 4) * 4}s`,    // Velocidad de vuelo más lenta
+        rotateStart: `${rng(i + 5) * 360}deg`,
+        swayIntensity: `${5 + rng(i + 6) * 10}px` // Cabeceo mucho más suave
+    }));
 }
 
 function generateRain(seed: number) {
