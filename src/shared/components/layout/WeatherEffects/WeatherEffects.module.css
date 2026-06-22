@@ -194,8 +194,8 @@
 
     border-radius: 999px;
     /* Usamos un bezier agresivo: acelera violentamente y desacelera al final de la pantalla */
-    animation: wind-gust var(--gust-duration) var(--gust-delay) cubic-bezier(0.25, 1, 0.2, 1) infinite backwards;
-    filter: blur(4px); /* Blur balanceado para simular velocidad del aire sin pixelar */
+    filter: blur(6px); /* Un poco más de blur ayuda a integrar mejor el viento lento */
+    animation: wind-gust var(--gust-duration) var(--gust-delay) cubic-bezier(0.4, 0, 0.2, 1) infinite backwards;
     will-change: transform;
 }
 
@@ -224,8 +224,8 @@
     pointer-events: none;
     /* Combina traslación fluida y el cabeceo oscilatorio (Sway) de arriba a abajo */
     animation:
-            leaf-fly var(--leaf-duration) var(--leaf-delay) cubic-bezier(0.33, 1, 0.68, 1) infinite backwards,
-            leaf-sway calc(var(--leaf-duration) * 0.4) var(--leaf-delay) ease-in-out infinite alternate;
+            leaf-fly var(--leaf-duration) var(--leaf-delay) cubic-bezier(0.4, 0, 0.2, 1) infinite backwards,
+            leaf-sway calc(var(--leaf-duration) * 0.5) var(--leaf-delay) ease-in-out infinite alternate;
 }
 
 /* --- ELEMENTO INTERNO EN 3D (Maneja las rotaciones locas sobre sus ejes) --- */
@@ -273,12 +273,8 @@
 
 /* Eje Tridimensional: Giros helicoidales caóticos simulando la turbulencia del aire */
 @keyframes leaf-spin {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-    100% {
-        transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg);
-    }
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(180deg) rotateY(360deg) rotateZ(90deg); }
 }
 
 /* ===================== SOL (SUMMER) ===================== */
