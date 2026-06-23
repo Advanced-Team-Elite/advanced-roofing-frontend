@@ -286,7 +286,7 @@ export const WeatherMapWidget = () => {
             </button>
 
             {/* Desktop: mapa minimizado en vivo + tooltip tipo nube (arriba-derecha) */}
-            <div className="hidden min-[769px]:block fixed bottom-19 left-6 z-[9999]">
+            <div className="hidden min-[769px]:block fixed bottom-15 left-6 z-[5]">
                 <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
 
                     {/* Nube / tooltip */}
