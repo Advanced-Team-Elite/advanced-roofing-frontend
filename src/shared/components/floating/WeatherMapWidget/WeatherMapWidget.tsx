@@ -237,7 +237,7 @@ const MapContent = () => {
             >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src={src}
+                    src={src || ""}
                     alt="NOAA weather radar"
                     draggable={false}
                     crossOrigin="anonymous"
