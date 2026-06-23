@@ -278,7 +278,7 @@ export const WeatherMapWidget = () => {
             <button
                 onClick={() => setIsOpen(true)}
                 className="fixed bottom-53 left-3 min-[769px]:hidden
-                z-[9999] w-11 h-11 bg-[#00589E] backdrop-blur-sm rounded-full shadow-lg
+                z-[5] w-11 h-11 bg-[#00589E] backdrop-blur-sm rounded-full shadow-lg
                 flex items-center justify-center cursor-pointer transition"
                 aria-label="Open weather radar"
             >
@@ -290,7 +290,7 @@ export const WeatherMapWidget = () => {
                 <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
 
                     {/* Nube / tooltip */}
-                    <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[11px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
+                    <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[13px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
             Watch the forecast
                         {/* Triángulo centrado */}
                         <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0
@@ -301,7 +301,7 @@ export const WeatherMapWidget = () => {
 
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="relative w-30 h-[75px] rounded-xl overflow-hidden shadow-lg
+                        className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg
             ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
                         aria-label="Open weather radar"
                     >
