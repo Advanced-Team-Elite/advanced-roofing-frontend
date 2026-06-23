@@ -302,25 +302,30 @@ export const WeatherMapWidget = () => {
                     <button
                         onClick={() => setIsOpen(true)}
                         className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg
-            ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
+    ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
                         aria-label="Open weather radar"
                     >
-                        <img
-                            src={previewSrc || ""}
-                            alt="NOAA weather radar preview"
-                            draggable={false}
-                            crossOrigin="anonymous"
-                            referrerPolicy="no-referrer"
-                            onLoad={handlePreviewLoad}
-                            onError={handlePreviewError}
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                                opacity: previewLoaded ? 1 : 0,
-                                transition: "opacity 0.3s",
-                            }}
-                        />
+                        {/* Solo renderiza el img si previewSrc existe */}
+                        {previewSrc && (
+                            <img
+                                src={previewSrc}
+                                alt="NOAA weather radar preview"
+                                draggable={false}
+                                crossOrigin="anonymous"
+                                referrerPolicy="no-referrer"
+                                onLoad={handlePreviewLoad}
+                                onError={handlePreviewError}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    opacity: previewLoaded ? 1 : 0,
+                                    transition: "opacity 0.3s",
+                                }}
+                            />
+                        )}
+
+                        {/* El bloque de carga siempre se muestra si no ha cargado */}
                         {!previewLoaded && (
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
