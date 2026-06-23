@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 const GIF_URL = "https://www.spc.noaa.gov/products/activity_loop.gif";
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
+const MAX_RETRIES = 4;
 
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -17,6 +18,48 @@ const useIsMobile = () => {
     return isMobile;
 };
 
+
+const useRetryingImage = (baseUrl: string) => {
+    // 1. Inicializa como null o cadena vacía para que coincida en el servidor
+    const [src, setSrc] = useState<string | null>(null);
+    const [loaded, setLoaded] = useState(false);
+    const [failed, setFailed] = useState(false);
+    const retries = useRef(0);
+
+    // 2. Este efecto solo corre en el cliente
+    useEffect(() => {
+        setSrc(`${baseUrl}?t=${Date.now()}`);
+    }, [baseUrl]);
+
+    const handleLoad = useCallback(() => {
+        retries.current = 0;
+        setFailed(false);
+        setLoaded(true);
+    }, []);
+
+    const handleError = useCallback(() => {
+        if (retries.current >= MAX_RETRIES) {
+            setFailed(true);
+            return;
+        }
+        retries.current += 1;
+        const delay = 600 * retries.current;
+        setTimeout(() => {
+            setSrc(`${baseUrl}?t=${Date.now()}`);
+        }, delay);
+    }, [baseUrl]);
+
+    // Reintento manual (botón "Reintentar")
+    const retry = useCallback(() => {
+        retries.current = 0;
+        setFailed(false);
+        setLoaded(false);
+        setSrc(`${baseUrl}?t=${Date.now()}`);
+    }, [baseUrl]);
+
+    return { src, loaded, failed, handleLoad, handleError, retry };
+};
+
 const MapIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -26,13 +69,14 @@ const MapIcon = ({ className }: { className?: string }) => (
 const MapContent = () => {
     const [scale, setScale] = useState(MIN_SCALE);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
-    const [loaded, setLoaded] = useState(false);
     const isDragging = useRef(false);
     const dragStart = useRef<{ x: number; y: number } | null>(null);
     const offsetAtDrag = useRef({ x: 0, y: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
     const scaleRef = useRef(MIN_SCALE);
     const offsetRef = useRef({ x: 0, y: 0 });
+
+    const { src, loaded, failed, handleLoad, handleError, retry } = useRetryingImage(GIF_URL);
 
     const clampOffset = useCallback((x: number, y: number, s: number) => {
         const container = containerRef.current;
@@ -130,20 +174,37 @@ const MapContent = () => {
 
     return (
         <div className="relative w-full h-full">
-            {/* Loader */}
+            {/* Loader / error state */}
             {!loaded && (
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4" style={{ background: "#0d2d5e" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-10 h-10 text-white opacity-90">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} stroke="currentColor" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                    </svg>
-                    <div className="flex gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "0ms" }} />
-                        <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "150ms" }} />
-                        <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "300ms" }} />
-                    </div>
-                    <span className="text-white/60 text-xs tracking-widest uppercase">
-                      Loading weather map
-                    </span>
+                    {failed ? (
+                        <>
+                            <MapIcon className="w-10 h-10 text-white/70" />
+                            <span className="text-white/70 text-xs text-center px-6">
+                                Couldn&apos;t load the radar image.
+                            </span>
+                            <button
+                                onClick={retry}
+                                className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-medium transition cursor-pointer"
+                            >
+                                Retry
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-10 h-10 text-white opacity-90">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} stroke="currentColor" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                            </svg>
+                            <div className="flex gap-1.5">
+                                <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "0ms" }} />
+                                <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "150ms" }} />
+                                <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "300ms" }} />
+                            </div>
+                            <span className="text-white/60 text-xs tracking-widest uppercase">
+                              Loading weather map
+                            </span>
+                        </>
+                    )}
                 </div>
             )}
 
@@ -176,10 +237,13 @@ const MapContent = () => {
             >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src={GIF_URL}
+                    src={src}
                     alt="NOAA weather radar"
                     draggable={false}
-                    onLoad={() => setLoaded(true)}
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer"
+                    onLoad={handleLoad}
+                    onError={handleError}
                     style={{
                         width: "100%",
                         height: "100%",
@@ -202,16 +266,18 @@ export const WeatherMapWidget = () => {
     const isMobile = useIsMobile();
     const close = () => setIsOpen(false);
 
+    const { src: previewSrc, loaded: previewLoaded, failed: previewFailed, handleLoad: handlePreviewLoad, handleError: handlePreviewError } = useRetryingImage(GIF_URL);
+
     const dialogSize = isMobile
         ? { width: "calc(100vw - 32px)", height: "calc((100vw - 32px) * 775 / 1185)" }
         : { width: Math.min(720, (typeof window !== "undefined" ? window.innerWidth : 1280) - 64), height: Math.min(470, (typeof window !== "undefined" ? window.innerHeight : 800) - 64) };
 
     return (
         <>
-            {/* Floating icon button — same for all screen sizes */}
+            {/* Mobile / Tablet: botón normal */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-53 min-[769px]:bottom-19 left-3 min-[769px]:left-6
+                className="fixed bottom-53 left-3 min-[769px]:hidden
                 z-[9999] w-11 h-11 bg-[#00589E] backdrop-blur-sm rounded-full shadow-lg
                 flex items-center justify-center cursor-pointer transition"
                 aria-label="Open weather radar"
@@ -219,7 +285,52 @@ export const WeatherMapWidget = () => {
                 <MapIcon className="w-6 h-6 text-white" />
             </button>
 
-            {/* Centered dialog */}
+            {/* Desktop: mapa minimizado en vivo + tooltip tipo nube (arriba-derecha) */}
+            <div className="hidden min-[769px]:block fixed bottom-19 left-6 z-[9999]">
+                <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
+
+                    {/* Nube / tooltip */}
+                    <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[11px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
+            Watch the forecast
+                        {/* Triángulo centrado */}
+                        <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0
+                border-l-[6px] border-l-transparent
+                border-r-[6px] border-r-transparent
+                border-t-[6px] border-t-white" />
+        </span>
+
+                    <button
+                        onClick={() => setIsOpen(true)}
+                        className="relative w-30 h-[75px] rounded-xl overflow-hidden shadow-lg
+            ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
+                        aria-label="Open weather radar"
+                    >
+                        <img
+                            src={previewSrc || ""}
+                            alt="NOAA weather radar preview"
+                            draggable={false}
+                            crossOrigin="anonymous"
+                            referrerPolicy="no-referrer"
+                            onLoad={handlePreviewLoad}
+                            onError={handlePreviewError}
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                opacity: previewLoaded ? 1 : 0,
+                                transition: "opacity 0.3s",
+                            }}
+                        />
+                        {!previewLoaded && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
+                            </div>
+                        )}
+                    </button>
+                </div>
+            </div>
+
+            {/* Dialog centrado */}
             {isOpen && (
                 <div
                     className="fixed inset-0 z-[10000] flex items-center justify-center"
