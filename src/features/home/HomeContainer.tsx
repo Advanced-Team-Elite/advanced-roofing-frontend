@@ -25,7 +25,6 @@ import {CareerCarousel} from "@/shared/components/modals/CareerModal";
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
-            <CareerCarousel />
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
