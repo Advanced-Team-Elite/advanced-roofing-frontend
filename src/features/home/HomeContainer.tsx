@@ -21,6 +21,7 @@ import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
 import {CareerCarousel} from "@/shared/components/modals/CareerModal";
+import {QuoteAnchor} from "@/features/home/QuoteAnchor/QuoteAnchor";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -28,6 +29,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
+            <QuoteAnchor/>
             <NowServing/>
             <Language/>
             <StatsBar/>
