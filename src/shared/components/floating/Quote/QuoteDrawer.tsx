@@ -81,7 +81,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                         ×
                     </button>
                     <p className={styles.hintTitle}>Need a roof quote?</p>
-                    <p className={styles.hintSubtitle}>Get your price NOW!</p>
+                    <p className={styles.hintSubtitle}>Best Pricing Available <br></br> Limited Time Offer!</p>
                     <div className={styles.hintArrow}></div>
                 </div>
             )}

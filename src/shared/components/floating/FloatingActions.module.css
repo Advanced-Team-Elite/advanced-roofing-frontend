@@ -298,6 +298,7 @@
     font-weight: 600;
     margin: 4px 0 0 0;
     transition: color 0.3s ease;
+    text-align: center;
 }
 
 /* Botón de cerrar pequeño */
