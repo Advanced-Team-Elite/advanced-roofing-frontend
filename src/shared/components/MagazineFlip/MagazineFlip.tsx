@@ -21,7 +21,9 @@ const PAGES: MagazinePage[] = [
     { id: 7,  image: "/assets/images/features/magazine/7.png" },
     { id: 8,  image: "/assets/images/features/magazine/8.png" },
     { id: 9,  image: "/assets/images/features/magazine/9.png" },
-    { id: 10,  image: "/assets/images/features/magazine/back.png" },
+    { id: 10,  image: "/assets/images/features/magazine/10.png" },
+    { id: 11,  image: "/assets/images/features/magazine/11.png" },
+    { id: 12,  image: "/assets/images/features/magazine/back.png" },
 ];
 
 // ── Hook para detectar mobile ──────────────────────────────────────────────
@@ -277,7 +279,7 @@ function DesktopMagazine() {
                 >
                     <HTMLFlipBook
                         ref={bookRef}
-                        width={550} height={750}
+                        width={549} height={743}
                         size="fixed"
                         showCover={true}
                         drawShadow={false}
@@ -291,7 +293,7 @@ function DesktopMagazine() {
                         style={{}}
                         startPage={0}
                         minWidth={300} maxWidth={550}
-                        minHeight={400} maxHeight={750}
+                        minHeight={400} maxHeight={743}
                         autoSize={false}
                         clickEventForward={true}
                         usePortrait={false}
