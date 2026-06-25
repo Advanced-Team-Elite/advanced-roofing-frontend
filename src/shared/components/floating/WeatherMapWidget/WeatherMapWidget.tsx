@@ -263,6 +263,7 @@ const MapContent = () => {
 
 export const WeatherMapWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [showDesktopPreview, setShowDesktopPreview] = useState(true);
     const isMobile = useIsMobile();
     const close = () => setIsOpen(false);
 
@@ -286,54 +287,70 @@ export const WeatherMapWidget = () => {
             </button>
 
             {/* Desktop: mapa minimizado en vivo + tooltip tipo nube (arriba-derecha) */}
-            <div className="hidden min-[769px]:block fixed bottom-15 left-6 z-[5]">
-                <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
+            {showDesktopPreview && (
+                <div className="hidden min-[769px]:block fixed bottom-15 left-6 z-[5]">
+                    <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
 
-                    {/* Nube / tooltip */}
-                    <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[13px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
+                        {/* Nube / tooltip */}
+                        <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[13px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
             Watch the forecast
-                        {/* Triángulo centrado */}
-                        <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0
+                            {/* Triángulo centrado */}
+                            <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0
                 border-l-[6px] border-l-transparent
                 border-r-[6px] border-r-transparent
                 border-t-[6px] border-t-white" />
         </span>
 
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg
-    ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
-                        aria-label="Open weather radar"
-                    >
-                        {/* Solo renderiza el img si previewSrc existe */}
-                        {previewSrc && (
-                            <img
-                                src={previewSrc}
-                                alt="NOAA weather radar preview"
-                                draggable={false}
-                                crossOrigin="anonymous"
-                                referrerPolicy="no-referrer"
-                                onLoad={handlePreviewLoad}
-                                onError={handlePreviewError}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                    opacity: previewLoaded ? 1 : 0,
-                                    transition: "opacity 0.3s",
+                        <div className="relative">
+                            {/* Botón para cerrar/eliminar el icono minimizado */}
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowDesktopPreview(false);
                                 }}
-                            />
-                        )}
+                                className="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-gray-800 hover:bg-gray-700 text-white text-[11px] leading-none flex items-center justify-center shadow-md cursor-pointer transition"
+                                aria-label="Close weather radar preview"
+                            >
+                                ✕
+                            </button>
 
-                        {/* El bloque de carga siempre se muestra si no ha cargado */}
-                        {!previewLoaded && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
-                            </div>
-                        )}
-                    </button>
+                            <button
+                                onClick={() => setIsOpen(true)}
+                                className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg
+    ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
+                                aria-label="Open weather radar"
+                            >
+                                {/* Solo renderiza el img si previewSrc existe */}
+                                {previewSrc && (
+                                    <img
+                                        src={previewSrc}
+                                        alt="NOAA weather radar preview"
+                                        draggable={false}
+                                        crossOrigin="anonymous"
+                                        referrerPolicy="no-referrer"
+                                        onLoad={handlePreviewLoad}
+                                        onError={handlePreviewError}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover",
+                                            opacity: previewLoaded ? 1 : 0,
+                                            transition: "opacity 0.3s",
+                                        }}
+                                    />
+                                )}
+
+                                {/* El bloque de carga siempre se muestra si no ha cargado */}
+                                {!previewLoaded && (
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
+                                    </div>
+                                )}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Dialog centrado */}
             {isOpen && (

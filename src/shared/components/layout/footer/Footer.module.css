@@ -271,6 +271,11 @@ a:hover {
     font-size: 0.85rem;
 }
 
+.legalLeft span {
+    display: block; /* Esto obliga a que cada span ocupe una línea completa */
+    margin-bottom: 50px !important; /* Opcional: un pequeño espacio entre ellos */
+}
+
 .legalLeft p{
     margin: 20px 0;
 }

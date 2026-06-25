@@ -36,7 +36,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                         <div className={`${styles.footerColumn} ${styles.logoColumn}`}>
                             <Link href="/">
                                 <Image
-                                    src="/assets/brand/logo-light-ALT.png"
+                                    src="/assets/brand/LOGO_ADVANCED.png"
                                     alt="Advanced Roofing Team"
                                     width={250}
                                     height={80}
@@ -174,7 +174,9 @@ export const Footer = ({ upperSection }: FooterProps) => {
             <section className={styles.footerLegal}>
                 <div className={styles.legalContent}>
                     <div className={styles.legalLeft}>
-                        <span>License #: 104.015756</span>
+                        {/* Usamos div para que cada elemento salte de línea automáticamente */}
+                        <div>Roofing license #: 104.015756</div>
+                        <div>Winconsin sister company #: 104.015756</div>
                         <p>© {currentYear} All Rights Reserved.</p>
 
                         <div className={styles.legalLinks}>
