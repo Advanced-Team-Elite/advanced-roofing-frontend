@@ -160,7 +160,7 @@ const ContactForm = () => {
 
     return (
         <aside className={styles.formContainer}>
-            <h2 className={styles.title}>Get Started</h2>
+            <h3 className={styles.title}>Get Started</h3>
             <p className={styles.description}>
                 At Advanced Roofing Team Construction, we're always ready to take your call!
                 Give us a call at (815) 409-9641 or fill out the form below

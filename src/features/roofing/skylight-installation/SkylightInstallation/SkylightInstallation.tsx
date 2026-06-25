@@ -10,11 +10,6 @@ export const SkylightInstallation = () => {
         <section className={styles.mainSection}>
             <div className={styles.container}>
 
-                {/* Columna del Formulario: Primero en el DOM para que salga arriba en Tablet/Mobile */}
-                <div className={styles.formColumn}>
-                    <ContactForm />
-                </div>
-
                 {/* Columna de Texto: Contenido Exacto del Mockup */}
                 <div className={styles.textColumn}>
                     <div className={styles.iconWrapper}>
@@ -111,6 +106,11 @@ export const SkylightInstallation = () => {
                         </p>
 
                     </div>
+                </div>
+
+                {/* Columna del Formulario: Primero en el DOM para que salga arriba en Tablet/Mobile */}
+                <div className={styles.formColumn}>
+                    <ContactForm />
                 </div>
 
             </div>
