@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
 import {FacebookIcon, GoogleBusinessIcon, HouzzIcon, NextdoorIcon, XIcon, YelpIcon} from "@/shared/Icons/Icons";
-import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
-import {WeatherEffects} from "@/shared/components/layout/WeatherEffects/WeatherEffects";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
