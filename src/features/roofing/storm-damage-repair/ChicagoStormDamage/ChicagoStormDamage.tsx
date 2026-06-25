@@ -10,10 +10,6 @@ export const ChicagoStormDamage = () => {
         <section className={styles.mainSection}>
             <div className={styles.container}>
 
-                <div className={styles.formColumn}>
-                    <ContactForm />
-                </div>
-
                 <div className={styles.textColumn}>
                     <div className={styles.iconWrapper}>
                         <FlairIcon size={150} />
@@ -93,6 +89,10 @@ export const ChicagoStormDamage = () => {
                             </li>
                         </ul>
                     </div>
+                </div>
+
+                <div className={styles.formColumn}>
+                    <ContactForm />
                 </div>
 
             </div>

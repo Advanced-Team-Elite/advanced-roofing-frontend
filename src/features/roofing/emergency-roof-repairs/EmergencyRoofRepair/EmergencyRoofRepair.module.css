@@ -8,7 +8,7 @@
     padding: 0;
     display: flex;
     gap: 40px;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 /* --- TEXT COLUMN --- */
@@ -171,7 +171,7 @@
         display: flex;
         align-items: flex-start;
         gap: 60px;
-        flex-direction: row-reverse;
+        flex-direction: row;
     }
     .textColumn {
         flex: 1.4;

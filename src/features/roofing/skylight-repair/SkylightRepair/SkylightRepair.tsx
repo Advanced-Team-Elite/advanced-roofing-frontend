@@ -10,11 +10,6 @@ export const SkylightRepair = () => {
         <section className={styles.mainSection}>
             <div className={styles.container}>
 
-                {/* Columna del Formulario: Primero en el DOM para que salga arriba en Tablet/Mobile */}
-                <div className={styles.formColumn}>
-                    <ContactForm />
-                </div>
-
                 {/* Columna de Texto: Contenido Exacto del Mockup */}
                 <div className={styles.textColumn}>
                     <div className={styles.iconWrapper}>
@@ -98,6 +93,11 @@ export const SkylightRepair = () => {
                             Do not attempt a quick fix with sealant, as leaks often originate underneath the roof's surface where caulk cannot reach. Immediate, professional repair by a specialist ensures the source of the leak is properly identified, the flashing is secured, and your home is protected.
                         </p>
                     </div>
+                </div>
+
+                {/* Columna del Formulario: Primero en el DOM para que salga arriba en Tablet/Mobile */}
+                <div className={styles.formColumn}>
+                    <ContactForm />
                 </div>
 
             </div>
