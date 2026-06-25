@@ -10,10 +10,6 @@ const EmergencyRoofRepair = () => {
         <section className={styles.mainSection}>
             <div className={styles.container}>
 
-                <div className={styles.formColumn}>
-                    <ContactForm />
-                </div>
-
                 <div className={styles.textColumn}>
                     <div className={styles.iconWrapper}>
                         <FlairIcon size={150} />
@@ -89,6 +85,10 @@ const EmergencyRoofRepair = () => {
                             A roofing emergency demands the speed and precision that only a licensed professional can offer. By choosing our expert team for your emergency repair, you are investing in immediate protection, peace of mind, and the long-term integrity of your property against the Chicagoland area's demanding weather.
                         </p>
                     </div>
+                </div>
+
+                <div className={styles.formColumn}>
+                    <ContactForm />
                 </div>
 
             </div>
