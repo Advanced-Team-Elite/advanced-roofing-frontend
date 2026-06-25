@@ -7,7 +7,6 @@ import {InspectionBadge} from "@/features/home/InspectionBadge/InspectionBadge";
 import {
     FacebookIcon,
     XIcon,
-    YelpIcon,
     HouzzIcon,
     GoogleBusinessIcon
 } from "@/shared/Icons/Icons";
@@ -75,8 +74,8 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     <Link href="/contact-us" className={styles.contactBtn} title="Go to our contact page">
                         Contact Us
                     </Link>
-                </div>
 
+                </div>
 
                 <div className={styles.socialIcons}>
                     <Link
@@ -132,21 +131,28 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                 </div>
 
                 <div className={styles.videoControls}>
-                    {/* Botones de la izquierda */}
-                    <button className={styles.controlBtn} aria-label="Play/Pause" onClick={togglePlay}>
-                        <span className="material-icons">
-                            {isPlaying ? <PauseIcon /> : <PlayIcon />}
-                        </span>
-                    </button>
-                    <button
-                        className={styles.controlBtn}
-                        onClick={() => setIsDialogOpen(true)}
-                        aria-label="Process info"
-                    >
-                        <span className="material-icons"><DescriptionIcon /></span>
-                    </button>
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.controlBtn} aria-label="Play/Pause" onClick={togglePlay}>
+        <span className="material-icons">
+            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+        </span>
+                        </button>
+                        <button
+                            className={styles.controlBtn}
+                            onClick={() => setIsDialogOpen(true)}
+                            aria-label="Process info"
+                        >
+                            <span className="material-icons"><DescriptionIcon /></span>
+                        </button>
 
-                    {/* El Badge con la clase que lo empuja a la derecha */}
+                        {/* Ahora el texto se alineará perfectamente con los botones a su izquierda */}
+                        <div className={styles.licenseInfo}>
+                            <div>Roofing license #: 104.015756</div>
+                            <div>Winconsin sister company #: 104.015756</div>
+                        </div>
+                    </div>
+
+
                     <div className={styles.pushRight}>
                         <InspectionBadge/>
                     </div>

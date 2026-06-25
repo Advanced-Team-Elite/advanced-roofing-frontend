@@ -80,14 +80,28 @@
     left: 40px;
     right: 40px;
     display: flex;
-    align-items: center;
+    align-items: end; /* Esto centra verticalmente todo al mismo nivel */
     gap: 25px;
     z-index: 2;
 }
 
-.pushRight {
-    margin-left: auto;
-    z-index: 2 !important;
+.buttonContainer{
+    position: absolute;
+    display: flex;
+    align-items: center; /* Esto centra verticalmente todo al mismo nivel */
+    gap: 25px;
+    z-index: 2;
+
+}
+
+.licenseInfo {
+    margin-top: 0; /* Eliminamos el margen superior que causaba el desalineamiento */
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+    line-height: 1.2; /* Ajustado para mejor centrado vertical */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .controlBtn {
@@ -96,9 +110,16 @@
     font-size: 30px;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    margin-top: auto;
+    align-items: center; /* Asegura que el icono también esté centrado */
+    margin-top: 0;      /* IMPORTANTE: Cambiado de auto a 0 para alinear */
 }
+
+.pushRight {
+    margin-left: auto;
+    z-index: 2 !important;
+}
+
+
 
 .controlBtn svg {
     color: #FFFFFF !important;
@@ -192,6 +213,14 @@
 .socialIcon:hover {
     transform: scale(1.1);
     color: #00589e;
+}
+
+/* Para asegurar que no estorbe en dispositivos móviles */
+@media (max-width: 768px) {
+    .licenseInfo {
+        font-size: 0.7rem;
+        margin-top: 15px;
+    }
 }
 
 /* --- RESPONSIVE --- */
