@@ -152,14 +152,30 @@
     position: relative;
 }
 
+.logoContainer{
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .logoContainer img {
     height: 100px;
     width: auto;
 }
 
-.logoContainer{
-    margin-right: 30px;
+.licenseInfo {
+    margin-top: 0;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
+
 
 .desktopMenu {
     display: flex;
@@ -168,6 +184,8 @@
     list-style: none;
     flex-wrap: nowrap;
 }
+
+
 
 .hasDropdown {
     position: relative;
@@ -532,6 +550,16 @@
     .mainNav {
         padding: 45px 25px;
     }
+
+    .licenseInfo {
+        margin-top: 0;
+        font-size: 0.55rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+    }
+
 
     .drawerFooter {
         flex-direction: column;

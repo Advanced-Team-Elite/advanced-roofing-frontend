@@ -23,7 +23,7 @@ interface FinancingProps {
 }
 
 const Financing = ({ backgroundColor = "bg-[#f0f0f0]" }: FinancingProps) => {
-    const [amount, setAmount] = useState(74500);
+    const [amount, setAmount] = useState(15000);
     const [apr, setApr] = useState(12.4);
     const [term, setTerm] = useState(5);
 
@@ -112,9 +112,15 @@ const Financing = ({ backgroundColor = "bg-[#f0f0f0]" }: FinancingProps) => {
                         rangeLabels={['1', '12']}
                     />
 
-                    <Link href="/contact-us" className="w-full" title="Go to our contact page">
-                        <button className="w-full cursor-pointer bg-[#005596] text-white py-4 text-xl font-semibold hover:bg-[#00447a] transition-colors">
-                            Contact Us
+                    <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://app.gethearth.com/financing/12308/13571/prequalify?utm_campaign=12308&utm_content=darkblue&utm_medium=contractor-website&utm_source=contractor&utm_term=13571"
+                        className="w-full"
+                    >
+                        <button className="w-full cursor-pointer bg-[#005596] text-white py-4 px-4 text-lg md:text-xl font-bold hover:bg-[#00447a] transition-all flex flex-col items-center">
+                            <span>Check Your Financing Rate</span>
+                            <span className="text-sm font-normal opacity-90 mt-1">No credit-score impact</span>
                         </button>
                     </Link>
 
