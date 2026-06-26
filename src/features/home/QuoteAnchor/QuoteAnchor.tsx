@@ -1,5 +1,7 @@
 'use client';
 
+import Link from "next/link";
+
 export const QuoteAnchor = () => {
     const openWidget = () => {
         const widget = document.querySelector('.FloatingActions-module__Bo6awa__quoteSideBtn') as HTMLElement;
@@ -52,12 +54,12 @@ export const QuoteAnchor = () => {
                         Celebrate 250 years of American excellence. Get your roof inspection today and secure an exclusive holiday discount.
                     </p>
 
-                    <button
-                        onClick={openWidget}
-                        className="btn-pulse bg-yellow-400 cursor-pointer hover:bg-yellow-400 text-blue-950 font-black uppercase tracking-widest transition-all hover:scale-105 px-10 py-4 text-xl rounded-sm border-2 border-white shadow-lg"
+                    <Link
+                        href="/contact-us"
+                        className="btn-pulse bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black uppercase tracking-widest transition-all hover:scale-105 px-10 py-4 text-xl rounded-sm border-2 border-white shadow-lg inline-block text-center"
                     >
                         Claim My Holiday Discount
-                    </button>
+                    </Link>
 
                     <p className="text-blue-300 text-sm italic">
                         Offer expires July 4th • Professional Service
