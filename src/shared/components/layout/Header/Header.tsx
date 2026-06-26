@@ -93,7 +93,11 @@ export const Header = () => {
                         />
                     </Link>
 
-
+                    {/* Ahora el texto se alineará perfectamente con los botones a su izquierda */}
+                    <div className={styles.licenseInfo}>
+                        <p>Roofing license #: 104.015756</p>
+                        <p>Winconsin sister company #: 061800083-DC</p>
+                    </div>
 
                 </div>
 
