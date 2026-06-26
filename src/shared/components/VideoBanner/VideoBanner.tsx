@@ -144,12 +144,6 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                         >
                             <span className="material-icons"><DescriptionIcon /></span>
                         </button>
-
-                        {/* Ahora el texto se alineará perfectamente con los botones a su izquierda */}
-                        <div className={styles.licenseInfo}>
-                            <div>Roofing license #: 104.015756</div>
-                            <div>Winconsin sister company #: 104.015756</div>
-                        </div>
                     </div>
 
 

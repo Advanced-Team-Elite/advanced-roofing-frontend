@@ -8,9 +8,10 @@ import { WeatherEffectsAsync } from "@/shared/components/layout/WeatherEffects/W
 import { Suspense } from "react";
 import { GoogleMapsProvider } from "@/features/widget/GoogleMapsProvider";
 import Script from "next/script"; // 1. Importa el componente Script
-import { FacebookPixel } from "@/shared/components/FacebookPixel/FacebookPixel";
-import {OpenAIPixel} from "@/shared/components/OpenAIPixel/OpenAIPixel";
+import { FacebookPixel } from "@/shared/components/PixelComponents/FacebookPixel/FacebookPixel";
+import {OpenAIPixel} from "@/shared/components/PixelComponents/OpenAIPixel/OpenAIPixel";
 import {WeatherMapWidget} from "@/shared/components/floating/WeatherMapWidget/WeatherMapWidget";
+import { Clarity } from '@/shared/components/PixelComponents/Clarity/Clarity';
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className="antialiased">
             <OpenAIPixel pixelId="6dPKWdJYqiipqoUnA6L2AB" />
             <FacebookPixel pixelId="27082259264741522" />
+            <Clarity projectId="x786vn6psg" />
             <Suspense fallback={null}>
                 <WeatherEffectsAsync />
             </Suspense>

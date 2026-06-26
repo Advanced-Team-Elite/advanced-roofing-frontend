@@ -176,7 +176,7 @@ export const Footer = ({ upperSection }: FooterProps) => {
                     <div className={styles.legalLeft}>
                         {/* Usamos div para que cada elemento salte de línea automáticamente */}
                         <div>Roofing license #: 104.015756</div>
-                        <div>Winconsin sister company #: 104.015756</div>
+                        <div>Winconsin sister company #: 061800083-DC</div>
                         <p>© {currentYear} All Rights Reserved.</p>
 
                         <div className={styles.legalLinks}>
