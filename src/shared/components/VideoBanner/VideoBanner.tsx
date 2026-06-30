@@ -50,7 +50,7 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     poster="/assets/images/features/home/hero-mobile-bg.webp"
                     onCanPlay={(e) => (e.currentTarget.muted = true)}
                 >
-                    <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
+                    <source src="/assets/videos/hero.mp4" type="video/mp4" />
                 </video>
 
                 <div className={styles.heroOverlay}></div>
