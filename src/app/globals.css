@@ -114,7 +114,6 @@ html {
 
 @media (max-width: 1200px) {
   .custom-scrollbar {
-    margin-top: 100px;
     max-height: calc(90% - 80px);
   }
 }

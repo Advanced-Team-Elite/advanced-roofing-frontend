@@ -133,7 +133,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                         <p className="text-sm font-bold text-amber-800">
                                             {roofError === "no_building"
                                                 ? "No roof or building could be clearly detected at this address. Please try another location or adjust your search."
-                                                : "An error occurred while retrieving roof data. Please try again."}
+                                                : "No roof or building could was found at this address. Please try again."}
                                         </p>
                                     </div>
                                 )}
