@@ -12,18 +12,11 @@ interface MagazinePage {
 }
 
 const PAGES: MagazinePage[] = [
-    { id: 1,  image: "/assets/images/features/magazine/1.png" },
-    { id: 2,  image: "/assets/images/features/magazine/2.png" },
-    { id: 3,  image: "/assets/images/features/magazine/3.png" },
-    { id: 4,  image: "/assets/images/features/magazine/4.png" },
-    { id: 5,  image: "/assets/images/features/magazine/5.png" },
-    { id: 6,  image: "/assets/images/features/magazine/6.png" },
-    { id: 7,  image: "/assets/images/features/magazine/7.png" },
-    { id: 8,  image: "/assets/images/features/magazine/8.png" },
-    { id: 9,  image: "/assets/images/features/magazine/9.png" },
-    { id: 10,  image: "/assets/images/features/magazine/10.png" },
-    { id: 11,  image: "/assets/images/features/magazine/11.png" },
-    { id: 12,  image: "/assets/images/features/magazine/back.png" },
+    ...Array.from({ length: 35 }, (_, i) => ({
+        id: i + 1,
+        image: `/assets/images/features/magazine/${i + 1}.webp`
+    })),
+    { id: 37, image: "/assets/images/features/magazine/back.webp" }
 ];
 
 // ── Hook para detectar mobile ──────────────────────────────────────────────
@@ -69,7 +62,8 @@ function MobileMagazine() {
         const calcSize = () => {
             const vw = window.innerWidth;
             const width = Math.min(Math.floor(vw * 0.88), 420);
-            const height = Math.round(width * (4 / 3));
+            // Nueva relación: 3307 / 2539 ≈ 1.302
+            const height = Math.round(width * (3307 / 2539));
             setPageSize({ width, height });
         };
         calcSize();
@@ -279,7 +273,8 @@ function DesktopMagazine() {
                 >
                     <HTMLFlipBook
                         ref={bookRef}
-                        width={549} height={743}
+                        width={549}
+                        height={Math.round(549 * (3307 / 2539))} // Resultado: ~716
                         size="fixed"
                         showCover={true}
                         drawShadow={false}
@@ -292,8 +287,10 @@ function DesktopMagazine() {
                         className={styles.book}
                         style={{}}
                         startPage={0}
-                        minWidth={300} maxWidth={550}
-                        minHeight={400} maxHeight={743}
+                        minWidth={300}
+                        maxWidth={550}
+                        minHeight={Math.round(300 * (3307 / 2539))} // Resultado: ~391
+                        maxHeight={743} // Puedes ajustar este valor si el libro se ve muy grande
                         autoSize={false}
                         clickEventForward={true}
                         usePortrait={false}
