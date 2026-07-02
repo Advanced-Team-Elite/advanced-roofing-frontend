@@ -1,7 +1,10 @@
 /* ─── SHARED ─────────────────────────────────────────────────────────────── */
+/* Regla global para ocultar todos los widgets flotantes cuando estemos en el contexto del Magazine */
 :global(.FloatingActions-module__Bo6awa__quoteWrapper),
 :global(.FloatingActions-module__Bo6awa__contactContainer),
-:global(.hidden.min-\[769px\]\:block.fixed.bottom-15.left-6) {
+:global(.hidden.min-\[769px\]\:block.fixed.bottom-15.left-6),
+:global(.FloatingActions-module__Bo6awa__accessibilityBtn),
+:global(.fixed.bottom-53.left-3.min-\[769px\]\:hidden) {
     display: none !important;
 }
 
