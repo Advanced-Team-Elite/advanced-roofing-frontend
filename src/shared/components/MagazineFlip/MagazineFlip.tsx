@@ -14,9 +14,9 @@ interface MagazinePage {
 const PAGES: MagazinePage[] = [
     ...Array.from({ length: 35 }, (_, i) => ({
         id: i + 1,
-        image: `/assets/images/features/magazine/${i + 1}.jpg`
+        image: `/assets/images/features/magazine/${i + 1}.webp`
     })),
-    { id: 37, image: "/assets/images/features/magazine/back.jpg" }
+    { id: 37, image: "/assets/images/features/magazine/back.webp" }
 ];
 
 // ── Hook para detectar mobile ──────────────────────────────────────────────
