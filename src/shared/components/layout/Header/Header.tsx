@@ -48,11 +48,15 @@ export const Header = () => {
 
                     <div className={styles.phoneWrapper}>
                         {/* Este es el número que se ve siempre */}
-                        <div className={styles.phoneMain}>
-                            <a href="tel:8779456565" className={styles.telf}>877-945-6565</a>
-                            <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
+                        <div className={styles.mainOfficeBlock}>
+                            <div className={styles.numsRow}>
+                                <a href="tel:8479456565" className={styles.telf}>847-945-6565</a>
+                                <span className={styles.numSep}>|</span>
+                                <a href="tel:8779456565" className={styles.telf}>877-945-6565</a>
+                                <svg className={styles.chevron} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
 
                         {/* El desplegable con todos los números */}
