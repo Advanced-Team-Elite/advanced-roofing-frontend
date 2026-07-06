@@ -2,16 +2,8 @@
 /**
  * RoofMap — migrated from @react-google-maps/api to @vis.gl/react-google-maps
  *
- * Components replaced:
- *   GoogleMap     → <Map> from @vis.gl
- *   Polygon       → google.maps.Polygon via useEffect (imperative API)
- *   DrawingManager → google.maps.drawing.DrawingManager via useMapsLibrary('drawing')
- *
- * Behavior is identical to the original:
- *   - Shows detected roof polygon, editable via drag points
- *   - "Redraw Roof" button activates DrawingManager for manual polygon draw
- *   - "Reset" restores the originally detected polygon
- *   - hideControls prop hides toolbar + polygon (preview-only mode)
+ * NOTE: DrawingManager was removed by Google in Maps JS API v3.65+.
+ * Manual polygon drawing (click-to-place points) replaces it below.
  */
 
 import { Map, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
@@ -35,9 +27,8 @@ export const RoofMap = ({
                             hideControls = false,
                         }: RoofMapProps) => {
 
-    const map = useMap(); // Obtenemos la instancia del mapa
+    const map = useMap();
 
-    // Sincronizar el mapa cuando el centro cambia (ej. el usuario busca otra dirección)
     useEffect(() => {
         if (map && center) {
             map.setCenter(center);
@@ -47,36 +38,48 @@ export const RoofMap = ({
 
     const [isDrawingMode, setIsDrawingMode] = useState(false);
     const [drawnCoords, setDrawnCoords]     = useState<{ lat: number; lng: number }[] | undefined>(undefined);
+    const [drawnPointCount, setDrawnPointCount] = useState(0);
+    const [finishSignal, setFinishSignal]   = useState(0);
 
     const activeCoords = drawnCoords ?? polygonCoords;
 
-    const startDrawing   = () => { setIsDrawingMode(true); setDrawnCoords(undefined); };
+    const startDrawing = () => {
+        setIsDrawingMode(true);
+        setDrawnCoords(undefined);
+        setDrawnPointCount(0);
+    };
+
     const resetToDetected = () => {
         setIsDrawingMode(false);
         setDrawnCoords(undefined);
+        setDrawnPointCount(0);
         if (polygonCoords) onPolygonEdit?.(polygonCoords);
+    };
+
+    const cancelDrawing = () => {
+        setIsDrawingMode(false);
+        setDrawnPointCount(0);
     };
 
     const handlePolygonComplete = useCallback((coords: { lat: number; lng: number }[]) => {
         setDrawnCoords(coords);
         setIsDrawingMode(false);
+        setDrawnPointCount(0);
         onPolygonEdit?.(coords);
     }, [onPolygonEdit]);
 
     return (
         <div className="mt-6 border-4 border-white shadow-2xl rounded-xl overflow-hidden relative">
-            {/* Fixed pixel height — no vh units to avoid dead-zone bug */}
             <div style={{ width: "100%", height: "400px" }}>
                 <Map
                     defaultCenter={center}
                     defaultZoom={zoom}
                     mapTypeId="satellite"
                     disableDefaultUI={true}
-                    gestureHandling={'greedy'} // Mejora la experiencia en móviles/scroll
+                    gestureHandling={'greedy'}
                     tilt={0}
                     style={{ width: "100%", height: "100%" }}
                 >
-                    {/* Editable polygon — shown when not in drawing mode */}
                     {activeCoords && !isDrawingMode && !hideControls && (
                         <EditablePolygon
                             coords={activeCoords}
@@ -84,9 +87,12 @@ export const RoofMap = ({
                         />
                     )}
 
-                    {/* Drawing manager — shown when redraw mode is active */}
                     {isDrawingMode && (
-                        <DrawingOverlay onPolygonComplete={handlePolygonComplete} />
+                        <ManualDrawOverlay
+                            onPolygonComplete={handlePolygonComplete}
+                            onPointsChange={setDrawnPointCount}
+                            finishSignal={finishSignal}
+                        />
                     )}
                 </Map>
             </div>
@@ -117,10 +123,18 @@ export const RoofMap = ({
                     ) : (
                         <div className="flex items-center gap-2">
                             <div className="bg-black/70 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg backdrop-blur-sm border border-white/10 animate-pulse">
-                                🖊️ Click to place points — Click first point to close shape
+                                🖊️ Click to place points — click first point to close
                             </div>
+                            {drawnPointCount >= 3 && (
+                                <button
+                                    onClick={() => setFinishSignal((n) => n + 1)}
+                                    className="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow transition-all border border-emerald-400"
+                                >
+                                    ✓ Finish Shape
+                                </button>
+                            )}
                             <button
-                                onClick={() => setIsDrawingMode(false)}
+                                onClick={cancelDrawing}
                                 className="bg-white/80 hover:bg-white text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition-all border border-gray-100"
                             >
                                 Cancel
@@ -134,8 +148,7 @@ export const RoofMap = ({
 };
 
 // ─── Editable Polygon ─────────────────────────────────────────────────────────
-// Uses the imperative google.maps.Polygon API directly — same approach as
-// AreaPolygon in CoverageMap, consistent across the codebase.
+// Unchanged — imperative google.maps.Polygon API.
 
 interface EditablePolygonProps {
     coords: { lat: number; lng: number }[];
@@ -146,7 +159,6 @@ function EditablePolygon({ coords, onEdit }: EditablePolygonProps) {
     const map        = useMap();
     const polygonRef = useRef<google.maps.Polygon | null>(null);
 
-    // Sync coords from parent (e.g. after reset)
     useEffect(() => {
         if (polygonRef.current) {
             polygonRef.current.setPaths(coords);
@@ -177,7 +189,6 @@ function EditablePolygon({ coords, onEdit }: EditablePolygonProps) {
             onEdit(updated);
         };
 
-        // Listen to vertex drag + insertion
         const path        = polygon.getPath();
         const mouseUp     = polygon.addListener("mouseup",  readCoords);
         const dragEnd     = polygon.addListener("dragend",  readCoords);
@@ -195,55 +206,116 @@ function EditablePolygon({ coords, onEdit }: EditablePolygonProps) {
             polygonRef.current = null;
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [map]); // stable: polygon is recreated only when map changes
+    }, [map]);
 
     return null;
 }
 
-// ─── Drawing Overlay ──────────────────────────────────────────────────────────
-// Mounts a DrawingManager for free-hand polygon drawing.
-// Uses useMapsLibrary('drawing') — same library already loaded by
-// GoogleMapsProvider, zero extra network cost.
+// ─── Manual Draw Overlay ────────────────────────────────────────────────────
+// Replaces DrawingManager (removed by Google in Maps JS API v3.65+).
+// Click on the map to place points; click near the first point (or press
+// "Finish Shape") to close the polygon. Uses the "geometry" library for
+// distance-based proximity detection on the "click first point to close" UX.
 
 interface DrawingOverlayProps {
     onPolygonComplete: (coords: { lat: number; lng: number }[]) => void;
+    onPointsChange?: (count: number) => void;
+    finishSignal: number;
 }
 
-function DrawingOverlay({ onPolygonComplete }: DrawingOverlayProps) {
-    const map         = useMap();
-    const drawingLib  = useMapsLibrary("drawing");
+function ManualDrawOverlay({ onPolygonComplete, onPointsChange, finishSignal }: DrawingOverlayProps) {
+    const map        = useMap();
+    const geometry   = useMapsLibrary("geometry");
+
+    const pointsRef  = useRef<google.maps.LatLng[]>([]);
+    const polygonRef = useRef<google.maps.Polygon | null>(null);
+    const markersRef = useRef<google.maps.Marker[]>([]);
+    const finishRef  = useRef<() => void>(() => {});
 
     useEffect(() => {
-        if (!map || !drawingLib) return;
+        if (!map) return;
 
-        const dm = new drawingLib.DrawingManager({
+        const polygon = new google.maps.Polygon({
             map,
-            drawingMode: google.maps.drawing.OverlayType.POLYGON,
-            drawingControl: false,
-            polygonOptions: {
-                fillColor: "#3b82f6",
-                fillOpacity: 0.25,
-                strokeColor: "#2563eb",
-                strokeWeight: 2.5,
-                editable: true,
-                draggable: false,
-                zIndex: 2,
-            },
+            paths: [],
+            fillColor: "#3b82f6",
+            fillOpacity: 0.25,
+            strokeColor: "#2563eb",
+            strokeWeight: 2.5,
+            clickable: false,
+            zIndex: 2,
         });
+        polygonRef.current = polygon;
 
-        const listener = dm.addListener("polygoncomplete", (poly: google.maps.Polygon) => {
-            const path   = poly.getPath();
-            const coords = path.getArray().map((ll) => ({ lat: ll.lat(), lng: ll.lng() }));
-            poly.setMap(null);   // remove the drawn overlay
-            dm.setMap(null);     // deactivate drawing manager
+        const clearAll = () => {
+            polygon.setMap(null);
+            markersRef.current.forEach((m) => m.setMap(null));
+            markersRef.current = [];
+            pointsRef.current = [];
+            onPointsChange?.(0);
+        };
+
+        const finish = () => {
+            if (pointsRef.current.length < 3) return;
+            const coords = pointsRef.current.map((ll) => ({ lat: ll.lat(), lng: ll.lng() }));
+            clearAll();
             onPolygonComplete(coords);
+        };
+        finishRef.current = finish;
+
+        const addPoint = (latLng: google.maps.LatLng) => {
+            pointsRef.current.push(latLng);
+            polygon.setPath(pointsRef.current);
+            onPointsChange?.(pointsRef.current.length);
+
+            const marker = new google.maps.Marker({
+                position: latLng,
+                map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 5,
+                    fillColor: "#2563eb",
+                    fillOpacity: 1,
+                    strokeColor: "#fff",
+                    strokeWeight: 2,
+                },
+            });
+            markersRef.current.push(marker);
+        };
+
+        const clickListener = map.addListener("click", (e: google.maps.MapMouseEvent) => {
+            if (!e.latLng) return;
+
+            // Close the shape if clicking near the first placed point
+            if (pointsRef.current.length >= 3 && geometry) {
+                const firstPos = pointsRef.current[0];
+                const dist = geometry.spherical.computeDistanceBetween(firstPos, e.latLng);
+                const zoomLevel = map.getZoom() ?? 20;
+                const metersPerPixel =
+                    (156543.03392 * Math.cos((firstPos.lat() * Math.PI) / 180)) / Math.pow(2, zoomLevel);
+                const closeThresholdMeters = metersPerPixel * 14; // ~14px tolerance
+
+                if (dist < closeThresholdMeters) {
+                    finish();
+                    return;
+                }
+            }
+
+            addPoint(e.latLng);
         });
 
         return () => {
-            google.maps.event.removeListener(listener);
-            dm.setMap(null);
+            google.maps.event.removeListener(clickListener);
+            clearAll();
         };
-    }, [map, drawingLib, onPolygonComplete]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [map, geometry]);
+
+    // External "Finish Shape" button trigger
+    useEffect(() => {
+        if (finishSignal > 0) finishRef.current();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [finishSignal]);
 
     return null;
 }

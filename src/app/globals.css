@@ -112,11 +112,6 @@ html {
   background: rgba(107, 114, 128, 0.8);
 }
 
-@media (max-width: 1200px) {
-  .custom-scrollbar {
-    max-height: calc(90% - 80px);
-  }
-}
 
 /* Estilos base usando la sintaxis moderna */
 @layer base {

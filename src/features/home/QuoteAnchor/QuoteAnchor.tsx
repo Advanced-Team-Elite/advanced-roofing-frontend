@@ -191,8 +191,9 @@ export const QuoteAnchor = () => {
                     </button>
 
                     <p className="text-blue-300 text-sm italic">
-                        Offer expires July 4th • Professional Service
+                        Offer expires end of July • Professional Service
                     </p>
+
                 </div>
             </section>
 
