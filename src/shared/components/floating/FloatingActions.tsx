@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './FloatingActions.module.css';
 import { QuoteDrawer } from './Quote/QuoteDrawer';
 import { ContactDrawer } from "@/shared/components/floating/ContactDrawer/ContactDrawer";
+import { getPregeneratedAudio } from "@/lib/audio-map";
 
 interface IconProps {
     size?: number;
@@ -22,6 +24,9 @@ const AccessibilityIcon = ({ size = 28 }: IconProps) => (
 type ReadState = 'idle' | 'loading' | 'playing' | 'error';
 
 export const FloatingActions = () => {
+    const pathname = usePathname();
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
     const [showTop, setShowTop]                     = useState(false);
     const [showBubble, setShowBubble]               = useState(false);
     const [isMenuOpen, setIsMenuOpen]               = useState(false);
@@ -42,8 +47,35 @@ export const FloatingActions = () => {
             clearTimeout(mountTimer);
             clearTimeout(bubbleTimer);
             window.speechSynthesis.cancel();
+            audioRef.current?.pause();
         };
     }, []);
+
+    // ── Cambio de página: cortar CUALQUIER audio activo ──────
+    // (pre-generado o Web Speech API) ANTES de precargar el
+    // audio de la nueva página. Este único efecto reemplaza
+    // los dos useEffect separados que tenías antes — el bug
+    // era que se creaba el audio nuevo sin pausar el viejo,
+    // perdiendo la referencia al que seguía sonando.
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current.onplay = null;
+            audioRef.current.onended = null;
+            audioRef.current.onerror = null;
+            audioRef.current = null;
+        }
+        window.speechSynthesis.cancel();
+        setReadState('idle');
+
+        const url = getPregeneratedAudio(pathname);
+        if (url) {
+            const preload = new Audio(url);
+            preload.preload = 'auto';
+            audioRef.current = preload;
+        }
+    }, [pathname]);
 
     // ── Scroll → mostrar botón Top ───────────────────────────
     useEffect(() => {
@@ -56,13 +88,17 @@ export const FloatingActions = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // ── Stop lectura ─────────────────────────────────────────
+    // ── Stop lectura (cubre ambas fuentes de audio) ──────────
     const stopAudio = () => {
         window.speechSynthesis.cancel();
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+        }
         setReadState('idle');
     };
 
-    // ── Extraer texto limpio del DOM ─────────────────────────
+    // ── Extraer texto limpio del DOM (fallback path) ─────────
     const extractPageText = (): string => {
         const source =
             document.querySelector<HTMLElement>('[data-readable]') ??
@@ -87,27 +123,42 @@ export const FloatingActions = () => {
     const pickVoice = (): SpeechSynthesisVoice | null => {
         const voices = window.speechSynthesis.getVoices();
         return (
-            voices.find(v => v.name === 'Microsoft Aria Online (Natural) - English (United States)') ?? // Edge Neural — mejor opción
-            voices.find(v => v.name === 'Microsoft Aria - English (United States)')                  ?? // Edge local
-            voices.find(v => v.name.includes('Aria'))                                                ?? // Edge cualquier Aria
-            voices.find(v => v.name === 'Samantha')                                                  ?? // macOS / iOS
-            voices.find(v => v.name === 'Karen')                                                     ?? // macOS Australia
-            voices.find(v => v.name === 'Google US English')                                         ?? // Chrome desktop
-            voices.find(v => v.lang === 'en-US' && v.localService)                                   ?? // voz local en-US
-            voices.find(v => v.lang === 'en-US')                                                     ?? // cualquier en-US
-            voices[0]                                                                                 ?? // lo que haya
+            voices.find(v => v.name === 'Microsoft Aria Online (Natural) - English (United States)') ??
+            voices.find(v => v.name === 'Microsoft Aria - English (United States)')                  ??
+            voices.find(v => v.name.includes('Aria'))                                                ??
+            voices.find(v => v.name === 'Samantha')                                                  ??
+            voices.find(v => v.name === 'Karen')                                                     ??
+            voices.find(v => v.name === 'Google US English')                                         ??
+            voices.find(v => v.lang === 'en-US' && v.localService)                                   ??
+            voices.find(v => v.lang === 'en-US')                                                     ??
+            voices[0]                                                                                 ??
             null
         );
     };
 
-    // ── Toggle lector ────────────────────────────────────────
-    const handleToggleRead = () => {
-        if (readState === 'playing') {
-            stopAudio();
-            setIsMenuOpen(false);
+    // ── Reproducir audio pre-generado ────────────────────────
+    const playPregeneratedAudio = () => {
+        const audio = audioRef.current;
+        if (!audio) {
+            speakWithWebSpeechAPI();
             return;
         }
 
+        audio.currentTime = 0;
+        audio.onplay  = () => setReadState('playing');
+        audio.onended = () => { stopAudio(); setIsMenuOpen(false); };
+        audio.onerror = () => {
+            // Si el mp3 falla (404, CORS, etc.) cae a Web Speech API
+            speakWithWebSpeechAPI();
+        };
+
+        audio.play().catch(() => {
+            speakWithWebSpeechAPI();
+        });
+    };
+
+    // ── Web Speech API (fallback) ────────────────────────────
+    const speakWithWebSpeechAPI = () => {
         const text = extractPageText();
         if (!text) {
             setReadState('error');
@@ -117,10 +168,10 @@ export const FloatingActions = () => {
 
         window.speechSynthesis.cancel();
 
-        const utterance     = new SpeechSynthesisUtterance(text);
-        utterance.lang      = 'en-US';
-        utterance.rate      = 0.75;
-        utterance.pitch     = 1.0;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang  = 'en-US';
+        utterance.rate  = 0.75;
+        utterance.pitch = 1.0;
 
         utterance.onstart = () => setReadState('playing');
         utterance.onend   = () => { stopAudio(); setIsMenuOpen(false); };
@@ -136,7 +187,6 @@ export const FloatingActions = () => {
             setReadState('playing');
         };
 
-        // Las voces pueden no estar listas en Firefox / primer load de Chrome
         const voices = window.speechSynthesis.getVoices();
         if (voices.length > 0) {
             speak();
@@ -145,6 +195,23 @@ export const FloatingActions = () => {
                 window.speechSynthesis.onvoiceschanged = null;
                 speak();
             };
+        }
+    };
+
+    // ── Toggle lector — decide la fuente según la ruta ───────
+    const handleToggleRead = () => {
+        if (readState === 'playing') {
+            stopAudio();
+            setIsMenuOpen(false);
+            return;
+        }
+
+        const hasPregenerated = getPregeneratedAudio(pathname) !== null;
+
+        if (hasPregenerated) {
+            playPregeneratedAudio();
+        } else {
+            speakWithWebSpeechAPI();
         }
     };
 
