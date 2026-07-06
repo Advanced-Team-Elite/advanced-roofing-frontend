@@ -19,21 +19,18 @@ const AccessibilityIcon = ({ size = 28 }: IconProps) => (
     </svg>
 );
 
-// Estados posibles del lector
 type ReadState = 'idle' | 'loading' | 'playing' | 'error';
 
 export const FloatingActions = () => {
-    const [showTop, setShowTop]               = useState(false);
-    const [showBubble, setShowBubble]         = useState(false);
-    const [isMenuOpen, setIsMenuOpen]         = useState(false);
-    const [mounted, setMounted]               = useState(false);
-    const [readState, setReadState]           = useState<ReadState>('idle');
-    const [isQuoteOpen, setIsQuoteOpen]       = useState(false);
+    const [showTop, setShowTop]                     = useState(false);
+    const [showBubble, setShowBubble]               = useState(false);
+    const [isMenuOpen, setIsMenuOpen]               = useState(false);
+    const [mounted, setMounted]                     = useState(false);
+    const [readState, setReadState]                 = useState<ReadState>('idle');
+    const [isQuoteOpen, setIsQuoteOpen]             = useState(false);
     const [activeContactType, setActiveContactType] = useState<'text' | 'email' | 'chat' | 'call' | null>(null);
 
-    const lastScrollY  = useRef(0);
-    const audioRef     = useRef<HTMLAudioElement | null>(null);
-    const audioBlobUrl = useRef<string | null>(null);
+    const lastScrollY = useRef(0);
 
     const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 768;
 
@@ -44,7 +41,7 @@ export const FloatingActions = () => {
         return () => {
             clearTimeout(mountTimer);
             clearTimeout(bubbleTimer);
-            stopAudio();
+            window.speechSynthesis.cancel();
         };
     }, []);
 
@@ -59,32 +56,23 @@ export const FloatingActions = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // ── Helpers de audio ─────────────────────────────────────
+    // ── Stop lectura ─────────────────────────────────────────
     const stopAudio = () => {
-        if (audioRef.current) {
-            audioRef.current.pause();
-            audioRef.current = null;
-        }
-        if (audioBlobUrl.current) {
-            URL.revokeObjectURL(audioBlobUrl.current);
-            audioBlobUrl.current = null;
-        }
+        window.speechSynthesis.cancel();
         setReadState('idle');
     };
 
     // ── Extraer texto limpio del DOM ─────────────────────────
     const extractPageText = (): string => {
-        // Busca main con data-readable primero, luego cualquier main
         const source =
             document.querySelector<HTMLElement>('[data-readable]') ??
-            document.querySelector<HTMLElement>('main') ??
+            document.querySelector<HTMLElement>('main')            ??
             document.querySelector<HTMLElement>('article');
 
         if (!source) return '';
 
         const clone = source.cloneNode(true) as HTMLElement;
 
-        // Eliminar elementos que no deben leerse
         clone
             .querySelectorAll('nav, header, footer, button, script, style, [aria-hidden="true"], .sr-only, svg, img')
             .forEach(el => el.remove());
@@ -95,17 +83,30 @@ export const FloatingActions = () => {
             .trim();
     };
 
+    // ── Elegir la mejor voz disponible ──────────────────────
+    const pickVoice = (): SpeechSynthesisVoice | null => {
+        const voices = window.speechSynthesis.getVoices();
+        return (
+            voices.find(v => v.name === 'Microsoft Aria Online (Natural) - English (United States)') ?? // Edge Neural — mejor opción
+            voices.find(v => v.name === 'Microsoft Aria - English (United States)')                  ?? // Edge local
+            voices.find(v => v.name.includes('Aria'))                                                ?? // Edge cualquier Aria
+            voices.find(v => v.name === 'Samantha')                                                  ?? // macOS / iOS
+            voices.find(v => v.name === 'Karen')                                                     ?? // macOS Australia
+            voices.find(v => v.name === 'Google US English')                                         ?? // Chrome desktop
+            voices.find(v => v.lang === 'en-US' && v.localService)                                   ?? // voz local en-US
+            voices.find(v => v.lang === 'en-US')                                                     ?? // cualquier en-US
+            voices[0]                                                                                 ?? // lo que haya
+            null
+        );
+    };
+
     // ── Toggle lector ────────────────────────────────────────
-    const handleToggleRead = async () => {
-        // Si ya está playing → stop
+    const handleToggleRead = () => {
         if (readState === 'playing') {
             stopAudio();
             setIsMenuOpen(false);
             return;
         }
-
-        // Si está loading → ignorar doble click
-        if (readState === 'loading') return;
 
         const text = extractPageText();
         if (!text) {
@@ -114,42 +115,36 @@ export const FloatingActions = () => {
             return;
         }
 
-        setReadState('loading');
+        window.speechSynthesis.cancel();
 
-        try {
-            const res = await fetch('/api/tts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text }),
-            });
+        const utterance     = new SpeechSynthesisUtterance(text);
+        utterance.lang      = 'en-US';
+        utterance.rate      = 0.75;
+        utterance.pitch     = 1.0;
 
-            if (!res.ok) throw new Error('TTS API error');
-
-            const blob    = await res.blob();
-            const url     = URL.createObjectURL(blob);
-            audioBlobUrl.current = url;
-
-            const audio   = new Audio(url);
-            audioRef.current = audio;
-
-            audio.onended = () => {
-                stopAudio();
-                setIsMenuOpen(false);
-            };
-            audio.onerror = () => {
-                stopAudio();
-                setReadState('error');
-                setTimeout(() => setReadState('idle'), 3000);
-            };
-
-            await audio.play();
-            setReadState('playing');
-
-        } catch (err) {
-            console.error('TTS error:', err);
+        utterance.onstart = () => setReadState('playing');
+        utterance.onend   = () => { stopAudio(); setIsMenuOpen(false); };
+        utterance.onerror = () => {
             stopAudio();
             setReadState('error');
             setTimeout(() => setReadState('idle'), 3000);
+        };
+
+        const speak = () => {
+            utterance.voice = pickVoice();
+            window.speechSynthesis.speak(utterance);
+            setReadState('playing');
+        };
+
+        // Las voces pueden no estar listas en Firefox / primer load de Chrome
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length > 0) {
+            speak();
+        } else {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.onvoiceschanged = null;
+                speak();
+            };
         }
     };
 
@@ -161,9 +156,9 @@ export const FloatingActions = () => {
     // ── Labels por estado ────────────────────────────────────
     const readLabel: Record<ReadState, string> = {
         idle:    '🔊 Listen to this page',
-        loading: '⏳ Generating audio...',
+        loading: '🔊 Listen to this page',
         playing: '⏹ Stop reading',
-        error:   '⚠️ Error — try again',
+        error:   '⚠️ Not available — try another browser',
     };
 
     if (!mounted) return null;
@@ -182,14 +177,10 @@ export const FloatingActions = () => {
                     <button
                         onClick={handleToggleRead}
                         className={styles.menuItem}
-                        disabled={readState === 'loading'}
                     >
                         {readLabel[readState]}
                     </button>
 
-                    {readState === 'loading' && (
-                        <span className={styles.readingStatus}>Generating audio with AI...</span>
-                    )}
                     {readState === 'playing' && (
                         <span className={styles.readingStatus}>Reading in progress...</span>
                     )}
@@ -198,7 +189,7 @@ export const FloatingActions = () => {
 
             {/* Botón accesibilidad */}
             <button
-                className={`${styles.accessibilityBtn} ${showBubble ? styles.withBubble : styles.withoutBubble} ${readState === 'loading' ? styles.disabledBtn : ''}`}
+                className={`${styles.accessibilityBtn} ${showBubble ? styles.withBubble : styles.withoutBubble}`}
                 aria-label="Accessibility Options"
                 onClick={toggleMenu}
             >
