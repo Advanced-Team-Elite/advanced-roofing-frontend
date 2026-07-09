@@ -21,6 +21,7 @@ import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
 import {QuoteAnchor} from "@/features/home/QuoteAnchor/QuoteAnchor";
+import SeniorDiscount from "@/features/home/SeniorDiscount";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -41,6 +42,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <Financing/>
             <CoverageMap/>
             <OurProjects/>
+                <SeniorDiscount/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
