@@ -1,6 +1,6 @@
 export default function SeniorDiscount() {
     return (
-        <section className="py-16 px-6 md:px-[100px] max-w-[1600px] mx-auto">
+        <section className="py-16 px-6 md:px-[100px] lg:px-[32px] max-w-[1600] mx-auto">
             {/* Título de sección */}
             <div className="mb-10">
                 <h2 className="text-[32px] md:text-[36px] lg:text-[64px] text-prompt font-extrabold text-[#04599C] mb-4">
