@@ -21,7 +21,7 @@ import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
 import {QuoteAnchor} from "@/features/home/QuoteAnchor/QuoteAnchor";
-import SeniorDiscount from "@/features/home/SeniorDiscount";
+import SeniorDiscount from "@/features/home/SeniorDiscount/SeniorDiscount";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
