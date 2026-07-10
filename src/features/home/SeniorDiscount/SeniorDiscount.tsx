@@ -1,6 +1,8 @@
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
+
 export default function SeniorDiscount() {
     return (
-        <section className="py-16 px-6 md:px-[100px] lg:px-[32px] max-w-[1600] mx-auto">
+        <ScrollReveal direction="center" className="py-16 px-6 md:px-[100px] lg:px-[32px] max-w-[1600] mx-auto">
             {/* Título de sección */}
             <div className="mb-10">
                 <h2 className="text-[32px] md:text-[36px] lg:text-[64px] text-prompt font-extrabold text-[#04599C] mb-4">
@@ -47,6 +49,6 @@ export default function SeniorDiscount() {
                     </span>
                 </div>
             </div>
-        </section>
+        </ScrollReveal>
     );
 }
