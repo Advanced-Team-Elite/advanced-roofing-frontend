@@ -29,7 +29,6 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
-            <QuoteAnchor/>
             <NowServing/>
             <Language/>
             <StatsBar/>
@@ -42,7 +41,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <Financing/>
             <CoverageMap/>
             <OurProjects/>
-                <SeniorDiscount/>
+            <SeniorDiscount/>
             <MoreThanRoofing />
             <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
