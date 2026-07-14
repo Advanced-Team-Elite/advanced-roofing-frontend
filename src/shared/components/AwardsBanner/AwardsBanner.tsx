@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 const awards = [
     { src: '/assets/images/features/home/badgets/AngiesList.webp', alt: 'Angie’s List Super Service Award 2015 Badge' },
+    { src: '/assets/images/features/home/badgets/master-elite-card.webp', alt: 'GAF Certified Master Elite Card' },
     { src: '/assets/images/features/home/badgets/gaf-certified-logo.webp', alt: 'GAF Certified Residential Roofing Contractor Badge' },
     { src: '/assets/images/features/home/badgets/PreferredContractor_OwensCorning_guide.webp', alt: 'Owens Corning Preferred Contractor Logo' },
     { src: '/assets/images/features/home/badgets/nextdoor-neighborhood-alt.png', alt: 'Nextdoor Neighborhood Fave Award Sello' },
