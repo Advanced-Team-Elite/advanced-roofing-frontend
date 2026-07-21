@@ -1,15 +1,12 @@
 "use client";
-/**
- * QuoteDrawer — GoogleMapsProvider removed.
- * The SDK is now loaded globally in RootLayout → GoogleMapsProvider.
- * This component simply uses AddressSearch and RoofMap directly.
- */
+
 import { useState } from "react";
 import styles from "../FloatingActions.module.css";
 import { AddressSearch } from "@/features/widget/AddressSearch";
 import { RoofMap } from "@/features/widget/RoofMap";
 import { QuoteForm } from "@/features/widget/QuoteForm";
 import { getRoofData } from "@/lib/google-solar";
+import { computeAreaSqFt } from "@/lib/polygon-area";
 import { DEFAULT_CENTER } from "@/lib/google-maps";
 import { DetectedPitch } from "@/types/roofing";
 
@@ -25,6 +22,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     const [location, setLocation]           = useState(DEFAULT_CENTER);
     const [selectedAddress, setSelectedAddress] = useState("");
     const [detectedArea, setDetectedArea]   = useState(2000);
+    const [liveArea, setLiveArea]           = useState<number | undefined>(undefined);
     const [roofPolygon, setRoofPolygon]     = useState<{ lat: number; lng: number }[] | undefined>(undefined);
     const [suggestedPitch, setSuggestedPitch] = useState<DetectedPitch>("medium");
     const [mapZoom, setMapZoom]             = useState(11);
@@ -38,6 +36,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         setMapZoom(19);
         setRoofError(null);
         setIsLoading(true);
+        setLiveArea(undefined); // reset: nueva dirección, aún sin ediciones manuales
 
         try {
             const data = await getRoofData(lat, lng);
@@ -59,10 +58,22 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         }
     };
 
+    // ── Se dispara cada vez que el usuario arrastra un punto,
+    // agrega/quita un vértice, o termina un redraw manual.
+    const handlePolygonEdit = (newCoords: { lat: number; lng: number }[]) => {
+        setRoofPolygon(newCoords);
+
+        const recalculated = computeAreaSqFt(newCoords);
+        if (recalculated > 0) {
+            setLiveArea(recalculated);
+        }
+    };
+
     const handleReset = () => {
         setStep("search");
         setSelectedAddress("");
         setRoofPolygon(undefined);
+        setLiveArea(undefined);
         setLocation(DEFAULT_CENTER);
         setRoofError(null);
     };
@@ -70,7 +81,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     return (
         <div className={`${styles.quoteWrapper} ${isOpen ? styles.wrapperOpen : ''}`}>
 
-            {/* Notification bubble */}
             {!isOpen && showHint && (
                 <div className={styles.quoteHint}>
                     <span className={styles.notifIcon}>!</span>
@@ -96,7 +106,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
             <div className={styles.quoteDrawer}>
                 <div className="flex flex-col h-full bg-white overflow-y-auto pr-2 custom-scrollbar">
-                    {/* Header con botón de cierre pegado a la derecha */}
                     <div className="flex justify-end p-4">
                         <button
                             onClick={() => setIsOpen(false)}
@@ -127,7 +136,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                     />
                                 </div>
 
-                                {/* MESAJE DE ERROR / OBSERVACIONES */}
                                 {roofError && (
                                     <div className="mb-4 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl animate-in fade-in duration-300">
                                         <p className="text-sm font-bold text-amber-800">
@@ -143,6 +151,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                         center={location}
                                         zoom={mapZoom}
                                         polygonCoords={roofPolygon}
+                                        onPolygonEdit={handlePolygonEdit}
                                         hideControls={!selectedAddress}
                                     />
                                     {isLoading && (
@@ -152,7 +161,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                     )}
                                 </div>
 
-                                {/* Botón que recién aparece al tener el polígono */}
                                 {selectedAddress && !isLoading && roofPolygon && (
                                     <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                         <button
@@ -165,9 +173,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                 )}
                             </div>
                         ) : (
-                            /* ── STEP 2: CALCULADORA Y COTIZACIÓN ─────────────────────────────── */
                             <div className="flex flex-col flex-1 px-4 sm:px-8 md:px-12 pb-10 animate-in fade-in duration-500">
-                                {/* Cabecera del Step 2 con botón de retorno */}
                                 <div className="mb-8">
                                     <button
                                         onClick={handleReset}
@@ -185,23 +191,21 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                     <h2 className="text-5xl font-prompt text-[#00589e] mb-5">
                                         Your Instant Estimate
                                     </h2>
-                                    {/* Badge de la dirección seleccionada */}
                                     <div className="bg-gray-50 border-l-4 border-[#00589e] p-4 rounded-r-xl ">
                                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Property Address</p>
                                         <p className="text-sm font-bold text-gray-800 truncate">{selectedAddress}</p>
                                     </div>
                                 </div>
 
-                                {/* Componente de Formulario */}
                                 <div className="bg-white rounded-2xl border border-gray-100 p-2">
                                     <QuoteForm
                                         initialArea={detectedArea}
                                         initialPitch={suggestedPitch}
+                                        liveArea={liveArea}
                                         address={selectedAddress}
                                     />
                                 </div>
 
-                                {/* Footer de confianza - Privacidad de Datos */}
                                 <div className="mt-10 p-6 bg-blue-50/50 border border-blue-100 rounded-2xl flex items-center gap-4">
                                     <div className="bg-[#00589e] p-3 rounded-full text-white shadow-sm">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
