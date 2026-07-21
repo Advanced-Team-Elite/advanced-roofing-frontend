@@ -102,13 +102,23 @@ export const RoofMap = ({
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
                     {!isDrawingMode ? (
                         <>
-                            <div className="bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
+                            <div className="relative bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10 flex items-center gap-1.5">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="16" x2="12" y2="12" />
+                                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                                </svg>
                                 Drag points to adjust roof edges
+
                             </div>
                             <button
                                 onClick={startDrawing}
-                                className="flex items-center gap-1.5 bg-white hover:bg-gray-100 text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transition-all active:scale-95 border border-gray-200"
+                                className="flex cursor-pointer items-center gap-1.5 bg-white hover:bg-gray-100 text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transition-all active:scale-95 border border-gray-200"
                             >
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
                                 Redraw Roof
                             </button>
                             {drawnCoords && (
@@ -128,14 +138,14 @@ export const RoofMap = ({
                             {drawnPointCount >= 3 && (
                                 <button
                                     onClick={() => setFinishSignal((n) => n + 1)}
-                                    className="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow transition-all border border-emerald-400"
+                                    className="bg-emerald-500 cursor-pointer hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow transition-all border border-emerald-400"
                                 >
                                     ✓ Finish Shape
                                 </button>
                             )}
                             <button
                                 onClick={cancelDrawing}
-                                className="bg-white/80 hover:bg-white text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition-all border border-gray-100"
+                                className="bg-white/80 cursor-pointer hover:bg-white text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition-all border border-gray-100"
                             >
                                 Cancel
                             </button>
