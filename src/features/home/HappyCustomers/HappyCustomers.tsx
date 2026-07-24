@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import styles from './HappyCustomers.module.css';
 import { Review, reviewsData } from "@/features/reviews/constants";
 import Link from "next/link";
+import {ScrollReveal} from "@/shared/animations/ScrollReveal";
 
 interface Props {
     dbReviews?: Review[];
@@ -59,8 +60,8 @@ const HappyCustomers = ({ dbReviews = [] }: Props) => {
 
     return (
         <section className={styles.section}>
-            <div className={styles.container}>
-                <h2 className={styles.mainTitle}>Hear From Our Happy Customers</h2>
+            <ScrollReveal className={styles.container} direction="right" initialOpacity={20} distance={90}>
+                <h2 className={styles.mainTitle}>Hear it from our customers</h2>
 
                 <div className={styles.carouselWrapper}>
                     <div
@@ -97,7 +98,7 @@ const HappyCustomers = ({ dbReviews = [] }: Props) => {
                         <button className={styles.viewAllBtn}>View All Reviews</button>
                     </Link>
                 </div>
-            </div>
+            </ScrollReveal>
         </section>
     );
 };
