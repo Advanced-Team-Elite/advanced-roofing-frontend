@@ -14,7 +14,7 @@
     align-items: flex-start;
     width: 100%;
     margin-bottom: 60px;
-    gap: 80px; /* Aumentamos el gap para controlar la separación mínima */
+    gap: 80px;
 }
 
 .title {
@@ -22,39 +22,63 @@
     font-weight: 900;
     color: #00589e;
     margin: 0;
-    flex: 1; /* Ocupa el espacio necesario a la izquierda */
+    flex: 1;
 }
 
 .description {
     font-size: 1.1rem;
     color: #444;
     line-height: 1.5;
-    flex: 2; /* CAMBIO: Aumentamos el factor de crecimiento para que gane más terreno que el título */
-    width: 100%;
-    max-width: 800px; /* CAMBIO: Aumentamos o quitamos el max-width para que el bloque rojo se expanda */
-    text-align: left; /* Opcional: asegura que el texto dentro del bloque rojo empiece a la izquierda */
+    flex: 2;
+    max-width: 800px;
+    text-align: left;
     margin: auto;
 }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* ── CARRUSEL ─────────────────────────────────────────────── */
+
+.carouselViewport {
     width: 100%;
+    overflow: hidden;   /* ← recorta todo lo que sale a la derecha */
+    user-select: none;
 }
 
-/* CARDS */
+/*
+  El track es flex.
+  Cada card ocupa exactamente (100% viewport - 3 gaps) / 4
+  La 5ª card vive a la derecha, invisible porque el viewport la recorta.
+  Al hacer translateX(-cardWidth) el track se corre y la 5ª entra suavemente.
+*/
+.track {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    will-change: transform;
+    /* sin width fijo: deja que las cards definan el ancho total */
+}
+
+/* ── CARD ─────────────────────────────────────────────────── */
+
 .card {
+    /*
+      Ancho fijo calculado: (100vw del viewport - 3 gaps de 20px) / 4
+      Usamos CSS custom property que sobreescribimos en JS vía style inline
+      Fallback: 25% - gap proporcional
+    */
+    flex: 0 0 var(--card-w, calc(25% - 15px));
     background: #00589e;
     padding: 30px 20px 20px;
-    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 450px;
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
 
+.active {
+    box-shadow: 0 8px 32px rgba(0, 88, 158, 0.4);
+}
 
 .projectTitle {
     font-size: 1.8rem;
@@ -65,20 +89,14 @@
     width: 90%;
 }
 
-.active .projectTitle {
-    color: white;
-}
-
 .projectMeta {
     font-size: 1rem;
     font-weight: 500;
-    color: white;
+    color: rgba(255, 255, 255, 0.85);
     font-style: italic;
 }
 
-.active .projectMeta {
-    color: rgba(255, 255, 255, 0.9);
-}
+/* ── IMAGE ────────────────────────────────────────────────── */
 
 .imageWrapper {
     position: relative;
@@ -92,12 +110,24 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.card:hover .projectImage {
+    transform: scale(1.04);
+}
+
+/* ── TOOLTIP ──────────────────────────────────────────────── */
+
+.tooltipContainer {
+    position: absolute;
+    bottom: 70px;
+    right: 15px;
+    z-index: 10;
 }
 
 .systemBadge {
-    position: absolute;
-    bottom: 70px; /* Por encima de la barra de iconos */
-    right: 15px;
     background: rgba(255, 255, 255, 0.25);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -109,14 +139,15 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-    z-index: 10;
     animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── ICON BAR ─────────────────────────────────────────────── */
 
 .iconBar {
     position: absolute;
@@ -133,28 +164,52 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255,1);
+    border: 1.5px solid rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #00589e; /* Color por defecto */
+    color: #00589e;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .iconCircle:hover {
     background: #00589e;
-    color: black !important;
+    color: white;
     transform: scale(1.1);
 }
 
-.active .iconCircle {
-    background: rgba(255, 255, 255, 0.8);
+/* ── DOTS ─────────────────────────────────────────────────── */
+
+.dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
 }
 
-/* BOTÓN INFERIOR */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c5d8ea;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.dotActive {
+    background: #00589e;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* ── BOTÓN ────────────────────────────────────────────────── */
+
+.servicesLink { text-decoration: none; }
+
 .moreBtn {
-    margin-top: 50px;
+    margin-top: 40px;
     background: #00ccff;
     color: white;
     padding: 15px 40px;
@@ -165,35 +220,22 @@
     transition: background 0.3s;
 }
 
-.moreBtn:hover {
-    background: #00b1dc;
-}
+.moreBtn:hover { background: #00b1dc; }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ───────────────────────────────────────────── */
 
-@media (max-width: 1280px) { /* Tablet Landscape */
-    .container {
-        padding: 80px 100px;
-    }
-    .grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1280px) {
+    .container { padding: 80px 40px; }
     .title { font-size: 48px; }
+    /* 2 cards visibles en tablet */
+    .card { flex: 0 0 var(--card-w, calc(50% - 10px)); }
 }
 
-@media (max-width: 768px) { /* Tablet Portrait / Mobile */
-    .container {
-        padding: 80px 40px;
-    }
-    .header {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    .title {
-        margin: auto;
-    }
+@media (max-width: 768px) {
+    .container { padding: 60px 20px; }
+    .header { flex-direction: column; text-align: center; gap: 20px; }
+    .title { font-size: 40px; margin: auto; }
     .description { max-width: 100%; }
-    .grid { grid-template-columns: 1fr; }
-    .title { font-size: 40px; }
-    .card { min-height: auto; }
+    /* 1 card visible en móvil */
+    .card { flex: 0 0 var(--card-w, 100%); min-height: auto; }
 }
