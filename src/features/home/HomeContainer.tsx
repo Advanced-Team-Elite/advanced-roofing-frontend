@@ -32,6 +32,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <NowServing/>
             <Language/>
             <StatsBar/>
+            <HappyCustomers dbReviews={dbReviews} />
             <OurServices />
             <AboutHome />
             <AwardsBanner />
@@ -43,7 +44,6 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <OurProjects/>
             <SeniorDiscount/>
             <MoreThanRoofing />
-            <HappyCustomers dbReviews={dbReviews} />
             <ContactUs />
             <Footer upperSection={<FinancingSection/>}/>
 
