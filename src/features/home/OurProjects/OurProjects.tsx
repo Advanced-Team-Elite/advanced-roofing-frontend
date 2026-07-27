@@ -6,17 +6,20 @@ import { Clock, Home } from 'lucide-react';
 import Link from "next/link";
 import { ScrollReveal } from "@/shared/animations/ScrollReveal";
 
-const projects = [
+const initialProjects = [
     { id: 1, title: 'Industrial Logistics Hub',      type: 'Commercial Flat Roof',    size: '59,500 sq. ft.', time: '3 weeks', image: '/assets/images/projects/industrial-logistics.webp',                        system: 'Roofing Membrane + 5.2" Insulation' },
     { id: 2, title: 'Modern Family Estate',          type: 'Residential Shingle Roof', size: '3,450 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/modern-family.webp',                              system: 'Timberline GAF shingle' },
     { id: 3, title: 'Suburban Heritage Home',        type: 'Residential Shingle Roof', size: '4,222 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/suburban-heritage-alt.webp',                      system: 'Timberline GAF shingle' },
     { id: 4, title: 'Classic Residential Villa',     type: 'Residential Shingle Roof', size: '1,602 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/residential-villa.webp',                          system: 'Timberline GAF shingle' },
-    { id: 5, title: 'Classic Suburban Ranch',        type: 'Residential Shingle Roof', size: '2,800 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/2c6e3db0-709a-46cb-8e9f-0a6180d5c8ee.jpg',        system: 'Timberline GAF shingle' },
-    { id: 6, title: 'Historic Village Home',         type: 'Residential Shingle Roof', size: '2,150 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/faf544b3-307f-473f-b8e5-5e6fc2dbdb66.jpg',        system: 'Timberline GAF shingle' },
-    { id: 7, title: 'Contemporary Brick Residence',  type: 'Residential Shingle Roof', size: '3,200 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/4d76dd46-2c88-4a8b-bc42-c872077b00ae.jpg',        system: 'Timberline GAF shingle' },
+    { id: 5, title: 'Classic Suburban Ranch',        type: 'Residential Shingle Roof', size: '2,800 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/classic-suburban-ranch.jpg',        system: 'Timberline GAF shingle' },
+    { id: 6, title: 'Historic Village Home',         type: 'Residential Shingle Roof', size: '2,150 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/historic-village-home.jpg',        system: 'Timberline GAF shingle' },
+    { id: 7, title: 'Contemporary Brick Residence',  type: 'Residential Shingle Roof', size: '3,200 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/contemporary-brick-residence.jpg',        system: 'Timberline GAF shingle' },
+    { id: 8, title: 'Suburban Brick & Siding Home',  type: 'Residential Shingle Roof', size: '3,100 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/down-net_http20260727-436-soyo5u.jpg',     system: 'Timberline GAF shingle' },
+    { id: 9, title: 'Gated Estate Property',         type: 'Residential Shingle Roof', size: '3,600 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/down-net_http20260727-164-svejaf.jpg',     system: 'Timberline GAF shingle' },
+    { id: 10, title: 'Dark Grey Colonial Home',      type: 'Residential Shingle Roof', size: '4,500 sq. ft.',  time: '3 weeks', image: '/assets/images/projects/down-net_http20260727-116-k83ngw.jpg',    system: 'Timberline GAF shingle' },
+    { id: 11, title: 'Light Blue Modern Residence',  type: 'Residential Shingle Roof', size: '2,900 sq. ft.',  time: '2 weeks', image: '/assets/images/projects/9c5b654f-da21-4e25-8c74-efcae06db418.jpg',     system: 'Timberline GAF shingle' },
 ];
 
-// Cuántas cards se ven al mismo tiempo según breakpoint
 const getVisible = () => {
     if (typeof window === 'undefined') return 4;
     if (window.innerWidth <= 768)  return 1;
@@ -24,29 +27,37 @@ const getVisible = () => {
     return 4;
 };
 
-const GAP = 20; // px — debe coincidir con el gap del CSS
+const GAP = 20;
 
 const OurProjects = () => {
+    // Inicializamos con el orden normal para que el SSR coincida en el primer render
+    const [projects, setProjects] = useState(initialProjects);
+    const [isMounted, setIsMounted] = useState(false);
+
     const [baseIndex, setBaseIndex]         = useState(0);
-    const [offset, setOffset]               = useState(0);          // px que se mueve el track
+    const [offset, setOffset]               = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [isDragging, setIsDragging]       = useState(false);
     const [dragStart, setDragStart]         = useState(0);
     const [dragDelta, setDragDelta]         = useState(0);
-    const [activeId, setActiveId]           = useState(projects[0].id);
+    const [activeId, setActiveId]           = useState(initialProjects[0].id);
     const [hoveredIcon, setHoveredIcon]     = useState<{ projectId: number; iconType: string } | null>(null);
-    const [cardWidth, setCardWidth]         = useState(0);  // ancho real de 1 card en px
-    const [visible, setVisible]             = useState(4);  // cards visibles
+    const [cardWidth, setCardWidth]         = useState(0);
+    const [visible, setVisible]             = useState(4);
 
     const viewportRef  = useRef<HTMLDivElement>(null);
     const intervalRef  = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    // ── Calcular ancho real de card ──────────────────────────
+    // Randomizar solo después de montar en el cliente para evitar errores de hidratación
+    useEffect(() => {
+        setIsMounted(true);
+        setProjects([...initialProjects].sort(() => Math.random() - 0.5));
+    }, []);
+
     const measureCard = useCallback(() => {
         if (!viewportRef.current) return;
         const vis  = getVisible();
         const total = viewportRef.current.offsetWidth;
-        // ancho de 1 card = (total del viewport - gaps entre cards visibles) / visible
         const w = (total - GAP * (vis - 1)) / vis;
         setCardWidth(w);
         setVisible(vis);
@@ -58,44 +69,41 @@ const OurProjects = () => {
         return () => window.removeEventListener('resize', measureCard);
     }, [measureCard]);
 
-    // ── Slide ────────────────────────────────────────────────
     const slideNext = useCallback(() => {
         if (isTransitioning || cardWidth === 0) return;
         setIsTransitioning(true);
 
-        // Mover el track 1 card + 1 gap a la izquierda
         setOffset(-(cardWidth + GAP));
 
         setTimeout(() => {
-            // Rotar index y resetear offset sin transición
             setBaseIndex(prev => (prev + 1) % projects.length);
             setOffset(0);
             setIsTransitioning(false);
         }, 520);
-    }, [isTransitioning, cardWidth]);
+    }, [isTransitioning, cardWidth, projects.length]);
 
-    // ── Autoplay ─────────────────────────────────────────────
     const startInterval = useCallback(() => {
         if (intervalRef.current) clearInterval(intervalRef.current);
-        intervalRef.current = setInterval(slideNext, 3500);
+        intervalRef.current = setInterval(slideNext, 2000);
     }, [slideNext]);
 
     useEffect(() => {
-        startInterval();
+        if (isMounted) {
+            startInterval();
+        }
         return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-    }, [startInterval]);
+    }, [isMounted, startInterval]);
 
-    // ── Sync activeId ────────────────────────────────────────
     useEffect(() => {
-        setActiveId(projects[baseIndex].id);
-    }, [baseIndex]);
+        if (projects.length > 0) {
+            setActiveId(projects[baseIndex].id);
+        }
+    }, [baseIndex, projects]);
 
-    // ── Cards renderizadas: visible + 1 (la que entra) ──────
     const visibleProjects = Array.from({ length: visible + 1 }, (_, i) =>
         projects[(baseIndex + i) % projects.length]
     );
 
-    // ── Drag / Touch ─────────────────────────────────────────
     const onDragStart = (clientX: number) => {
         if (intervalRef.current) clearInterval(intervalRef.current);
         setIsDragging(true);
@@ -150,7 +158,6 @@ const OurProjects = () => {
                             key={`${project.id}-${i}`}
                             className={`${styles.card} ${activeId === project.id ? styles.active : ''}`}
                             style={{
-                                // Ancho exacto calculado en JS → la card extra queda FUERA del viewport
                                 flex: cardWidth > 0 ? `0 0 ${cardWidth}px` : undefined,
                             }}
                             onMouseEnter={() => {
@@ -215,7 +222,6 @@ const OurProjects = () => {
                 </div>
             </div>
 
-            {/* Dots */}
             <div className={styles.dots}>
                 {projects.map((_, i) => (
                     <button
