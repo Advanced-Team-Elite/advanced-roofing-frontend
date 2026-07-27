@@ -22,6 +22,7 @@ import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
 import {QuoteAnchor} from "@/features/home/QuoteAnchor/QuoteAnchor";
 import SeniorDiscount from "@/features/home/SeniorDiscount/SeniorDiscount";
+import NiceJobBadge from "@/features/home/NiceJobBadge";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -29,6 +30,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
+                <NiceJobBadge/>
             <NowServing/>
             <Language/>
             <StatsBar/>
