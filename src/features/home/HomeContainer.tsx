@@ -30,6 +30,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
+                <NiceJobBadge/>
             <NowServing/>
             <Language/>
             <StatsBar/>
@@ -43,7 +44,6 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <Financing/>
             <CoverageMap/>
             <OurProjects/>
-                <NiceJobBadge/>
             <SeniorDiscount/>
             <MoreThanRoofing />
             <ContactUs />
