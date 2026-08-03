@@ -1,0 +1,163 @@
+/* src/app/journals/journals.module.css */
+
+.main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 2rem 120px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00589e;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: 900;
+    color: #00589e;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 480px;
+    line-height: 1.6;
+}
+
+/* ── GRID ─────────────────────────────────────────────────── */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+/* ── CARD ─────────────────────────────────────────────────── */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 88, 158, 0.15);
+}
+
+/* Portada */
+.coverWrapper {
+    position: relative;
+    aspect-ratio: 3/4;       /* proporción de página de revista */
+    overflow: hidden;
+    background: #0b2545;
+}
+
+.coverImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .coverImage {
+    transform: scale(1.04);
+}
+
+.coverOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+
+.edition {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #00589e;
+    color: #f7d000;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* Body */
+.cardBody {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.cardTitle {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #00589e;
+    margin: 0;
+}
+
+.cardDesc {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.readCta {
+    color: #00589e;
+    font-weight: 700;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+
+@media (max-width: 1280px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .title { font-size: 44px; }
+}
+
+@media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .main { padding: 60px 1rem 80px; }
+    .grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+    .title { font-size: 36px; }
+}

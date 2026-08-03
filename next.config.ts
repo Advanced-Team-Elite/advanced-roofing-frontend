@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Configuración para estandarizar todas las URLs con barra al final
     trailingSlash: true,
 
-    // Optimización de imágenes
     images: {
         qualities: [25, 50, 75, 85, 100],
         remotePatterns: [
@@ -11,8 +9,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'advancedroofingteam.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                pathname: '/dca79rb3c/**',
+            },
         ],
     },
+
     async redirects() {
         return [
             {
@@ -27,8 +31,8 @@ const nextConfig = {
                 permanent: true,
                 destination: 'https://advancedroofingteam.com/:path*',
             },
-        ]
+        ];
     },
-}
+};
 
 export default nextConfig;
