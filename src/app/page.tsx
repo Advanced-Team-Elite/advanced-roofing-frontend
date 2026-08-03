@@ -13,10 +13,10 @@ export const metadata: Metadata = {
         description: 'Expert roofing services for residential and commercial properties.',
         images: [
             {
-                url: '/icon.png',
-                width: 512,
-                height: 512,
-                alt: 'Advanced Roofing Team Icon',
+                url: '/banner.png', // O la URL completa: 'https://advanced-roofing-frontend-b0akyjk8n.vercel.app/banner.png'
+                width: 1200,
+                height: 630,
+                alt: 'Advanced Roofing Team - We have got you covered',
             },
         ],
     },
