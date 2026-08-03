@@ -1,0 +1,37 @@
+/* src/app/journal/[slug]/journal.module.css */
+
+.main {
+    width: 100%;
+    padding: 40px 0 80px;   /* ← sin padding lateral, el magazine lo maneja */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;   /* ← stretch en vez de center */
+    background: #f0ece4;
+}
+
+.breadcrumb {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 32px;    /* ← centrado solo el breadcrumb */
+    padding: 0 2rem;        /* ← padding solo aquí */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.breadcrumb a {
+    color: #00589e;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #003f72;
+}
+
+.breadcrumb span {
+    color: #94a3b8;
+}
