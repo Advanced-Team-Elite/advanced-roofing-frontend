@@ -1,6 +1,5 @@
 'use client';
 import {AboutHome} from "@/features/home/AboutHome/AboutHome";
-import {StormRecovery} from "@/features/home/StormRecovery/StormRecovery";
 import WhyChooseUs from "@/features/home/WhyChooseUs/WhyChooseUs";
 import OurServices from "@/features/home/OurServices/OurServices";
 import MoreThanRoofing from "@/features/home/MoreThanRoofing/MoreThanRoofing";
@@ -20,9 +19,9 @@ import {NowServing} from "@/features/home/NowServing/NowServing";
 import {Language} from "@/features/home/Lenguage/Language";
 import CoverageMap from "@/features/home/CoverageMap/CoverageMap";
 import {TopBannerAward} from "@/features/home/TopBannerAward/TopBannerAward";
-import {QuoteAnchor} from "@/features/home/QuoteAnchor/QuoteAnchor";
 import SeniorDiscount from "@/features/home/SeniorDiscount/SeniorDiscount";
 import NiceJobBadge from "@/features/home/NiceJobBadge";
+import SolarPanel from "@/features/home/SolarPanel";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
@@ -35,6 +34,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <Language/>
             <StatsBar/>
             <HappyCustomers dbReviews={dbReviews} />
+            <SolarPanel/>
             <OurServices />
             <AboutHome />
             <AwardsBanner />
