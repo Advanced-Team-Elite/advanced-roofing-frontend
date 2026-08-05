@@ -32,13 +32,22 @@ export interface Journal {
 
 export const JOURNALS_META = [
     {
-        slug:             "january-2025",
-        title:            "January 2025",
+        slug:             "june-2026",
+        title:            "June 2026",
         edition:          "Vol. 1",
-        publishedAt:      "2025-01-01",
+        publishedAt:      "2026-05-01",
         pageCount:        35,
         description:      "Our inaugural edition. Storm season recap, GAF certification spotlight, and the team behind every roof.",
         cloudinaryFolder: "journals/january-2025",
+    },
+    {
+        slug:             "july-2026",
+        title:            "July 2026",
+        edition:          "Vol. 2",
+        publishedAt:      "2026-06-01",
+        pageCount:        34,
+        description:      "Our second edition. Storm season recap, testimonials, and the behind of scenes of our work.",
+        cloudinaryFolder: "journals/july-2026",
     },
     // Agrega más tomos aquí — solo metadata, sin URLs
     // {
