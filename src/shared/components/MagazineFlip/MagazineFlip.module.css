@@ -267,6 +267,25 @@
 .mobileNavRight { right: 4px; }
 
 /* Si el contenedor es muy estrecho, que las flechas no solapen la imagen */
+@media (max-width: 768px) {
+    .section {
+        padding: 48px 0 80px;   /* ← sin padding lateral, el libro toma todo el ancho */
+    }
+
+    .mobileScene {
+        padding: 0;             /* ← quitar el padding: 0 52px */
+    }
+
+    .mobileNavLeft  {
+        left: 8px;
+        z-index: 30;
+    }
+    .mobileNavRight {
+        right: 8px;
+        z-index: 30;
+    }
+}
+
 @media (max-width: 480px) {
     .mobileNavLeft  { left: 2px; }
     .mobileNavRight { right: 2px; }
@@ -274,4 +293,44 @@
     .mobilePage {
         width: 80vw;
     }
+}
+
+
+/* ─── ZOOM fixes ──────────────────────────────────────────────── */
+
+.zoomBar {
+    display: flex;
+    align-items: center;
+    gap: 5;
+    background: #1a1a1a;
+    border-radius: 24px;
+    padding: 4px;
+    margin-bottom: 16px;
+    width: fit-content;
+    align-self: center;
+
+    /* Siempre visible sobre el libro */
+    position: sticky;
+    top: 12px;
+    z-index: 50;       /* ← encima del zoom container */
+    color: #b1b1b1;
+}
+
+.zoomContainer {
+    touch-action: none;
+    will-change: transform;
+    display: flex;
+    justify-content: center;
+    /* NO z-index aquí — las flechas deben ganarle */
+}
+
+/* Flechas siempre encima del zoom */
+.mobileNav {
+    z-index: 60 !important;   /* ← más alto que zoomContainer */
+    pointer-events: all !important;
+}
+
+.zoomHint{
+    margin-top: 20px;
+    color: #757575;
 }
