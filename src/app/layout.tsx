@@ -95,9 +95,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <OpenAIPixel pixelId="6dPKWdJYqiipqoUnA6L2AB" />
             <FacebookPixel pixelId="27082259264741522" />
             <Clarity projectId="x786vn6psg" />
-            <Suspense fallback={null}>
-                <WeatherEffectsAsync />
-            </Suspense>
+            {/*
+                <Suspense fallback={null}>
+                    <WeatherEffectsAsync />
+                </Suspense>
+             */}
             <GoogleMapsProvider>
                 <Header />
                 {children}
