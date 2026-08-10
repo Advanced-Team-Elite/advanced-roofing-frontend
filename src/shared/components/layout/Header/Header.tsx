@@ -11,7 +11,7 @@ export const Header = () => {
 
     const locations = [
         { label: "Main Office", phone: "877-945-6565" },
-        { label: "Wisconsin", phone: "262-909-8907" },
+        { label: "Wisconsin", phone: "262-220-2834" },
         { label: "Indiana", phone: "219-316-4996" }
     ];
 
