@@ -155,6 +155,12 @@ export const Footer = ({ upperSection }: FooterProps) => {
                                     <a href="tel:8779456565" className={styles.phoneNumber}>877-945-6565</a>
                                 </div>
 
+
+                                <div className={styles.phoneItem}>
+                                    <span className={styles.locationTag}>Illinois:</span>
+                                    <a href="tel:8479456565" className={styles.phoneNumber}>847-945-6565</a>
+                                </div>
+
                                 <div className={styles.phoneItem}>
                                     <span className={styles.locationTag}>Wisconsin:</span>
                                     <a href="tel:2622202834" className={styles.phoneNumber}>262-220-2834</a>
