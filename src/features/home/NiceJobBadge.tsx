@@ -25,6 +25,8 @@ export default function NiceJobReviewsSection() {
 
                         <a
                             href="https://nicejob.com/advanced-roofing-team/invite"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="nj-review inline-flex items-center justify-center rounded-none bg-[#0052A3] px-8 py-4 text-base font-bold text-white shadow-md transition-all hover:bg-[#003d7a]"
                         >
                             Leave us a review!
