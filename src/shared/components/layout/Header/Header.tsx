@@ -89,7 +89,7 @@ export const Header = () => {
 
                     <Link href="/">
                         <Image
-                            src="/assets/brand/LOGO_ADVANCED.png"
+                            src="/assets/brand/LOGO_ADVANCED.webp"
                             alt="Advanced Roofing Logo"
                             width={250}
                             height={80}
