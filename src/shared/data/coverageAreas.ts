@@ -1154,43 +1154,43 @@ export const COVERAGE_AREAS = [
 // Lista de 10 configuraciones e imágenes de proyectos dinámicos
 export const MOCK_PROJECTS_POOL: Omit<Project, 'id'>[] = [
     {
-        image: '/assets/images/features/map/house-shingles.png',
+        image: '/assets/images/features/map/house-shingles.webp',
         specs: { piecesSquare: '64', bundlesSquare: '3', nailsSquare: '256', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
     },
     {
-        image: '/assets/images/features/map/house_1.png',
+        image: '/assets/images/features/map/house_1.webp',
         specs: { piecesSquare: '60', bundlesSquare: '4', nailsSquare: '240', exposure: '5 1/2" (140 mm)', dimensions: '12" x 36"' }
     },
     {
-        image: '/assets/images/features/map/house_2.png',
+        image: '/assets/images/features/map/house_2.webp',
         specs: { piecesSquare: '68', bundlesSquare: '3', nailsSquare: '272', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
     },
     {
-        image: '/assets/images/features/map/house_3.png',
+        image: '/assets/images/features/map/house_3.webp',
         specs: { piecesSquare: '65', bundlesSquare: '3.5', nailsSquare: '260', exposure: '5 3/4" (146 mm)', dimensions: '13" x 40"' }
     },
     {
-        image: '/assets/images/features/map/house_4.png',
+        image: '/assets/images/features/map/house_4.webp',
         specs: { piecesSquare: '72', bundlesSquare: '3', nailsSquare: '288', exposure: '5" (127 mm)', dimensions: '12 1/4" x 36"' }
     },
     {
-        image: '/assets/images/features/map/house_5.png',
+        image: '/assets/images/features/map/house_5.webp',
         specs: { piecesSquare: '56', bundlesSquare: '4', nailsSquare: '224', exposure: '5 7/8" (150 mm)', dimensions: '14" x 40"' }
     },
     {
-        image: '/assets/images/features/map/house_6.png',
+        image: '/assets/images/features/map/house_6.webp',
         specs: { piecesSquare: '66', bundlesSquare: '3', nailsSquare: '264', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
     },
     {
-        image: '/assets/images/features/map/house_7.png',
+        image: '/assets/images/features/map/house_7.webp',
         specs: { piecesSquare: '62', bundlesSquare: '3.5', nailsSquare: '248', exposure: '5 1/2" (140 mm)', dimensions: '12 1/2" x 38"' }
     },
     {
-        image: '/assets/images/features/map/house_8.png',
+        image: '/assets/images/features/map/house_8.webp',
         specs: { piecesSquare: '70', bundlesSquare: '3', nailsSquare: '280', exposure: '5 5/8" (144 mm)', dimensions: '13 1/4" x 39 3/8"' }
     },
     {
-        image: '/assets/images/features/map/house_9.png',
+        image: '/assets/images/features/map/house_9.webp',
         specs: { piecesSquare: '64', bundlesSquare: '4', nailsSquare: '256', exposure: '5 3/4" (146 mm)', dimensions: '13" x 39"' }
     }
 ];

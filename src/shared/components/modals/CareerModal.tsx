@@ -4,12 +4,6 @@ import Image from "next/image";
 
 const slides = [
     {
-        src: "/assets/images/shared/dialog_labor.webp",
-        aspect: "portrait",
-        cta: true,
-        ctaPosition: "top-right" as const,
-    },
-    {
         src: "/assets/images/shared/dialog_sales.webp",
         aspect: "portrait",
         cta: true,
