@@ -115,10 +115,10 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
                     <button className={styles.closeHint} onClick={(e) => { e.stopPropagation(); setShowHint(false); }}>×</button>
                     <div className={styles.hintInner}>
-                        <span className={styles.hintTag}>🎉 Limited time offer</span>
-                        <p className={styles.hintTitle}>LABOR DAY SPECIAL</p>
+                        <span className={styles.hintTag}>Limited time offer</span>
+                        <p className={styles.hintTitle}>Need a roof quote?</p>
                         <p className={styles.hintSubtitle}>Best pricing of the season!</p>
-                        <p className={styles.hintExpiry}>Offer ends Friday, Sep 11th</p>
+                        {/*<p className={styles.hintExpiry}>Offer ends Friday, Sep 11th</p>*/}
                     </div>
                     <div className={styles.hintArrow} />
                 </div>
