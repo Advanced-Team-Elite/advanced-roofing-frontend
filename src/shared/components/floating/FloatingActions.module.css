@@ -645,6 +645,7 @@
 .hintTag {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     background: #fff8e1;
     color: #b45309;
@@ -656,6 +657,7 @@
     border-radius: 4px;
     border: 1px solid #fbbf24;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .hintInner {
