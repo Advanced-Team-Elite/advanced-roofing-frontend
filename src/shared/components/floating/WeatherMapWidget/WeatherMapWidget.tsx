@@ -1,12 +1,19 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 
-const GIF_URL   = "/api/radar";           // dialog completo — GIF original
-const THUMB_URL = "/api/radar?thumb=1";   // preview miniatura — webp 20% calidad
+const GIF_URL   = "/api/radar";         // dialog completo — GIF original
+const THUMB_URL = "/api/radar?thumb=1"; // preview miniatura
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 const MAX_RETRIES = 4;
 
+// ── Helper: añade el cache-buster con el separador correcto ────
+const withTimestamp = (url: string) => {
+    const sep = url.includes("?") ? "&" : "?";
+    return `${url}${sep}t=${Date.now()}`;
+};
+
+// ── Hook móvil ─────────────────────────────────────────────────
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -19,17 +26,16 @@ const useIsMobile = () => {
     return isMobile;
 };
 
-
+// ── Hook imagen con reintentos ─────────────────────────────────
 const useRetryingImage = (baseUrl: string) => {
-    // 1. Inicializa como null o cadena vacía para que coincida en el servidor
     const [src, setSrc] = useState<string | null>(null);
     const [loaded, setLoaded] = useState(false);
     const [failed, setFailed] = useState(false);
     const retries = useRef(0);
 
-    // 2. Este efecto solo corre en el cliente
+    // Solo corre en el cliente
     useEffect(() => {
-        setSrc(`${baseUrl}?t=${Date.now()}`);
+        setSrc(withTimestamp(baseUrl));
     }, [baseUrl]);
 
     const handleLoad = useCallback(() => {
@@ -46,27 +52,28 @@ const useRetryingImage = (baseUrl: string) => {
         retries.current += 1;
         const delay = 600 * retries.current;
         setTimeout(() => {
-            setSrc(`${baseUrl}?t=${Date.now()}`);
+            setSrc(withTimestamp(baseUrl));
         }, delay);
     }, [baseUrl]);
 
-    // Reintento manual (botón "Reintentar")
     const retry = useCallback(() => {
         retries.current = 0;
         setFailed(false);
         setLoaded(false);
-        setSrc(`${baseUrl}?t=${Date.now()}`);
+        setSrc(withTimestamp(baseUrl));
     }, [baseUrl]);
 
     return { src, loaded, failed, handleLoad, handleError, retry };
 };
 
+// ── Ícono mapa ─────────────────────────────────────────────────
 const MapIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
     </svg>
 );
 
+// ── Contenido del mapa (dialog) ────────────────────────────────
 const MapContent = () => {
     const [scale, setScale] = useState(MIN_SCALE);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -175,7 +182,7 @@ const MapContent = () => {
 
     return (
         <div className="relative w-full h-full">
-            {/* Loader / error state */}
+            {/* Loader / error */}
             {!loaded && (
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4" style={{ background: "#0d2d5e" }}>
                     {failed ? (
@@ -186,6 +193,7 @@ const MapContent = () => {
                             </span>
                             <button
                                 onClick={retry}
+                                aria-label="Retry loading radar"
                                 className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-medium transition cursor-pointer"
                             >
                                 Retry
@@ -202,7 +210,7 @@ const MapContent = () => {
                                 <span className="w-2 h-2 rounded-full bg-white animate-bounce" style={{ animationDelay: "300ms" }} />
                             </div>
                             <span className="text-white/60 text-xs tracking-widest uppercase">
-                              Loading weather map
+                                Loading weather map
                             </span>
                         </>
                     )}
@@ -213,14 +221,14 @@ const MapContent = () => {
             <div className="absolute bottom-3 right-3 z-50 flex flex-col gap-1">
                 <button
                     onClick={() => zoom(0.4)}
-                    className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full shadow hover:bg-white transition text-base font-bold disabled:opacity-40"
+                    className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full shadow hover:bg-white transition text-base font-bold"
                     aria-label="Zoom in"
                 >
                     +
                 </button>
                 <button
                     onClick={() => zoom(-0.4)}
-                    className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full shadow hover:bg-white transition text-base font-bold disabled:opacity-40"
+                    className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full shadow hover:bg-white transition text-base font-bold"
                     aria-label="Zoom out"
                 >
                     −
@@ -262,67 +270,69 @@ const MapContent = () => {
     );
 };
 
+// ── Widget principal ───────────────────────────────────────────
 export const WeatherMapWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [showDesktopPreview, setShowDesktopPreview] = useState(true);
     const isMobile = useIsMobile();
     const close = () => setIsOpen(false);
 
-    const { src: previewSrc, loaded: previewLoaded, failed: previewFailed, handleLoad: handlePreviewLoad, handleError: handlePreviewError } = useRetryingImage(THUMB_URL);
+    // Preview usa THUMB_URL — baja calidad, cache agresivo
+    const {
+        src: previewSrc,
+        loaded: previewLoaded,
+        failed: previewFailed,
+        handleLoad: handlePreviewLoad,
+        handleError: handlePreviewError,
+    } = useRetryingImage(THUMB_URL);
 
     const dialogSize = isMobile
         ? { width: "calc(100vw - 32px)", height: "calc((100vw - 32px) * 775 / 1185)" }
-        : { width: Math.min(720, (typeof window !== "undefined" ? window.innerWidth : 1280) - 64), height: Math.min(470, (typeof window !== "undefined" ? window.innerHeight : 800) - 64) };
+        : {
+            width:  Math.min(720, (typeof window !== "undefined" ? window.innerWidth  : 1280) - 64),
+            height: Math.min(470, (typeof window !== "undefined" ? window.innerHeight : 800)  - 64),
+        };
 
     return (
         <>
-            {/* Mobile / Tablet: botón normal */}
+            {/* Mobile: botón flotante */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-53 left-3 min-[769px]:hidden
-                z-[5] w-11 h-11 bg-[#00589E] backdrop-blur-sm rounded-full shadow-lg
-                flex items-center justify-center cursor-pointer transition"
+                className="fixed bottom-53 left-3 min-[769px]:hidden z-[5] w-11 h-11 bg-[#00589E] backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center cursor-pointer transition"
                 aria-label="Open weather radar"
             >
                 <MapIcon className="w-6 h-6 text-white" />
             </button>
 
-            {/* Desktop: mapa minimizado en vivo + tooltip tipo nube (arriba-derecha) */}
+            {/* Desktop: preview miniatura */}
             {showDesktopPreview && (
                 <div className="hidden min-[769px]:block fixed bottom-15 left-6 z-[5]">
-                    <div className="flex flex-col items-center gap-2 "> {/* Cambiado a items-center */}
+                    <div className="flex flex-col items-center gap-2">
 
-                        {/* Nube / tooltip */}
+                        {/* Tooltip nube */}
                         <span className="relative whitespace-nowrap bg-white text-[#00589E] text-[13px] font-bold px-2.5 py-1.5 mb-1 rounded-full shadow-md">
-            Watch the forecast
-                            {/* Triángulo centrado */}
-                            <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0
-                border-l-[6px] border-l-transparent
-                border-r-[6px] border-r-transparent
-                border-t-[6px] border-t-white" />
-        </span>
+                            Watch the forecast
+                            <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-white" />
+                        </span>
 
                         <div className="relative">
-                            {/* Botón para cerrar/eliminar el icono minimizado */}
+                            {/* Botón cerrar preview */}
                             <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setShowDesktopPreview(false);
-                                }}
+                                onClick={(e) => { e.stopPropagation(); setShowDesktopPreview(false); }}
                                 className="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-gray-800 hover:bg-gray-700 text-white text-[11px] leading-none flex items-center justify-center shadow-md cursor-pointer transition"
                                 aria-label="Close weather radar preview"
                             >
                                 ✕
                             </button>
 
+                            {/* Miniatura clicable */}
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg
-    ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
+                                className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
                                 aria-label="Open weather radar"
                             >
-                                {/* Solo renderiza el img si previewSrc existe */}
                                 {previewSrc && (
+                                    // eslint-disable-next-line @next/next/no-img-element
                                     <img
                                         src={previewSrc}
                                         alt="NOAA weather radar preview"
@@ -337,12 +347,10 @@ export const WeatherMapWidget = () => {
                                             objectFit: "cover",
                                             opacity: previewLoaded ? 1 : 0,
                                             transition: "opacity 0.3s",
-                                            imageRendering: "auto",  // el browser lo comprime visualmente
+                                            imageRendering: "auto",
                                         }}
                                     />
                                 )}
-
-                                {/* El bloque de carga siempre se muestra si no ha cargado */}
                                 {!previewLoaded && (
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
@@ -354,7 +362,7 @@ export const WeatherMapWidget = () => {
                 </div>
             )}
 
-            {/* Dialog centrado */}
+            {/* Dialog */}
             {isOpen && (
                 <div
                     className="fixed inset-0 z-[10000] flex items-center justify-center"
@@ -369,7 +377,7 @@ export const WeatherMapWidget = () => {
                         <button
                             onClick={close}
                             className="absolute cursor-pointer top-3 right-3 z-50 w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition"
-                            aria-label="Close"
+                            aria-label="Close weather radar"
                         >
                             ✕
                         </button>
