@@ -1,7 +1,8 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 
-const GIF_URL = "https://www.spc.noaa.gov/products/activity_loop.gif";
+const GIF_URL   = "/api/radar";           // dialog completo — GIF original
+const THUMB_URL = "/api/radar?thumb=1";   // preview miniatura — webp 20% calidad
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
 const MAX_RETRIES = 4;
@@ -267,7 +268,7 @@ export const WeatherMapWidget = () => {
     const isMobile = useIsMobile();
     const close = () => setIsOpen(false);
 
-    const { src: previewSrc, loaded: previewLoaded, failed: previewFailed, handleLoad: handlePreviewLoad, handleError: handlePreviewError } = useRetryingImage(GIF_URL);
+    const { src: previewSrc, loaded: previewLoaded, failed: previewFailed, handleLoad: handlePreviewLoad, handleError: handlePreviewError } = useRetryingImage(THUMB_URL);
 
     const dialogSize = isMobile
         ? { width: "calc(100vw - 32px)", height: "calc((100vw - 32px) * 775 / 1185)" }
