@@ -26,6 +26,7 @@
     "react-pageflip": "^2.0.3",
     "react-slick": "^0.31.0",
     "resend": "^6.9.3",
+    "sharp": "^0.35.4",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
