@@ -336,6 +336,7 @@ export const WeatherMapWidget = () => {
                                             objectFit: "cover",
                                             opacity: previewLoaded ? 1 : 0,
                                             transition: "opacity 0.3s",
+                                            imageRendering: "auto",  // el browser lo comprime visualmente
                                         }}
                                     />
                                 )}
