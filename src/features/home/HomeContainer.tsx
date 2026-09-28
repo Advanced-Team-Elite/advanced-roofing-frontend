@@ -23,11 +23,12 @@ import SeniorDiscount from "@/features/home/SeniorDiscount/SeniorDiscount";
 import NiceJobBadge from "@/features/home/NiceJobBadge";
 import SolarPanel from "@/features/home/SolarPanel";
 import {CareerCarousel} from "@/shared/components/modals/CareerModal";
+import {TankSection} from "@/features/home/TankSection/TankSection";
 
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
-                <CareerCarousel/>
+            <CareerCarousel/>
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
@@ -39,6 +40,7 @@ export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
             <SolarPanel/>
             <OurServices />
             <AboutHome />
+            <TankSection/>
             <AwardsBanner />
             <WhyChooseUs />
             <BeforeAndAfter/>

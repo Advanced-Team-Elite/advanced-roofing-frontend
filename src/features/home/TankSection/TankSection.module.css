@@ -1,0 +1,139 @@
+.tankSection {
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.fullWidthContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    width: 100%;
+}
+
+/* ── IMAGEN IZQUIERDA ─────────────────────────────────────── */
+.imageColumnWrapper {
+    order: 1;
+    position: relative;
+}
+
+.imageColumn {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── TEXTO DERECHA ────────────────────────────────────────── */
+.textContent {
+    order: 2;
+    padding: 80px 12% 80px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    color: #00589e;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-prompt);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    color: #00589e;
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.paragraph {
+    margin-bottom: 1.5rem;
+    font-size: 1.15rem;
+    color: #060606;
+    line-height: 1.7;
+}
+
+.highlight { color: #00ccff; font-weight: normal; }
+.highlight:hover { color: #060606; }
+
+.ctaBanner {
+    background-color: #00589e;
+    color: #fff;
+    padding: 30px 50px;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.yellowLink {
+    color: #ffcc00;
+    font-weight: 700;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1280px) {
+    .tankSection {
+        padding: 0 100px;
+    }
+
+    .fullWidthContainer {
+        grid-template-columns: 1fr;
+    }
+
+    /* en tablet: imagen arriba, texto abajo */
+    .imageColumnWrapper { order: 1; }
+    .textContent {
+        order: 2;
+        padding: 60px 5%;
+    }
+
+    .ctaBanner {
+        padding: 40px 30px;
+    }
+
+    .title { font-size: 2.6rem; }
+}
+
+@media (max-width: 768px) {
+    .tankSection {
+        padding: 0 20px;
+    }
+
+    .title { font-size: 2rem; }
+
+    .subtitle { font-size: 1.5rem; }
+
+    .paragraph { font-size: 0.95rem; }
+
+    .textContent {
+        padding: 30px 5% 40px 5%;
+    }
+
+    .ctaBanner {
+        padding: 30px;
+    }
+
+    .ctaBanner p {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+}
