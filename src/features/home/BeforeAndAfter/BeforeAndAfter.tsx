@@ -33,6 +33,11 @@ const PrevArrow = (props: any) => {
 
 const comparisonSlides = [
     {
+        id: 5,
+        before: '/assets/images/slider/roof5-before.webp',
+        after: '/assets/images/slider/roof5-after.webp',
+    },
+    {
         id: 1,
         before: '/assets/images/slider/roof1-before.webp',
         after: '/assets/images/slider/roof1-after.webp',
@@ -41,11 +46,6 @@ const comparisonSlides = [
         id: 0,
         before: '/assets/images/slider/roof0-before.webp',
         after: '/assets/images/slider/roof0-after.webp',
-    },
-    {
-        id: 5,
-        before: '/assets/images/slider/roof5-before.webp',
-        after: '/assets/images/slider/roof5-after.webp',
     },
     {
         id: 2,
