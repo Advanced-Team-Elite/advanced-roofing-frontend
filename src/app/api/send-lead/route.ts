@@ -9,12 +9,21 @@ const TEAM_EMAIL = process.env.NOTIFICATION_EMAIL ?? "bbalabarca@advancedteameli
 // ─── Template: email al equipo ─────────────────────────────────────────────────
 function teamEmailHtml(body: any): string {
     const { firstName, lastName, email, phone, address, sendPdf, quote } = body;
-    const materialLabels: Record<string, string> = {
-        asphalt_shingle: "Asphalt Shingles",
-        metal: "Premium Metal",
-        flat_tpo: "Flat Roof (TPO)",
-        slate: "Natural Slate",
-    };
+
+    const sectionsRows = quote.sections
+        ? quote.sections.map((sec: any, i: number) => `
+            <tr style="background: ${i % 2 === 0 ? '#f9fafb' : '#fff'};">
+                <td style="padding: 8px 12px; font-weight: 600; color: #111;">${sec.name}</td>
+                <td style="padding: 8px 12px; color: #4b5563;">
+                    ${sec.material === "flat_tpo"
+            ? "Flat Roof (TPO)"
+            : `Asphalt Shingles — ${sec.pitch} pitch`
+        }
+                </td>
+                <td style="padding: 8px 12px; color: #4b5563; text-align: right;">${sec.areaSqFt?.toLocaleString()} sq ft</td>
+            </tr>
+        `).join("")
+        : `<tr><td colspan="3" style="padding: 8px 12px; color: #6b7280;">${quote.sqft?.toLocaleString()} sq ft total</td></tr>`;
 
     return `
     <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px;">
@@ -37,25 +46,26 @@ function teamEmailHtml(body: any): string {
             </table>
 
             <h3 style="color: #1e3a5f; font-size: 15px; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">
-                Estimate Details
+                Roof Sections
             </h3>
-            <table style="width: 100%; font-size: 14px; border-collapse: collapse; margin-bottom: 28px;">
-                <tr><td style="padding: 6px 0; color: #6b7280; width: 140px;">Roof Size:</td><td style="font-weight: 600;">${quote.sqft?.toLocaleString()} sq ft</td></tr>
-                <tr><td style="padding: 6px 0; color: #6b7280;">Material:</td><td>${materialLabels[quote.material] ?? quote.material}</td></tr>
-                <tr><td style="padding: 6px 0; color: #6b7280;">Pitch:</td><td style="text-transform: capitalize;">${quote.pitch}</td></tr>
-                <tr><td style="padding: 6px 0; color: #6b7280;">Layers:</td><td>${quote.layers}</td></tr>
+            <table style="width: 100%; font-size: 13px; border-collapse: collapse; margin-bottom: 28px; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;">
+                <thead>
+                    <tr style="background: #eff6ff;">
+                        <th style="padding: 8px 12px; text-align: left; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Section</th>
+                        <th style="padding: 8px 12px; text-align: left; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Material / Pitch</th>
+                        <th style="padding: 8px 12px; text-align: right; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Area</th>
+                    </tr>
+                </thead>
+                <tbody>${sectionsRows}</tbody>
+                <tfoot>
+                    <tr style="background: #eff6ff; border-top: 1px solid #bfdbfe;">
+                        <td colspan="2" style="padding: 8px 12px; font-weight: 700; color: #1e3a5f;">Total</td>
+                        <td style="padding: 8px 12px; font-weight: 900; color: #1e3a5f; text-align: right;">${quote.sqft?.toLocaleString()} sq ft</td>
+                    </tr>
+                </tfoot>
             </table>
 
             <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px;">
-                <div style="display: flex; justify-content: space-between; font-size: 13px; color: #6b7280; margin-bottom: 6px;">
-                    <span>Materials:</span><span style="font-weight: 600; color: #111;">$${quote.materialCost?.toLocaleString()}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px; color: #6b7280; margin-bottom: 6px;">
-                    <span>Labor:</span><span style="font-weight: 600; color: #111;">$${quote.laborCost?.toLocaleString()}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px; color: #6b7280; margin-bottom: 14px;">
-                    <span>Tear-off:</span><span style="font-weight: 600; color: #111;">$${quote.removalCost?.toLocaleString()}</span>
-                </div>
                 <div style="border-top: 1px solid #bfdbfe; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: 900; font-size: 15px; color: #1e3a5f; text-transform: uppercase;">Total Estimate</span>
                     <span style="font-weight: 900; font-size: 28px; color: #2563eb;">$${quote.total?.toLocaleString()}</span>
@@ -73,12 +83,21 @@ function teamEmailHtml(body: any): string {
 // ─── Template: email al cliente ────────────────────────────────────────────────
 function clientEmailHtml(body: any): string {
     const { firstName, quote } = body;
-    const materialLabels: Record<string, string> = {
-        asphalt_shingle: "Asphalt Shingles",
-        metal: "Premium Metal",
-        flat_tpo: "Flat Roof (TPO)",
-        slate: "Natural Slate",
-    };
+
+    const sectionsRows = quote.sections
+        ? quote.sections.map((sec: any, i: number) => `
+            <tr style="background: ${i % 2 === 0 ? '#f9fafb' : '#fff'};">
+                <td style="padding: 8px 12px; font-weight: 600; color: #111;">${sec.name}</td>
+                <td style="padding: 8px 12px; color: #4b5563;">
+                    ${sec.material === "flat_tpo"
+            ? "Flat Roof (TPO)"
+            : `Asphalt Shingles — ${sec.pitch} pitch`
+        }
+                </td>
+                <td style="padding: 8px 12px; color: #4b5563; text-align: right;">${sec.areaSqFt?.toLocaleString()} sq ft</td>
+            </tr>
+        `).join("")
+        : `<tr><td colspan="3" style="padding: 8px 12px; color: #6b7280;">${quote.sqft?.toLocaleString()} sq ft total</td></tr>`;
 
     return `
     <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px;">
@@ -94,14 +113,28 @@ function clientEmailHtml(body: any): string {
                 <strong>${quote.address || "your property"}</strong>.
             </p>
 
-            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin: 24px 0;">
+            <table style="width: 100%; font-size: 13px; border-collapse: collapse; margin: 24px 0; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;">
+                <thead>
+                    <tr style="background: #eff6ff;">
+                        <th style="padding: 8px 12px; text-align: left; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Section</th>
+                        <th style="padding: 8px 12px; text-align: left; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Material</th>
+                        <th style="padding: 8px 12px; text-align: right; color: #1e3a5f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Area</th>
+                    </tr>
+                </thead>
+                <tbody>${sectionsRows}</tbody>
+            </table>
+
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
                 <table style="width: 100%; font-size: 13px; color: #6b7280; border-collapse: collapse; margin-bottom: 14px;">
-                    <tr><td style="padding: 5px 0; width: 140px;">Roof Size:</td><td style="font-weight: 600; color: #111;">${quote.sqft?.toLocaleString()} sq ft</td></tr>
-                    <tr><td style="padding: 5px 0;">Material:</td><td style="font-weight: 600; color: #111;">${materialLabels[quote.material] ?? quote.material}</td></tr>
-                    <tr><td style="padding: 5px 0;">Pitch:</td><td style="font-weight: 600; color: #111; text-transform: capitalize;">${quote.pitch}</td></tr>
-                    <tr><td style="padding: 5px 0;">Materials cost:</td><td style="font-weight: 600; color: #111;">$${quote.materialCost?.toLocaleString()}</td></tr>
-                    <tr><td style="padding: 5px 0;">Labor:</td><td style="font-weight: 600; color: #111;">$${quote.laborCost?.toLocaleString()}</td></tr>
-                    <tr><td style="padding: 5px 0;">Tear-off:</td><td style="font-weight: 600; color: #111;">$${quote.removalCost?.toLocaleString()}</td></tr>
+                    <tr>
+                        <td style="padding: 5px 0; width: 160px;">Total Roof Area:</td>
+                        <td style="font-weight: 600; color: #111;">${quote.sqft?.toLocaleString()} sq ft</td>
+                    </tr>
+                    ${quote.sectionsCount ? `
+                    <tr>
+                        <td style="padding: 5px 0;">Sections:</td>
+                        <td style="font-weight: 600; color: #111;">${quote.sectionsCount} section${quote.sectionsCount !== 1 ? "s" : ""}</td>
+                    </tr>` : ""}
                 </table>
                 <div style="border-top: 1px solid #bfdbfe; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: 900; font-size: 15px; color: #1e3a5f; text-transform: uppercase;">Total Estimate</span>
