@@ -1,38 +1,38 @@
-import { CHICAGO_ROOFING_PRICES } from '@/lib/constants';
-import { RoofingQuoteRequest, QuoteBreakdown } from '@/types/roofing';
+// src/hooks/useRoofCalculator.ts
+import { RoofingQuoteRequest, QuoteBreakdown } from "@/types/roofing";
 
 export const useRoofCalculator = () => {
+    const calculateQuote = ({ sections }: RoofingQuoteRequest): QuoteBreakdown => {
+        let totalMaterialCost = 0;
+        let totalLaborCost = 0;
+        let totalRemovalCost = 0;
 
-    const calculateQuote = (data: RoofingQuoteRequest): QuoteBreakdown => {
-        const { squareFeet, material, pitch, layersToRemove } = data;
+        sections.forEach((section) => {
+            let baseRatePerSqFt = section.material === "flat_tpo" ? 6.5 : 4.5;
 
-        const squares = squareFeet / CHICAGO_ROOFING_PRICES.SQUARE_FOOT_UNIT;
+            if (section.material === "asphalt_shingle") {
+                if (section.pitch === "medium") baseRatePerSqFt += 0.5;
+                if (section.pitch === "steep") baseRatePerSqFt += 1.2;
+                if (section.pitch === "high_steep") baseRatePerSqFt += 2.0;
+            }
 
-        let total = 0;
-        let materialCost = 0;
-        let laborCost = 0;
-        let removalCost = 0;
+            const matCost = Math.round(section.areaSqFt * baseRatePerSqFt * 0.45);
+            const labCost = Math.round(section.areaSqFt * baseRatePerSqFt * 0.55);
+            const remCost =
+                section.material === "flat_tpo"
+                    ? 0
+                    : Math.round(section.areaSqFt * 0.75 * section.layersToRemove);
 
-        if (material === "flat_tpo") {
-            // TPO: precio fijo por sq, sin pitch ni layers
-            materialCost = CHICAGO_ROOFING_PRICES.MATERIALS.flat_tpo * squares;
-            total = materialCost;
-        } else {
-            // Asphalt shingle: precio por pitch (incluye material + labor)
-            const ratePerSq = CHICAGO_ROOFING_PRICES.LABOR_BY_PITCH[pitch as keyof typeof CHICAGO_ROOFING_PRICES.LABOR_BY_PITCH] ?? 425;
-            laborCost = ratePerSq * squares;
-
-            // Remoción de capas
-            removalCost = CHICAGO_ROOFING_PRICES.REMOVAL_PER_LAYER_SQ * layersToRemove * squares;
-
-            total = laborCost + removalCost;
-        }
+            totalMaterialCost += matCost;
+            totalLaborCost += labCost;
+            totalRemovalCost += remCost;
+        });
 
         return {
-            materialCost: Number(materialCost.toFixed(2)),
-            laborCost:    Number(laborCost.toFixed(2)),
-            removalCost:  Number(removalCost.toFixed(2)),
-            total:        Number(total.toFixed(2)),
+            materialCost: totalMaterialCost,
+            laborCost: totalLaborCost,
+            removalCost: totalRemovalCost,
+            total: totalMaterialCost + totalLaborCost + totalRemovalCost,
         };
     };
 
