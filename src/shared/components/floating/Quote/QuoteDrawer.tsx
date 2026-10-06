@@ -151,9 +151,9 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                         onClick={(e) => { e.stopPropagation(); setShowHint(false); }}
                     >×</button>
                     <div className={styles.hintInner}>
-                        <span className={styles.hintTag}>Limited time offer</span>
-                        <p className={styles.hintTitle}>Need a roof quote?</p>
-                        <p className={styles.hintSubtitle}>Best pricing of the season!</p>
+                        <span className={styles.hintTag}>Fall Special 🍂</span>
+                        <p className={styles.hintTitle}>Fall Into Savings</p>
+                        <p className={styles.hintSubtitle}>Offer ends Oct 31st 🎃</p>
                     </div>
                     <div className={styles.hintArrow} />
                 </div>

@@ -66,7 +66,8 @@ export default function VideoBanner({ showSubtitle = true }: VideoBannerProps) {
                     <h1 className={styles.heroTitle}>We&apos;ve Got You Covered</h1>
                     {showSubtitle && (
                         <p className={styles.heroSubtitle}>
-                            Chicago&apos;s Trusted Roofing & Storm Recovery Team
+                            A Strong Roof Makes a Cozy Fall
+                            {/*Chicago&apos;s Trusted Roofing & Storm Recovery Team*/}
                         </p>
                     )}
 
