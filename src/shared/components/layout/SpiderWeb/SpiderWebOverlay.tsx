@@ -47,7 +47,7 @@ export function SpiderWebOverlay() {
                 left: "0 !important" as any,
                 width: `${SIZE}px`,
                 height: `${SIZE}px`,
-                zIndex: "999999 !important" as any,
+                zIndex: "30 !important" as any,
                 pointerEvents: "none",
                 userSelect: "none",
             }}>
