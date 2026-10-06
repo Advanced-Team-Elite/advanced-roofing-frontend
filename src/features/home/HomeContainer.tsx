@@ -28,7 +28,7 @@ import {TankSection} from "@/features/home/TankSection/TankSection";
 export default function HomeContainer({ dbReviews }: { dbReviews: any[] }) {
     return (
         <main>
-            <CareerCarousel/>
+            {/*<CareerCarousel/>*/}
             <VideoBanner showSubtitle={true}/>
             <StormAlert />
             <TopBannerAward/>
