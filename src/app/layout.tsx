@@ -100,10 +100,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Suspense fallback={null}>
                     <WeatherEffectsAsync />
                 </Suspense>
-             */}
-            <Suspense fallback={null}>
+                            <Suspense fallback={null}>
                 <SpiderWebAsync />
             </Suspense>
+             */}
+
             <GoogleMapsProvider>
                 <Header />
                 {children}
