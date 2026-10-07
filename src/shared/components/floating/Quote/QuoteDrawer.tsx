@@ -25,6 +25,27 @@ function nextSectionId(): string {
     return `section-${sectionIdCounter}`;
 }
 
+// ── Powered by VCM — watermark sutil ─────────────────────────
+function PoweredByVCM() {
+    return (
+        <div className="flex items-center justify-center mt-12 pb-2 opacity-90 hover:opacity-100 transition-opacity">
+            <a
+                href="https://discovervcm.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img
+                    src="https://res.cloudinary.com/dca79rb3c/image/upload/v1791407705/vcm_water_opcylu.png"
+                    alt="Powered by VCM"
+                    width={160}
+                    height={18}
+                    style={{ display: "block" }}
+                />
+            </a>
+        </div>
+    );
+}
+
 export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     const [step, setStep]                       = useState<WidgetStep>("search");
     const [location, setLocation]               = useState(DEFAULT_CENTER);
@@ -37,7 +58,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     const [isDrawingMode, setIsDrawingMode]     = useState(false);
     const [showHint, setShowHint]               = useState(true);
 
-    // ── Dirección seleccionada → detectar techo ───────────────
     const handleAddressSelect = async (address: string, lat: number, lng: number) => {
         setLocation({ lat, lng });
         setSelectedAddress(address);
@@ -78,7 +98,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         }
     };
 
-    // ── Edición de coords de una sección ──────────────────────
     const handleUpdateCoords = (id: string, newCoords: { lat: number; lng: number }[]) => {
         const newArea = computeAreaSqFt(newCoords);
         setSections((prev) =>
@@ -90,7 +109,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         );
     };
 
-    // ── Nueva sección dibujada manualmente ────────────────────
     const handleSectionDrawn = (coords: { lat: number; lng: number }[]) => {
         setIsDrawingMode(false);
         if (coords.length < 3) return;
@@ -111,7 +129,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         setActiveSectionId(newId);
     };
 
-    // ── Eliminar sección ──────────────────────────────────────
     const handleRemoveSection = (id: string) => {
         if (sections.length <= 1) return;
         const filtered = sections.filter((s) => s.id !== id);
@@ -119,7 +136,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
         setActiveSectionId(filtered[0].id);
     };
 
-    // ── Reset completo ────────────────────────────────────────
     const handleReset = () => {
         setStep("search");
         setSelectedAddress("");
@@ -136,7 +152,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
     return (
         <div className={`${styles.quoteWrapper} ${isOpen ? styles.wrapperOpen : ""}`}>
 
-            {/* Hint popup */}
             {!isOpen && showHint && (
                 <div className={styles.quoteHint}>
                     <span className={styles.pp1} /><span className={styles.pp2} />
@@ -146,10 +161,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                     <span className={styles.pp9} /><span className={styles.pp10} />
                     <span className={styles.pp11} /><span className={styles.pp12} />
                     <span className={styles.pp13} /><span className={styles.pp14} />
-                    <button
-                        className={styles.closeHint}
-                        onClick={(e) => { e.stopPropagation(); setShowHint(false); }}
-                    >×</button>
+                    <button className={styles.closeHint} onClick={(e) => { e.stopPropagation(); setShowHint(false); }}>×</button>
                     <div className={styles.hintInner}>
                         <span className={styles.hintTag}>Fall Special 🍂</span>
                         <p className={styles.hintTitle}>Fall Into Savings</p>
@@ -159,22 +171,14 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                 </div>
             )}
 
-            <button
-                className={styles.quoteSideBtn}
-                onClick={() => setIsOpen(!isOpen)}
-                data-no-scale
-            >
+            <button className={styles.quoteSideBtn} onClick={() => setIsOpen(!isOpen)} data-no-scale>
                 <span className={styles.quoteText}>Instant Roof Quote</span>
             </button>
 
             <div className={styles.quoteDrawer}>
                 <div className="flex flex-col h-full bg-white overflow-y-auto pr-2 custom-scrollbar">
                     <div className="flex justify-end p-4">
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="text-gray-400 hover:text-black"
-                            aria-label="Close quote drawer"
-                        >
+                        <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-black" aria-label="Close quote drawer">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <line x1="18" y1="6" x2="6" y2="18" />
                                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -184,9 +188,9 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
 
                     <div className={styles.drawerContent}>
 
-                        {/* ── STEP 1: Búsqueda + Mapa ── */}
+                        {/* ── STEP 1 ── */}
                         {step === "search" && (
-                            <div className="flex flex-col flex-1 px-4 sm:px-8 md:px-12 pb-10">
+                            <div className="flex flex-col flex-1 px-4 sm:px-8 md:px-12 pb-4">
                                 <div className="text-center mb-8">
                                     <h1 className="text-4xl font-black text-[#00589e] mb-2 tracking-tight">
                                         What Will My Roof Cost?
@@ -214,7 +218,6 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                     </div>
                                 )}
 
-                                {/* Stepper de área total */}
                                 {selectedAddress && !isLoading && sections.length > 0 && (
                                     <div className="mb-3 flex items-center gap-3 bg-blue-50 border border-blue-100 px-4 py-2 rounded-xl text-sm">
                                         <span className="text-[#00589e] font-black">{totalSqFt.toLocaleString()} sq ft</span>
@@ -261,12 +264,15 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                         </button>
                                     </div>
                                 )}
+
+                                {/* Powered by VCM */}
+                                <PoweredByVCM />
                             </div>
                         )}
 
-                        {/* ── STEP 2: Cotización multi-sección ── */}
+                        {/* ── STEP 2 ── */}
                         {step === "quote" && (
-                            <div className="flex flex-col flex-1 pl-2 pr-1 sm:pl-4 sm:pr-1 md:pl-10 md:pr-2 pb-10 animate-in fade-in duration-500">
+                            <div className="flex flex-col flex-1 pl-2 pr-1 sm:pl-4 sm:pr-1 md:pl-10 md:pr-2 pb-4 animate-in fade-in duration-500">
                                 <div className="mb-8">
                                     <button
                                         onClick={handleReset}
@@ -281,9 +287,7 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                 </div>
 
                                 <div className="mb-8">
-                                    <h2 className="text-5xl font-prompt text-[#00589e] mb-5">
-                                        Your Instant Estimate
-                                    </h2>
+                                    <h2 className="text-5xl font-prompt text-[#00589e] mb-5">Your Instant Estimate</h2>
                                     <div className="bg-gray-50 border-l-4 border-[#00589e] p-4 rounded-r-xl">
                                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Property Address</p>
                                         <p className="text-sm font-bold text-gray-800 truncate">{selectedAddress}</p>
@@ -298,6 +302,9 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                                         location={location}
                                     />
                                 </div>
+
+                                {/* Powered by VCM */}
+                                <PoweredByVCM />
                             </div>
                         )}
                     </div>
