@@ -12,7 +12,7 @@ import { FacebookPixel } from "@/shared/components/PixelComponents/FacebookPixel
 import {OpenAIPixel} from "@/shared/components/PixelComponents/OpenAIPixel/OpenAIPixel";
 import {WeatherMapWidget} from "@/shared/components/floating/WeatherMapWidget/WeatherMapWidget";
 import { Clarity } from '@/shared/components/PixelComponents/Clarity/Clarity';
-import {SpiderWebAsync} from "@/shared/components/layout/SpiderWeb/SpiderWebAsync";
+import { AutumnWebAsync } from "@/shared/components/layout/SpiderWeb/AutumnWebAsync";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -100,10 +100,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Suspense fallback={null}>
                     <WeatherEffectsAsync />
                 </Suspense>
-                            <Suspense fallback={null}>
-                <SpiderWebAsync />
-            </Suspense>
+
              */}
+            <Suspense fallback={null}>
+                <AutumnWebAsync />
+            </Suspense>
 
             <GoogleMapsProvider>
                 <Header />
