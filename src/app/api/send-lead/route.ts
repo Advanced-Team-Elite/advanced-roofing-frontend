@@ -6,6 +6,20 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TEAM_EMAIL = process.env.NOTIFICATION_EMAIL ?? "bbalabarca@advancedteamelite.com";
 
+const VCM_BADGE = `
+    <div style="margin-top: 16px; text-align: center;">
+        <a href="https://discovervcm.com/" target="_blank" style="text-decoration: none; display: inline-block; opacity: 0.4;">
+            <img
+                src="https://res.cloudinary.com/dca79rb3c/image/upload/v1791407705/vcm_water_opcylu.png"
+                alt="Powered by VCM"
+                width="130"
+                height="15"
+                style="display: block; margin: 0 auto;"
+            />
+        </a>
+    </div>
+`;
+
 // ─── Template: email al equipo ─────────────────────────────────────────────────
 function teamEmailHtml(body: any): string {
     const { firstName, lastName, email, phone, address, sendPdf, quote } = body;
@@ -75,6 +89,7 @@ function teamEmailHtml(body: any): string {
 
         <div style="background: #f9fafb; padding: 16px 32px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; font-size: 12px; color: #9ca3af; text-align: center;">
             Lead from Instant Estimate Widget · Advanced Roofing Team · Chicago, IL
+            ${VCM_BADGE}
         </div>
     </div>
     `;
@@ -153,6 +168,7 @@ function clientEmailHtml(body: any): string {
 
         <div style="background: #f9fafb; padding: 16px 32px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; font-size: 12px; color: #9ca3af; text-align: center;">
             Advanced Roofing Team · Chicago, IL · advancedteamelite.com
+            ${VCM_BADGE}
         </div>
     </div>
     `;
