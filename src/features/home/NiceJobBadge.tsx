@@ -151,11 +151,13 @@ export default function NiceJobReviewsSection() {
                             Your feedback is essential to help us keep improving and serving you better. Share your experience with us!
                         </p>
 
+                        {/* Fallback rastreable para crawlers — NiceJob SDK reemplaza el href en runtime */}
                         <a
                             href="https://nicejob.com/advanced-roofing-team/invite"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="nj-review inline-flex items-center justify-center rounded-none bg-[#0052A3] px-8 py-4 text-base font-bold text-white shadow-md transition-all hover:bg-[#003d7a]"
+                            data-fallback-href="https://nicejob.com/advanced-roofing-team/invite"
                         >
                             Leave us a review!
                         </a>
