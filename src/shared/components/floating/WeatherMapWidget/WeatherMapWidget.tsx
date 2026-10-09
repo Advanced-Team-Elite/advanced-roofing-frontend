@@ -319,10 +319,13 @@ export const WeatherMapWidget = () => {
                             {/* Botón cerrar preview */}
                             <button
                                 onClick={(e) => { e.stopPropagation(); setShowDesktopPreview(false); }}
-                                className="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-gray-800 hover:bg-gray-700 text-white text-[11px] leading-none flex items-center justify-center shadow-md cursor-pointer transition"
+                                className="absolute -top-3 -right-3 z-10 w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-white text-[11px] leading-none flex items-center justify-center shadow-md cursor-pointer transition"
                                 aria-label="Close weather radar preview"
                             >
-                                ✕
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
                             </button>
 
                             {/* Miniatura clicable */}
