@@ -319,6 +319,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                             </div>
                                             <input
                                                 type="range"
+                                                aria-label="Annual percentage rate"
                                                 min={5}
                                                 max={40}
                                                 step={0.1}
@@ -346,6 +347,7 @@ export const LeadForm = ({ quote, onSuccess, onBack }: LeadFormProps) => {
                                             </div>
                                             <input
                                                 type="range"
+                                                aria-label="Loan term in years"
                                                 min={2}
                                                 max={12}
                                                 step={1}

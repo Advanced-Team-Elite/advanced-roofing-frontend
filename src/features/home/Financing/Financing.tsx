@@ -169,9 +169,10 @@ const SliderInput: React.FC<SliderInputProps> = ({
                 </div>
                 <input
                     type="range"
+                    aria-label={label}
                     min={min}
                     max={max}
-                    step={allowedValues ? 1 : step} // Si hay lista, usamos step 1 para mayor suavidad al detectar el cambio
+                    step={allowedValues ? 1 : step}
                     value={value}
                     onChange={handleChange}
                     className="w-full h-1 bg-[#005596] rounded-lg appearance-none cursor-pointer accent-[#005596]"
