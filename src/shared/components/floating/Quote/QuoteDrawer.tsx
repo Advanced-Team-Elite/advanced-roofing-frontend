@@ -25,6 +25,50 @@ function nextSectionId(): string {
     return `section-${sectionIdCounter}`;
 }
 
+// ── Decoración de otoño (reemplaza los emojis 🍂 🍁) ─────────
+function MapleLeafIcon({ size = 18 }: { size?: number }) {
+    return (
+        <svg
+            viewBox="0 0 64 64"
+            width={size}
+            height={size}
+            aria-hidden="true"
+            style={{ display: "inline-block", flexShrink: 0 }}
+        >
+            <path
+                d="M32 4 L38 16 L47 11 L44 25 L58 22 L50 33 L58 39 L44 41 L46 48 L35 45 L32 58 L29 45 L18 48 L20 41 L6 39 L14 33 L6 22 L20 25 L17 11 L26 16 Z"
+                fill="#d95d00"
+            />
+            <path
+                d="M32 4 L38 16 L47 11 L44 25 L58 22 L50 33 L58 39 L44 41 L46 48 L35 45 L32 58 Z"
+                fill="#f08a1c"
+                opacity="0.55"
+            />
+            <path d="M32 58 L32 14" stroke="#7a2f00" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M32 40 L22 31 M32 40 L42 31 M32 30 L24 22 M32 30 L40 22" stroke="#7a2f00" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+            <path d="M32 58 L32 63" stroke="#5c2000" strokeWidth="2.4" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+function AcornIcon({ size = 18 }: { size?: number }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            width={size}
+            height={size}
+            aria-hidden="true"
+            style={{ display: "inline-block", flexShrink: 0 }}
+        >
+            <rect x="11.2" y="2" width="1.6" height="3.6" rx="0.8" fill="#5c2f0a" />
+            <path d="M12 21.5c-3-1-5.5-5.5-5.5-10h11c0 4.5-2.5 9-5.5 10z" fill="#d9993a" />
+            <path d="M12 21.5c-3-1-5.5-5.5-5.5-10H12z" fill="#e8b055" opacity="0.7" />
+            <path d="M4.8 11.5c0-3.8 3.3-6.3 7.2-6.3s7.2 2.5 7.2 6.3z" fill="#8b4a1c" />
+            <path d="M7 9l2 2.5M10 7.5l1.2 4M13.5 7.5l-.7 4M17 9l-2 2.5" stroke="#5c2f0a" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
+        </svg>
+    );
+}
+
 // ── Powered by VCM — watermark sutil ─────────────────────────
 function PoweredByVCM() {
     return (
@@ -163,9 +207,17 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                     <span className={styles.pp13} /><span className={styles.pp14} />
                     <button className={styles.closeHint} onClick={(e) => { e.stopPropagation(); setShowHint(false); }}>×</button>
                     <div className={styles.hintInner}>
-                        <span className={styles.hintTag}>Fall Special 🍂</span>
+                        <span className={styles.hintTag}>
+                            <MapleLeafIcon size={20} />
+                            Fall Special
+                        </span>
                         <p className={styles.hintTitle}>Fall Into Savings</p>
-                        <p className={styles.hintSubtitle}>Offer ends Oct 31st 🎃</p>
+                        <p className={styles.hintSubtitle}>
+                            Offer ends with the season{" "}
+                            <span style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 2 }}>
+                                <AcornIcon size={18} />
+                            </span>
+                        </p>
                     </div>
                     <div className={styles.hintArrow} />
                 </div>
