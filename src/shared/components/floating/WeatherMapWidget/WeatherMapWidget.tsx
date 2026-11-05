@@ -1,10 +1,13 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import Image from "next/image";
 
-const GIF_URL   = "/api/radar";         // dialog completo — GIF original
-const THUMB_URL = "/api/radar?thumb=1"; // preview miniatura
-const MIN_SCALE = 1;
-const MAX_SCALE = 4;
+const GIF_URL     = "/api/radar"; // dialog completo — GIF original
+// Miniatura estática optimizada — sube tu imagen a public/assets/images/features/map/
+// y ajusta el nombre del archivo aquí si es distinto.
+const THUMB_IMAGE = "/assets/images/features/map/radar-preview.webp";
+const MIN_SCALE   = 1;
+const MAX_SCALE   = 4;
 const MAX_RETRIES = 4;
 
 // ── Helper: añade el cache-buster con el separador correcto ────
@@ -26,7 +29,7 @@ const useIsMobile = () => {
     return isMobile;
 };
 
-// ── Hook imagen con reintentos ─────────────────────────────────
+// ── Hook imagen con reintentos (solo para el radar del dialog) ─
 const useRetryingImage = (baseUrl: string) => {
     const [src, setSrc] = useState<string | null>(null);
     const [loaded, setLoaded] = useState(false);
@@ -277,15 +280,6 @@ export const WeatherMapWidget = () => {
     const isMobile = useIsMobile();
     const close = () => setIsOpen(false);
 
-    // Preview usa THUMB_URL — baja calidad, cache agresivo
-    const {
-        src: previewSrc,
-        loaded: previewLoaded,
-        failed: previewFailed,
-        handleLoad: handlePreviewLoad,
-        handleError: handlePreviewError,
-    } = useRetryingImage(THUMB_URL);
-
     const dialogSize = isMobile
         ? { width: "calc(100vw - 32px)", height: "calc((100vw - 32px) * 775 / 1185)" }
         : {
@@ -328,37 +322,21 @@ export const WeatherMapWidget = () => {
                                 </svg>
                             </button>
 
-                            {/* Miniatura clicable */}
+                            {/* Miniatura clicable — imagen estática optimizada */}
                             <button
                                 onClick={() => setIsOpen(true)}
                                 className="relative w-35 h-[80px] rounded-xl overflow-hidden shadow-lg ring-2 ring-white/80 hover:ring-white hover:scale-105 transition-all cursor-pointer bg-[#0d2d5e]"
                                 aria-label="Open weather radar"
                             >
-                                {previewSrc && (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img
-                                        src={previewSrc}
-                                        alt="NOAA weather radar preview"
-                                        draggable={false}
-                                        crossOrigin="anonymous"
-                                        referrerPolicy="no-referrer"
-                                        onLoad={handlePreviewLoad}
-                                        onError={handlePreviewError}
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                            objectFit: "cover",
-                                            opacity: previewLoaded ? 1 : 0,
-                                            transition: "opacity 0.3s",
-                                            imageRendering: "auto",
-                                        }}
-                                    />
-                                )}
-                                {!previewLoaded && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <MapIcon className={`w-5 h-5 ${previewFailed ? "text-white/40" : "text-white/70 animate-pulse"}`} />
-                                    </div>
-                                )}
+                                <Image
+                                    src={THUMB_IMAGE}
+                                    alt="NOAA weather radar preview"
+                                    fill
+                                    sizes="140px"
+                                    quality={80}
+                                    draggable={false}
+                                    className="object-cover select-none pointer-events-none"
+                                />
                             </button>
                         </div>
                     </div>
