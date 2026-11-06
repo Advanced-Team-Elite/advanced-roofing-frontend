@@ -4,7 +4,8 @@ import { Map, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/shared/animations/ScrollReveal';
-import { COVERAGE_AREAS, Project, MOCK_PROJECTS_POOL } from '@/shared/data/coverageAreas';
+import { COVERAGE_AREAS } from '@/shared/data/coverageAreas';
+import { PROJECTS, type Project as PortfolioProject } from '@/data/projects.data';
 
 
 interface Area {
@@ -14,24 +15,53 @@ interface Area {
     [key: string]: any;
 }
 
+// Proyecto del portfolio con un id de texto propio por zona (project-<zona>-<n>)
+type CoverageProject = Omit<PortfolioProject, 'id'> & { id: string };
+
 interface HoveredArea extends Partial<Area> {
     notFound?: boolean;
-    projects?: Project[];
+    projects?: CoverageProject[];
 }
 
-// Helper para generar una lista consistente de proyectos por zona basados en su ID
-const getProjectsForArea = (areaId: string | number): Project[] => {
-    // Usamos el ID como base para la consistencia
-    const seed = typeof areaId === 'number' ? areaId : areaId.charCodeAt(0) || 1;
-    const count = (seed % 3) + 2;
+// ─── Shuffle determinístico (misma zona → mismos proyectos; zonas distintas → distintos) ───
+const hashString = (s: string): number => {
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i++) {
+        h ^= s.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+};
 
-    // Crear una copia del pool y mezclarla usando Fisher-Yates con el seed
-    const shuffled = [...MOCK_PROJECTS_POOL].sort(() => 0.5 - (Math.sin(seed) + 1) / 2);
+const mulberry32 = (a: number) => () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
 
-    return shuffled.slice(0, count).map((p, i) => ({
-        id: `project-${areaId}-${i}`,
-        ...p
-    }));
+const seededShuffle = <T,>(arr: T[], seed: number): T[] => {
+    const a = [...arr];
+    const rnd = mulberry32(seed);
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+};
+
+// Proyectos del portfolio real para cada zona, consistentes según el ID completo de la zona
+const getProjectsForArea = (areaId: string | number): CoverageProject[] => {
+    const seed = hashString(String(areaId));
+    const count = Math.min((seed % 3) + 2, PROJECTS.length); // 2 a 4 proyectos por zona
+
+    return seededShuffle(PROJECTS, seed)
+        .slice(0, count)
+        .map((p, i) => ({
+            ...p,
+            id: `project-${areaId}-${i}`,
+        }));
 };
 
 // ─── Placeholder ──────────────────────────────────────────────────────────────
@@ -43,6 +73,17 @@ function MapPlaceholder() {
                 <div className="w-12 h-12 rounded-full border-4 border-gray-200 border-t-[#004A8C] animate-spin" />
                 <span className="text-sm font-medium">Loading map…</span>
             </div>
+        </div>
+    );
+}
+
+// ─── Dato individual del proyecto ─────────────────────────────────────────────
+
+function Detail({ label, value, wide }: { label: string; value: string; wide?: boolean }) {
+    return (
+        <div className={wide ? 'col-span-2' : ''}>
+            <dt className="text-[10px] font-bold uppercase tracking-wider text-gray-500">{label}</dt>
+            <dd className="mt-0.5 text-sm font-semibold text-gray-900">{value}</dd>
         </div>
     );
 }
@@ -235,58 +276,61 @@ export default function CoverageMap() {
                                 We serve this area, but no projects are pinned here yet. <strong>Be the first to feature your roof!</strong>
                             </p>
                         ) : (
-                            <>
-                                {/* Imagen - Escala reducida */}
-                                <div className="overflow-hidden mb-4 md:mb-6 rounded-2xl bg-gray-100 aspect-[16/9] md:aspect-[16/8] relative flex items-center justify-center">
-                                    <img
-                                        src={activeProject?.image}
-                                        className="w-full h-full object-cover"
-                                        alt={`Project in ${hoveredArea.name}`}
-                                    />
-                                </div>
-
-                                {/* Warranties - Visible solo en tablet y desktop */}
-                                <div className="hidden md:block mb-6">
-                                    <h4 className="font-bold text-sm text-gray-800 mb-3 tracking-tight">
-                                        Warranties &amp; Technologies
-                                    </h4>
-                                    <div className="grid grid-cols-3 gap-3">
-                                        {(() => {
-                                            const defaultWarranties = ['warranty-1', 'warranty-2', 'warranty-3'];
-                                            const shift = currentProjectIndex % defaultWarranties.length;
-                                            const rotatedWarranties = [...defaultWarranties.slice(shift), ...defaultWarranties.slice(0, shift)];
-                                            return rotatedWarranties.map((w) => (
-                                                <img key={w} src={`/assets/images/features/map/${w}.png`} className="w-full h-auto object-contain" alt={w} />
-                                            ));
-                                        })()}
+                            activeProject && (
+                                <>
+                                    {/* Imagen del proyecto */}
+                                    <div className="overflow-hidden mb-4 md:mb-6 rounded-2xl bg-gray-100 aspect-[16/9] md:aspect-[16/8] relative flex items-center justify-center">
+                                        <img
+                                            src={activeProject.image}
+                                            className="w-full h-full object-cover"
+                                            alt={`${activeProject.title} — ${hoveredArea.name}`}
+                                        />
                                     </div>
-                                </div>
 
-                                {/* ESTO ES LO QUE DEBES PEGAR */}
-                                <div className="mt-6 px-1">
-                                    <h4 className="font-bold text-sm text-gray-500 mb-3 uppercase tracking-wider">
-                                        Features & Benefits
-                                    </h4>
-                                    <ul className="grid grid-cols-1 gap-2">
-                                        {[
-                                            { text: "Made in USA" },
-                                            { text: "Classic Appearance" },
-                                            { text: "Great Value" },
-                                            { text: "StainGuard Algae Protection" }
-                                        ].map((item, idx) => (
-                                            <li key={idx} className="flex items-center gap-3 text-gray-800 font-medium">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#004A8C]" />
-                                                {item.text}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    {/* Datos del proyecto */}
+                                    <div className="px-1">
+                                        <div className="flex items-center justify-between gap-3 mb-2">
+                                            <span
+                                                className={`inline-block rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                                                    activeProject.category === 'Commercial'
+                                                        ? 'bg-[#004A8C] text-white'
+                                                        : 'bg-[#f7d000] text-black'
+                                                }`}
+                                            >
+                                                {activeProject.category}
+                                            </span>
+                                            {hoveredArea.projects && hoveredArea.projects.length > 1 && (
+                                                <span className="text-xs font-semibold text-gray-500">
+                                                    {currentProjectIndex + 1} / {hoveredArea.projects.length}
+                                                </span>
+                                            )}
+                                        </div>
 
-                                    {/* Descargo de responsabilidad - Tipografía más pequeña y sutil */}
-                                    <p className="mt-5 text-[9px] text-gray-800 leading-tight italic border-t border-black/5 pt-3">
-                                        Any product warranties listed are provided directly by the manufacturer and subject to the manufacturer’s terms and approval.
-                                    </p>
-                                </div>
-                            </>
+                                        <h4 className="font-extrabold text-lg text-gray-900 leading-tight">
+                                            {activeProject.title}
+                                        </h4>
+                                        <p className="text-sm text-gray-600 mb-4">{activeProject.type}</p>
+
+                                        <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-black/5 pt-4">
+                                            <Detail label="Size" value={activeProject.size} />
+                                            <Detail label="Duration" value={activeProject.time} />
+                                            <Detail label="System" value={activeProject.system} wide />
+                                            {activeProject.location && (
+                                                <Detail label="Location" value={activeProject.location} />
+                                            )}
+                                            {activeProject.year && (
+                                                <Detail label="Year" value={String(activeProject.year)} />
+                                            )}
+                                        </dl>
+
+                                        {activeProject.description && (
+                                            <p className="mt-4 text-sm text-gray-700 leading-relaxed line-clamp-3">
+                                                {activeProject.description}
+                                            </p>
+                                        )}
+                                    </div>
+                                </>
+                            )
                         )}
                     </div>
                 )}
@@ -330,17 +374,6 @@ function SearchBox({ onLocationFound }: { onLocationFound: (l: google.maps.LatLn
                 <input ref={inputRef} type="text" placeholder="Search your address..."
                        className="flex-1 bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-sm md:text-lg w-full overflow-ellipsis" />
             </div>
-        </div>
-    );
-}
-
-// ─── Spec Row ─────────────────────────────────────────────────────────────────
-
-function SpecRow({ label, value }: { label: string; value: string }) {
-    return (
-        <div className="flex justify-between items-center gap-4 py-1 border-b border-gray-100/30 last:border-0">
-            <span className="text-gray-900 font-semibold text-[13px] md:text-[15px] leading-tight tracking-tight">{label}</span>
-            <span className="text-gray-900 font-medium text-[13px] md:text-[15px] text-right opacity-80">{value}</span>
         </div>
     );
 }
