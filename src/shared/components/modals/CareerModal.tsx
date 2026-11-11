@@ -2,9 +2,12 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
+// Ancho máximo del popup en desktop (px). Ajusta aquí si lo quieres más grande o más chico.
+const MAX_POPUP_WIDTH = 480;
+
 const slides = [
     {
-        src: "/assets/images/shared/dialog_sales.webp",
+        src: "/assets/images/shared/veterans.webp",
         aspect: "portrait",
         cta: true,
         ctaPosition: "bottom-center" as const,
@@ -72,12 +75,15 @@ export const CareerCarousel = () => {
                 </svg>
             </button>
 
-            {/* Contenedor adaptativo */}
+            {/* Contenedor adaptativo: el ancho se limita por ancho de pantalla, por un máximo en px
+                y por la altura disponible (4:5 → ancho = 0.8 × alto), así nunca se corta verticalmente */}
             <div
                 className="relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-500"
                 style={{
-                    width:       isPortrait ? "min(80vw, 600px)" : "min(90vw, 900px)",
-                    aspectRatio: isPortrait ? "4/5"              : "4/3",
+                    width: isPortrait
+                        ? `min(80vw, ${MAX_POPUP_WIDTH}px, calc((100dvh - 96px) * 4 / 5))`
+                        : "min(90vw, 900px)",
+                    aspectRatio: isPortrait ? "4/5" : "4/3",
                 }}
             >
                 {slides.map((slide, index) => (
@@ -93,6 +99,7 @@ export const CareerCarousel = () => {
                             fill
                             priority
                             quality={100}
+                            sizes={`(max-width: 768px) 80vw, ${MAX_POPUP_WIDTH}px`}
                             className="object-cover"
                         />
 
