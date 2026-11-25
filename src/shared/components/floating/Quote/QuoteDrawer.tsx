@@ -25,7 +25,7 @@ function nextSectionId(): string {
     return `section-${sectionIdCounter}`;
 }
 
-// ── Decoración de otoño (reemplaza los emojis 🍂 🍁) ─────────
+// ── Decoración de otoño / Thanksgiving ───────────────────────
 function MapleLeafIcon({ size = 18 }: { size?: number }) {
     return (
         <svg
@@ -51,7 +51,7 @@ function MapleLeafIcon({ size = 18 }: { size?: number }) {
     );
 }
 
-function AcornIcon({ size = 18 }: { size?: number }) {
+function PumpkinIcon({ size = 18 }: { size?: number }) {
     return (
         <svg
             viewBox="0 0 24 24"
@@ -60,11 +60,17 @@ function AcornIcon({ size = 18 }: { size?: number }) {
             aria-hidden="true"
             style={{ display: "inline-block", flexShrink: 0 }}
         >
-            <rect x="11.2" y="2" width="1.6" height="3.6" rx="0.8" fill="#5c2f0a" />
-            <path d="M12 21.5c-3-1-5.5-5.5-5.5-10h11c0 4.5-2.5 9-5.5 10z" fill="#d9993a" />
-            <path d="M12 21.5c-3-1-5.5-5.5-5.5-10H12z" fill="#e8b055" opacity="0.7" />
-            <path d="M4.8 11.5c0-3.8 3.3-6.3 7.2-6.3s7.2 2.5 7.2 6.3z" fill="#8b4a1c" />
-            <path d="M7 9l2 2.5M10 7.5l1.2 4M13.5 7.5l-.7 4M17 9l-2 2.5" stroke="#5c2f0a" strokeWidth="0.7" strokeLinecap="round" opacity="0.6" />
+            {/* Tallo */}
+            <path d="M12 6.4c-.2-1.5.5-2.9 1.8-3.5" stroke="#5c3a0a" strokeWidth="1.7" strokeLinecap="round" fill="none" />
+            {/* Cuerpo: lóbulos laterales + central */}
+            <ellipse cx="7.2" cy="14" rx="5.2" ry="7" fill="#d95d00" />
+            <ellipse cx="16.8" cy="14" rx="5.2" ry="7" fill="#d95d00" />
+            <ellipse cx="12" cy="14" rx="4.4" ry="7.6" fill="#f08a1c" />
+            {/* Costillas */}
+            <path d="M12 6.6v14.8" stroke="#b34700" strokeWidth="0.8" opacity="0.5" />
+            <path d="M8.6 7.6c-1.6 3.6-1.6 9.2 0 12.8M15.4 7.6c1.6 3.6 1.6 9.2 0 12.8" stroke="#b34700" strokeWidth="0.7" strokeLinecap="round" fill="none" opacity="0.4" />
+            {/* Hoja */}
+            <path d="M13 5.2c1.6-1.3 3.5-1 4.1.4-1.3 1-3.1 1-4.1-.4z" fill="#3b6e22" />
         </svg>
     );
 }
@@ -207,15 +213,13 @@ export const QuoteDrawer = ({ isOpen, setIsOpen }: QuoteDrawerProps) => {
                     <span className={styles.pp13} /><span className={styles.pp14} />
                     <button className={styles.closeHint} onClick={(e) => { e.stopPropagation(); setShowHint(false); }}>×</button>
                     <div className={styles.hintInner}>
-                        <span className={styles.hintTag}>
-                            <MapleLeafIcon size={20} />
-                            Fall Special
-                        </span>
-                        <p className={styles.hintTitle}>Fall Into Savings</p>
+                        <p className={styles.hintTitle}>Thanksgiving</p>
                         <p className={styles.hintSubtitle}>
+                            Thankful for you!
+                            <br />
                             Offer ends with the season{" "}
                             <span style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 2 }}>
-                                <AcornIcon size={18} />
+                                <PumpkinIcon size={18} />
                             </span>
                         </p>
                     </div>

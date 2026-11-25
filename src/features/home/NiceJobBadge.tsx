@@ -2,11 +2,25 @@
 
 import Script from 'next/script';
 
+// ── Hoja de arce pequeña para la etiqueta de Thanksgiving ─────
+function MapleLeaf({ size = 14 }: { size?: number }) {
+    return (
+        <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true" style={{ flexShrink: 0 }}>
+            <path
+                d="M32 4 L38 16 L47 11 L44 25 L58 22 L50 33 L58 39 L44 41 L46 48 L35 45 L32 58 L29 45 L18 48 L20 41 L6 39 L14 33 L6 22 L20 25 L17 11 L26 16 Z"
+                fill="#e8741a"
+            />
+            <path d="M32 58 L32 14" stroke="#7a2f00" strokeWidth="2" strokeLinecap="round" />
+            <path d="M32 58 L32 63" stroke="#5c2000" strokeWidth="2.6" strokeLinecap="round" />
+        </svg>
+    );
+}
+
 export default function NiceJobReviewsSection() {
     return (
         <section className="w-full bg-[#F2F2F2] py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
 
-            {/* Calabaza detallada — top right */}
+            {/* Calabaza de cosecha — top right (sin cara tallada, ya no es Halloween) */}
             <svg className="absolute -top-6 right-0 w-72 h-72 opacity-[0.08] pointer-events-none select-none" viewBox="0 0 100 100" fill="none">
                 {/* Tallo y hoja */}
                 <path d="M48 20 C46 12 50 6 56 4 C54 7 53 11 52 20 Z" fill="#4A3510" />
@@ -24,19 +38,11 @@ export default function NiceJobReviewsSection() {
                 {/* Capa central brillante */}
                 <path d="M32 50 C32 28 42 18 50 18 C58 18 68 28 68 50 C68 72 58 82 50 82 C42 82 32 72 32 50 Z" fill="#FF8800" />
 
-                {/* Cara tallada (Jack-o'-lantern) */}
-                {/* Ojo izquierdo */}
-                <path d="M30 42 L42 36 L38 48 Z" fill="#1A0A00" />
-                {/* Ojo derecho */}
-                <path d="M70 42 L62 48 L58 36 Z" fill="#1A0A00" />
-                {/* Nariz */}
-                <path d="M50 46 L55 53 L45 53 Z" fill="#1A0A00" />
-
-                {/* Boca con dientes */}
-                <path d="M28 58
-           C38 74 62 74 72 58
-           L66 61 L64 56 L58 62 L56 57 L50 63 L44 57 L42 62 L36 56 L34 61 Z"
-                      fill="#1A0A00" />
+                {/* Costillas y brillo */}
+                <path d="M50 18 C46 34 46 66 50 82" stroke="#B34700" strokeWidth="1.2" strokeLinecap="round" opacity="0.45" />
+                <path d="M40 22 C33 36 33 64 41 79" stroke="#B34700" strokeWidth="1" strokeLinecap="round" opacity="0.35" />
+                <path d="M60 22 C67 36 67 64 59 79" stroke="#B34700" strokeWidth="1" strokeLinecap="round" opacity="0.35" />
+                <ellipse cx="41" cy="40" rx="4" ry="11" fill="#FFFFFF" opacity="0.18" transform="rotate(8 41 40)" />
             </svg>
 
             {/* Hojas de otoño — bottom left */}
@@ -128,6 +134,30 @@ export default function NiceJobReviewsSection() {
                 </g>
             </svg>
 
+            {/* Espiga de trigo — bottom right (cosecha / Thanksgiving) */}
+            <svg className="absolute bottom-0 right-10 w-16 h-36 opacity-[0.10] pointer-events-none select-none rotate-12" viewBox="0 0 60 130" fill="none">
+                {/* Tallo */}
+                <path d="M30 128 C29 100 31 60 30 22" stroke="#8A6A12" strokeWidth="2" strokeLinecap="round" />
+                {/* Granos — par izquierda/derecha */}
+                <g fill="#B8860B">
+                    <ellipse cx="22" cy="34" rx="4.5" ry="10" transform="rotate(-32 22 34)" />
+                    <ellipse cx="38" cy="34" rx="4.5" ry="10" transform="rotate(32 38 34)" />
+                    <ellipse cx="22" cy="52" rx="4.5" ry="10" transform="rotate(-32 22 52)" />
+                    <ellipse cx="38" cy="52" rx="4.5" ry="10" transform="rotate(32 38 52)" />
+                    <ellipse cx="22" cy="70" rx="4.5" ry="10" transform="rotate(-32 22 70)" />
+                    <ellipse cx="38" cy="70" rx="4.5" ry="10" transform="rotate(32 38 70)" />
+                    <ellipse cx="23" cy="88" rx="4" ry="9" transform="rotate(-30 23 88)" />
+                    <ellipse cx="37" cy="88" rx="4" ry="9" transform="rotate(30 37 88)" />
+                    <ellipse cx="30" cy="14" rx="4.5" ry="11" />
+                </g>
+                {/* Aristas */}
+                <g stroke="#8A6A12" strokeWidth="0.9" strokeLinecap="round" opacity="0.7">
+                    <path d="M30 4 L30 -4" />
+                    <path d="M18 28 L12 20" />
+                    <path d="M42 28 L48 20" />
+                </g>
+            </svg>
+
             {/* Hoja suelta flotando — top left sutil */}
             <svg className="absolute top-8 left-1/4 w-16 h-16 opacity-[0.06] pointer-events-none select-none -rotate-12" viewBox="0 0 60 60" fill="none">
                 <path d="M10 50 C10 50 5 25 25 10 C35 3 48 6 50 0 C50 0 53 18 42 28 C35 34 20 35 17 40 C14 45 15 50 10 50Z" fill="#cc5500"/>
@@ -144,6 +174,12 @@ export default function NiceJobReviewsSection() {
 
                     {/* Columna Derecha: Texto explicativo y botón */}
                     <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
+                        {/* Thanksgiving — quitar después del fin de semana */}
+                        <span className="inline-flex items-center gap-2 rounded-full border border-[#d95d00]/30 bg-[#d95d00]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#b34700]">
+                            <MapleLeaf size={14} />
+                            Thankful for you
+                        </span>
+
                         <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B2545]">
                             Did you work with us?
                         </h3>
