@@ -1,16 +1,13 @@
 "use client";
 
 export function AutumnOverlay() {
-    // mobileHidden: true → la hoja se oculta en pantallas ≤ 768px (quedan 4 de 8)
+    // 5 hojas en desktop, 3 en mobile (mobileHidden: true → se oculta en pantallas ≤ 768px)
     const leaves = [
-        { id: 1, img: "/assets/images/shared/overlays/img1.webp", left: "10%", duration: "8s",  delay: "0s",   mobileHidden: false },
-        { id: 2, img: "/assets/images/shared/overlays/img2.webp", left: "22%", duration: "10s", delay: "2s",   mobileHidden: true  },
-        { id: 3, img: "/assets/images/shared/overlays/img3.webp", left: "33%", duration: "12s", delay: "4s",   mobileHidden: false },
-        { id: 4, img: "/assets/images/shared/overlays/img4.webp", left: "45%", duration: "9s",  delay: "1s",   mobileHidden: true  },
-        { id: 5, img: "/assets/images/shared/overlays/img5.webp", left: "55%", duration: "7s",  delay: "3s",   mobileHidden: false },
-        { id: 6, img: "/assets/images/shared/overlays/img6.webp", left: "65%", duration: "11s", delay: "3.5s", mobileHidden: true  },
-        { id: 7, img: "/assets/images/shared/overlays/img7.webp", left: "75%", duration: "10s", delay: "5s",   mobileHidden: false },
-        { id: 8, img: "/assets/images/shared/overlays/img8.webp", left: "85%", duration: "9s",  delay: "2s",   mobileHidden: true  },
+        { id: 1, img: "/assets/images/shared/overlays/img1.webp", left: "10%", duration: "8s",  delay: "0s", mobileHidden: false },
+        { id: 3, img: "/assets/images/shared/overlays/img3.webp", left: "30%", duration: "12s", delay: "4s", mobileHidden: true  },
+        { id: 5, img: "/assets/images/shared/overlays/img5.webp", left: "50%", duration: "7s",  delay: "3s", mobileHidden: false },
+        { id: 7, img: "/assets/images/shared/overlays/img7.webp", left: "70%", duration: "10s", delay: "5s", mobileHidden: true  },
+        { id: 8, img: "/assets/images/shared/overlays/img8.webp", left: "85%", duration: "9s",  delay: "2s", mobileHidden: false },
     ];
 
     return (
