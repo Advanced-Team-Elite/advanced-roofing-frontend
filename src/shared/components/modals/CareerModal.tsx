@@ -5,6 +5,27 @@ import Image from "next/image";
 // Ancho máximo del popup en desktop (px). Ajusta aquí si lo quieres más grande o más chico.
 const MAX_POPUP_WIDTH = 480;
 
+// ── Cuándo se muestra el popup ────────────────────────────────
+// Fechas (YYYY-MM-DD) en las que aparece, según la hora de Chicago.
+// Para agregar más días, súmalos al arreglo: ["2026-11-26", "2026-11-27"]
+const SHOW_DATES = ["2026-11-26"];
+const TIME_ZONE = "America/Chicago";
+
+const isShowDay = (): boolean => {
+    // Vista previa manual: agrega ?popup=preview a la URL para verlo cualquier día
+    if (new URLSearchParams(window.location.search).get("popup") === "preview") return true;
+
+    // "en-CA" devuelve la fecha como YYYY-MM-DD
+    const today = new Intl.DateTimeFormat("en-CA", {
+        timeZone: TIME_ZONE,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).format(new Date());
+
+    return SHOW_DATES.includes(today);
+};
+
 const slides = [
     {
         src: "/assets/images/shared/thanksgiving.webp",
@@ -17,8 +38,14 @@ const slides = [
 export const CareerCarousel = () => {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+    const [isActive, setIsActive]         = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile]         = useState(false);
+
+    // La fecha se revisa en el navegador (no en el build), así funciona aunque la página esté en caché
+    useEffect(() => {
+        setIsActive(isShowDay());
+    }, []);
 
     useEffect(() => {
         const check = () => setIsMobile(window.innerWidth < 768);
@@ -45,17 +72,23 @@ export const CareerCarousel = () => {
     };
 
     useEffect(() => {
+        if (!isActive || slides.length < 2) return;
         startTimer();
         return () => { if (timerRef.current) clearInterval(timerRef.current); };
-    }, [startTimer]);
+    }, [isActive, startTimer]);
 
     useEffect(() => {
-        dialogRef.current?.showModal();
-    }, []);
+        if (!isActive) return;
+        const dialog = dialogRef.current;
+        if (dialog && !dialog.open) dialog.showModal();
+    }, [isActive]);
 
     const close = () => dialogRef.current?.close();
 
     const isPortrait = slides[currentIndex].aspect === "portrait";
+
+    // Fuera de la fecha no se renderiza nada
+    if (!isActive) return null;
 
     return (
         <dialog
