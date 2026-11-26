@@ -39,7 +39,7 @@ export const Header = () => {
         <header className={styles.headerContainer}>
             {/* TOP BAR - Desktop */}
             <div className={styles.topBar}>
-                <span>Serving the Des Plaines Community</span>
+                <span>Happy Thanksgiving, Des Plaines!</span>
                 <div className="flex items-center gap-6">
                     <Link href="/areas-we-serve" className={styles.topBarNavLink}>Areas We Serve</Link>
                     <Link href="/financing" className={styles.topBarNavLink}>Financing</Link>
