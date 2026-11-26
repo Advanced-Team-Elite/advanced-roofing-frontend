@@ -7,7 +7,7 @@ const MAX_POPUP_WIDTH = 480;
 
 const slides = [
     {
-        src: "/assets/images/shared/veterans.webp",
+        src: "/assets/images/shared/thanksgiving.webp",
         aspect: "portrait",
         cta: true,
         ctaPosition: "bottom-center" as const,
@@ -133,7 +133,7 @@ export const CareerCarousel = () => {
                                 `}>
                                     {isMobile && slide.ctaPosition !== "bottom-center"
                                         ? "Call Us Now"
-                                        : "Contact Us Now"
+                                        : "Contact Us"
                                     }
                                 </span>
                             </a>
